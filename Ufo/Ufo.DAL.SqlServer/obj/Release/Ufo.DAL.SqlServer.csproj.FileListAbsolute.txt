@@ -1,0 +1,9 @@
+H:\Semester5\SWK5\Project\Ufo\Ufo.DAL.SqlServer\bin\Release\Ufo.DAL.SqlServer.dll
+H:\Semester5\SWK5\Project\Ufo\Ufo.DAL.SqlServer\bin\Release\Ufo.DAL.SqlServer.pdb
+H:\Semester5\SWK5\Project\Ufo\Ufo.DAL.SqlServer\bin\Release\Ufo.DAL.Common.dll
+H:\Semester5\SWK5\Project\Ufo\Ufo.DAL.SqlServer\bin\Release\Ufo.DAL.Common.pdb
+H:\Semester5\SWK5\Project\Ufo\Ufo.DAL.SqlServer\obj\Release\Ufo.DAL.SqlServer.csprojResolveAssemblyReference.cache
+H:\Semester5\SWK5\Project\Ufo\Ufo.DAL.SqlServer\obj\Release\Ufo.DAL.SqlServer.dll
+H:\Semester5\SWK5\Project\Ufo\Ufo.DAL.SqlServer\obj\Release\Ufo.DAL.SqlServer.pdb
+H:\Semester5\SWK5\Project\Ufo\Ufo.DAL.SqlServer\bin\Release\UfoDb.mdf
+H:\Semester5\SWK5\Project\Ufo\Ufo.DAL.SqlServer\bin\Release\UfoDb_log.ldf

@@ -1,0 +1,5 @@
+H:\Semester5\SWK5\Project\Ufo\Ufo.DAL.Common\bin\Release\Ufo.DAL.Common.dll
+H:\Semester5\SWK5\Project\Ufo\Ufo.DAL.Common\bin\Release\Ufo.DAL.Common.pdb
+H:\Semester5\SWK5\Project\Ufo\Ufo.DAL.Common\obj\Release\Ufo.DAL.Common.dll
+H:\Semester5\SWK5\Project\Ufo\Ufo.DAL.Common\obj\Release\Ufo.DAL.Common.pdb
+H:\Semester5\SWK5\Project\Ufo\Ufo.DAL.Common\obj\Release\Ufo.DAL.Common.csprojResolveAssemblyReference.cache

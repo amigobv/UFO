@@ -1,0 +1,12 @@
+H:\Semester5\SWK5\Project\Ufo\Ufo.ConsoleTest\bin\Debug\Ufo.ConsoleTest.exe.config
+H:\Semester5\SWK5\Project\Ufo\Ufo.ConsoleTest\bin\Debug\Ufo.ConsoleTest.exe
+H:\Semester5\SWK5\Project\Ufo\Ufo.ConsoleTest\bin\Debug\Ufo.ConsoleTest.pdb
+H:\Semester5\SWK5\Project\Ufo\Ufo.ConsoleTest\obj\Debug\Ufo.ConsoleTest.csprojResolveAssemblyReference.cache
+H:\Semester5\SWK5\Project\Ufo\Ufo.ConsoleTest\obj\Debug\Ufo.ConsoleTest.exe
+H:\Semester5\SWK5\Project\Ufo\Ufo.ConsoleTest\obj\Debug\Ufo.ConsoleTest.pdb
+E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.ConsoleTest\bin\Debug\Ufo.ConsoleTest.exe.config
+E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.ConsoleTest\obj\Debug\Ufo.ConsoleTest.exe
+E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.ConsoleTest\obj\Debug\Ufo.ConsoleTest.pdb
+F:\Semester5\SWK5\Project\Ufo\Ufo.ConsoleTest\bin\Debug\Ufo.ConsoleTest.exe.config
+F:\Semester5\SWK5\Project\Ufo\Ufo.ConsoleTest\obj\Debug\Ufo.ConsoleTest.exe
+F:\Semester5\SWK5\Project\Ufo\Ufo.ConsoleTest\obj\Debug\Ufo.ConsoleTest.pdb

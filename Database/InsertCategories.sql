@@ -1,0 +1,9 @@
+﻿INSERT INTO [dbo].[Category] ([label], [identifier]) VALUES ('Akrobatik', 'A');
+INSERT INTO [dbo].[Category] ([label], [identifier]) VALUES ('Komedy', 'K');
+INSERT INTO [dbo].[Category] ([label], [identifier]) VALUES ('Feuershow', 'F');
+INSERT INTO [dbo].[Category] ([label], [identifier]) VALUES ('Jonglage', 'J');
+INSERT INTO [dbo].[Category] ([label], [identifier]) VALUES ('LuftAkrobatik', 'L');
+INSERT INTO [dbo].[Category] ([label], [identifier]) VALUES ('Musik', 'M');
+INSERT INTO [dbo].[Category] ([label], [identifier]) VALUES ('Samba', 'S');
+INSERT INTO [dbo].[Category] ([label], [identifier]) VALUES ('Tanz', 'T');
+INSERT INTO [dbo].[Category] ([label], [identifier]) VALUES ('Figurentheater', 'Fig');

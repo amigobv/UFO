@@ -92,10 +92,15 @@ CREATE TABLE IF NOT EXISTS `UFO_DB`.`Schedule` (
     `idSchedule` INT NOT NULL AUTO_INCREMENT,
     `day` DATE NOT NULL,
     `performance` INT(11) NULL,
+    `userId` INT(11) NOT NULL,
     PRIMARY KEY (`idSchedule`),
     INDEX `fk_performance_idx` (`performance` ASC),
+    INDEX `fh_user_idx` (`userId` ASC),
     CONSTRAINT `fk_performance` FOREIGN KEY (`performance`)
         REFERENCES `UFO_DB`.`Performance` (`idPerformance`)
+        ON DELETE NO ACTION ON UPDATE NO ACTION
+    CONSTRAINT `fk_user` FOREIGN KEY (`userId`)
+        REFERENCES `UFO_DB`.`User` (`idUser`)
         ON DELETE NO ACTION ON UPDATE NO ACTION
 )  ENGINE=InnoDB;
   

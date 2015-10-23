@@ -1,5 +1,0 @@
-F:\Semester5\SWK5\Project\Ufo\DataAccess\bin\Debug\DataAccess.dll
-F:\Semester5\SWK5\Project\Ufo\DataAccess\bin\Debug\DataAccess.pdb
-F:\Semester5\SWK5\Project\Ufo\DataAccess\obj\Debug\DataAccessLayer.csprojResolveAssemblyReference.cache
-F:\Semester5\SWK5\Project\Ufo\DataAccess\obj\Debug\DataAccess.dll
-F:\Semester5\SWK5\Project\Ufo\DataAccess\obj\Debug\DataAccess.pdb
