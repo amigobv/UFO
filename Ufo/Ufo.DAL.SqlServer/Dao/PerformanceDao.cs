@@ -12,6 +12,9 @@ namespace Ufo.DAL.SqlServer.Dao
 {
     public class PerformanceDao : IDao<Performance, int>
     {
+        private const string SQL_COUNT =
+            @"Select COUNT(idPerformance) FROM Performance";
+
         private const string SQL_FIND_BY_ID =
             @"SELECT * " +
             @"FROM Performance " +
@@ -24,7 +27,8 @@ namespace Ufo.DAL.SqlServer.Dao
 
         private const string SQL_INSERT =
             @"INSERT INTO Performance " +
-            @"VALUES (@date, @time, @artistId, @venueId, @locationId)";
+            @"VALUES (@date, @time, @artistId, @venueId, @locationId);" +
+            @"SELECT SCOPE_IDENTITY()";
 
         private const string SQL_UPDATE =
             @"UPDATE Performance " +
@@ -32,13 +36,20 @@ namespace Ufo.DAL.SqlServer.Dao
             @"pVenue = @venueId, pLocation = @locationId " +
             @"WHERE idPerformance = @id";
 
-        private const string SQL_DELETE = @"DELETE Performance WHERE idPerformance = @id";
+        private const string SQL_DELETE = @"DELETE FROM Performance WHERE idPerformance = @id";
 
         private IDatabase _database;
 
         public PerformanceDao(IDatabase database)
         {
             _database = database;
+        }
+
+        public int Count()
+        {
+            var command = _database.CreateCommand(SQL_COUNT);
+
+            return (int)_database.ExecuteScalar(command);
         }
 
         public IList<Performance> FindAll()
@@ -96,7 +107,9 @@ namespace Ufo.DAL.SqlServer.Dao
             _database.DefineParameter(command, "@venueId", DbType.Int32, o.Venue.Id);
             _database.DefineParameter(command, "@locationId", DbType.Int32, o.Venue.Location.Id);
 
-            return _database.ExecuteNonQuery(command) == 1;
+            var id = _database.ExecuteScalar(command);
+            o.Id = Convert.ToInt32(id.ToString());
+            return id != null;
         }
 
         public bool Update(Performance o)

@@ -13,6 +13,9 @@ namespace Ufo.DAL.SqlServer.Dao
 {
     public class ArtistDao : IDao<Artist, int>
     {
+        private const string SQL_COUNT =
+            @"Select COUNT(idArtist) FROM Artist";
+
         private const string SQL_FIND_BY_ID = 
             @"SELECT * " +
             @"FROM Artist " + 
@@ -22,9 +25,10 @@ namespace Ufo.DAL.SqlServer.Dao
         private const string SQL_FIND_ALL = 
             @"SELECT * FROM Artist";
 
-        private const string SQL_INSERT = 
+        private const string SQL_INSERT =
             @"INSERT INTO Artist " +
-            @"VALUES (@name, @country, @email, @description, @homepage, @picture, @video, @category, @delete)";
+            @"VALUES (@name, @country, @email, @description, @homepage, @picture, @video, @category, @delete);" +
+            @"SELECT SCOPE_IDENTITY()";
 
         private const string SQL_UPDATE = 
             @"UPDATE Artist " +
@@ -32,16 +36,29 @@ namespace Ufo.DAL.SqlServer.Dao
             @"homepage = @homepage, picture = @picture, video = @video, category = @categoryId, deleted = @delete " + 
             @"WHERE idArtist = @id";
 
-        private const string SQL_DELETE = 
-            @"UPDATE Artist " +
-            @"SET deleted = @delete" +
+        private const string SQL_MARK_DELETED =
+            @"UPDATE FROM Artist " +
+            @"SET deleted = @delete " +
             @"WHERE idArtist = @id";
+
+        private const string SQL_DELETE =
+            @"DELETE FROM Artist " +
+            @"WHERE idArtist = @id";
+
+        private const string SQL_IDENTITY = "Select @@Identity";
 
         private IDatabase _database;
 
         public ArtistDao(IDatabase database)
         {
             _database = database;
+        }
+
+        public int Count()
+        {
+            var command = _database.CreateCommand(SQL_COUNT);
+
+            return (int)_database.ExecuteScalar(command);
         }
 
         public IList<Artist> FindAll()
@@ -114,8 +131,10 @@ namespace Ufo.DAL.SqlServer.Dao
             _database.DefineParameter(command, "@category", DbType.String, o.Category.Id);
             _database.DefineParameter(command, "@delete", DbType.Boolean, o.IsDeleted);
 
-            return _database.ExecuteNonQuery(command) == 1;
+            var id = _database.ExecuteScalar(command);
+            o.Id = Convert.ToInt32(id.ToString());
 
+            return id != null;
         }
 
 

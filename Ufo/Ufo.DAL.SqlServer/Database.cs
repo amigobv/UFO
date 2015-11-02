@@ -10,7 +10,7 @@ using Ufo.DAL.Common;
 
 namespace Ufo.DAL.SqlServer
 {
-    class Database : IDatabase
+    public class Database : IDatabase
     {
         private string connectionString;
 
@@ -28,7 +28,7 @@ namespace Ufo.DAL.SqlServer
         {
             if (!command.Parameters.Contains(name))
             {
-                command.Parameters.Add(new SqlParameter(name, type));
+                return command.Parameters.Add(new SqlParameter(name, type));
             }
 
            throw new ArgumentException($"Parameter {name} is already defined");
@@ -40,11 +40,18 @@ namespace Ufo.DAL.SqlServer
             command.Parameters[index].Value = value;
         }
 
+        public void DefineOutputParameter(DbCommand command, string name, DbType type)
+        {
+            int index = DeclareParameter(command, name, type);
+            command.Parameters[index].Direction = ParameterDirection.Output;
+        }
+
         public void SetParameter(DbCommand command, string name, object value)
         {
             if (command.Parameters.Contains(name))
             {
                 command.Parameters[name].Value = value;
+                return;
             }
 
             throw new ArgumentException($"Parameter {name} does not exist.");
@@ -63,9 +70,10 @@ namespace Ufo.DAL.SqlServer
 
                 return command.ExecuteReader(behavior);
             }
-            finally // is executed in case of exceptions as well 
+            catch(Exception)
             {
                 ReleaseConnection(connection);
+                throw;
             }
         }
 
@@ -79,7 +87,23 @@ namespace Ufo.DAL.SqlServer
                 command.Connection = connection;
 
                 return command.ExecuteNonQuery();
+            }
+            finally
+            {
+                ReleaseConnection(connection);
+            }
+        }
 
+        public object ExecuteScalar(DbCommand command)
+        {
+            DbConnection connection = null;
+
+            try
+            {
+                connection = CreateDbConnection();
+                command.Connection = connection;
+
+                return command.ExecuteScalar();
             }
             finally
             {

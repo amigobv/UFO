@@ -12,6 +12,9 @@ namespace Ufo.DAL.SqlServer.Dao
 {
     public class ConstraintsDao : IDao<Restriction, int>
     {
+        private const string SQL_COUNT =
+            @"Select COUNT(idConstraints) FROM Constraints";
+
         private const string SQL_FIND_BY_ID =
             @"SELECT * " +
             @"FROM Constraints " +
@@ -29,7 +32,7 @@ namespace Ufo.DAL.SqlServer.Dao
             @"SET start = @start, stop = @stop, venue = @venueId, cLocation = @locationId, category = @categoryId " +
             @"WHERE idConstraints = @id";
 
-        private const string SQL_DELETE = @"DELETE Constraints WHERE idConstraints = @id";
+        private const string SQL_DELETE = @"DELETE FROM Constraints WHERE idConstraints = @id";
 
         private IDatabase _database;
 
@@ -37,6 +40,13 @@ namespace Ufo.DAL.SqlServer.Dao
         {
             _database = database;
 
+        }
+
+        public int Count()
+        {
+            var command = _database.CreateCommand(SQL_COUNT);
+
+            return (int)_database.ExecuteScalar(command);
         }
 
         public Restriction FindById(int id)

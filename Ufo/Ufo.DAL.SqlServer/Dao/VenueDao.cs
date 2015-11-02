@@ -10,8 +10,11 @@ using Ufo.DAL.Common.Domain;
 
 namespace Ufo.DAL.SqlServer.Dao
 {
-    public class VenueDao
+    public class VenueDao : IDao<Venue, int>
     {
+        private const string SQL_COUNT =
+            @"Select COUNT(idVenue) FROM User";
+
         private const string SQL_FIND_BY_ID =
             @"SELECT * " +
             @"FROM Venue " +
@@ -29,13 +32,20 @@ namespace Ufo.DAL.SqlServer.Dao
             @"SET label = @label, location = @location, maxSpectators = @maxSpectators " +
             @"WHERE idVenue = @idVenue AND location = @idLocation";
 
-        private const string SQL_DELETE = @"DELETE Venue WHERE idVenue = @idVenue AND location = @idLocation";
+        private const string SQL_DELETE = @"DELETE FROM Venue WHERE idVenue = @idVenue AND location = @idLocation";
 
         private IDatabase _database;
 
         public VenueDao(IDatabase database)
         {
             _database = database;
+        }
+
+        public int Count()
+        {
+            var command = _database.CreateCommand(SQL_COUNT);
+
+            return (int)_database.ExecuteScalar(command);
         }
 
         public IList<Venue> FindAll()
@@ -111,5 +121,14 @@ namespace Ufo.DAL.SqlServer.Dao
             return _database.ExecuteNonQuery(command) == 1;
         }
 
+        public Venue FindById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

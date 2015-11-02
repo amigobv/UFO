@@ -8,6 +8,7 @@ namespace Ufo.DAL.Common.Dao
 {
     public interface IDao<T,in V>
     {
+        int Count();
         T FindById(V id);
         IList<T> FindAll();
         bool Insert(T o);

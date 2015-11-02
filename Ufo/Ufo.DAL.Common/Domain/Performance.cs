@@ -25,6 +25,26 @@ namespace Ufo.DAL.Common.Domain
             Venue = venue;
         }
 
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            var o = obj as Performance;
+
+            if (o != null)
+            {
+                return Id == o.Id && 
+                       Date == o.Date &&
+                       Time == o.Time &&
+                       Artist.Equals(o.Artist) &&
+                       Venue.Equals(o.Venue);
+            }
+            return false;
+        }
+
         public override string ToString()
         {
             return "Performance starting at " + Date.Date.ToString() + " - " + Time.TimeOfDay.ToString() + ": " + Artist.ToString();

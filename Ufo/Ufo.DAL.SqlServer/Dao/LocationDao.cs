@@ -12,6 +12,9 @@ namespace Ufo.DAL.SqlServer.Dao
 {
     public class LocationDao : IDao<Location, string>
     {
+        private const string SQL_COUNT =
+            @"Select COUNT(idLocation) FROM Location";
+
         private const string SQL_FIND_BY_ID =
             @"SELECT * " +
             @"FROM Location " +
@@ -29,13 +32,20 @@ namespace Ufo.DAL.SqlServer.Dao
             @"SET label = @label " +
             @"WHERE idLocation = @id";
 
-        private const string SQL_DELETE = @"DELETE Location WHERE idLocation = @id";
+        private const string SQL_DELETE = @"DELETE FROM Location WHERE idLocation = @id";
 
         private IDatabase _database;
 
         public LocationDao(IDatabase database)
         {
             _database = database;
+        }
+
+        public int Count()
+        {
+            var command = _database.CreateCommand(SQL_COUNT);
+
+            return (int)_database.ExecuteScalar(command);
         }
 
         public Location FindById(string id)

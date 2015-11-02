@@ -23,6 +23,25 @@ namespace Ufo.DAL.Common.Domain
             MaxSpectators = maxSpectators;
         }
 
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            var o = obj as Venue;
+
+            if (o != null)
+            {
+                return Id == o.Id && 
+                      Label.Equals(o.Label) &&
+                      Location.Equals(o.Location) && 
+                      MaxSpectators == o.MaxSpectators;
+            }
+            return false;
+        }
+
         public override string ToString()
         {
             return "Venue: " + Label + "(" + Id + ") " + Location.ToString();

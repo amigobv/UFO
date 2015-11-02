@@ -10,32 +10,41 @@ using Ufo.DAL.Common.Domain;
 
 namespace Ufo.DAL.SqlServer.Dao
 {
-    public class UserDao : IDao<User, int>
+    public class UserDao : IDao<User, string>
     {
+        private const string SQL_COUNT =
+            @"Select COUNT(username) FROM Admin";
+
         private const string SQL_FIND_BY_ID =
             @"SELECT * " +
-            @"FROM User " +
-            @"WHERE idUser = @id";
+            @"FROM Admin " +
+            @"WHERE username = @username";
 
         private const string SQL_FIND_ALL =
-            @"SELECT * FROM User";
+            @"SELECT * FROM Admin";
 
         private const string SQL_INSERT =
-            @"INSERT INTO User " +
+            @"INSERT INTO Admin " +
             @"VALUES (@username, @password, @email)";
 
         private const string SQL_UPDATE =
-            @"UPDATE User " +
+            @"UPDATE Admin " +
             @"SET username = @username, password = @password, email = @email " +
-            @"WHERE idUser = @id";
+            @"WHERE username = @username";
 
-        private const string SQL_DELETE = @"DELETE User WHERE idUser = @id";
+        private const string SQL_DELETE = @"DELETE FROM Admin WHERE username = @username";
 
         private IDatabase _database;
 
         public UserDao(IDatabase database)
         {
             _database = database;
+        }
+
+        public int Count()
+        {
+            var command = _database.CreateCommand(SQL_COUNT);
+            return (int)_database.ExecuteScalar(command);
         }
 
         public IList<User> FindAll()
@@ -48,8 +57,7 @@ namespace Ufo.DAL.SqlServer.Dao
 
                 while (reader.Read())
                 {
-                    users.Add(new User((int)reader["idUser"],
-                                       (string)reader["username"],
+                    users.Add(new User((string)reader["username"],
                                        (string)reader["password"],
                                        (string)reader["email"]));
                 }
@@ -58,17 +66,16 @@ namespace Ufo.DAL.SqlServer.Dao
             }
         }
 
-        public User FindById(int id)
+        public User FindById(string id)
         {
             var command = _database.CreateCommand(SQL_FIND_BY_ID);
-            _database.DefineParameter(command, "@id", DbType.Int32, id);
+            _database.DefineParameter(command, "@username", DbType.String, id);
 
             using (var reader = _database.ExecuteReader(command))
             {
                 if (reader.Read())
                 {
-                    return new User((int)reader["idUser"],
-                                    (string)reader["username"],
+                    return new User((string)reader["username"],
                                     (string)reader["password"],
                                     (string)reader["email"]);
                 }
@@ -90,7 +97,6 @@ namespace Ufo.DAL.SqlServer.Dao
         public bool Update(User o)
         {
             var command = _database.CreateCommand(SQL_UPDATE);
-            _database.DefineParameter(command, "@id", DbType.Int32, o.Id);
             _database.DefineParameter(command, "@username", DbType.String, o.Username);
             _database.DefineParameter(command, "@password", DbType.String, o.Password);
             _database.DefineParameter(command, "@email", DbType.String, o.Email);
@@ -98,10 +104,10 @@ namespace Ufo.DAL.SqlServer.Dao
             return _database.ExecuteNonQuery(command) == 1;
         }
 
-        public bool Delete(int id)
+        public bool Delete(string id)
         {
             var command = _database.CreateCommand(SQL_DELETE);
-            _database.DefineParameter(command, "@id", DbType.Int32, id);
+            _database.DefineParameter(command, "@username", DbType.String, id);
 
             return _database.ExecuteNonQuery(command) == 1;
         }

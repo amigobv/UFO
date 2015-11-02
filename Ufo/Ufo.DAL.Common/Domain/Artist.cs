@@ -36,6 +36,26 @@ namespace Ufo.DAL.Common.Domain
             IsDeleted = deleted;
         }
 
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            var o = obj as Artist;
+
+            if (o != null)
+            {
+                return Id == o.Id &&
+                       Name.Equals(o.Name) &&
+                       Country.Equals(o.Country) &&
+                       Email.Equals(o.Email);
+            }
+
+            return false;
+        }
+
         public override string ToString()
         {
             return "Artist: " + Name + " (" + Country + ") : " + Email;

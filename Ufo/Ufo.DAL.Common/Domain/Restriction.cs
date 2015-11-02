@@ -26,5 +26,30 @@ namespace Ufo.DAL.Common.Domain
             Category = category;
         }
         #endregion
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            var o = obj as Restriction;
+
+            if (o != null)
+            {
+                return Id == o.Id &&
+                       Start == o.Start &&
+                       End == o.End &&
+                       Category.Equals(o.Category) &&
+                       Venue.Equals(o.Venue);
+            }
+            return false;
+        }
+
+        public override string ToString()
+        {
+            return "Restriction starting at " + Start.ToString() + " - " + End.ToString() + ": " + Venue.ToString();
+        }
     }
 }

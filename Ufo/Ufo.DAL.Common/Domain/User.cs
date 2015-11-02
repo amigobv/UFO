@@ -9,18 +9,33 @@ namespace Ufo.DAL.Common.Domain
     public class User
     {
         #region properties
-        public int Id { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
         public string Email { get; set; }
         #endregion
 
-        public User(int id, string username, string password, string email)
+        public User(string username, string password, string email)
         {
-            Id = id;
             Username = username;
             Password = password;
             Email = email;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            var o = obj as User;
+
+            if (o != null)
+            {
+                return Username.Equals(o.Username) && Password.Equals(o.Password);
+            }
+
+            return false;
         }
 
         public override string ToString()

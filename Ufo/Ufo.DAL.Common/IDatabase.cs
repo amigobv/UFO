@@ -13,8 +13,10 @@ namespace Ufo.DAL.Common
         DbCommand CreateCommand(string commandTxt);
         int DeclareParameter(DbCommand command, string name, DbType type);
         void DefineParameter(DbCommand command, string name, DbType type, object value);
+        void DefineOutputParameter(DbCommand command, string name, DbType type);
         void SetParameter(DbCommand command, string name, object value);
         IDataReader ExecuteReader(DbCommand command);
         int ExecuteNonQuery(DbCommand command);
+        object ExecuteScalar(DbCommand command);
     }
 }

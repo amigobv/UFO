@@ -14,13 +14,16 @@ namespace Ufo.DAL.SqlServer.Dao
 {
     public class CategoryDao : IDao<Category, string>
     {
+        private const string SQL_COUNT =
+            @"Select COUNT(idCategory) FROM Category";
+
         private const string SQL_FIND_BY_ID =
             @"SELECT * " +
             @"FROM Category " +
             @"WHERE idCategory = @id";
 
         private const string SQL_FIND_ALL =
-            @"SELECT * FROM Category ";
+            @"SELECT * FROM Category";
 
         private const string SQL_INSERT =
             @"INSERT INTO Category " +
@@ -31,13 +34,20 @@ namespace Ufo.DAL.SqlServer.Dao
             @"SET label = @label " +
             @"WHERE idCategory = @id";
 
-        private const string SQL_DELETE = @"DELETE Category WHERE idCategory = @id";
+        private const string SQL_DELETE = @"DELETE FROM Category WHERE idCategory = @id";
 
         private IDatabase _database;
 
         public CategoryDao(IDatabase database)
         {
             _database = database;
+        }
+
+        public int Count()
+        {
+            var command = _database.CreateCommand(SQL_COUNT);
+
+            return (int)_database.ExecuteScalar(command);
         }
 
         public IList<Category> FindAll()

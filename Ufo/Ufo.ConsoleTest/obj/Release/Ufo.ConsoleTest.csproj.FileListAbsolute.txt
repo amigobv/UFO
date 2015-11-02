@@ -1,6 +1,8 @@
 H:\Semester5\SWK5\Project\Ufo\Ufo.ConsoleTest\bin\Release\Ufo.ConsoleTest.exe.config
 H:\Semester5\SWK5\Project\Ufo\Ufo.ConsoleTest\bin\Release\Ufo.ConsoleTest.exe
 H:\Semester5\SWK5\Project\Ufo\Ufo.ConsoleTest\bin\Release\Ufo.ConsoleTest.pdb
-H:\Semester5\SWK5\Project\Ufo\Ufo.ConsoleTest\obj\Release\Ufo.ConsoleTest.csprojResolveAssemblyReference.cache
 H:\Semester5\SWK5\Project\Ufo\Ufo.ConsoleTest\obj\Release\Ufo.ConsoleTest.exe
 H:\Semester5\SWK5\Project\Ufo\Ufo.ConsoleTest\obj\Release\Ufo.ConsoleTest.pdb
+H:\Semester5\SWK5\Project\Ufo\Ufo.ConsoleTest\bin\Release\NSubstitute.dll
+H:\Semester5\SWK5\Project\Ufo\Ufo.ConsoleTest\bin\Release\NSubstitute.xml
+H:\Semester5\SWK5\Project\Ufo\Ufo.ConsoleTest\obj\Release\Ufo.ConsoleTest.csprojResolveAssemblyReference.cache

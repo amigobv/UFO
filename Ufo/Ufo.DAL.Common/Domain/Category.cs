@@ -19,6 +19,23 @@ namespace Ufo.DAL.Common.Domain
             Label = label;
         }
 
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        public override bool Equals(Object o)
+        {
+            var obj = o as Category;
+
+            if (obj != null)
+            {
+                return Id.Equals(obj.Id) && Label.Equals(obj.Label);
+            }
+
+            return false;
+        }
+
         public override string ToString()
         {
             return "Category: " + Label + "(" + Id + ")";
