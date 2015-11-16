@@ -16,14 +16,16 @@ namespace Ufo.DAL.SqlServer.Dao
         private const string SQL_COUNT =
             @"Select COUNT(idArtist) FROM Artist";
 
-        private const string SQL_FIND_BY_ID = 
-            @"SELECT * " +
-            @"FROM Artist " + 
-            @"WHERE idArtist = @id";
+        private const string SQL_FIND_BY_ID =
+            @"SELECT a.idArtist, a.name, a.country, a.email, a.description, a.homepage, a.picture, a.video, a.deleted, c.idCategory, c.label " +
+            @"FROM Artist as a, Category as c " +
+            @"WHERE a.category = c.idCategory AND a.idArtist = @id";
 
         // TODO: check FIND_ALL query
-        private const string SQL_FIND_ALL = 
-            @"SELECT * FROM Artist";
+        private const string SQL_FIND_ALL =
+            @"SELECT a.idArtist, a.name, a.country, a.email, a.description, a.homepage, a.picture, a.video, a.deleted, c.idCategory, c.label " +
+            @"FROM Artist as a, Category as c " +
+            @"WHERE a.category = c.idCategory";
 
         private const string SQL_INSERT =
             @"INSERT INTO Artist " +
@@ -71,8 +73,6 @@ namespace Ufo.DAL.SqlServer.Dao
 
                 while (reader.Read())
                 {
-                    var category = new CategoryDao(_database).FindById((string)reader["category"]);
-
                     var artist = new Artist((int)reader["idArtist"],
                                             (string)reader["name"],
                                             (string)reader["country"],
@@ -81,7 +81,7 @@ namespace Ufo.DAL.SqlServer.Dao
                                             (string)reader["homepage"],
                                             (string)reader["picture"],
                                             (string)reader["video"],
-                                            category,
+                                            new Category((string)reader["idCategory"], (string)reader["label"]),
                                             (bool)reader["deleted"]);
 
                     artists.Add(artist);
@@ -100,8 +100,6 @@ namespace Ufo.DAL.SqlServer.Dao
             {
                 if (reader.Read())
                 {
-                    var category = new CategoryDao(_database).FindById((string)reader["category"]);
-
                     return new Artist((int)reader["idArtist"],
                                             (string)reader["name"],
                                             (string)reader["country"],
@@ -110,7 +108,7 @@ namespace Ufo.DAL.SqlServer.Dao
                                             (string)reader["homepage"],
                                             (string)reader["picture"],
                                             (string)reader["video"],
-                                            category,
+                                            new Category((string)reader["idCategory"], (string)reader["label"]),
                                             (bool)reader["deleted"]);
                 }
             }
@@ -149,7 +147,7 @@ namespace Ufo.DAL.SqlServer.Dao
             _database.DefineParameter(command, "@homepage", DbType.String, o.Homepage);
             _database.DefineParameter(command, "@picture", DbType.String, o.PictureUri);
             _database.DefineParameter(command, "@video", DbType.String, o.VideoUri);
-            _database.DefineParameter(command, "@category", DbType.String, o.Category.Id);
+            _database.DefineParameter(command, "@categoryId", DbType.String, o.Category.Id);
             _database.DefineParameter(command, "@delete", DbType.Boolean, o.IsDeleted);
 
             return _database.ExecuteNonQuery(command) == 1;

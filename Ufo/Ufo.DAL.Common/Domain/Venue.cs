@@ -15,7 +15,7 @@ namespace Ufo.DAL.Common.Domain
         public int MaxSpectators { get; set; }
         #endregion
 
-        public Venue(int id, string label, Location location, int maxSpectators)
+        public Venue(int id, string label, int maxSpectators, Location location)
         {
             Id = id;
             Label = label;

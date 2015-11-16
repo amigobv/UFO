@@ -10,17 +10,15 @@ namespace Ufo.DAL.Common.Domain
     {
         #region properties
         public int Id { get; set; }
-        public DateTime Date { get; set; }
-        public DateTime Time { get; set; }
+        public DateTime Start { get; set; }
         public Artist Artist { get; set; }
         public Venue Venue { get; set; }
         #endregion
 
-        public Performance(int id, DateTime date, DateTime time, Artist artist, Venue venue)
+        public Performance(int id, DateTime start, Artist artist, Venue venue)
         {
             Id = id;
-            Date = date;
-            Time = time;
+            Start = start;
             Artist = artist;
             Venue = venue;
         }
@@ -37,8 +35,7 @@ namespace Ufo.DAL.Common.Domain
             if (o != null)
             {
                 return Id == o.Id && 
-                       Date == o.Date &&
-                       Time == o.Time &&
+                       DateTime.Compare(Start, o.Start) == 0 &&
                        Artist.Equals(o.Artist) &&
                        Venue.Equals(o.Venue);
             }
@@ -47,7 +44,7 @@ namespace Ufo.DAL.Common.Domain
 
         public override string ToString()
         {
-            return "Performance starting at " + Date.Date.ToString() + " - " + Time.TimeOfDay.ToString() + ": " + Artist.ToString();
+            return "Performance starting at " + Start.TimeOfDay.ToString() + ": " + Artist.ToString() + "at " + Venue.ToString();
         }
     }
 }

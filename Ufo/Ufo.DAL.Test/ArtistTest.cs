@@ -77,15 +77,15 @@ namespace Ufo.DAL.Test
             Assert.NotNull(dbArtists);
             Assert.Equal(items.Count, dbArtists.Count);
 
-            foreach (var cat in dbArtists)
+            foreach (var artist in dbArtists)
             {
-                Assert.True(items.Contains(cat));
+                Assert.True(items.Contains(artist));
             }
         }
 
         [Fact]
         [AutoRollback]
-        public void FindArtisByIdTest()
+        public void FindArtistByIdTest()
         {
             if (database == null)
             {
@@ -97,10 +97,9 @@ namespace Ufo.DAL.Test
             InsertDummyData(artistDao);
             Assert.Equal(items.Count, artistDao.Count());
 
-            var it = items.GetEnumerator();
-            var currArtist = it.Current;
+            var currArtist = items[0];
 
-            Artist myArtist = artistDao.FindById(currArtist.Id);
+            var myArtist = artistDao.FindById(currArtist.Id);
             Assert.NotNull(myArtist);
             Assert.Equal(currArtist, myArtist);
 
@@ -122,9 +121,7 @@ namespace Ufo.DAL.Test
             InsertDummyData(artistDao);
             Assert.Equal(items.Count, artistDao.Count());
 
-            var it = items.GetEnumerator();
-            var currArtist = it.Current;
-
+            var currArtist = items[0];
             currArtist.Name = "AlteredName";
 
             artistDao.Update(currArtist);

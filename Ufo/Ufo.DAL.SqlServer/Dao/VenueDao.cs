@@ -13,19 +13,21 @@ namespace Ufo.DAL.SqlServer.Dao
     public class VenueDao : IDao<Venue, int>
     {
         private const string SQL_COUNT =
-            @"Select COUNT(idVenue) FROM User";
+            @"Select COUNT(idVenue) FROM Venue";
 
         private const string SQL_FIND_BY_ID =
-            @"SELECT * " +
-            @"FROM Venue " +
-            @"WHERE idVenue = @idVenue AND location = @idLocation";
+            @"SELECT v.idVenue, v.label, v.maxSpectators, l.idLocation, l.label " +
+            @"FROM Venue as v, Location as l " +
+            @"WHERE v.idVenue = @idVenue AND v.location = l.idLocation";
 
         private const string SQL_FIND_ALL =
-            @"SELECT * FROM Venue";
+            @"SELECT v.idVenue, v.label, v.maxSpectators, v.location, l.label " +
+            @"FROM Venue as v, Location as l " +
+            @"WHERE v.location = l.idLocation";
 
         private const string SQL_INSERT =
             @"INSERT INTO Venue " +
-            @"VALUES (@label, @location, @maxSpectators)";
+            @"VALUES (@idVenue, @label, @maxSpectators, @location)";
 
         private const string SQL_UPDATE =
             @"UPDATE Venue " +
@@ -58,11 +60,10 @@ namespace Ufo.DAL.SqlServer.Dao
 
                 while (reader.Read())
                 {
-                    var location = new LocationDao(_database).FindById((string)reader["location"]);
-                    venues.Add(new Venue((int)reader["idVenue"],
-                                         (string)reader["label"],
-                                         location,
-                                         (int)reader["maxSpectators"]));
+                    venues.Add(new Venue((int)reader.GetInt32(0),
+                                         (string)reader.GetString(1),
+                                         (int)reader.GetInt32(2),
+                                         new Location((string)reader.GetString(3), (string)reader.GetString(4))));
                 }
 
                 return venues;
@@ -79,11 +80,10 @@ namespace Ufo.DAL.SqlServer.Dao
             {
                 if (reader.Read())
                 {
-                    var location = new LocationDao(_database).FindById((string)reader["location"]);
-                    return new Venue((int)reader["idVenue"],
-                                     (string)reader["label"],
-                                     location,
-                                     (int)reader["maxSpectators"]);
+                    return new Venue((int)reader.GetInt32(0),
+                                     (string)reader.GetString(1),
+                                     (int)reader.GetInt32(2),
+                                     new Location((string)reader.GetString(3), (string)reader.GetString(4)));
                 }
 
                 return null;
@@ -93,6 +93,7 @@ namespace Ufo.DAL.SqlServer.Dao
         public bool Insert(Venue o)
         {
             var command = _database.CreateCommand(SQL_INSERT);
+            _database.DefineParameter(command, "@idVenue", DbType.Int32, o.Id);
             _database.DefineParameter(command, "@label", DbType.String, o.Label);
             _database.DefineParameter(command, "@location", DbType.String, o.Location.Id);
             _database.DefineParameter(command, "@maxSpectators", DbType.Int32, o.MaxSpectators);

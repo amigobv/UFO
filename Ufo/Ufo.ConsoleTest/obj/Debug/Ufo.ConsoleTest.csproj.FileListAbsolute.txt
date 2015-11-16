@@ -19,3 +19,4 @@ D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.ConsoleTest\obj\Debug\Ufo.C
 D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.ConsoleTest\obj\Debug\Ufo.ConsoleTest.pdb
 H:\Semester5\SWK5\Project\Ufo\Ufo.ConsoleTest\bin\Debug\NSubstitute.dll
 H:\Semester5\SWK5\Project\Ufo\Ufo.ConsoleTest\bin\Debug\NSubstitute.xml
+H:\Semester5\SWK5\Project\Ufo\Ufo.ConsoleTest\obj\Debug\Ufo.ConsoleTest.csprojResolveAssemblyReference.cache

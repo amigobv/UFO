@@ -16,24 +16,27 @@ namespace Ufo.DAL.SqlServer.Dao
             @"Select COUNT(idPerformance) FROM Performance";
 
         private const string SQL_FIND_BY_ID =
-            @"SELECT * " +
-            @"FROM Performance " +
-            @"WHERE idPerformance = @id";
+            @"SELECT p.idPerformance, p.start, a.idArtist, a.name, a.country, a.email, a.description, a.homepage, a.picture, a.video, " +
+            @"c.idCategory, c.label, a.deleted, v.idVenue, v.label, v.maxSpectators, l.idLocation, l.label " +
+            @"FROM Performance as p, Artist as a, Venue as v, Location as l, Category as c " +
+            @"WHERE p.artist = a.idArtist AND a.category = c.idCategory AND p.pVenue = v.idVenue AND p.pLocation = l.idLocation AND p.idPerformance = @id";
             
 
         // TODO: check FIND_ALL query
         private const string SQL_FIND_ALL =
-            @"SELECT * FROM Performance";
+            @"SELECT p.idPerformance, p.start, a.idArtist, a.name, a.country, a.email, a.description, a.homepage, a.picture, a.video, " + 
+            @"c.idCategory, c.label, a.deleted, v.idVenue, v.label, v.maxSpectators, l.idLocation, l.label " +
+            @"FROM Performance as p, Artist as a, Venue as v, Location as l, Category as c " +
+            @"WHERE p.artist = a.idArtist AND a.category = c.idCategory AND p.pVenue = v.idVenue AND p.pLocation = l.idLocation";
 
         private const string SQL_INSERT =
             @"INSERT INTO Performance " +
-            @"VALUES (@date, @time, @artistId, @venueId, @locationId);" +
+            @"VALUES (@time, @artistId, @venueId, @locationId);" +
             @"SELECT SCOPE_IDENTITY()";
 
         private const string SQL_UPDATE =
             @"UPDATE Performance " +
-            @"SET date = @date, time = @time, artist = @artistId " +
-            @"pVenue = @venueId, pLocation = @locationId " +
+            @"SET start = @time, artist = @artistId, pVenue = @venueId, pLocation = @locationId " +
             @"WHERE idPerformance = @id";
 
         private const string SQL_DELETE = @"DELETE FROM Performance WHERE idPerformance = @id";
@@ -62,14 +65,25 @@ namespace Ufo.DAL.SqlServer.Dao
 
                 while (reader.Read())
                 {
-                    var artist = new ArtistDao(_database).FindById((int)reader["artistId"]);
-                    var venue = new VenueDao(_database).FindById((int)reader["venueId"], (string)reader["location"]); 
-
-                    performancies.Add(new Performance((int)reader["idPerformance"],
-                                                      (DateTime)reader["date"],            // TODO: check type
-                                                      (DateTime)reader["time"],             // TODO: check type
-                                                      artist,
-                                                      venue));     
+                    performancies.Add(new Performance((int)reader[0],                   // performance id
+                                                      (DateTime)reader[1],              // performance start
+                                                      new Artist((int)reader[2],        // artist id
+                                                                 (string)reader[3],     // artist name
+                                                                 (string)reader[4],     // artist country
+                                                                 (string)reader[5],     // artist email   
+                                                                 (string)reader[6],     // artist description
+                                                                 (string)reader[7],     // artist homepage
+                                                                 (string)reader[8],     // artist picture 
+                                                                 (string)reader[9],     // artist video
+                                                                 new Category((string)reader[10],    // category id
+                                                                              (string)reader[11]),   // category label
+                                                                 (bool)reader[12]),     // artist deleted
+                                                      new Venue((int)reader[13],        // venue id
+                                                                (string)reader[14],     // venue label
+                                                                (int)reader[15],        // venue spectators
+                                                                new Location((string)reader[16],    // location id
+                                                                             (string)reader[17])    // location label
+                                                      )));     
                 }
 
                 return performancies;
@@ -79,19 +93,32 @@ namespace Ufo.DAL.SqlServer.Dao
         public Performance FindById(int id)
         {
             var command = _database.CreateCommand(SQL_FIND_BY_ID);
+            _database.DefineParameter(command, "@id", DbType.Int32, id);
 
             using (var reader = _database.ExecuteReader(command))
             {
                 if (reader.Read())
                 {
-                    var artist = new ArtistDao(_database).FindById((int)reader["artistId"]);
-                    var venue = new VenueDao(_database).FindById((int)reader["venueId"], (string)reader["location"]); 
 
-                    return new Performance((int)reader["idPerformance"],
-                                           (DateTime)reader["date"],            // TODO: check type
-                                           (DateTime)reader["time"],             // TODO: check type
-                                           artist,
-                                           venue);
+                    return new Performance((int)reader[0],                   // performance id
+                                           (DateTime)reader[1],              // performance start
+                                           new Artist((int)reader[2],        // artist id
+                                                      (string)reader[3],     // artist name
+                                                      (string)reader[4],     // artist country
+                                                      (string)reader[5],     // artist email   
+                                                      (string)reader[6],     // artist description
+                                                      (string)reader[7],     // artist homepage
+                                                      (string)reader[8],     // artist picture 
+                                                      (string)reader[9],     // artist video
+                                                      new Category((string)reader[10],    // category id
+                                                                   (string)reader[11]),   // category label
+                                                      (bool)reader[12]),     // artist deleted
+                                                      new Venue((int)reader[13],        // venue id
+                                                                (string)reader[14],     // venue label
+                                                                (int)reader[15],        // venue spectators
+                                                                new Location((string)reader[16],    // location id
+                                                                             (string)reader[17])    // location label
+                                                      ));
                 }
 
                 return null;
@@ -101,14 +128,14 @@ namespace Ufo.DAL.SqlServer.Dao
         public bool Insert(Performance o)
         {
             var command = _database.CreateCommand(SQL_INSERT);
-            _database.DefineParameter(command, "@date", DbType.DateTime, o.Date);     // TODO: check type
-            _database.DefineParameter(command, "@time", DbType.DateTime, o.Time);       // TODO: check type
+            _database.DefineParameter(command, "@time", DbType.DateTime, o.Start);
             _database.DefineParameter(command, "@artistId", DbType.String, o.Artist.Id);
             _database.DefineParameter(command, "@venueId", DbType.Int32, o.Venue.Id);
             _database.DefineParameter(command, "@locationId", DbType.Int32, o.Venue.Location.Id);
 
             var id = _database.ExecuteScalar(command);
             o.Id = Convert.ToInt32(id.ToString());
+
             return id != null;
         }
 
@@ -116,8 +143,7 @@ namespace Ufo.DAL.SqlServer.Dao
         {
             var command = _database.CreateCommand(SQL_UPDATE);
             _database.DefineParameter(command, "@id", DbType.Int32, o.Id);
-            _database.DefineParameter(command, "@date", DbType.DateTime, o.Date);     // TODO: check type
-            _database.DefineParameter(command, "@time", DbType.Time, o.Time);   // TODO: check type
+            _database.DefineParameter(command, "@time", DbType.Time, o.Start);
             _database.DefineParameter(command, "@artistId", DbType.String, o.Artist.Id);
             _database.DefineParameter(command, "@venueId", DbType.Int32, o.Venue.Id);
             _database.DefineParameter(command, "@locationId", DbType.Int32, o.Venue.Location.Id);

@@ -1,89 +1,89 @@
 ﻿INSERT INTO [dbo].[Artist] ([name], [country], [email], [homepage], [picture], [video], [description], [category]) 
-  VALUES ('Artist 1', 'Österreich', 'artist1@mail.com', NULL, NULL, NULL, NULL, 1);
+  VALUES ('figurentheater ', 'Österreich', 'figurentheater@armyspy.com', NULL, NULL, NULL, NULL, 'Fig', false);
 
 INSERT INTO [dbo].[Artist] ([name], [country], [email], [homepage], [picture], [video], [description], [category]) 
-  VALUES ('Artist 2', 'Deutschland', 'artist2@mail.com', NULL, NULL, NULL, NULL, 2);
+  VALUES ('circoPitanga', 'Schweiz', 'circoPitanga@teleworm.us', NULL, NULL, NULL, NULL, 'K', false);
   
 INSERT INTO [dbo].[Artist] ([name], [country], [email], [homepage], [picture], [video], [description], [category]) 
-  VALUES ('Artist 3', 'Holland', 'artist3@mail.com', NULL, NULL, NULL, NULL, 1 );
+  VALUES ('Compagnie Antipodes', 'Frankreich', 'CompagnieAntipodes@jourrapide.com', NULL, NULL, NULL, NULL, 'A', false);
 
 INSERT INTO [dbo].[Artist] ([name], [country], [email], [homepage], [picture], [video], [description], [category]) 
-  VALUES ('Artist 4', 'Frankreich', 'artist4@mail.com', NULL, NULL, NULL, NULL, 2);
+  VALUES ('Los Galindos', 'Spanien', 'LosGalindos@dayrep.com', NULL, NULL, NULL, NULL, 'M', false);
 
 INSERT INTO [dbo].[Artist] ([name], [country], [email], [homepage], [picture], [video], [description], [category]) 
-  VALUES ('Artist 5', 'Kroatien', 'artist5@mail.com', NULL, NULL, NULL, NULL, 3);
+  VALUES ('La Trocola Circo', 'Spanien', 'LaTrocolaCirco@dayrep.com', NULL, NULL, NULL, NULL, 'A', false);
 
 INSERT INTO [dbo].[Artist] ([name], [country], [email], [homepage], [picture], [video], [description], [category]) 
-  VALUES ('Artist 6', 'Spanien', 'artist6@mail.com', NULL, NULL, NULL, NULL, 4);
+  VALUES ('Jean Philippe Kikolas', 'Spanien', 'JeanPhilippeKikolas@dayrep.com', NULL, NULL, NULL, NULL, 'K', false);
 
 INSERT INTO [dbo].[Artist] ([name], [country], [email], [homepage], [picture], [video], [description], [category]) 
-  VALUES ('Artist 7', 'USA ', 'artist7@mail.com', NULL, NULL, NULL, NULL, 1);
+  VALUES ('Hint', 'Schweden', 'Hint@dayrep.com', NULL, NULL, NULL, NULL, 'J', false);
 
 INSERT INTO [dbo].[Artist] ([name], [country], [email], [homepage], [picture], [video], [description], [category]) 
-  VALUES ('Artist 8', 'Australien', 'artist8@mail.com', NULL, NULL, NULL, NULL, 2);
+  VALUES ('Box Actor Yaya', 'Japan', 'BoxActorYaya@cuvox.de', NULL, NULL, NULL, NULL, 'K', false);
 
 INSERT INTO [dbo].[Artist] ([name], [country], [email], [homepage], [picture], [video], [description], [category]) 
-  VALUES ('Artist 9', 'Italien', 'artist9@mail.com', NULL, NULL, NULL, NULL, 3 );
+  VALUES ('Compagnie MOBIL', 'Niederlande', 'CompagnieMobil@cuvox.de', NULL, NULL, NULL, NULL, 'M', false);
 
 INSERT INTO [dbo].[Artist] ([name], [country], [email], [homepage], [picture], [video], [description], [category]) 
-  VALUES ('Artist 10', 'Portugal', 'artist10@mail.com', NULL, NULL, NULL, NULL, 2 );
+  VALUES ('Derek Derek', 'USA', 'DerekDerek@cuvox.de', NULL, NULL, NULL, NULL, 'A', false);
 
 INSERT INTO [dbo].[Artist] ([name], [country], [email], [homepage], [picture], [video], [description], [category]) 
-  VALUES ('Artist 11', 'Griechland', 'artist11@mail.com', NULL, NULL, NULL, NULL, 1 );
+  VALUES ('Die Buschs', 'Deutschland', 'DieBuschs@cuvox.de', NULL, NULL, NULL, NULL, 'S', false);
 
 INSERT INTO [dbo].[Artist] ([name], [country], [email], [homepage], [picture], [video], [description], [category]) 
-  VALUES ('Artist 12', 'Albanien', 'artist12@mail.com', NULL, NULL, NULL, NULL, 4 );
+  VALUES ('Dimitar and Tui', 'Bulgarien', 'DimitarTui@armyspy.com', NULL, NULL, NULL, NULL, 'A', false);
 
 INSERT INTO [dbo].[Artist] ([name], [country], [email], [homepage], [picture], [video], [description], [category]) 
-  VALUES ('Artist 13', 'Serbien', 'artist13@mail.com', NULL, NULL, NULL, NULL, 2 );
+  VALUES ('Capuzzi Senorita', 'Argentinien', 'CapuzziSenorita@armyspy.com', NULL, NULL, NULL, NULL, 'L', false);
 
 INSERT INTO [dbo].[Artist] ([name], [country], [email], [homepage], [picture], [video], [description], [category]) 
-  VALUES ('Artist 14', 'Polen', 'artist14@mail.com', NULL, NULL, NULL, NULL, 5 );
+  VALUES ('El Diabolero', 'Österreich', 'ElDiabolero@armyspy.com', NULL, NULL, NULL, NULL, 'K', false);
 
 INSERT INTO [dbo].[Artist] ([name], [country], [email], [homepage], [picture], [video], [description], [category]) 
-  VALUES ('Artist 15', 'Slowenien', 'artist15@mail.com', NULL, NULL, NULL, NULL, 2 );
+  VALUES ('Hundertpfund', 'Deutschland', 'Hundertpfund@fleckens.hu', NULL, NULL, NULL, NULL, 'K', false);
 
 INSERT INTO [dbo].[Artist] ([name], [country], [email], [homepage], [picture], [video], [description], [category]) 
-  VALUES ('Artist 16', 'China', 'artist16@mail.com', NULL, NULL, NULL, NULL, 3 );
+  VALUES ('Konrad', 'Deutschland', 'Konrad@fleckens.hu', NULL, NULL, NULL, NULL, 'F', false);
 
 INSERT INTO [dbo].[Artist] ([name], [country], [email], [homepage], [picture], [video], [description], [category]) 
-  VALUES ('Artist 17', 'Japan', 'artist17@mail.com', NULL, NULL, NULL, NULL, 2 );
+  VALUES ('HoopStep', 'Deutschland', 'HoopStep@fleckens.hu', NULL, NULL, NULL, NULL, 'A', false);
 
 INSERT INTO [dbo].[Artist] ([name], [country], [email], [homepage], [picture], [video], [description], [category]) 
-  VALUES ('Artist 18', 'Marokko', 'artist18@mail.com', NULL, NULL, NULL, NULL, 1 );
+  VALUES ('Ian Deadly', 'Großbritannien', 'IanDeadly@superrito.com', NULL, NULL, NULL, NULL, 'M', false);
 
   INSERT INTO [dbo].[Artist] ([name], [country], [email], [homepage], [picture], [video], [description], [category]) 
-  VALUES ('Artist 19', 'Brasilien', 'artist19@mail.com', NULL, NULL, NULL, NULL, 2 );
+  VALUES ('Kammann', 'Deutschland', 'Kammann@superrito.com', NULL, NULL, NULL, NULL, 'K', false);
   
 INSERT INTO [dbo].[Artist] ([name], [country], [email], [homepage], [picture], [video], [description], [category]) 
-  VALUES ('Artist 20', 'Finland', 'artist20@mail.com', NULL, NULL, NULL, NULL, 2 );
+  VALUES ('Kana', 'Japan', 'Kana@superrito.com', NULL, NULL, NULL, NULL, 'L', false);
 
 INSERT INTO [dbo].[Artist] ([name], [country], [email], [homepage], [picture], [video], [description], [category]) 
-  VALUES ('Artist 21', 'Schweden', 'artist21@mail.com', NULL, NULL, NULL, NULL, 3 );
+  VALUES ('Mostacho', 'Chile', 'Mostacho@superrito.com', NULL, NULL, NULL, NULL, 'S', false);
 
 INSERT INTO [dbo].[Artist] ([name], [country], [email], [homepage], [picture], [video], [description], [category]) 
-  VALUES ('Artist 22', 'Norwegen', 'artist22@mail.com', NULL, NULL, NULL, NULL, 3 );
+  VALUES ('Nanirossi', 'Italien', 'Nanirossi@superrito.com', NULL, NULL, NULL, NULL, 'K', false);
 
 INSERT INTO [dbo].[Artist] ([name], [country], [email], [homepage], [picture], [video], [description], [category]) 
-  VALUES ('Artist 23', 'Österreich', 'artist23@mail.com', NULL, NULL, NULL, NULL, 1 );
+  VALUES ('Pallotto', 'Italien', 'Pallotto@superrito.com', NULL, NULL, NULL, NULL, 'A', false);
 
 INSERT INTO [dbo].[Artist] ([name], [country], [email], [homepage], [picture], [video], [description], [category]) 
-  VALUES ('Artist 24', 'Deutschland', 'artist24@mail.com', NULL, NULL, NULL, NULL, 1 );
+  VALUES ('Samuelito', 'Schweiz', 'Samuelito@superrito.com', NULL, NULL, NULL, NULL, 'K', false);
 
 INSERT INTO [dbo].[Artist] ([name], [country], [email], [homepage], [picture], [video], [description], [category]) 
-  VALUES ('Artist 25', 'Finland', 'artist25@mail.com', NULL, NULL, NULL, NULL, 3 );
+  VALUES ('Shay Wapniaz', 'Italien', 'Shay Wapniaz@gustr.com', NULL, NULL, NULL, NULL, 'M', false);
 
 INSERT INTO [dbo].[Artist] ([name], [country], [email], [homepage], [picture], [video], [description], [category]) 
-  VALUES ('Artist 26', 'Spanien', 'artist26@mail.com', NULL, NULL, NULL, NULL, 2 );
+  VALUES ('DANCEproject', 'Österreich', 'DanceProject@gustr.com', NULL, NULL, NULL, NULL, 'K', false);
 
 INSERT INTO [dbo].[Artist] ([name], [country], [email], [homepage], [picture], [video], [description], [category]) 
-  VALUES ('Artist 27', 'Großbritannien', 'artist27@mail.com', NULL, NULL, NULL, NULL, 1 );
+  VALUES ('Duo Kate', 'Finnland', 'DuoKate@gustr.com', NULL, NULL, NULL, NULL, 'T', false);
 
 INSERT INTO [dbo].[Artist] ([name], [country], [email], [homepage], [picture], [video], [description], [category]) 
-  VALUES ('Artist 28', 'Japan', 'artist28@mail.com', NULL, NULL, NULL, NULL, 2 );
+  VALUES ('Duo Looky', 'Israel', 'DuoLooky@gustr.com', NULL, NULL, NULL, NULL, 'A', false);
 
 INSERT INTO [dbo].[Artist] ([name], [country], [email], [homepage], [picture], [video], [description], [category]) 
-  VALUES ('Artist 29', 'Australien', 'artist29@mail.com', NULL, NULL, NULL, NULL, 1 );  
+  VALUES ('Duo Masawa', 'Argentinien', 'DuoMasawa@gustr.com', NULL, NULL, NULL, NULL, 'A', false);  
 
 INSERT INTO [dbo].[Artist] ([name], [country], [email], [homepage], [picture], [video], [description], [category]) 
-  VALUES ('Artist 30', 'Österreich', 'artist30@mail.com', NULL, NULL, NULL, NULL, 2 );  
+  VALUES ('Katay Santos', 'Venezuela', 'KataySantos@gustr.com', NULL, NULL, NULL, NULL, 'S', false);  

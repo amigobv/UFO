@@ -39,8 +39,8 @@ namespace Ufo.DAL.Common.Domain
             if (o != null)
             {
                 return Id == o.Id &&
-                       Start == o.Start &&
-                       End == o.End &&
+                       DateTime.Compare(Start, o.Start) == 0 &&
+                       DateTime.Compare(End, o.End) == 0 &&
                        Category.Equals(o.Category) &&
                        Venue.Equals(o.Venue);
             }

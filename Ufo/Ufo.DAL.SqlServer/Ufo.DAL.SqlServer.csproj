@@ -56,7 +56,7 @@
   <ItemGroup>
     <Compile Include="Dao\ArtistDao.cs" />
     <Compile Include="Dao\CategoryDao.cs" />
-    <Compile Include="Dao\ConstraintsDao.cs" />
+    <Compile Include="Dao\RestrictionsDao.cs" />
     <Compile Include="Dao\LocationDao.cs" />
     <Compile Include="Dao\PerformanceDao.cs" />
     <Compile Include="Dao\UserDao.cs" />
