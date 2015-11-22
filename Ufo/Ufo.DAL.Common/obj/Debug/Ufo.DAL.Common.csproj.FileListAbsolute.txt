@@ -12,3 +12,4 @@ D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.DAL.Common\bin\Debug\Ufo.DA
 D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.DAL.Common\obj\Debug\Ufo.DAL.Common.csprojResolveAssemblyReference.cache
 D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.DAL.Common\obj\Debug\Ufo.DAL.Common.dll
 D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.DAL.Common\obj\Debug\Ufo.DAL.Common.pdb
+H:\Semester5\SWK5\Project\Ufo\Ufo.DAL.Common\obj\Debug\Ufo.DAL.Common.csprojResolveAssemblyReference.cache

@@ -1,0 +1,7 @@
+\select@language {german}
+\contentsline {section}{\numberline {\thechapter .a}Terminalsymbole + Scanner}{1}
+\contentsline {subsection}{\numberline {\thechapter .a.1}Terminalsymbole}{1}
+\contentsline {subsection}{\numberline {\thechapter .a.2}Scanner}{1}
+\contentsline {subsubsection}{\numberline {\thechapter .a.2.1}L\IeC {\"o}sungsidee}{1}
+\contentsline {subsubsection}{\numberline {\thechapter .a.2.2}Implementierung in Pascal}{1}
+\contentsline {section}{\numberline {\thechapter .b}Grammatik}{1}

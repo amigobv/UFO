@@ -72,6 +72,66 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\images\Barada_Street_150x100.jpg" />
+    <Content Include="assets\images\Batucada_Brass_150x100.jpg" />
+    <Content Include="assets\images\Benni_Green_150x100.jpg" />
+    <Content Include="assets\images\Blechsalat_150x100.jpg" />
+    <Content Include="assets\images\Box_Actor_Yaya_150x100-2.jpg" />
+    <Content Include="assets\images\Cia_Jean_Philippe_Kikolas_150x100.jpg" />
+    <Content Include="assets\images\circoPitanga_150x100.jpg" />
+    <Content Include="assets\images\Compagnie_MOBIL_150x100.jpg" />
+    <Content Include="assets\images\Company_Antipodes_150x100.jpg" />
+    <Content Include="assets\images\DANCEProject_150x100.jpg" />
+    <Content Include="assets\images\Derek_Derek_150x100.jpg" />
+    <Content Include="assets\images\Die_Buschs_150x100.jpg" />
+    <Content Include="assets\images\Dimitar_and_Tui_AiO_Company_150x100.jpg" />
+    <Content Include="assets\images\DJ_Capuzzi_Senorita_X_150x100.jpg" />
+    <Content Include="assets\images\Duo_150x100.jpg" />
+    <Content Include="assets\images\Duo_Looky_150x100.jpg" />
+    <Content Include="assets\images\Duo_Masawa_150x100.jpg" />
+    <Content Include="assets\images\eco_commotion_150x100.jpg" />
+    <Content Include="assets\images\Eddy_Eighty_150x100.jpg" />
+    <Content Include="assets\images\ElOtro_150x100.jpg" />
+    <Content Include="assets\images\El_Diabolero_150x100.jpg" />
+    <Content Include="assets\images\ericTarantola_150x100.jpg" />
+    <Content Include="assets\images\Fausto_giori_150x100.jpg" />
+    <Content Include="assets\images\figurentheater_150x100.jpg" />
+    <Content Include="assets\images\folkshilfe_150x100.jpg" />
+    <Content Include="assets\images\Frutillas_Con_Crema_150x100.jpg" />
+    <Content Include="assets\images\Grande_Cantagiro_Barattoli_150x100.jpg" />
+    <Content Include="assets\images\Herr-Hundertpfund_150x100.jpg" />
+    <Content Include="assets\images\Herr_konrad_150x100.jpg" />
+    <Content Include="assets\images\Hint_150x100.jpg" />
+    <Content Include="assets\images\HoopStep_150x100.jpg" />
+    <Content Include="assets\images\Ian_Deadly_150x100.jpg" />
+    <Content Include="assets\images\jackthebusch_150x100.jpg" />
+    <Content Include="assets\images\Kammann_150x100%281%29.jpg" />
+    <Content Include="assets\images\kana_150x100.jpg" />
+    <Content Include="assets\images\Katay_Santos_150x100.jpg" />
+    <Content Include="assets\images\La_Trocola_Circo_150x100.jpg" />
+    <Content Include="assets\images\Les_Contes_Asphalt_150x100.jpg" />
+    <Content Include="assets\images\Liederweib_150x100.jpg" />
+    <Content Include="assets\images\Los_Galindos_150x100.jpg" />
+    <Content Include="assets\images\Luca_Bellezze_150x100.jpg" />
+    <Content Include="assets\images\Lutrek_150x100.jpg" />
+    <Content Include="assets\images\Matsumoto_Zoku_150x100.jpg" />
+    <Content Include="assets\images\Mattress_Circus_150x100.jpg" />
+    <Content Include="assets\images\MiraMundo_150x100.jpg" />
+    <Content Include="assets\images\mustacho_150x100.jpg" />
+    <Content Include="assets\images\mute_150x100.jpg" />
+    <Content Include="assets\images\Nanirossi_150x100.jpg" />
+    <Content Include="assets\images\OAKLEAF_Stelzenkunst_150x100.jpg" />
+    <Content Include="assets\images\Omnivolant_150x100.jpg" />
+    <Content Include="assets\images\Pallotto_150x100.jpg" />
+    <Content Include="assets\images\Passabarret_150x100.jpg" />
+    <Content Include="assets\images\Secret_Circus_150x100.jpg" />
+    <Content Include="assets\images\shay_wapniaz_150x100.jpg" />
+    <Content Include="assets\images\The_LEDies_150x100.jpg" />
+    <Content Include="assets\images\The_Sideshow_Charlatans_150x100.jpg" />
+    <Content Include="assets\images\ton_150x100.jpg" />
+    <Content Include="assets\images\Trinyty_150x100.jpg" />
+    <Content Include="assets\images\URban_Safari_150x100.jpg" />
+    <Content Include="assets\images\Zagreb_150x10.jpg" />
     <Content Include="UfoDb.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

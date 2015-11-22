@@ -1,1 +1,0 @@
-INSERT INTO [dbo].[Performance] ([date], [time], [artist], [pVenue], [pLocation]) VALUES ('22.07.2016', '16:00', 1, 1, 'H');

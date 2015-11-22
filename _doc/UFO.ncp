@@ -1,0 +1,315 @@
+<Project>
+  <Name>UFO</Name>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>Dao</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Interface">
+        <Name>IDao&lt;T, V&gt;</Name>
+        <Access>Public</Access>
+        <Location left="867" top="482" />
+        <Size width="162" height="163" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">int Count()</Member>
+        <Member type="Method">T FindById(V id)</Member>
+        <Member type="Method">IList&lt;T&gt; FindAll()</Member>
+        <Member type="Method">bool Insert(T o)</Member>
+        <Member type="Method">bool Update(T o)</Member>
+        <Member type="Method">bool Delete(V id)</Member>
+      </Entity>
+      <Entity type="Class">
+        <Name>ArtistDao</Name>
+        <Access>Public</Access>
+        <Location left="171" top="725" />
+        <Size width="162" height="112" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private IDatabase database</Member>
+        <Member type="Constructor">public ArtistDao(IDatabase db)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>CategoryDao</Name>
+        <Access>Public</Access>
+        <Location left="355" top="725" />
+        <Size width="175" height="112" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private IDatabase database</Member>
+        <Member type="Constructor">public CategoryDao(IDatabase db)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>LocationDao</Name>
+        <Access>Public</Access>
+        <Location left="554" top="725" />
+        <Size width="175" height="112" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private IDatabase database</Member>
+        <Member type="Constructor">public LocationDao(IDatabase db)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>PerformanceDao</Name>
+        <Access>Public</Access>
+        <Location left="757" top="725" />
+        <Size width="188" height="112" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private IDatabase database</Member>
+        <Member type="Constructor">public PerformanceDao(IDatabase db)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>RestrictionsDao</Name>
+        <Access>Public</Access>
+        <Location left="979" top="725" />
+        <Size width="184" height="112" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private IDatabase database</Member>
+        <Member type="Constructor">public RestrictionsDao(IDatabase db)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>UserDao</Name>
+        <Access>Public</Access>
+        <Location left="1196" top="725" />
+        <Size width="162" height="112" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private IDatabase database</Member>
+        <Member type="Constructor">public UserDao(IDatabase db)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>VenueDao</Name>
+        <Access>Public</Access>
+        <Location left="1380" top="725" />
+        <Size width="162" height="112" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private IDatabase database</Member>
+        <Member type="Constructor">public VenueDao(IDatabase db)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IDatabase</Name>
+        <Access>Public</Access>
+        <Location left="328" top="49" />
+        <Size width="490" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">DbCommand CreateCommand(string commandTxt)</Member>
+        <Member type="Method">int DeclareParameter(DbCommand command, string name, DbType type)</Member>
+        <Member type="Method">void DefineParameter(DbCommand command, string name, DbType type, object value)</Member>
+        <Member type="Method">void DefineOutputParameter(DbCommand command, string name, DbType type)</Member>
+        <Member type="Method">void SetParameter(DbCommand command, string name, object value)</Member>
+        <Member type="Method">IDataReader ExecuteReader(DbCommand command)</Member>
+        <Member type="Method">int ExecuteNonQuery(DbCommand command)</Member>
+        <Member type="Method">object ExecuteScalar(DbCommand command)</Member>
+      </Entity>
+      <Entity type="Class">
+        <Name>Database</Name>
+        <Access>Public</Access>
+        <Location left="442" top="352" />
+        <Size width="176" height="120" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private string connectionString</Member>
+        <Member type="Constructor">public Database(string connString)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Realization" first="1" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="2" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="3" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="4" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="6" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="7" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="5" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="9" second="8">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>Domain Classes</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>Artist</Name>
+        <Access>Public</Access>
+        <Location left="248" top="90" />
+        <Size width="218" height="298" />
+        <Collapsed>False</Collapsed>
+        <Member type="Constructor">public Artist()</Member>
+        <Member type="Property">public int Id { get; set; }</Member>
+        <Member type="Property">public string Name { get; set; }</Member>
+        <Member type="Property">public string Country { get; set; }</Member>
+        <Member type="Property">public string Email { get; set; }</Member>
+        <Member type="Property">public string Homepage { get; set; }</Member>
+        <Member type="Property">public string Description { get; set; }</Member>
+        <Member type="Property">public string Picture { get; set; }</Member>
+        <Member type="Property">public string Video { get; set; }</Member>
+        <Member type="Property">public bool IsDeleted { get; set; }</Member>
+        <Member type="Method">public override bool Equals(object obj)</Member>
+        <Member type="Method">public override int GetHashCode()</Member>
+        <Member type="Method">public override string ToString()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Category</Name>
+        <Access>Public</Access>
+        <Location left="585" top="90" />
+        <Size width="162" height="184" />
+        <Collapsed>False</Collapsed>
+        <Member type="Constructor">public Category()</Member>
+        <Member type="Property">public string Id { get; set; }</Member>
+        <Member type="Property">public string Label { get; set; }</Member>
+        <Member type="Method">public override bool Equals(object obj)</Member>
+        <Member type="Method">public override int GetHashCode()</Member>
+        <Member type="Method">public override string ToString()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Location</Name>
+        <Access>Public</Access>
+        <Location left="831" top="599" />
+        <Size width="162" height="184" />
+        <Collapsed>False</Collapsed>
+        <Member type="Constructor">public Location()</Member>
+        <Member type="Property">public string Id { get; set; }</Member>
+        <Member type="Property">public string Label { get; set; }</Member>
+        <Member type="Method">public override bool Equals(object obj)</Member>
+        <Member type="Method">public override int GetHashCode()</Member>
+        <Member type="Method">public override string ToString()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>User</Name>
+        <Access>Public</Access>
+        <Location left="831" top="182" />
+        <Size width="185" height="196" />
+        <Collapsed>False</Collapsed>
+        <Member type="Constructor">public User()</Member>
+        <Member type="Property">public string Username { get; set; }</Member>
+        <Member type="Property">public string Password { get; set; }</Member>
+        <Member type="Property">public string Email { get; set; }</Member>
+        <Member type="Method">public override bool Equals(object obj)</Member>
+        <Member type="Method">public override int GetHashCode()</Member>
+        <Member type="Method">public override string ToString()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Performance</Name>
+        <Access>Public</Access>
+        <Location left="279" top="599" />
+        <Size width="162" height="179" />
+        <Collapsed>False</Collapsed>
+        <Member type="Constructor">public Performance()</Member>
+        <Member type="Property">public int Id { get; set; }</Member>
+        <Member type="Property">public DateTime Start { get; set; }</Member>
+        <Member type="Method">public override bool Equals(object obj)</Member>
+        <Member type="Method">public override int GetHashCode()</Member>
+        <Member type="Method">public override string ToString()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Venue</Name>
+        <Access>Public</Access>
+        <Location left="585" top="585" />
+        <Size width="162" height="196" />
+        <Collapsed>False</Collapsed>
+        <Member type="Constructor">public Venue()</Member>
+        <Member type="Property">public int Id { get; set; }</Member>
+        <Member type="Property">public string Label { get; set; }</Member>
+        <Member type="Property">public int Spectators { get; set; }</Member>
+        <Member type="Method">public override bool Equals(object obj)</Member>
+        <Member type="Method">public override int GetHashCode()</Member>
+        <Member type="Method">public override string ToString()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Restrinction</Name>
+        <Access>Public</Access>
+        <Location left="585" top="328" />
+        <Size width="162" height="196" />
+        <Collapsed>False</Collapsed>
+        <Member type="Constructor">public Restrinction()</Member>
+        <Member type="Property">public int Id { get; set; }</Member>
+        <Member type="Property">public DateTime Start { get; set; }</Member>
+        <Member type="Property">public DateTime End { get; set; }</Member>
+        <Member type="Method">public override bool Equals(object obj)</Member>
+        <Member type="Method">public override int GetHashCode()</Member>
+        <Member type="Method">public override string ToString()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Association" first="1" second="0">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="0" second="4">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="2" second="5">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="5" second="4">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="1" second="6">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="5" second="6">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+</Project>

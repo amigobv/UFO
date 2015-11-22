@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Reflection;
 using System.Transactions;
-using System.Transactions.Configuration;
 using Xunit.Sdk;
 
 namespace Ufo.DAL.Test

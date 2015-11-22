@@ -47,7 +47,7 @@ namespace Ufo.DAL.Test
 
         [Fact]
         [AutoRollback]
-        public void InsertCategoryTest()
+        public void InsertUserTest()
         {
             IDatabase database = new Database(TestUtils.ConnString);
             Assert.NotNull(database);
