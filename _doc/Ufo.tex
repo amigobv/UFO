@@ -116,8 +116,7 @@ Um die Daten besser zwischen unterschiedlichen Schichten zu transportieren, wurd
 
 Für jede implementierte DAO-Methode wurde jeweils ein Unit-Test implementiert. Dafür wurde eine eigene Testdatenbank erstellt. Als Testumgebung wurde XUnit-Framework verwendet. Diesen \textit{Framework} bietet ein \textit{AutoRollback}-Attribut, der von Entwickler implementiert werden muss. Diesen Attribut verwendet Datenbanktransaktionen um die Unit-Test Daten nicht in die Datenbank zu speichern. Damit gibt es keine Abhängigkeit zwischen einzelnen Unit-Tests und jeden Unit-Test ist atomar.
 
-\clearpage
-
+\clearpage 
 \lstinputlisting{../Ufo/Ufo.DAL.Test/AutoRollbackAttribute.cs}
 
 

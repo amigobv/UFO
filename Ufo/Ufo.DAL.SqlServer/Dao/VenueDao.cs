@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Ufo.DAL.Common;
 using Ufo.DAL.Common.Dao;
 using Ufo.DAL.Common.Domain;
@@ -18,7 +15,22 @@ namespace Ufo.DAL.SqlServer.Dao
         private const string SQL_FIND_BY_ID =
             @"SELECT v.idVenue, v.label, v.maxSpectators, l.idLocation, l.label " +
             @"FROM Venue as v, Location as l " +
-            @"WHERE v.idVenue = @idVenue AND v.location = l.idLocation";
+            @"WHERE v.idVenue = @idVenue AND v.location = @location";
+
+        private const string SQL_FIND_BY_LOCATION_ID =
+            @"SELECT v.idVenue, v.label, v.maxSpectators, l.idLocation, l.label " +
+            @"FROM Venue as v, Location as l " +
+            @"WHERE v.location = @location AND v.location = l.idLocation";
+
+        private const string SQL_FIND_BY_LOCATION =
+            @"SELECT v.idVenue, v.label, v.maxSpectators, l.idLocation, l.label " +
+            @"FROM Venue as v, Location as l " +
+            @"WHERE l.label LIKE @location AND v.location = l.idLocation";
+
+        private const string SQL_FIND_WHERE_SPECTATORS =
+            @"SELECT v.idVenue, v.label, v.maxSpectators, l.idLocation, l.label " +
+            @"FROM Venue as v, Location as l " +
+            @"WHERE v.maxSpectators > @spectators AND v.location = l.idLocation";
 
         private const string SQL_FIND_ALL =
             @"SELECT v.idVenue, v.label, v.maxSpectators, v.location, l.label " +
@@ -56,25 +68,30 @@ namespace Ufo.DAL.SqlServer.Dao
 
             using (var reader = _database.ExecuteReader(command))
             {
-                var venues = new List<Venue>();
-
-                while (reader.Read())
-                {
-                    venues.Add(new Venue((int)reader.GetInt32(0),
-                                         (string)reader.GetString(1),
-                                         (int)reader.GetInt32(2),
-                                         new Location((string)reader.GetString(3), (string)reader.GetString(4))));
-                }
-
-                return venues;
+                return DataReaderToList(reader);
             }
+        }
+
+        private IList<Venue> DataReaderToList(IDataReader reader)
+        {
+            var venues = new List<Venue>();
+
+            while (reader.Read())
+            {
+                venues.Add(new Venue((int)reader.GetInt32(0),
+                                     (string)reader.GetString(1),
+                                     (int)reader.GetInt32(2),
+                                     new Location((string)reader.GetString(3), (string)reader.GetString(4))));
+            }
+
+            return venues;
         }
 
         public Venue FindById(int venueId, string locationId)
         {
             var command = _database.CreateCommand(SQL_FIND_BY_ID);
             _database.DefineParameter(command, "@idVenue", DbType.Int32, venueId);
-            _database.DefineParameter(command, "@idLocation", DbType.String, locationId);
+            _database.DefineParameter(command, "@location", DbType.String, locationId);
 
             using (var reader = _database.ExecuteReader(command))
             {
@@ -87,6 +104,39 @@ namespace Ufo.DAL.SqlServer.Dao
                 }
 
                 return null;
+            }
+        }
+
+        public IList<Venue> FindByLocationId(string locationId)
+        {
+            var command = _database.CreateCommand(SQL_FIND_BY_LOCATION_ID);
+            _database.DefineParameter(command, "@location", DbType.String, locationId);
+
+            using (var reader = _database.ExecuteReader(command))
+            {
+                return DataReaderToList(reader);
+            }
+        }
+
+        public IList<Venue> FindByLocation(string location)
+        {
+            var command = _database.CreateCommand(SQL_FIND_BY_LOCATION);
+            _database.DefineParameter(command, "@location", DbType.String, location);
+
+            using (var reader = _database.ExecuteReader(command))
+            {
+                return DataReaderToList(reader);
+            }
+        }
+
+        public IList<Venue> FindWhereSpectators(int spectators)
+        {
+            var command = _database.CreateCommand(SQL_FIND_WHERE_SPECTATORS);
+            _database.DefineParameter(command, "@spectators", DbType.Int32, spectators);
+
+            using (var reader = _database.ExecuteReader(command))
+            {
+                return DataReaderToList(reader);
             }
         }
 

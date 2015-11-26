@@ -1,0 +1,5 @@
+H:\Semester5\SWK5\Project\Ufo\Ufo.BL\bin\Debug\Ufo.BL.dll
+H:\Semester5\SWK5\Project\Ufo\Ufo.BL\bin\Debug\Ufo.BL.pdb
+H:\Semester5\SWK5\Project\Ufo\Ufo.BL\obj\Debug\Ufo.BL.csprojResolveAssemblyReference.cache
+H:\Semester5\SWK5\Project\Ufo\Ufo.BL\obj\Debug\Ufo.BL.dll
+H:\Semester5\SWK5\Project\Ufo\Ufo.BL\obj\Debug\Ufo.BL.pdb

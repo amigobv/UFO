@@ -109,6 +109,85 @@ namespace Ufo.DAL.Test
 
         [Fact]
         [AutoRollback]
+        public void FindArtistByNameTest()
+        {
+            if (database == null)
+            {
+                database = new Database(TestUtils.ConnString);
+            }
+            Assert.NotNull(database);
+
+            var artistDao = new ArtistDao(database);
+            InsertDummyData(artistDao);
+            Assert.Equal(items.Count, artistDao.Count());
+
+            var artists = artistDao.FindByName(ARTIST1_NAME);
+            Assert.NotNull(artists);
+            Assert.Equal(1, artists.Count);
+        }
+
+        [Fact]
+        [AutoRollback]
+        public void FindArtistByCountryTest()
+        {
+            if (database == null)
+            {
+                database = new Database(TestUtils.ConnString);
+            }
+            Assert.NotNull(database);
+
+            var artistDao = new ArtistDao(database);
+            InsertDummyData(artistDao);
+            Assert.Equal(items.Count, artistDao.Count());
+
+
+            var artists = artistDao.FindByCountry(ARTIST2_COUNTRY);
+            Assert.NotNull(artists);
+            Assert.Equal(1, artists.Count);
+        }
+
+        [Fact]
+        [AutoRollback]
+        public void FindArtistByCategoryTest()
+        {
+            if (database == null)
+            {
+                database = new Database(TestUtils.ConnString);
+            }
+            Assert.NotNull(database);
+
+            var artistDao = new ArtistDao(database);
+            InsertDummyData(artistDao);
+            Assert.Equal(items.Count, artistDao.Count());
+
+
+            var artists = artistDao.FindByCategory(COMEDY_LABEL);
+            Assert.NotNull(artists);
+            Assert.Equal(items.Count, artists.Count);
+        }
+
+        [Fact]
+        [AutoRollback]
+        public void FindArtistByCategoryIdTest()
+        {
+            if (database == null)
+            {
+                database = new Database(TestUtils.ConnString);
+            }
+            Assert.NotNull(database);
+
+            var artistDao = new ArtistDao(database);
+            InsertDummyData(artistDao);
+            Assert.Equal(items.Count, artistDao.Count());
+
+
+            var artists = artistDao.FindByCategoryId(COMEDY_ID);
+            Assert.NotNull(artists);
+            Assert.Equal(items.Count, artists.Count);
+        }
+
+        [Fact]
+        [AutoRollback]
         public void UpdateArtistTest()
         {
             if (database == null)

@@ -105,6 +105,104 @@ namespace Ufo.DAL.Test
 
         [Fact]
         [AutoRollback]
+        public void FindPerformancesByArtistTest()
+        {
+            if (database == null)
+            {
+                database = new Database(TestUtils.ConnString);
+            }
+            Assert.NotNull(database);
+
+            var performanceDao = new PerformanceDao(database);
+            InsertDummyData(performanceDao);
+            Assert.Equal(items.Count, performanceDao.Count());
+
+            IList<Performance> dbPerformance = performanceDao.FindByArtist(ARTIST_NAME);
+            Assert.NotNull(dbPerformance);
+            Assert.Equal(items.Count, dbPerformance.Count);
+
+            foreach (var performance in dbPerformance)
+            {
+                Assert.True(items.Contains(performance));
+            }
+        }
+
+        [Fact]
+        [AutoRollback]
+        public void FindPerformancesByArtistIdTest()
+        {
+            if (database == null)
+            {
+                database = new Database(TestUtils.ConnString);
+            }
+            Assert.NotNull(database);
+
+            var performanceDao = new PerformanceDao(database);
+            InsertDummyData(performanceDao);
+            Assert.Equal(items.Count, performanceDao.Count());
+
+            var artistDao = new ArtistDao(database);
+            var artists = artistDao.FindByName(ARTIST_NAME);
+            Assert.NotNull(artists);
+            Assert.NotEqual(0, artists.Count);
+
+            IList<Performance> dbPerformance = performanceDao.FindByArtistId(artists[0].Id);
+            Assert.NotNull(dbPerformance);
+            Assert.Equal(items.Count, dbPerformance.Count);
+
+            foreach (var performance in dbPerformance)
+            {
+                Assert.True(items.Contains(performance));
+            }
+        }
+
+        [Fact]
+        [AutoRollback]
+        public void FindPerformancesByVenueTest()
+        {
+            if (database == null)
+            {
+                database = new Database(TestUtils.ConnString);
+            }
+            Assert.NotNull(database);
+
+            var performanceDao = new PerformanceDao(database);
+            InsertDummyData(performanceDao);
+            Assert.Equal(items.Count, performanceDao.Count());
+
+            IList<Performance> dbPerformance = performanceDao.FindByVenue(VENUE_LABEL);
+            Assert.NotNull(dbPerformance);
+            Assert.Equal(items.Count, dbPerformance.Count);
+
+            foreach (var performance in dbPerformance)
+            {
+                Assert.True(items.Contains(performance));
+            }
+        }
+
+        [Fact]
+        [AutoRollback]
+        public void FindPerformancesByDayTest()
+        {
+            if (database == null)
+            {
+                database = new Database(TestUtils.ConnString);
+            }
+            Assert.NotNull(database);
+
+            var performanceDao = new PerformanceDao(database);
+            InsertDummyData(performanceDao);
+            Assert.Equal(items.Count, performanceDao.Count());
+
+            IList<Performance> dbPerformance = performanceDao.FindByDay(PERFORMANCE1_START);
+            Assert.NotNull(dbPerformance);
+            Assert.Equal(2, dbPerformance.Count);
+        }
+
+        
+
+        [Fact]
+        [AutoRollback]
         public void FindPerformanceByIdTest()
         {
             if (database == null)

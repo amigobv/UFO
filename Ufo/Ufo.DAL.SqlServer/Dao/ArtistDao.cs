@@ -27,6 +27,30 @@ namespace Ufo.DAL.SqlServer.Dao
             @"FROM Artist as a, Category as c " +
             @"WHERE a.category = c.idCategory";
 
+        private const string SQL_FIND_BY_NAME =
+            @"SELECT a.idArtist, a.name, a.country, a.email, a.description, a.homepage, a.picture, a.video, a.deleted, c.idCategory, c.label " +
+            @"FROM Artist as a, Category as c " +
+            @"WHERE a.category = c.idCategory AND a.name LIKE @name " + 
+            @"ORDER BY a.name ASC";
+
+        private const string SQL_FIND_BY_COUNTRY =
+            @"SELECT a.idArtist, a.name, a.country, a.email, a.description, a.homepage, a.picture, a.video, a.deleted, c.idCategory, c.label " +
+            @"FROM Artist as a, Category as c " +
+            @"WHERE a.category = c.idCategory AND a.country LIKE @country " +
+            @"ORDER BY a.name ASC";
+
+        private const string SQL_FIND_BY_CATEGORY =
+            @"SELECT a.idArtist, a.name, a.country, a.email, a.description, a.homepage, a.picture, a.video, a.deleted, c.idCategory, c.label " +
+            @"FROM Artist as a, Category as c " +
+            @"WHERE a.category = c.idCategory AND c.label LIKE @category " +
+            @"ORDER BY a.name ASC";
+
+        private const string SQL_FIND_BY_CATEGORY_ID =
+            @"SELECT a.idArtist, a.name, a.country, a.email, a.description, a.homepage, a.picture, a.video, a.deleted, c.idCategory, c.label " +
+            @"FROM Artist as a, Category as c " +
+            @"WHERE a.category = c.idCategory AND a.category LIKE @categoryId " +
+            @"ORDER BY a.name ASC";
+
         private const string SQL_INSERT =
             @"INSERT INTO Artist " +
             @"VALUES (@name, @country, @email, @description, @homepage, @picture, @video, @category, @delete);" +
@@ -69,26 +93,33 @@ namespace Ufo.DAL.SqlServer.Dao
 
             using (var reader = _database.ExecuteReader(command))
             {
-                var artists = new List<Artist>();
-
-                while (reader.Read())
-                {
-                    var artist = new Artist((int)reader["idArtist"],
-                                            (string)reader["name"],
-                                            (string)reader["country"],
-                                            (string)reader["email"],
-                                            (string)reader["description"],
-                                            (string)reader["homepage"],
-                                            (string)reader["picture"],
-                                            (string)reader["video"],
-                                            new Category((string)reader["idCategory"], (string)reader["label"]),
-                                            (bool)reader["deleted"]);
-
-                    artists.Add(artist);
-                }
-
-                return artists;
+                return DataReaderToList(reader);
             }
+        }
+
+        private IList<Artist> DataReaderToList(IDataReader reader)
+        {
+            if (reader == null)
+                return null;
+
+            var artists = new List<Artist>();
+
+            while (reader.Read())
+            {
+                var artist = new Artist((int)reader["idArtist"],
+                                        (string)reader["name"],
+                                        (string)reader["country"],
+                                        (string)reader["email"],
+                                        (string)reader["description"],
+                                        (string)reader["homepage"],
+                                        (string)reader["picture"],
+                                        (string)reader["video"],
+                                        new Category((string)reader["idCategory"], (string)reader["label"]),
+                                        (bool)reader["deleted"]);
+                artists.Add(artist);
+            }
+
+            return artists;
         }
 
         public Artist FindById(int id)
@@ -114,6 +145,50 @@ namespace Ufo.DAL.SqlServer.Dao
             }
 
             return null;
+        }
+
+        public IList<Artist> FindByName(string name)
+        {
+            var command = _database.CreateCommand(SQL_FIND_BY_NAME);
+            _database.DefineParameter(command, "@name", DbType.String, name);
+
+            using (var reader = _database.ExecuteReader(command))
+            {
+                return DataReaderToList(reader);
+            }
+        }
+
+        public IList<Artist> FindByCountry(string country)
+        {
+            var command = _database.CreateCommand(SQL_FIND_BY_COUNTRY);
+            _database.DefineParameter(command, "@country", DbType.String, country);
+
+            using (var reader = _database.ExecuteReader(command))
+            {
+                return DataReaderToList(reader);
+            }
+        }
+
+        public IList<Artist> FindByCategory(string category)
+        {
+            var command = _database.CreateCommand(SQL_FIND_BY_CATEGORY);
+            _database.DefineParameter(command, "@category", DbType.String, category);
+
+            using (var reader = _database.ExecuteReader(command))
+            {
+                return DataReaderToList(reader);
+            }
+        }
+
+        public IList<Artist> FindByCategoryId(string categoryId)
+        {
+            var command = _database.CreateCommand(SQL_FIND_BY_CATEGORY_ID);
+            _database.DefineParameter(command, "@categoryId", DbType.String, categoryId);
+
+            using (var reader = _database.ExecuteReader(command))
+            {
+                return DataReaderToList(reader);
+            }
         }
 
         public bool Insert(Artist o)

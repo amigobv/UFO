@@ -110,6 +110,70 @@ namespace Ufo.DAL.Test
 
         [Fact]
         [AutoRollback]
+        public void FindVenueByLocationTest()
+        {
+            if (database == null)
+            {
+                database = new Database(TestUtils.ConnString);
+            }
+            Assert.NotNull(database);
+
+            var venueDao = new VenueDao(database);
+            InsertDummyData(venueDao);
+            Assert.Equal(items.Count, venueDao.Count());
+
+            var currVenue = items[0];
+
+            var venues = venueDao.FindByLocation(LOCATION);
+            Assert.NotNull(venues);
+            Assert.Equal(items.Count, venues.Count);
+        }
+
+        [Fact]
+        [AutoRollback]
+        public void FindVenueByLocationIdTest()
+        {
+            if (database == null)
+            {
+                database = new Database(TestUtils.ConnString);
+            }
+            Assert.NotNull(database);
+
+            var venueDao = new VenueDao(database);
+            InsertDummyData(venueDao);
+            Assert.Equal(items.Count, venueDao.Count());
+
+            var currVenue = items[0];
+
+            var venues = venueDao.FindByLocationId(LOCATION_ID);
+            Assert.NotNull(venues);
+            Assert.Equal(items.Count, venues.Count);
+        }
+
+        [Fact]
+        [AutoRollback]
+        public void FindVenueWhereSpecatorsTest()
+        {
+            if (database == null)
+            {
+                database = new Database(TestUtils.ConnString);
+            }
+            Assert.NotNull(database);
+
+            var venueDao = new VenueDao(database);
+            InsertDummyData(venueDao);
+            Assert.Equal(items.Count, venueDao.Count());
+
+            var currVenue = items[0];
+
+            var venues = venueDao.FindWhereSpectators(50);
+            Assert.NotNull(venues);
+            Assert.Equal(2, venues.Count);
+        }
+
+
+        [Fact]
+        [AutoRollback]
         public void UpdateVenueTest()
         {
             if (database == null)

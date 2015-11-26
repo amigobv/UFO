@@ -20,9 +20,35 @@ namespace Ufo.DAL.SqlServer.Dao
             @"c.idCategory, c.label, a.deleted, v.idVenue, v.label, v.maxSpectators, l.idLocation, l.label " +
             @"FROM Performance as p, Artist as a, Venue as v, Location as l, Category as c " +
             @"WHERE p.artist = a.idArtist AND a.category = c.idCategory AND p.pVenue = v.idVenue AND p.pLocation = l.idLocation AND p.idPerformance = @id";
-            
 
-        // TODO: check FIND_ALL query
+        private const string SQL_FIND_BY_ARTIST =
+            @"SELECT p.idPerformance, p.start, a.idArtist, a.name, a.country, a.email, a.description, a.homepage, a.picture, a.video, " +
+            @"c.idCategory, c.label, a.deleted, v.idVenue, v.label, v.maxSpectators, l.idLocation, l.label " +
+            @"FROM Performance as p, Artist as a, Venue as v, Location as l, Category as c " +
+            @"WHERE p.artist = a.idArtist AND a.category = c.idCategory AND p.pVenue = v.idVenue AND p.pLocation = l.idLocation AND a.name LIKE @artist " +
+            @"ORDER BY p.start ASC";
+
+        private const string SQL_FIND_BY_ARTIST_ID =
+            @"SELECT p.idPerformance, p.start, a.idArtist, a.name, a.country, a.email, a.description, a.homepage, a.picture, a.video, " +
+            @"c.idCategory, c.label, a.deleted, v.idVenue, v.label, v.maxSpectators, l.idLocation, l.label " +
+            @"FROM Performance as p, Artist as a, Venue as v, Location as l, Category as c " +
+            @"WHERE p.artist = a.idArtist AND a.category = c.idCategory AND p.pVenue = v.idVenue AND p.pLocation = l.idLocation AND p.artist = @artist " +
+            @"ORDER BY p.start ASC";
+
+        private const string SQL_FIND_BY_VENUE =
+            @"SELECT p.idPerformance, p.start, a.idArtist, a.name, a.country, a.email, a.description, a.homepage, a.picture, a.video, " +
+            @"c.idCategory, c.label, a.deleted, v.idVenue, v.label, v.maxSpectators, l.idLocation, l.label " +
+            @"FROM Performance as p, Artist as a, Venue as v, Location as l, Category as c " +
+            @"WHERE p.artist = a.idArtist AND a.category = c.idCategory AND p.pVenue = v.idVenue AND p.pLocation = l.idLocation AND v.label = @venue " +
+            @"ORDER BY p.start ASC";
+
+        private const string SQL_FIND_BY_DAY =
+            @"SELECT p.idPerformance, p.start, a.idArtist, a.name, a.country, a.email, a.description, a.homepage, a.picture, a.video, " +
+            @"c.idCategory, c.label, a.deleted, v.idVenue, v.label, v.maxSpectators, l.idLocation, l.label " +
+            @"FROM Performance as p, Artist as a, Venue as v, Location as l, Category as c " +
+            @"WHERE p.artist = a.idArtist AND a.category = c.idCategory AND p.pVenue = v.idVenue AND p.pLocation = l.idLocation AND cast (p.start as date) = @date " +
+            @"ORDER BY p.start ASC";
+
         private const string SQL_FIND_ALL =
             @"SELECT p.idPerformance, p.start, a.idArtist, a.name, a.country, a.email, a.description, a.homepage, a.picture, a.video, " + 
             @"c.idCategory, c.label, a.deleted, v.idVenue, v.label, v.maxSpectators, l.idLocation, l.label " +
@@ -61,11 +87,20 @@ namespace Ufo.DAL.SqlServer.Dao
 
             using (var reader = _database.ExecuteReader(command))
             {
-                var performancies = new List<Performance>();
+                return DataReaderToList(reader);
+            }
+        }
 
-                while (reader.Read())
-                {
-                    performancies.Add(new Performance((int)reader[0],                   // performance id
+        private IList<Performance> DataReaderToList(IDataReader reader)
+        {
+            if (reader == null)
+                return null;
+
+            var performancies = new List<Performance>();
+
+            while (reader.Read())
+            {
+                performancies.Add(new Performance((int)reader[0],                   // performance id
                                                       (DateTime)reader[1],              // performance start
                                                       new Artist((int)reader[2],        // artist id
                                                                  (string)reader[3],     // artist name
@@ -83,10 +118,53 @@ namespace Ufo.DAL.SqlServer.Dao
                                                                 (int)reader[15],        // venue spectators
                                                                 new Location((string)reader[16],    // location id
                                                                              (string)reader[17])    // location label
-                                                      )));     
-                }
+                                                      )));
+            }
 
-                return performancies;
+            return performancies;
+        }
+
+        public IList<Performance> FindByArtistId(int idArtist)
+        {
+            var command = _database.CreateCommand(SQL_FIND_BY_ARTIST_ID);
+            _database.DefineParameter(command, "@artist", DbType.Int32, idArtist);
+
+            using (var reader = _database.ExecuteReader(command))
+            {
+                return DataReaderToList(reader);
+            }
+        }
+
+        public IList<Performance> FindByArtist(string artist)
+        {
+            var command = _database.CreateCommand(SQL_FIND_BY_ARTIST);
+            _database.DefineParameter(command, "@artist", DbType.String, artist);
+
+            using (var reader = _database.ExecuteReader(command))
+            {
+                return DataReaderToList(reader);
+            }
+        }
+
+        public IList<Performance> FindByVenue(string venue)
+        {
+            var command = _database.CreateCommand(SQL_FIND_BY_VENUE);
+            _database.DefineParameter(command, "@venue", DbType.String, venue);
+
+            using (var reader = _database.ExecuteReader(command))
+            {
+                return DataReaderToList(reader);
+            }
+        }
+
+        public IList<Performance> FindByDay(DateTime date)
+        {
+            var command = _database.CreateCommand(SQL_FIND_BY_DAY);
+            _database.DefineParameter(command, "@date", DbType.Date, date.Date);
+
+            using (var reader = _database.ExecuteReader(command))
+            {
+                return DataReaderToList(reader);
             }
         }
 
