@@ -142,6 +142,11 @@ namespace Ufo.DAL.SqlServer.Dao
 
         public bool Insert(Venue o)
         {
+            if (o == null ||
+                o.Label == null ||
+                o.Location == null)
+                return false;
+
             var command = _database.CreateCommand(SQL_INSERT);
             _database.DefineParameter(command, "@idVenue", DbType.Int32, o.Id);
             _database.DefineParameter(command, "@label", DbType.String, o.Label);
@@ -153,6 +158,11 @@ namespace Ufo.DAL.SqlServer.Dao
 
         public bool Update(Venue o)
         {
+            if (o == null ||
+                o.Label == null ||
+                o.Location == null)
+                return false;
+
             var command = _database.CreateCommand(SQL_UPDATE);
             _database.DefineParameter(command, "@idVenue", DbType.Int32, o.Id);
             _database.DefineParameter(command, "@idLocation", DbType.Int32, o.Location.Id);

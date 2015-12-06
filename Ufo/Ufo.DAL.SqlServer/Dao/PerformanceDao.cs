@@ -205,6 +205,12 @@ namespace Ufo.DAL.SqlServer.Dao
 
         public bool Insert(Performance o)
         {
+            if (o == null ||
+                o.Artist == null ||
+                o.Venue == null ||
+                o.Start == null)
+                return false;
+
             var command = _database.CreateCommand(SQL_INSERT);
             _database.DefineParameter(command, "@time", DbType.DateTime, o.Start);
             _database.DefineParameter(command, "@artistId", DbType.String, o.Artist.Id);
@@ -219,6 +225,12 @@ namespace Ufo.DAL.SqlServer.Dao
 
         public bool Update(Performance o)
         {
+            if (o == null ||
+                o.Artist == null ||
+                o.Venue == null ||
+                o.Start == null)
+                return false;
+
             var command = _database.CreateCommand(SQL_UPDATE);
             _database.DefineParameter(command, "@id", DbType.Int32, o.Id);
             _database.DefineParameter(command, "@time", DbType.Time, o.Start);

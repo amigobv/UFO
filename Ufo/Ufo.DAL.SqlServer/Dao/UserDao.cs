@@ -86,6 +86,12 @@ namespace Ufo.DAL.SqlServer.Dao
 
         public bool Insert(User o)
         {
+            if (o == null ||
+                o.Username == null ||
+                o.Password == null ||
+                o.Email == null)
+                return false;
+
             var command = _database.CreateCommand(SQL_INSERT);
             _database.DefineParameter(command, "@username", DbType.String, o.Username);
             _database.DefineParameter(command, "@password", DbType.String, o.Password);
@@ -96,6 +102,12 @@ namespace Ufo.DAL.SqlServer.Dao
 
         public bool Update(User o)
         {
+            if (o == null ||
+                o.Username == null ||
+                o.Password == null ||
+                o.Email == null)
+                return false;
+
             var command = _database.CreateCommand(SQL_UPDATE);
             _database.DefineParameter(command, "@username", DbType.String, o.Username);
             _database.DefineParameter(command, "@password", DbType.String, o.Password);

@@ -193,14 +193,20 @@ namespace Ufo.DAL.SqlServer.Dao
 
         public bool Insert(Artist o)
         {
+            if (o == null ||
+                o.Name == null ||
+                o.Country == null ||
+                o.Email == null)
+                return false;
+
             var command = _database.CreateCommand(SQL_INSERT);
             _database.DefineParameter(command, "@name", DbType.String, o.Name);
             _database.DefineParameter(command, "@country", DbType.String, o.Country);
             _database.DefineParameter(command, "@email", DbType.String, o.Email);
             _database.DefineParameter(command, "@description", DbType.String, o.Description);
             _database.DefineParameter(command, "@homepage", DbType.String, o.Homepage);
-            _database.DefineParameter(command, "@picture", DbType.String, o.PictureUri);
-            _database.DefineParameter(command, "@video", DbType.String, o.VideoUri);
+            _database.DefineParameter(command, "@picture", DbType.String, o.PictureUrl);
+            _database.DefineParameter(command, "@video", DbType.String, o.VideoUrl);
             _database.DefineParameter(command, "@category", DbType.String, o.Category.Id);
             _database.DefineParameter(command, "@delete", DbType.Boolean, o.IsDeleted);
 
@@ -213,6 +219,12 @@ namespace Ufo.DAL.SqlServer.Dao
 
         public bool Update(Artist o)
         {
+            if (o == null ||
+                o.Name == null ||
+                o.Country == null ||
+                o.Email == null)
+                return false;
+
             var command = _database.CreateCommand(SQL_UPDATE);
             _database.DefineParameter(command, "@id", DbType.Int32, o.Id);
             _database.DefineParameter(command, "@name", DbType.String, o.Name);
@@ -220,8 +232,8 @@ namespace Ufo.DAL.SqlServer.Dao
             _database.DefineParameter(command, "@email", DbType.String, o.Email);
             _database.DefineParameter(command, "@description", DbType.String, o.Description);
             _database.DefineParameter(command, "@homepage", DbType.String, o.Homepage);
-            _database.DefineParameter(command, "@picture", DbType.String, o.PictureUri);
-            _database.DefineParameter(command, "@video", DbType.String, o.VideoUri);
+            _database.DefineParameter(command, "@picture", DbType.String, o.PictureUrl);
+            _database.DefineParameter(command, "@video", DbType.String, o.VideoUrl);
             _database.DefineParameter(command, "@categoryId", DbType.String, o.Category.Id);
             _database.DefineParameter(command, "@delete", DbType.Boolean, o.IsDeleted);
 

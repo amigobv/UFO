@@ -85,6 +85,11 @@ namespace Ufo.DAL.SqlServer.Dao
 
         public bool Insert(Category o)
         {
+            if (o == null ||
+                o.Id == null ||
+                o.Label == null)
+                return false;
+
             var command = _database.CreateCommand(SQL_INSERT);
             _database.DefineParameter(command, "@id", DbType.String, o.Id);
             _database.DefineParameter(command, "@label", DbType.String, o.Label);
@@ -95,6 +100,11 @@ namespace Ufo.DAL.SqlServer.Dao
 
         public bool Update(Category o)
         {
+            if (o == null ||
+                o.Id == null ||
+                o.Label == null)
+                return false;
+
             var command = _database.CreateCommand(SQL_UPDATE);
             _database.DefineParameter(command, "@id", DbType.String, o.Id);
             _database.DefineParameter(command, "@label", DbType.String, o.Label);
@@ -104,6 +114,9 @@ namespace Ufo.DAL.SqlServer.Dao
 
         public bool Delete(string id)
         {
+            if (id == null)
+                return false;
+
             var command = _database.CreateCommand(SQL_DELETE);
             _database.DefineParameter(command, "@id", DbType.String, id);
 

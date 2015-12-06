@@ -40,12 +40,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\IArtistManager.cs" />
-    <Compile Include="InvalidUrlException.cs" />
-    <Compile Include="Interfaces\IPerformanceManager.cs" />
-    <Compile Include="Interfaces\IVenueManager.cs" />
+    <Compile Include="Exceptions\CategoryException.cs" />
+    <Compile Include="Exceptions\DataAccessException.cs" />
+    <Compile Include="Exceptions\InvalidUserException.cs" />
+    <Compile Include="Exceptions\LocationException.cs" />
+    <Compile Include="Exceptions\LoginException.cs" />
+    <Compile Include="Exceptions\PerformanceException.cs" />
+    <Compile Include="Exceptions\RegistrationException.cs" />
+    <Compile Include="Exceptions\VenueException.cs" />
+    <Compile Include="IManager.cs" />
+    <Compile Include="Manager.cs" />
+    <Compile Include="ManagerFactory.cs" />
+    <Compile Include="Exceptions\InvalidUrlException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ufo.Commander.Model\Ufo.Commander.Model.csproj">
+      <Project>{e9dce4e7-5cdc-4965-8166-83536f1512dc}</Project>
+      <Name>Ufo.Commander.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ufo.DAL.Common\Ufo.DAL.Common.csproj">
+      <Project>{60a91325-248c-40d9-8b48-5689da5b0097}</Project>
+      <Name>Ufo.DAL.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ufo.DAL.SqlServer\Ufo.DAL.SqlServer.csproj">
+      <Project>{b018ef58-9dcb-4bf9-bab0-706e2c8c0425}</Project>
+      <Name>Ufo.DAL.SqlServer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

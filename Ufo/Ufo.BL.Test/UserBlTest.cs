@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ufo.BL
+namespace Ufo.BL.Test
 {
-    public interface IPerformanceManager
+    public class UserBlTest
     {
     }
 }

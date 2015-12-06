@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,10 +16,43 @@ namespace Ufo.DAL.Common.Domain
         public string Email { get; set; }
         public string Homepage { get; set; }
         public string Description { get; set; }
-        public string PictureUri { get; set; }
-        public string VideoUri { get; set; }
+        public string PictureUrl { get; set; }
+        public string VideoUrl { get; set; }
         public Category Category { get; set; }
         public bool IsDeleted { get; set; }
+
+        private byte[] picture;
+        private byte[] video;
+
+        public byte[] Video
+        {
+            get
+            {
+                video = ReadMedia(PictureUrl);
+                return video;   
+            }
+        }
+
+
+        public byte[] Picture
+        {
+            get
+            {
+                picture = ReadMedia(VideoUrl);
+                return picture;
+            }
+        }
+
+        private byte[] ReadMedia(string url)
+        {
+            byte[] b;
+            using (var file = File.OpenRead(PictureUrl))
+            {
+                b = new byte[file.Length];
+                while (file.Read(b, 0, b.Length) > 0) { }
+            }
+            return b;
+        }
         #endregion
 
         public Artist(int id, string name, string country, string email, string description,
@@ -30,8 +64,8 @@ namespace Ufo.DAL.Common.Domain
             Email = email;
             Homepage = homepage;
             Description = description;
-            VideoUri = video;
-            PictureUri = picture;
+            VideoUrl = video;
+            PictureUrl = picture;
             Category = category;
             IsDeleted = deleted;
         }
