@@ -11,6 +11,7 @@ namespace Ufo.BL.Interfaces
     public interface IManager
     {
         #region User
+        string HashPassword(string input);
         bool Exist(string username);
         void Login(User user);
         void Registrate(User user);
@@ -23,7 +24,7 @@ namespace Ufo.BL.Interfaces
         void CreateArtist(Artist artist);
         ObservableCollection<Artist> GetAllArtists();
         ObservableCollection<Artist> GetAllArtistsByCountry(string country);
-        ObservableCollection<Artist> GetAllArtistsByCountry(Category category);
+        ObservableCollection<Artist> GetAllArtistsByCategory(Category category);
         void RemoveArtist(Artist artist);
         void UpdateArtist(Artist artist);
         #endregion

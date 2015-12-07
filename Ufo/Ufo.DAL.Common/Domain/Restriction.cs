@@ -25,6 +25,15 @@ namespace Ufo.DAL.Common.Domain
             Venue = venue;
             Category = category;
         }
+
+        public Restriction()
+        {
+            Id = 0;
+            Start = new DateTime();
+            End = new DateTime();
+            Venue = null;
+            Category = null;
+        }
         #endregion
 
         public override int GetHashCode()

@@ -49,10 +49,12 @@
     <Compile Include="Exceptions\RegistrationException.cs" />
     <Compile Include="Exceptions\VenueException.cs" />
     <Compile Include="IManager.cs" />
-    <Compile Include="Manager.cs" />
+    <Compile Include="IViewer.cs" />
+    <Compile Include="ManagerImpl.cs" />
     <Compile Include="ManagerFactory.cs" />
     <Compile Include="Exceptions\InvalidUrlException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewerImpl.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ufo.Commander.Model\Ufo.Commander.Model.csproj">

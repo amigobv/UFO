@@ -23,7 +23,7 @@ namespace Ufo.DAL.SqlServer.Dao
 
         // TODO: check FIND_ALL query
         private const string SQL_FIND_ALL =
-            @"SELECT a.idArtist, a.name, a.country, a.email, a.description, a.homepage, a.picture, a.video, a.deleted, c.idCategory, c.label " +
+            @"SELECT a.idArtist, a.name, a.country, a.email, a.description, a.homepage, a.picture, a.video, c.idCategory, c.label, a.deleted " +
             @"FROM Artist as a, Category as c " +
             @"WHERE a.category = c.idCategory";
 
@@ -110,10 +110,10 @@ namespace Ufo.DAL.SqlServer.Dao
                                         (string)reader["name"],
                                         (string)reader["country"],
                                         (string)reader["email"],
-                                        (string)reader["description"],
-                                        (string)reader["homepage"],
-                                        (string)reader["picture"],
-                                        (string)reader["video"],
+                                        (reader["description"] == DBNull.Value) ? string.Empty : (string)reader["description"],
+                                        (reader["homepage"] == DBNull.Value) ? string.Empty : (string)reader["homepage"],
+                                        (reader["picture"] == DBNull.Value) ? string.Empty : (string)reader["picture"],
+                                        (reader["video"] == DBNull.Value) ? string.Empty : (string)reader["video"],
                                         new Category((string)reader["idCategory"], (string)reader["label"]),
                                         (bool)reader["deleted"]);
                 artists.Add(artist);
@@ -135,10 +135,10 @@ namespace Ufo.DAL.SqlServer.Dao
                                             (string)reader["name"],
                                             (string)reader["country"],
                                             (string)reader["email"],
-                                            (string)reader["description"],
-                                            (string)reader["homepage"],
-                                            (string)reader["picture"],
-                                            (string)reader["video"],
+                                            (reader["description"] == DBNull.Value) ? string.Empty : (string)reader["description"],
+                                            (reader["homepage"] == DBNull.Value) ? string.Empty : (string)reader["homepage"],
+                                            (reader["picture"] == DBNull.Value) ? string.Empty : (string)reader["picture"],
+                                            (reader["video"] == DBNull.Value) ? string.Empty : (string)reader["video"],
                                             new Category((string)reader["idCategory"], (string)reader["label"]),
                                             (bool)reader["deleted"]);
                 }

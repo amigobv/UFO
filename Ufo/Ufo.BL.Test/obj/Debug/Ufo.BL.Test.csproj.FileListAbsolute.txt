@@ -1,5 +1,4 @@
 H:\Semester5\SWK5\Project\Ufo\Ufo.BL.Test\bin\Debug\Ufo.BL.Test.dll
 H:\Semester5\SWK5\Project\Ufo\Ufo.BL.Test\bin\Debug\Ufo.BL.Test.pdb
-H:\Semester5\SWK5\Project\Ufo\Ufo.BL.Test\obj\Debug\Ufo.BL.Test.csprojResolveAssemblyReference.cache
 H:\Semester5\SWK5\Project\Ufo\Ufo.BL.Test\obj\Debug\Ufo.BL.Test.dll
 H:\Semester5\SWK5\Project\Ufo\Ufo.BL.Test\obj\Debug\Ufo.BL.Test.pdb

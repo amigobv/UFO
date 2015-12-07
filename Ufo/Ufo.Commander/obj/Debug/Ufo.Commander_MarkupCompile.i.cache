@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 H:\Semester5\SWK5\Project\Ufo\Ufo.Commander\App.xaml
-3902525888
+5444736603
 
-11-1384947493
+13-388687470
 14-978274245
-MainWindow.xaml;Views\UserLoginView.xaml;Views\UserRegistrationView.xaml;
+MainWindow.xaml;Views\ArtistEditView.xaml;Views\ArtistsView.xaml;Views\UserLoginView.xaml;Views\UserRegistrationView.xaml;
 
-False
+True
 

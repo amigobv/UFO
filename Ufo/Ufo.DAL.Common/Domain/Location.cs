@@ -19,6 +19,12 @@ namespace Ufo.DAL.Common.Domain
             Id = id;
             Label = label;
         }
+
+        public Location()
+        {
+            Id = string.Empty;
+            Label = string.Empty;
+        }
         #endregion
 
         public override int GetHashCode()

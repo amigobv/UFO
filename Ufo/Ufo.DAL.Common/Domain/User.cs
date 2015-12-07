@@ -14,12 +14,21 @@ namespace Ufo.DAL.Common.Domain
         public string Email { get; set; }
         #endregion
 
+        #region ctor
         public User(string username, string password, string email)
         {
             Username = username;
             Password = password;
             Email = email;
         }
+
+        public User()
+        {
+            Username = string.Empty;
+            Password = string.Empty;
+            Email = string.Empty;
+        }
+        #endregion
 
         public override int GetHashCode()
         {

@@ -1,0 +1,114 @@
+﻿<UserControl x:Class="Ufo.Commander.Views.ArtistEditView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:resx="clr-namespace:Ufo.Commander.Resources"
+      xmlns:local="clr-namespace:Ufo.Commander.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="400" d:DesignWidth="600">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="2*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+
+            <Label Grid.Row="0" Grid.Column="0" 
+               Name="lblName" 
+               Margin="5"
+               Content="{x:Static resx:Resources.NameText}"/>
+
+            <TextBox Grid.Row="0" Grid.Column="1" 
+                 Name="txtName" 
+                 Margin="5"
+                 Text="{Binding Name}"/>
+
+            <Label Grid.Row="1" Grid.Column="0" 
+               Name="lblCountry"
+               Margin="5"
+               Content="{x:Static resx:Resources.CountryText}"/>
+
+            <TextBox Grid.Row="1" Grid.Column="1" 
+                 Name="txtCountry" 
+                 Margin="5"
+                 Text="{Binding Country}"/>
+
+            <Label Grid.Row="2" Grid.Column="0" 
+               Name="lblEmail" 
+               Margin="5"
+               Content="{x:Static resx:Resources.EmailText}"/>
+
+            <TextBox Grid.Row="2" Grid.Column="1" 
+                 Name="txtEmail" 
+                 Margin="5"
+                 Text="{Binding Email}"/>
+
+            <Label Grid.Row="3" Grid.Column="0" 
+               Name="lblHomepage" 
+               Margin="5"
+               Content="{x:Static resx:Resources.HomepageText}"/>
+
+            <TextBox Grid.Row="3" Grid.Column="1" 
+                 Name="txtHomepage" 
+                 Margin="5"
+                 Text="{Binding Homepage}"/>
+
+            <Label Grid.Row="4" Grid.Column="0"
+               Name="lblCategory" 
+               Margin="5"
+               Content="{x:Static resx:Resources.CategoryText}"/>
+
+            <ComboBox Grid.Row="4" Grid.Column="1" 
+                      Name="cbEmail"
+                      Margin="5"
+                      DisplayMemberPath="Label"
+                      ItemsSource="{Binding Categories}"
+                      SelectedItem="{Binding Category}">
+            </ComboBox>
+
+            <StackPanel Grid.Row="5" Grid.Column="1" Orientation="Horizontal">
+                <Button Name="btnBrowsePicture"
+                        Margin="10, 5, 5, 5"
+                        Content="{x:Static resx:Resources.BrowsePictureText}"
+                        Click="BrowsePicture_Click"/>
+
+                <Button Name="btnBrowseVideo"
+                        Margin="5"
+                        Content="{x:Static resx:Resources.BrowseVideoText}"
+                        Click="BrowseVideo_Click" />
+            </StackPanel>
+
+
+        </Grid>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            
+            <Image Grid.Row="0" Source="{Binding Picture}" />
+            <MediaElement Grid.Row="1" Source="{Binding Video}" />
+            <Button Grid.Row="2" Name="btnSave" 
+                    Margin="200, 5, 20, 5"
+                    Content="{x:Static resx:Resources.SaveText}"
+                    Command="{Binding SaveCommand}"/>
+        </Grid>
+    </Grid>
+</UserControl>

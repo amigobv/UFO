@@ -55,6 +55,7 @@ namespace Ufo.DAL.Common.Domain
         }
         #endregion
 
+        #region ctor
         public Artist(int id, string name, string country, string email, string description,
                       string homepage, string picture, string video, Category category, bool deleted)
         {
@@ -69,6 +70,21 @@ namespace Ufo.DAL.Common.Domain
             Category = category;
             IsDeleted = deleted;
         }
+
+        public Artist()
+        {
+            Id = 0;
+            Name = string.Empty;
+            Country = string.Empty;
+            Email = string.Empty;
+            Homepage = string.Empty;
+            Description = string.Empty;
+            VideoUrl = string.Empty;
+            PictureUrl = string.Empty;
+            Category = null;
+            IsDeleted = false;
+        }
+        #endregion
 
         public override int GetHashCode()
         {

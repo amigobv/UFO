@@ -13,11 +13,19 @@ namespace Ufo.DAL.Common.Domain
         public string Label { get; set; }
         #endregion
 
+        #region ctor
         public Category(string id, string label)
         {
             Id = id;
             Label = label;
         }
+
+        public Category()
+        {
+            Id = string.Empty;
+            Label = string.Empty;
+        }
+        #endregion
 
         public override int GetHashCode()
         {

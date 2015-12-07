@@ -15,6 +15,7 @@ namespace Ufo.DAL.Common.Domain
         public Venue Venue { get; set; }
         #endregion
 
+        #region ctor
         public Performance(int id, DateTime start, Artist artist, Venue venue)
         {
             Id = id;
@@ -22,6 +23,15 @@ namespace Ufo.DAL.Common.Domain
             Artist = artist;
             Venue = venue;
         }
+
+        public Performance()
+        {
+            Id = 0;
+            Start = new DateTime();
+            Artist = null;
+            Venue = null;
+        }
+        #endregion
 
         public override int GetHashCode()
         {

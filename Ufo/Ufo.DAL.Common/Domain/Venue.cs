@@ -15,6 +15,7 @@ namespace Ufo.DAL.Common.Domain
         public int MaxSpectators { get; set; }
         #endregion
 
+        #region ctor
         public Venue(int id, string label, int maxSpectators, Location location)
         {
             Id = id;
@@ -22,6 +23,16 @@ namespace Ufo.DAL.Common.Domain
             Location = location;
             MaxSpectators = maxSpectators;
         }
+
+        public Venue()
+        {
+            Id = 0;
+            Label = string.Empty;
+            Location = null;
+            MaxSpectators = 0;
+        }
+
+        #endregion
 
         public override int GetHashCode()
         {

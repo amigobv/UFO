@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Security.Cryptography;
 using Ufo.BL.Exceptions;
 using Ufo.BL.Interfaces;
 using Ufo.DAL.Common.Domain;
@@ -12,7 +13,7 @@ using Ufo.DAL.SqlServer.Factories;
 
 namespace Ufo.BL
 {
-    public class Manager : IManager
+    public class ManagerImpl : IManager
     {
 
         #region private members
@@ -26,7 +27,7 @@ namespace Ufo.BL
         #endregion
 
         #region Ctor
-        public Manager()
+        public ManagerImpl()
         {
             userDao = UserDaoFactory.GetUserDao();
             artistDao = ArtistDaoFactory.GetArtistDao();
@@ -39,6 +40,22 @@ namespace Ufo.BL
 
 
         #region User
+
+        /// <summary>
+        /// Hashes the password.
+        /// </summary>
+        /// <param name="input">The input.</param>
+        /// <returns></returns>
+        public string HashPassword(string input)
+        {
+            using (var sha1 = new SHA1Managed())
+            {
+                var hash = sha1.ComputeHash(Encoding.UTF8.GetBytes(input));
+                return Convert.ToBase64String(hash);
+
+            }
+
+        }
         /// <summary>
         /// Check if the specified username is already registrated.
         /// </summary>
@@ -225,7 +242,7 @@ namespace Ufo.BL
             return new ObservableCollection<Artist>(artistDao.FindByCountry(country));
         }
 
-        public ObservableCollection<Artist> GetAllArtistsByCountry(Category category)
+        public ObservableCollection<Artist> GetAllArtistsByCategory(Category category)
         {
             if (category == null ||
                 category.Id == null)
@@ -244,8 +261,20 @@ namespace Ufo.BL
 
         public void UpdateArtist(Artist artist)
         {
-            if (!artistDao.Update(artist))
-                throw new ArgumentException("Cannot update artist");
+            if (artist == null)
+                throw new ArgumentNullException("Invalid artist!");
+
+            if (artistDao.FindById(artist.Id) != null)
+            {
+                if (!artistDao.Update(artist))
+                    throw new ArgumentException("Cannot update artist");
+            }
+            else
+            {
+                CreateArtist(artist);
+            }
+
+
         }
         #endregion
 

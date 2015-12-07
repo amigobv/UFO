@@ -68,7 +68,7 @@ namespace Ufo.Commander.ViewModel
             {
                 if (user.Password != value)
                 {
-                    user.Password = value;
+                    user.Password = manager.HashPassword(value);
                     RaisePropertyChangedEvent("Password");
                 }
             }

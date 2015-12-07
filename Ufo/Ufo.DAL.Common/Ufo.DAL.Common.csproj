@@ -39,7 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dao\IDao.cs" />
+    <Compile Include="IDao.cs" />
     <Compile Include="Domain\Artist.cs" />
     <Compile Include="Domain\Category.cs" />
     <Compile Include="Domain\Restriction.cs" />

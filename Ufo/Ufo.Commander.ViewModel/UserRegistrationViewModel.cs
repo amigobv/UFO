@@ -13,12 +13,12 @@ namespace Ufo.Commander.ViewModel
 {
     public class UserRegistrationViewModel : ViewModelBase
     {
-        #region Private Members
+        #region private members
         private UserModel user;
         private IManager manager;
         #endregion
 
-        #region Ctor
+        #region ctor
         public UserRegistrationViewModel()
         {
             this.user = new UserModel();
@@ -26,7 +26,7 @@ namespace Ufo.Commander.ViewModel
         }
         #endregion
 
-        #region Properties
+        #region properties
         /// <summary>
         /// Gets or sets the username.
         /// </summary>
@@ -59,7 +59,7 @@ namespace Ufo.Commander.ViewModel
             {
                 if (user.Password != value)
                 {
-                    user.Password = value;
+                    user.Password = manager.HashPassword(value);
                     RaisePropertyChangedEvent("Password");
                 }
             }
@@ -85,7 +85,7 @@ namespace Ufo.Commander.ViewModel
         }
         #endregion
 
-        #region Methods
+        #region methods
         public void Registrate()
         {
             try

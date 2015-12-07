@@ -9,12 +9,12 @@ namespace Ufo.BL
     public static class ManagerFactory
     {
 
-        private static Manager manager;
+        private static ManagerImpl manager;
 
-        public static Manager GetManager()
+        public static ManagerImpl GetManager()
         {
             if (manager == null)
-                manager = new Manager();
+                manager = new ManagerImpl();
 
             return manager;
         }
