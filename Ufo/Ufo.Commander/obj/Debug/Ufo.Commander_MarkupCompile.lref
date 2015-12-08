@@ -1,8 +1,18 @@
-﻿H:\Semester5\SWK5\Project\Ufo\Ufo.Commander\obj\Debug\GeneratedInternalTypeHelper.g.cs
+﻿
 
 FH:\Semester5\SWK5\Project\Ufo\Ufo.Commander\MainWindow.xaml;;
-FH:\Semester5\SWK5\Project\Ufo\Ufo.Commander\Views\ArtistEditView.xaml;;
+FH:\Semester5\SWK5\Project\Ufo\Ufo.Commander\Views\AddArtistView.xaml;;
+FH:\Semester5\SWK5\Project\Ufo\Ufo.Commander\Views\CategoriesView.xaml;;
+FH:\Semester5\SWK5\Project\Ufo\Ufo.Commander\Views\Controls\ArtistControl.xaml;;
 FH:\Semester5\SWK5\Project\Ufo\Ufo.Commander\Views\ArtistsView.xaml;;
+FH:\Semester5\SWK5\Project\Ufo\Ufo.Commander\Views\Controls\CategoryControl.xaml;;
+FH:\Semester5\SWK5\Project\Ufo\Ufo.Commander\Views\Controls\LocationControl.xaml;;
+FH:\Semester5\SWK5\Project\Ufo\Ufo.Commander\Views\Controls\VenueControl.xaml;;
+FH:\Semester5\SWK5\Project\Ufo\Ufo.Commander\Views\LocationsView.xaml;;
 FH:\Semester5\SWK5\Project\Ufo\Ufo.Commander\Views\UserLoginView.xaml;;
 FH:\Semester5\SWK5\Project\Ufo\Ufo.Commander\Views\UserRegistrationView.xaml;;
+FH:\Semester5\SWK5\Project\Ufo\Ufo.Commander\Views\VenuesView.xaml;;
+FH:\Semester5\SWK5\Project\Ufo\Ufo.Commander\Views\AddCategoryView.xaml;;
+FH:\Semester5\SWK5\Project\Ufo\Ufo.Commander\Views\AddLocationView.xaml;;
+FH:\Semester5\SWK5\Project\Ufo\Ufo.Commander\Views\AddVenueView.xaml;;
 

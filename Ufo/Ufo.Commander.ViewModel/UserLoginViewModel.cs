@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 using Ufo.BL;
 using Ufo.BL.Interfaces;
 using Ufo.Commander.Model;
+using Ufo.DAL.Common.Domain;
 
 namespace Ufo.Commander.ViewModel
 {
     public class UserLoginViewModel: ViewModelBase
     {
         #region Private Members
-        private UserModel user;
+        private User user;
         private IManager manager;
         #endregion
 
@@ -20,10 +21,16 @@ namespace Ufo.Commander.ViewModel
         /// <summary>
         /// Initializes a new instance of the <see cref="UserLoginViewModel"/> class.
         /// </summary>
-        public UserLoginViewModel()
+        public UserLoginViewModel(IManager manager)
         {
-            user = new UserModel();
-            manager = ManagerFactory.GetManager();
+            this.user = new User();
+            this.manager = manager;
+        }
+
+        public UserLoginViewModel(User user, IManager manager)
+        {
+            this.user = user;
+            this.manager = manager;
         }
         #endregion
 
@@ -83,7 +90,7 @@ namespace Ufo.Commander.ViewModel
         {
             try
             {
-                manager.Login(user.GetInstance());
+                manager.Login(user);
             }
             catch(Exception)
             {

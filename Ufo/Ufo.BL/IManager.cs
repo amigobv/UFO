@@ -30,6 +30,7 @@ namespace Ufo.BL.Interfaces
         #endregion
 
         #region Category
+        bool CategoryExists(Category category);
         void CreateCategory(Category category);
         ObservableCollection<Category> GetAllCategories();
         void RemoveCategory(Category category);
@@ -37,12 +38,12 @@ namespace Ufo.BL.Interfaces
         #endregion
 
         #region Location
-        //void CreateLocation(Location category);
-        //ObservableCollection<Location> GetAllLocations();
-        //void RemoveLocation(Location category);
-        //void UpdateLocation(Location category);
+        bool LocationExists(Location location);
+        void CreateLocation(Location location);
+        ObservableCollection<Location> GetAllLocations();
+        void RemoveLocation(Location location);
+        void UpdateLocation(Location location);
         #endregion
-
 
         #region Venue
         void CreateVenue(Venue venue);

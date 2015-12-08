@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Ufo.BL;
 using Ufo.Commander.ViewModel;
 
 namespace Ufo.Commander.Views
@@ -25,7 +26,7 @@ namespace Ufo.Commander.Views
         public ArtistsView()
         {
             InitializeComponent();
-            DataContext = new ArtistsViewModel();
+            DataContext = new ArtistsViewModel(ManagerFactory.GetManager());
         }
 
         private void CreateArtist(object sender, RoutedEventArgs e)
@@ -34,8 +35,13 @@ namespace Ufo.Commander.Views
 
             if (vm != null)
             {
-                vm.CurrentArtist = new ArtistViewModel();
+                vm.CurrentArtist = new ArtistEditViewModel(ManagerFactory.GetManager());
             }
+
+        }
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
 
         }
     }

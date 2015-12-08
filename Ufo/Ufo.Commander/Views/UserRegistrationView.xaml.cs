@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Ufo.BL;
 using Ufo.Commander.ViewModel;
 
 namespace Ufo.Commander.Views
@@ -32,7 +33,7 @@ namespace Ufo.Commander.Views
         {
             InitializeComponent();
 
-            this.DataContext = new UserRegistrationViewModel();
+            this.DataContext = new UserRegistrationViewModel(ManagerFactory.GetManager());
         }
 
         private void Registrate(object sender, RoutedEventArgs e)

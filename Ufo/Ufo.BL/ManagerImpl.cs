@@ -273,12 +273,19 @@ namespace Ufo.BL
             {
                 CreateArtist(artist);
             }
-
-
         }
         #endregion
 
         #region category
+
+        public bool CategoryExists(Category category)
+        {
+            if (category == null)
+                return false;
+
+            return categoryDao.FindById(category.Id) != null;
+        }
+
         public void CreateCategory(Category category)
         {
             if (category == null)
@@ -307,31 +314,62 @@ namespace Ufo.BL
             if (category == null)
                 throw new ArgumentNullException("Invalid category");
 
-            if (categoryDao.Update(category))
-                throw new CategoryException("Cannot update category!");
+            if (categoryDao.FindById(category.Id) != null)
+            {
+                if (categoryDao.Update(category))
+                    throw new CategoryException("Cannot update category!");
+            }
+            else
+            {
+                CreateCategory(category);
+            }
         }
         #endregion
 
         #region location
-        //private void CreateLocation(Location category)
-        //{
-        //    throw new NotImplementedException();
-        //}
+        public bool LocationExists(Location location)
+        {
+            if (location == null)
+                throw new ArgumentNullException("Invalid location!");
 
-        //public ObservableCollection<Location> GetAllLocations()
-        //{
-        //    throw new NotImplementedException();
-        //}
+            return locationDao.FindById(location.Id) != null;
+        }
 
-        //public void RemoveLocation(Location category)
-        //{
-        //    throw new NotImplementedException();
-        //}
+        public void CreateLocation(Location location)
+        {
+            if (!locationDao.Insert(location))
+                throw new LocationException("Cannot create location");
+        }
 
-        //public void UpdateLocation(Location category)
-        //{
-        //    throw new NotImplementedException();
-        //}
+        public ObservableCollection<Location> GetAllLocations()
+        {
+            return new ObservableCollection<Location>(locationDao.FindAll());
+        }
+
+        public void RemoveLocation(Location location)
+        {
+            if (location == null)
+                throw new ArgumentNullException("Invalid location!");
+
+            if (!locationDao.Delete(location.Id))
+                throw new LocationException("Cannot remove location");
+        }
+
+        public void UpdateLocation(Location location)
+        {
+            if (location == null)
+                throw new ArgumentNullException("Invalid location!");
+
+            if (locationDao.FindById(location.Id) != null)
+            {
+                if (!locationDao.Update(location))
+                    throw new LocationException("Cannot update location");
+            }
+            else
+            {
+                CreateLocation(location);
+            }
+        }
         #endregion
 
         #region venue
@@ -339,12 +377,6 @@ namespace Ufo.BL
         {
             if (venue == null)
                 throw new ArgumentNullException("Invalid Venue!");
-
-            if (locationDao.FindById(venue.Location.Id) == null)
-            {
-                if (!locationDao.Insert(venue.Location))
-                    throw new LocationException("Cannot create location");
-            }
 
             if (!venueDao.Insert(venue))
                 throw new VenueException("Cannot insert venue!");
@@ -379,21 +411,15 @@ namespace Ufo.BL
             if (venue == null)
                 throw new ArgumentNullException("Invalid venue!");
 
-            var loc = locationDao.FindById(venue.Location.Id);
-            if (loc == null)
+            if (venueDao.FindById(venue.Id) != null)
             {
-                if (!locationDao.Insert(venue.Location))
-                    throw new LocationException("Cannot create location");
+                if (!venueDao.Update(venue))
+                    throw new VenueException("Cannot update venue!");
             }
-                
-            if (!loc.Equals(venue.Location))
+            else
             {
-                if (!locationDao.Update(venue.Location))
-                    throw new LocationException("Cannot update location!");
+                CreateVenue(venue);
             }
-
-            if (!venueDao.Update(venue))
-                throw new VenueException("Cannot update venue!");
         }
         #endregion
 

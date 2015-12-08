@@ -118,13 +118,19 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BrowsePictureText" xml:space="preserve">
-    <value>Choose Picture</value>
+    <value>Choose picture</value>
   </data>
   <data name="BrowseText" xml:space="preserve">
     <value>Browse</value>
   </data>
   <data name="BrowseVideoText" xml:space="preserve">
-    <value>Choose Video</value>
+    <value>Choose video</value>
+  </data>
+  <data name="CancelText" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="CapacityText" xml:space="preserve">
+    <value>Capacity</value>
   </data>
   <data name="CategoryText" xml:space="preserve">
     <value>Category</value>
@@ -141,6 +147,15 @@
   <data name="HomepageText" xml:space="preserve">
     <value>Homepage</value>
   </data>
+  <data name="IdentifierText" xml:space="preserve">
+    <value>Short name</value>
+  </data>
+  <data name="LocationsText" xml:space="preserve">
+    <value>Location</value>
+  </data>
+  <data name="LocationText" xml:space="preserve">
+    <value>Location name</value>
+  </data>
   <data name="LoginText" xml:space="preserve">
     <value>Login</value>
   </data>
@@ -148,7 +163,16 @@
     <value>Name</value>
   </data>
   <data name="NewArtistText" xml:space="preserve">
-    <value>New Artist</value>
+    <value>New artist</value>
+  </data>
+  <data name="NewCategoryText" xml:space="preserve">
+    <value>New category</value>
+  </data>
+  <data name="NewLocationText" xml:space="preserve">
+    <value>New location</value>
+  </data>
+  <data name="NewVenueText" xml:space="preserve">
+    <value>New venue</value>
   </data>
   <data name="PasswordText" xml:space="preserve">
     <value>Password</value>
@@ -159,6 +183,9 @@
   <data name="RegisterText" xml:space="preserve">
     <value>Register</value>
   </data>
+  <data name="RemoveText" xml:space="preserve">
+    <value>Remove</value>
+  </data>
   <data name="SaveText" xml:space="preserve">
     <value>Save</value>
   </data>
@@ -166,6 +193,6 @@
     <value>Username</value>
   </data>
   <data name="VideoText" xml:space="preserve">
-    <value>VideoText</value>
+    <value>Video</value>
   </data>
 </root>

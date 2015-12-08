@@ -10,38 +10,26 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Ufo.BL;
 using Ufo.Commander.ViewModel;
 
 namespace Ufo.Commander.Views
 {
     /// <summary>
-    /// Interaction logic for ArtistEditView.xaml
+    /// Interaction logic for AddArtistView.xaml
     /// </summary>
-    public partial class ArtistEditView : UserControl
+    public partial class AddArtistView : Window
     {
-        public ArtistViewModel ViewModel
-        {
-            get
-            {
-                return this.DataContext as ArtistViewModel;
-            }
-        }
-
-        public ArtistEditView()
+        public AddArtistView()
         {
             InitializeComponent();
+            DataContext = new ArtistEditViewModel(ManagerFactory.GetManager());
         }
 
-        private void BrowsePicture_Click(object sender, RoutedEventArgs e)
+        private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void BrowseVideo_Click(object sender, RoutedEventArgs e)
-        {
-
+            this.Close();
         }
     }
 }

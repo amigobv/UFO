@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Ufo.BL;
 using Ufo.Commander.ViewModel;
 
 namespace Ufo.Commander.Views
@@ -31,7 +32,7 @@ namespace Ufo.Commander.Views
         public UserLoginView()
         {
             InitializeComponent();
-            this.DataContext = new UserLoginViewModel();
+            this.DataContext = new UserLoginViewModel(ManagerFactory.GetManager());
         }
 
         public void Login(object sender, RoutedEventArgs e)

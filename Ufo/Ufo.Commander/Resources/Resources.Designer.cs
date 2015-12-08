@@ -61,7 +61,7 @@ namespace Ufo.Commander.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Choose Picture.
+        ///   Looks up a localized string similar to Choose picture.
         /// </summary>
         public static string BrowsePictureText {
             get {
@@ -79,11 +79,29 @@ namespace Ufo.Commander.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Choose Video.
+        ///   Looks up a localized string similar to Choose video.
         /// </summary>
         public static string BrowseVideoText {
             get {
                 return ResourceManager.GetString("BrowseVideoText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string CancelText {
+            get {
+                return ResourceManager.GetString("CancelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Capacity.
+        /// </summary>
+        public static string CapacityText {
+            get {
+                return ResourceManager.GetString("CapacityText", resourceCulture);
             }
         }
         
@@ -133,6 +151,33 @@ namespace Ufo.Commander.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Short name.
+        /// </summary>
+        public static string IdentifierText {
+            get {
+                return ResourceManager.GetString("IdentifierText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Location.
+        /// </summary>
+        public static string LocationsText {
+            get {
+                return ResourceManager.GetString("LocationsText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Location name.
+        /// </summary>
+        public static string LocationText {
+            get {
+                return ResourceManager.GetString("LocationText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Login.
         /// </summary>
         public static string LoginText {
@@ -151,11 +196,38 @@ namespace Ufo.Commander.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to New Artist.
+        ///   Looks up a localized string similar to New artist.
         /// </summary>
         public static string NewArtistText {
             get {
                 return ResourceManager.GetString("NewArtistText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New category.
+        /// </summary>
+        public static string NewCategoryText {
+            get {
+                return ResourceManager.GetString("NewCategoryText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New location.
+        /// </summary>
+        public static string NewLocationText {
+            get {
+                return ResourceManager.GetString("NewLocationText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New venue.
+        /// </summary>
+        public static string NewVenueText {
+            get {
+                return ResourceManager.GetString("NewVenueText", resourceCulture);
             }
         }
         
@@ -187,6 +259,15 @@ namespace Ufo.Commander.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Remove.
+        /// </summary>
+        public static string RemoveText {
+            get {
+                return ResourceManager.GetString("RemoveText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Save.
         /// </summary>
         public static string SaveText {
@@ -205,7 +286,7 @@ namespace Ufo.Commander.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to VideoText.
+        ///   Looks up a localized string similar to Video.
         /// </summary>
         public static string VideoText {
             get {

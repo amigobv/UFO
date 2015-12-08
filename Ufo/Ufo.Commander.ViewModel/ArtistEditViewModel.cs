@@ -12,7 +12,7 @@ using Ufo.DAL.Common.Domain;
 
 namespace Ufo.Commander.ViewModel
 {
-    public class ArtistViewModel : ViewModelBase
+    public class ArtistEditViewModel : ViewModelBase
     {
         #region private members
         private IManager manager;
@@ -21,20 +21,23 @@ namespace Ufo.Commander.ViewModel
         #endregion
 
         #region ctor
-        public ArtistViewModel()
+        public ArtistEditViewModel(IManager manager)
         {
-            artist = new Artist();
-            manager = ManagerFactory.GetManager();
+            this.artist = new Artist();
+            this.manager = manager;
             Categories = manager.GetAllCategories();
             SaveCommand = new RelayCommand(o => manager.UpdateArtist(artist));
+            RemoveCommand = new RelayCommand(o => manager.RemoveArtist(artist), o => false);
+
         }
 
-        public ArtistViewModel(Artist artist)
+        public ArtistEditViewModel(Artist artist, IManager manager)
         {
             this.artist = artist;
-            manager = ManagerFactory.GetManager();
+            this.manager = manager;
             Categories = manager.GetAllCategories();
             SaveCommand = new RelayCommand(o => manager.UpdateArtist(artist));
+            RemoveCommand = new RelayCommand(o => manager.RemoveArtist(artist), o => false);
         }
         #endregion
 
@@ -150,6 +153,7 @@ namespace Ufo.Commander.ViewModel
         }
 
         public ICommand SaveCommand { get; set; }
+        public ICommand RemoveCommand { get; set; }
         #endregion
     }
 }

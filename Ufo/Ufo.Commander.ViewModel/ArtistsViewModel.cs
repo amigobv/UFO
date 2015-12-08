@@ -13,35 +13,23 @@ namespace Ufo.Commander.ViewModel
     public class ArtistsViewModel : ViewModelBase
     {
         #region privae members
-        private ObservableCollection<ArtistViewModel> artists;
+        private ObservableCollection<ArtistEditViewModel> artists;
         private IManager manager;
-        private ArtistViewModel currentArtist;
+        private ArtistEditViewModel currentArtist;
         #endregion
 
         #region ctor
-        public ArtistsViewModel()
+        public ArtistsViewModel(IManager manager)
         {
-            manager = ManagerFactory.GetManager();
-            artists = new ObservableCollection<ArtistViewModel>();
-            currentArtist = new ArtistViewModel(new Artist());
+            this.manager = manager;
+            artists = new ObservableCollection<ArtistEditViewModel>();
+            currentArtist = new ArtistEditViewModel(new Artist(), manager);
             LoadArtists();
         }
         #endregion
 
-        public void LoadArtists()
-        {
-            Artists.Clear();
-            var artistsList = manager.GetAllArtists();
-
-            foreach (var artist in artistsList)
-            {
-                Artists.Add(new ArtistViewModel(artist));
-            }
-
-        }
-
         #region properties
-        public ObservableCollection<ArtistViewModel> Artists
+        public ObservableCollection<ArtistEditViewModel> Artists
         {
             get { return artists; }
             set
@@ -54,7 +42,7 @@ namespace Ufo.Commander.ViewModel
             }
         }
 
-        public ArtistViewModel CurrentArtist
+        public ArtistEditViewModel CurrentArtist
         {
             get { return currentArtist; }
             set
@@ -67,5 +55,17 @@ namespace Ufo.Commander.ViewModel
             }
         }
         #endregion
+
+        public void LoadArtists()
+        {
+            Artists.Clear();
+            var artistsList = manager.GetAllArtists();
+
+            foreach (var artist in artistsList)
+            {
+                Artists.Add(new ArtistEditViewModel(artist, manager));
+            }
+
+        }
     }
 }

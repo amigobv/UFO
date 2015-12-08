@@ -14,15 +14,21 @@ namespace Ufo.Commander.ViewModel
     public class UserRegistrationViewModel : ViewModelBase
     {
         #region private members
-        private UserModel user;
+        private User user;
         private IManager manager;
         #endregion
 
         #region ctor
-        public UserRegistrationViewModel()
+        public UserRegistrationViewModel(IManager manager)
         {
-            this.user = new UserModel();
-            this.manager = ManagerFactory.GetManager();
+            this.user = new User();
+            this.manager = manager;
+        }
+
+        public UserRegistrationViewModel(User user, IManager manager)
+        {
+            this.user = user;
+            this.manager = manager;
         }
         #endregion
 
@@ -90,7 +96,7 @@ namespace Ufo.Commander.ViewModel
         {
             try
             {
-                manager.Registrate(user.GetInstance());
+                manager.Registrate(user);
             }
             catch(Exception)
             {
