@@ -14,7 +14,7 @@
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
 
-        <GroupBox Margin="5" Header="Artist">
+        <GroupBox Margin="5" Header="{x:Static resx:Resources.ArtistText}">
             <Grid Grid.Column="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*" />
@@ -103,7 +103,7 @@
             </Grid>
         </GroupBox>
 
-        <GroupBox Grid.Column="1" Margin="5" Header="Media">
+        <GroupBox Grid.Column="1" Margin="5" Header="{x:Static resx:Resources.MediaText}">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*" />

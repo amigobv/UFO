@@ -150,10 +150,10 @@
   <data name="IdentifierText" xml:space="preserve">
     <value>Short name</value>
   </data>
-  <data name="LocationsText" xml:space="preserve">
+  <data name="LocationText" xml:space="preserve">
     <value>Location</value>
   </data>
-  <data name="LocationText" xml:space="preserve">
+  <data name="LocationNameText" xml:space="preserve">
     <value>Location name</value>
   </data>
   <data name="LoginText" xml:space="preserve">
@@ -194,5 +194,35 @@
   </data>
   <data name="VideoText" xml:space="preserve">
     <value>Video</value>
+  </data>
+  <data name="ArtistText" xml:space="preserve">
+    <value>Artist</value>
+  </data>
+  <data name="MediaText" xml:space="preserve">
+    <value>Media</value>
+  </data>
+  <data name="PerformanceText" xml:space="preserve">
+    <value>Performance</value>
+  </data>
+  <data name="VenueText" xml:space="preserve">
+    <value>Venue</value>
+  </data>
+  <data name="StartsAtText" xml:space="preserve">
+    <value>Starts at</value>
+  </data>
+  <data name="ArtistsText" xml:space="preserve">
+    <value>Artists</value>
+  </data>
+  <data name="CategoriesText" xml:space="preserve">
+    <value>Categories</value>
+  </data>
+  <data name="LocationsText" xml:space="preserve">
+    <value>Locations</value>
+  </data>
+  <data name="ScheduleText" xml:space="preserve">
+    <value>Schedule</value>
+  </data>
+  <data name="VenuesText" xml:space="preserve">
+    <value>Venues</value>
   </data>
 </root>

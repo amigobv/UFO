@@ -40,13 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArtistModel.cs" />
-    <Compile Include="CategoryModel.cs" />
-    <Compile Include="LocationModel.cs" />
-    <Compile Include="PerformanceModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserModel.cs" />
-    <Compile Include="VenueModel.cs" />
+    <Compile Include="TimeModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ufo.DAL.Common\Ufo.DAL.Common.csproj">

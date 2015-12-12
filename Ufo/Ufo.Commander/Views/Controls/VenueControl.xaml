@@ -45,7 +45,7 @@
                 <Label Grid.Row="2" Grid.Column="0"
                        Name="lblLocation" 
                        Margin="4"
-                       Content="{x:Static resx:Resources.LocationsText}"/>
+                       Content="{x:Static resx:Resources.LocationText}"/>
 
                 <ComboBox Grid.Row="2" Grid.Column="1"
                           Name="cbLocation"

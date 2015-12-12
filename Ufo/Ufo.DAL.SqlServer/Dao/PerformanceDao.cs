@@ -46,7 +46,7 @@ namespace Ufo.DAL.SqlServer.Dao
             @"SELECT p.idPerformance, p.start, a.idArtist, a.name, a.country, a.email, a.description, a.homepage, a.picture, a.video, " +
             @"c.idCategory, c.label, a.deleted, v.idVenue, v.label, v.maxSpectators, l.idLocation, l.label " +
             @"FROM Performance as p, Artist as a, Venue as v, Location as l, Category as c " +
-            @"WHERE p.artist = a.idArtist AND a.category = c.idCategory AND p.pVenue = v.idVenue AND p.pLocation = l.idLocation AND cast (p.start as date) = @date " +
+            @"WHERE p.artist = a.idArtist AND a.category = c.idCategory AND p.pVenue = v.idVenue AND p.pLocation = l.idLocation AND p.pLocation = v.location AND p.start = @date " +
             @"ORDER BY p.start ASC";
 
         private const string SQL_FIND_ALL =
@@ -106,10 +106,10 @@ namespace Ufo.DAL.SqlServer.Dao
                                                                  (string)reader[3],     // artist name
                                                                  (string)reader[4],     // artist country
                                                                  (string)reader[5],     // artist email   
-                                                                 (string)reader[6],     // artist description
-                                                                 (string)reader[7],     // artist homepage
-                                                                 (string)reader[8],     // artist picture 
-                                                                 (string)reader[9],     // artist video
+                                                                 (reader[6] == DBNull.Value) ? string.Empty : (string)reader[6],     // artist description
+                                                                 (reader[7] == DBNull.Value) ? string.Empty : (string)reader[7],     // artist homepage
+                                                                 (reader[8] == DBNull.Value) ? string.Empty : (string)reader[8],     // artist picture 
+                                                                 (reader[9] == DBNull.Value) ? string.Empty : (string)reader[9],     // artist video
                                                                  new Category((string)reader[10],    // category id
                                                                               (string)reader[11]),   // category label
                                                                  (bool)reader[12]),     // artist deleted
@@ -160,7 +160,7 @@ namespace Ufo.DAL.SqlServer.Dao
         public IList<Performance> FindByDay(DateTime date)
         {
             var command = _database.CreateCommand(SQL_FIND_BY_DAY);
-            _database.DefineParameter(command, "@date", DbType.Date, date.Date);
+            _database.DefineParameter(command, "@date", DbType.DateTime, date);
 
             using (var reader = _database.ExecuteReader(command))
             {
@@ -184,10 +184,10 @@ namespace Ufo.DAL.SqlServer.Dao
                                                       (string)reader[3],     // artist name
                                                       (string)reader[4],     // artist country
                                                       (string)reader[5],     // artist email   
-                                                      (string)reader[6],     // artist description
-                                                      (string)reader[7],     // artist homepage
-                                                      (string)reader[8],     // artist picture 
-                                                      (string)reader[9],     // artist video
+                                                      (reader[6] == DBNull.Value) ? string.Empty : (string)reader[6],     // artist description
+                                                      (reader[7] == DBNull.Value) ? string.Empty : (string)reader[7],     // artist homepage
+                                                      (reader[8] == DBNull.Value) ? string.Empty : (string)reader[8],     // artist picture 
+                                                      (reader[9] == DBNull.Value) ? string.Empty : (string)reader[9],     // artist video
                                                       new Category((string)reader[10],    // category id
                                                                    (string)reader[11]),   // category label
                                                       (bool)reader[12]),     // artist deleted

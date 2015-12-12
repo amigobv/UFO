@@ -61,6 +61,24 @@ namespace Ufo.Commander.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Artists.
+        /// </summary>
+        public static string ArtistsText {
+            get {
+                return ResourceManager.GetString("ArtistsText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Artist.
+        /// </summary>
+        public static string ArtistText {
+            get {
+                return ResourceManager.GetString("ArtistText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Choose picture.
         /// </summary>
         public static string BrowsePictureText {
@@ -102,6 +120,15 @@ namespace Ufo.Commander.Resources {
         public static string CapacityText {
             get {
                 return ResourceManager.GetString("CapacityText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Categories.
+        /// </summary>
+        public static string CategoriesText {
+            get {
+                return ResourceManager.GetString("CategoriesText", resourceCulture);
             }
         }
         
@@ -160,7 +187,16 @@ namespace Ufo.Commander.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Location.
+        ///   Looks up a localized string similar to Location name.
+        /// </summary>
+        public static string LocationNameText {
+            get {
+                return ResourceManager.GetString("LocationNameText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Locations.
         /// </summary>
         public static string LocationsText {
             get {
@@ -169,7 +205,7 @@ namespace Ufo.Commander.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Location name.
+        ///   Looks up a localized string similar to Location.
         /// </summary>
         public static string LocationText {
             get {
@@ -183,6 +219,15 @@ namespace Ufo.Commander.Resources {
         public static string LoginText {
             get {
                 return ResourceManager.GetString("LoginText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Media.
+        /// </summary>
+        public static string MediaText {
+            get {
+                return ResourceManager.GetString("MediaText", resourceCulture);
             }
         }
         
@@ -241,6 +286,15 @@ namespace Ufo.Commander.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Performance.
+        /// </summary>
+        public static string PerformanceText {
+            get {
+                return ResourceManager.GetString("PerformanceText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Picture.
         /// </summary>
         public static string PictureText {
@@ -277,11 +331,47 @@ namespace Ufo.Commander.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Schedule.
+        /// </summary>
+        public static string ScheduleText {
+            get {
+                return ResourceManager.GetString("ScheduleText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Starts at.
+        /// </summary>
+        public static string StartsAtText {
+            get {
+                return ResourceManager.GetString("StartsAtText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Username.
         /// </summary>
         public static string UsernameText {
             get {
                 return ResourceManager.GetString("UsernameText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Venues.
+        /// </summary>
+        public static string VenuesText {
+            get {
+                return ResourceManager.GetString("VenuesText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Venue.
+        /// </summary>
+        public static string VenueText {
+            get {
+                return ResourceManager.GetString("VenueText", resourceCulture);
             }
         }
         

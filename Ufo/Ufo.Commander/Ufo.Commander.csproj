@@ -67,14 +67,20 @@
     <Compile Include="Views\AddVenueView.xaml.cs">
       <DependentUpon>AddVenueView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\CategoriesView.xaml.cs">
-      <DependentUpon>CategoriesView.xaml</DependentUpon>
+    <Compile Include="Views\Controls\CategoriesControl.xaml.cs">
+      <DependentUpon>CategoriesControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Controls\ArtistControl.xaml.cs">
       <DependentUpon>ArtistControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ArtistsView.xaml.cs">
-      <DependentUpon>ArtistsView.xaml</DependentUpon>
+    <Compile Include="Views\Controls\ArtistsControl.xaml.cs">
+      <DependentUpon>ArtistsControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\Calendar\CalendarDayControl.xaml.cs">
+      <DependentUpon>CalendarDayControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\Calendar\HourSlotControl.xaml.cs">
+      <DependentUpon>HourSlotControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Controls\CategoryControl.xaml.cs">
       <DependentUpon>CategoryControl.xaml</DependentUpon>
@@ -82,11 +88,23 @@
     <Compile Include="Views\Controls\LocationControl.xaml.cs">
       <DependentUpon>LocationControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Controls\PerformanceControl.xaml.cs">
+      <DependentUpon>PerformanceControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\TimePickerControl.xaml.cs">
+      <DependentUpon>TimePickerControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Controls\VenueControl.xaml.cs">
       <DependentUpon>VenueControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\LocationsView.xaml.cs">
-      <DependentUpon>LocationsView.xaml</DependentUpon>
+    <Compile Include="Views\Controls\LocationsControl.xaml.cs">
+      <DependentUpon>LocationsControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PerformanceEditView.xaml.cs">
+      <DependentUpon>PerformanceEditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\ScheduleControl.xaml.cs">
+      <DependentUpon>ScheduleControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UserLoginView.xaml.cs">
       <DependentUpon>UserLoginView.xaml</DependentUpon>
@@ -94,8 +112,8 @@
     <Compile Include="Views\UserRegistrationView.xaml.cs">
       <DependentUpon>UserRegistrationView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\VenuesView.xaml.cs">
-      <DependentUpon>VenuesView.xaml</DependentUpon>
+    <Compile Include="Views\Controls\VenuesControl.xaml.cs">
+      <DependentUpon>VenuesControl.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -125,7 +143,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\CategoriesView.xaml">
+    <Page Include="Views\Controls\CategoriesControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -133,7 +151,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ArtistsView.xaml">
+    <Page Include="Views\Controls\ArtistsControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\Calendar\CalendarDayControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\Calendar\HourSlotControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -145,11 +171,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Controls\PerformanceControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\TimePickerControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Controls\VenueControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\LocationsView.xaml">
+    <Page Include="Views\Controls\LocationsControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PerformanceEditView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\ScheduleControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -161,7 +203,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\VenuesView.xaml">
+    <Page Include="Views\Controls\VenuesControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

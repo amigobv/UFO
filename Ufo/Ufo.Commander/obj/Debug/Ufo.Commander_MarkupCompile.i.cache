@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-H:\Semester5\SWK5\Project\Ufo\Ufo.Commander\obj\Debug\
+E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander\obj\Debug\
 Ufo.Commander
 none
 false
 DEBUG;TRACE
-H:\Semester5\SWK5\Project\Ufo\Ufo.Commander\App.xaml
-151032614156
+E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander\App.xaml
+211527206664
 
-23-703122663
-15-216753750
-MainWindow.xaml;Views\AddArtistView.xaml;Views\AddCategoryView.xaml;Views\AddLocationView.xaml;Views\AddVenueView.xaml;Views\CategoriesView.xaml;Views\Controls\ArtistControl.xaml;Views\ArtistsView.xaml;Views\Controls\CategoryControl.xaml;Views\Controls\LocationControl.xaml;Views\Controls\VenueControl.xaml;Views\LocationsView.xaml;Views\UserLoginView.xaml;Views\UserRegistrationView.xaml;Views\VenuesView.xaml;
+291128172339
+15-285853095
+MainWindow.xaml;Views\AddArtistView.xaml;Views\AddCategoryView.xaml;Views\AddLocationView.xaml;Views\AddVenueView.xaml;Views\Controls\CategoriesControl.xaml;Views\Controls\ArtistControl.xaml;Views\Controls\ArtistsControl.xaml;Views\Controls\Calendar\CalendarDayControl.xaml;Views\Controls\Calendar\HourSlotControl.xaml;Views\Controls\CategoryControl.xaml;Views\Controls\LocationControl.xaml;Views\Controls\PerformanceControl.xaml;Views\Controls\TimePickerControl.xaml;Views\Controls\VenueControl.xaml;Views\Controls\LocationsControl.xaml;Views\PerformanceEditView.xaml;Views\Controls\ScheduleControl.xaml;Views\UserLoginView.xaml;Views\UserRegistrationView.xaml;Views\Controls\VenuesControl.xaml;
 
-False
+True
 
