@@ -80,6 +80,11 @@ namespace Ufo.Commander.ViewModel
                 }
             }
         }
+
+        public bool IsLoginSuccessful
+        {
+            get { return manager.GetActiveUser() != null; }
+        }
         #endregion
 
         #region Methods

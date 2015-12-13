@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander\App.xaml
-211527206664
+221355336722
 
-291128172339
-15-285853095
-MainWindow.xaml;Views\AddArtistView.xaml;Views\AddCategoryView.xaml;Views\AddLocationView.xaml;Views\AddVenueView.xaml;Views\Controls\CategoriesControl.xaml;Views\Controls\ArtistControl.xaml;Views\Controls\ArtistsControl.xaml;Views\Controls\Calendar\CalendarDayControl.xaml;Views\Controls\Calendar\HourSlotControl.xaml;Views\Controls\CategoryControl.xaml;Views\Controls\LocationControl.xaml;Views\Controls\PerformanceControl.xaml;Views\Controls\TimePickerControl.xaml;Views\Controls\VenueControl.xaml;Views\Controls\LocationsControl.xaml;Views\PerformanceEditView.xaml;Views\Controls\ScheduleControl.xaml;Views\UserLoginView.xaml;Views\UserRegistrationView.xaml;Views\Controls\VenuesControl.xaml;
+30727070977
+16-426311859
+Views\MainWindow.xaml;Views\AddArtistView.xaml;Views\AddCategoryView.xaml;Views\AddLocationView.xaml;Views\AddVenueView.xaml;Views\Controls\Calendar\ScheduleVenueRowControl.xaml;Views\Controls\CategoriesControl.xaml;Views\Controls\ArtistControl.xaml;Views\Controls\ArtistsControl.xaml;Views\Controls\Calendar\CalendarDayControl.xaml;Views\Controls\Calendar\HourSlotControl.xaml;Views\Controls\CategoryControl.xaml;Views\Controls\LocationControl.xaml;Views\Controls\PerformanceControl.xaml;Views\Controls\TimePickerControl.xaml;Views\Controls\VenueControl.xaml;Views\Controls\LocationsControl.xaml;Views\PerformanceEditView.xaml;Views\Controls\ScheduleControl.xaml;Views\UserLoginView.xaml;Views\UserRegistrationView.xaml;Views\Controls\VenuesControl.xaml;
 
-True
+False
 

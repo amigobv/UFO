@@ -53,16 +53,29 @@ namespace Ufo.Commander.ViewModel
             }
         }
 
-        public int Capacity
+        public string Capacity
         {
-            get { return venue.MaxSpectators; }
+            get
+            {
+                if (venue.MaxSpectators == 0)
+                    return string.Empty;
+
+                return venue.MaxSpectators.ToString();
+            }
+        
             set
             {
-                if (venue.MaxSpectators != value)
+                var capacity = 0;
+
+                if (int.TryParse(value, out capacity))
                 {
-                    venue.MaxSpectators = value;
-                    RaisePropertyChangedEvent(nameof(Capacity));
+                    if (venue.MaxSpectators != capacity)
+                    {
+                        venue.MaxSpectators = capacity;
+                        RaisePropertyChangedEvent(nameof(Capacity));
+                    }
                 }
+
             }
         }
 

@@ -6,8 +6,7 @@
         xmlns:resx="clr-namespace:Ufo.Commander.Resources"
         xmlns:local="clr-namespace:Ufo.Commander.Views"
         xmlns:ctrl="clr-namespace:Ufo.Commander.Views.Controls.Calendar"
-        mc:Ignorable="d"
-        Height="500" Width="800">
+        mc:Ignorable="d">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*" />

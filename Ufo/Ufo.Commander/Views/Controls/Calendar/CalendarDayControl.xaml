@@ -7,6 +7,9 @@
              xmlns:ctrl="clr-namespace:Ufo.Commander.Views.Controls.Calendar"
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="300">
+
+
+    <!--
     <Grid Margin="5">
         <DataGrid Name="dgPerformances" 
                   ItemsSource="{Binding PerformancesByDay}"  
@@ -15,7 +18,7 @@
                 <DataGridTemplateColumn IsReadOnly="True">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding Date}" />
+                            <TextBlock Text="{Binding Venue.Label}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -32,7 +35,12 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
-
+            <DataGrid.RowDetailsTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Date}" Margin="5"/>
+                </DataTemplate>
+            </DataGrid.RowDetailsTemplate>
         </DataGrid>
     </Grid>
+    -->
 </UserControl>

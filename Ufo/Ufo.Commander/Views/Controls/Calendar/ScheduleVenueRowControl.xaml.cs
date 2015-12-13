@@ -12,20 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Ufo.BL;
-using Ufo.Commander.ViewModel;
 
-namespace Ufo.Commander
+namespace Ufo.Commander.Views.Controls.Calendar
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for ScheduleVenueRowControl.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ScheduleVenueRowControl : UserControl
     {
-        public MainWindow()
+        public ScheduleVenueRowControl()
         {
             InitializeComponent();
-            DataContext = new MainViewModel(ManagerFactory.GetManager());
         }
     }
 }

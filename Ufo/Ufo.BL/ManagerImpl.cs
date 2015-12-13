@@ -178,7 +178,7 @@ namespace Ufo.BL
                 throw;
             }
 
-            currentUser = user; throw new NotImplementedException();
+            currentUser = user;
         }
 
         /// <summary>
@@ -219,6 +219,11 @@ namespace Ufo.BL
                 throw new DataAccessException("Cannot update user!");
         }
 
+
+        public User GetActiveUser()
+        {
+            return currentUser;
+        }
         #endregion
 
 
@@ -442,7 +447,10 @@ namespace Ufo.BL
 
         public ObservableCollection<Performance> GetPerformanceByDay(DateTime day)
         {
-            return new ObservableCollection<Performance>(performanceDao.FindByDay(day));
+            DateTime start = new DateTime(day.Year, day.Month, day.Day, 0, 0, 0);
+            DateTime end = new DateTime(day.Year, day.Month, day.Day, 23, 59, 59);
+
+            return new ObservableCollection<Performance>(performanceDao.FindByDay(start, end));
         }
 
         public ObservableCollection<Performance> GetPerformanceByArtist(Artist artist)

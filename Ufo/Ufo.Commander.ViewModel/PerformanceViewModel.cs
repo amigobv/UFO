@@ -13,7 +13,6 @@ namespace Ufo.Commander.ViewModel
     public class PerformanceViewModel : ViewModelBase
     {
         #region private members
-        private TimeViewModel time;
         private IManager manager;
         private Performance performance;
         private ObservableCollection<Artist> artists;
@@ -24,7 +23,6 @@ namespace Ufo.Commander.ViewModel
         public PerformanceViewModel(IManager manager)
         {
             this.manager = manager;
-            this.time = new TimeViewModel();
             this.performance = new Performance();
             InitialiazeCollections();
         }
@@ -33,7 +31,6 @@ namespace Ufo.Commander.ViewModel
         {
             this.manager = manager;
             this.performance = performance;
-            this.time = new TimeViewModel(new TimeModel(performance.Start.Hour, performance.Start.Minute));
             InitialiazeCollections();
         }
 
@@ -66,7 +63,6 @@ namespace Ufo.Commander.ViewModel
         #endregion
 
         #region properties
-        public TimeViewModel Time { get; set; }
 
         public ObservableCollection<Artist> Artists 
         { 
@@ -120,17 +116,22 @@ namespace Ufo.Commander.ViewModel
             }
         }
 
-        public string Date
+        public DateTime StartHour
+        {
+            get { return performance.Start; }
+            set
+            {
+                if (performance.Start != value)
+                {
+                    performance.Start = value;
+                    RaisePropertyChangedEvent(nameof(StartHour));
+                }
+            }
+        }
+
+        public string Time
         {
             get { return performance.Start.ToString("HH:mm"); }
-            //set
-            //{
-            //    if (performance.Start.Date != value.Date)
-            //    {
-            //        performance.Start = new DateTime(value.Date.Year, value.Date.Month, value.Date.Day, Time.Hour, 0, 0);
-            //        RaisePropertyChangedEvent(nameof(Date));
-            //    }
-            //}
         }
         #endregion
 

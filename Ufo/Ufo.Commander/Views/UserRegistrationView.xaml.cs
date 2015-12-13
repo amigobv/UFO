@@ -36,7 +36,7 @@ namespace Ufo.Commander.Views
             this.DataContext = new UserRegistrationViewModel(ManagerFactory.GetManager());
         }
 
-        private void Registrate(object sender, RoutedEventArgs e)
+        private void Register(object sender, RoutedEventArgs e)
         {
             if (ViewModel == null)
             {
@@ -48,12 +48,26 @@ namespace Ufo.Commander.Views
             {
                 ViewModel.Password = txtPassword.Password;
                 ViewModel.Registrate();
+
+                if (ViewModel.IsRegistrationSuccessful)
+                    DialogResult = true;
+                else
+                    DialogResult = false;
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                DialogResult = false;
             }
-            
+
+            Close();
+        }
+
+        private void Exit(object sender, RoutedEventArgs e)
+        {
+            DialogResult = false;
+            Close();
         }
     }
 }

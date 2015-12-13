@@ -18,6 +18,7 @@ namespace Ufo.BL.Interfaces
         ObservableCollection<User> GetAllUsers();
         void RemoveUser(User user);
         void UpdateUser(User user);
+        User GetActiveUser();
         #endregion
 
         #region Artist

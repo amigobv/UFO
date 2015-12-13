@@ -32,7 +32,7 @@ namespace Ufo.Commander.Views
         public UserLoginView()
         {
             InitializeComponent();
-            this.DataContext = new UserLoginViewModel(ManagerFactory.GetManager());
+            //this.DataContext = new UserLoginViewModel(ManagerFactory.GetManager());
         }
 
         public void Login(object sender, RoutedEventArgs e)
@@ -47,18 +47,34 @@ namespace Ufo.Commander.Views
             {
                 ViewModel.Password = txtPassword.Password;
                 ViewModel.Login();
+
+                if (ViewModel.IsLoginSuccessful)
+                {
+                    DialogResult = true;
+                    Close();
+                }
             }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                DialogResult = false;
+                Close();
             }
         }
 
         public void Register(object sender, RoutedEventArgs e)
         {
-            UserRegistrationView registerWindow = new UserRegistrationView();
-            registerWindow.Show();
-            this.Close();
+            var registerWindow = new UserRegistrationView();
+            registerWindow.ShowDialog();
+
+            DialogResult = registerWindow.DialogResult.GetValueOrDefault();
+            Close();
+        }
+
+        private void Exit(object sender, RoutedEventArgs e)
+        {
+            DialogResult = false;
+            Close();
         }
     }
 }

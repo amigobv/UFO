@@ -28,10 +28,13 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="0" Margin="5" Name="btnRegister" Content="{x:Static resx:Resources.RegisterText}" Click="Register"/>
-            <Button Grid.Column="1" Margin="5" Name="btnLogin" Content="{x:Static resx:Resources.LoginText}" Click="Login"/>
+            <Button Grid.Column="0" Margin="5" Name="btnExit" Content="{x:Static resx:Resources.ExitText}" Click="Exit"/>
+            <Button Grid.Column="1" Margin="5" Name="btnRegister" Content="{x:Static resx:Resources.RegisterText}" Click="Register"/>
+            <Button Grid.Column="2" Margin="5" Name="btnLogin" Content="{x:Static resx:Resources.LoginText}" Click="Login"/>
+            
         </Grid>
     </Grid>
 </Window>

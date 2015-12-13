@@ -46,7 +46,7 @@ namespace Ufo.DAL.SqlServer.Dao
             @"SELECT p.idPerformance, p.start, a.idArtist, a.name, a.country, a.email, a.description, a.homepage, a.picture, a.video, " +
             @"c.idCategory, c.label, a.deleted, v.idVenue, v.label, v.maxSpectators, l.idLocation, l.label " +
             @"FROM Performance as p, Artist as a, Venue as v, Location as l, Category as c " +
-            @"WHERE p.artist = a.idArtist AND a.category = c.idCategory AND p.pVenue = v.idVenue AND p.pLocation = l.idLocation AND p.pLocation = v.location AND p.start = @date " +
+            @"WHERE p.artist = a.idArtist AND a.category = c.idCategory AND p.pVenue = v.idVenue AND p.pLocation = l.idLocation AND p.pLocation = v.location AND p.start BETWEEN @start AND @end " +
             @"ORDER BY p.start ASC";
 
         private const string SQL_FIND_ALL =
@@ -157,10 +157,11 @@ namespace Ufo.DAL.SqlServer.Dao
             }
         }
 
-        public IList<Performance> FindByDay(DateTime date)
+        public IList<Performance> FindByDay(DateTime start, DateTime end)
         {
             var command = _database.CreateCommand(SQL_FIND_BY_DAY);
-            _database.DefineParameter(command, "@date", DbType.DateTime, date);
+            _database.DefineParameter(command, "@start", DbType.DateTime, start);
+            _database.DefineParameter(command, "@end", DbType.DateTime, end);
 
             using (var reader = _database.ExecuteReader(command))
             {

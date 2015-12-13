@@ -6,11 +6,10 @@
         xmlns:resx="clr-namespace:Ufo.Commander.Resources"
         xmlns:ctrl="clr-namespace:Ufo.Commander.Views.Controls"
         xmlns:local="clr-namespace:Ufo.Commander.Views"
-        mc:Ignorable="d"
-        Height="400" Width="900">
+        mc:Ignorable="d">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
 
@@ -23,7 +22,9 @@
             
             <Button Grid.Row="0" Name="btnNewArtist" 
                     Margin="10, 5, 10, 5"
-                    Content="{x:Static resx:Resources.NewArtistText}" />
+                    MaxWidth="150"
+                    Content="{x:Static resx:Resources.NewArtistText}"
+                    Click="CreateArtist"/>
             <ListBox Grid.Row="1"  BorderThickness="0"
                      Name="listArtists"
                      ItemsSource="{Binding Artists}"
@@ -34,9 +35,8 @@
         </Grid>
 
         <GridSplitter Grid.Column="1"
-                      Height="3"
-                      HorizontalAlignment="Stretch" VerticalAlignment="Bottom" 
-                      ResizeBehavior="PreviousAndNext"/>
+                      Width="5"
+                      HorizontalAlignment="left" VerticalAlignment="Stretch" />
 
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
@@ -44,14 +44,15 @@
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
-            <ctrl:ArtistControl Grid.Row="0" DataContext="{Binding CurrentArtist}"/>
+            <ctrl:ArtistControl Grid.Row="0" DataContext="{Binding CurrentArtist}" />
 
             <StackPanel Grid.Row="1" Orientation="Horizontal" FlowDirection="RightToLeft">
                 <Button Width="70"
                         Name="btnSave" 
                         Margin="5, 5, 5, 5"
                         Content="{x:Static resx:Resources.SaveText}"
-                        Command="{Binding CurrentArtist.SaveCommand}"/>
+                        Command="{Binding CurrentArtist.SaveCommand}"
+                        Click="SavePressed"/>
                 <Button Width="70"
                         Name="btnRemove" 
                         Margin="5, 5, 5, 5"
@@ -62,7 +63,7 @@
                         Name="btnCancel" 
                         Margin="5, 5, 5, 5"
                         Content="{x:Static resx:Resources.CancelText}"
-                        Click="Cancel_Click"/>
+                        Click="Cancel"/>
             </StackPanel>
         </Grid>
     </Grid>

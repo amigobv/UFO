@@ -42,7 +42,17 @@ namespace Ufo.Commander.Views.Controls
 
         }
 
-        private void Cancel_Click(object o, RoutedEventArgs e)
+        private void SavePressed(object sender, RoutedEventArgs e)
+        {
+            var vm = this.ViewModel;
+
+            if (vm != null)
+            {
+                vm.Venues.Add(vm.CurrentVenue);
+            }
+        }
+
+        private void Cancel(object o, RoutedEventArgs e)
         {
 
         }

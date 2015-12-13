@@ -27,10 +27,16 @@
         <TextBox Grid.Row="0" Grid.Column="1" Margin="5" Name="txtUsername" Text="{Binding Username}"/>
         <PasswordBox Grid.Row="1" Grid.Column="1" Margin="5" Name="txtPassword" PasswordChar="*" />
         <TextBox Grid.Row="2" Grid.Column="1" Margin="5" Name="txtEmail" Text="{Binding Email}"/>
-        <Button Grid.Row="3" Grid.Column="1" 
-                Margin="100, 10, 10, 0" 
-                Content="{x:Static resx:Resources.RegisterText}"
-                Click="Registrate"/>
 
+        <Grid Grid.Row="3" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0" Margin="5, 10" Name="btnExit" Content="{x:Static resx:Resources.ExitText}" Click="Exit"/>
+            <Button Grid.Column="1" Margin="5, 10" Name="btnRegister" Content="{x:Static resx:Resources.RegisterText}" Click="Register"/>
+
+        </Grid>
     </Grid>
 </Window>

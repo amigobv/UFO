@@ -32,6 +32,10 @@ D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander.ViewModel\bin\Deb
 D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander.ViewModel\obj\Debug\Ufo.Commander.ViewModel.csprojResolveAssemblyReference.cache
 D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander.ViewModel\obj\Debug\Ufo.Commander.ViewModel.dll
 D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander.ViewModel\obj\Debug\Ufo.Commander.ViewModel.pdb
+E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander.ViewModel\bin\Debug\UfoDb.mdf
+E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander.ViewModel\bin\Debug\UfoDb_log.ldf
+E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander.ViewModel\bin\Debug\UfoTestDb.mdf
+E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander.ViewModel\bin\Debug\UfoTestDb_log.ldf
 E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander.ViewModel\bin\Debug\Ufo.Commander.ViewModel.dll
 E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander.ViewModel\bin\Debug\Ufo.Commander.ViewModel.pdb
 E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander.ViewModel\bin\Debug\Ufo.BL.dll

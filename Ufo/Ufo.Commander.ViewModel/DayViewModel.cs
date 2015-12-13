@@ -72,6 +72,8 @@ namespace Ufo.Commander.ViewModel
 
             foreach (var performance in listPerformances)
                 Performances.Add(new PerformanceViewModel(performance, manager));
+
+
         }
 
         public void LoadPerformanceBy()
@@ -81,10 +83,23 @@ namespace Ufo.Commander.ViewModel
 
             foreach (var performance in listPerformances)
                 Performances.Add(new PerformanceViewModel(performance, manager));
-
-
         }
 
+        public ObservableCollection<PerformanceViewModel> GetPerformanceByHour(DateTime hour)
+        {
+            var list = from s in schedule
+                       where s.StartHour == hour
+                       select new PerformanceViewModel(manager)
+                       {
+                           Artist = s.Artist,
+                           Artists = s.Artists,
+                           StartHour = s.StartHour,
+                           Venue = s.Venue,
+                           Venues = s.Venues
+                       };
+
+            return new ObservableCollection<PerformanceViewModel>(list);
+        }
         #region properties
         public ObservableCollection<PerformanceViewModel> PerformancesByVenue
         {
