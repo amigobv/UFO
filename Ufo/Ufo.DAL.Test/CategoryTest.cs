@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Ufo.DAL.Common;
-using Ufo.DAL.Common.Domain;
+using Ufo.Domain;
 using Ufo.DAL.SqlServer;
 using Ufo.DAL.SqlServer.Dao;
 using Ufo.DAL.Test.Common;
@@ -9,8 +9,10 @@ using Xunit;
 
 namespace Ufo.DAL.Test
 {  
-	public class CategoryTest : DaoTest<Category, string>
+	public class CategoryTest
 	{
+        private IList<Category> items;
+
         private const string CATEGORY_UPDATE_STRING = "Street Comedy";
 
         private const string COMEDY_LABEL = "Comedy";
@@ -25,13 +27,23 @@ namespace Ufo.DAL.Test
         private const string FEUER_LABEL = "Feuer";
         private const string FEUER_ID = "F";
 
-        internal override void CreateTestData()
+        private void CreateTestData()
         {
             items = new List<Category>();
             items.Add(new Category(COMEDY_ID, COMEDY_LABEL));
             items.Add(new Category(AKROBATIK_ID, AKROBATIK_LABEL));
             items.Add(new Category(MUSIK_ID, MUSIK_LABEL));
             items.Add(new Category(FEUER_ID, FEUER_LABEL));
+        }
+
+        void InsertDummyData(ICategoryDao dao)
+        {
+            CreateTestData();
+
+            foreach (var item in items)
+            {
+                dao.Insert(item);
+            }
         }
 
         [Fact]

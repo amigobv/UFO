@@ -7,7 +7,7 @@ using System.Windows.Input;
 using Ufo.BL;
 using Ufo.BL.Interfaces;
 using Ufo.Commander.Model;
-using Ufo.DAL.Common.Domain;
+using Ufo.Domain;
 
 namespace Ufo.Commander.ViewModel
 {

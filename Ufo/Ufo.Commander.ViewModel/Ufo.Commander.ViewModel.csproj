@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MvvmValidation">
+      <HintPath>H:\Semester5\SWK5\Project\Ufo\packages\MvvmValidation.2.0.2\lib\portable-win8+net45+sl5+wp8\MvvmValidation.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -71,9 +74,9 @@
       <Project>{e9dce4e7-5cdc-4965-8166-83536f1512dc}</Project>
       <Name>Ufo.Commander.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Ufo.DAL.Common\Ufo.DAL.Common.csproj">
-      <Project>{60A91325-248C-40D9-8B48-5689DA5B0097}</Project>
-      <Name>Ufo.DAL.Common</Name>
+    <ProjectReference Include="..\Ufo.Domain\Ufo.Domain.csproj">
+      <Project>{373ab1e0-cb65-47bc-93d6-9437ecc9d636}</Project>
+      <Name>Ufo.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

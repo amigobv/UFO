@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Ufo.DAL.SqlServer</RootNamespace>
     <AssemblyName>Ufo.DAL.SqlServer</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
@@ -26,6 +26,7 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -46,6 +47,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -63,20 +65,19 @@
     <Compile Include="Dao\VenueDao.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="DbConfiguration.cs" />
-    <Compile Include="Factories\ArtistDaoFactory.cs" />
-    <Compile Include="Factories\CategoryDaoFactory.cs" />
-    <Compile Include="Factories\LocationDaoFactory.cs" />
-    <Compile Include="Factories\PerformanceDaoFactory.cs" />
-    <Compile Include="Factories\RestrictionDaoFactory.cs" />
-    <Compile Include="Factories\VenueDaoFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Factories\UserDaoFactory.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ufo.DAL.Common\Ufo.DAL.Common.csproj">
       <Project>{60a91325-248c-40d9-8b48-5689da5b0097}</Project>
       <Name>Ufo.DAL.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ufo.Domain\Ufo.Domain.csproj">
+      <Project>{373ab1e0-cb65-47bc-93d6-9437ecc9d636}</Project>
+      <Name>Ufo.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

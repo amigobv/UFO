@@ -14,8 +14,5 @@ D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander.Model\obj\Debug\U
 D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander.Model\obj\Debug\Ufo.Commander.Model.pdb
 E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander.Model\bin\Debug\Ufo.Commander.Model.dll
 E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander.Model\bin\Debug\Ufo.Commander.Model.pdb
-E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander.Model\bin\Debug\Ufo.DAL.Common.dll
-E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander.Model\bin\Debug\Ufo.DAL.Common.pdb
-E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander.Model\obj\Debug\Ufo.Commander.Model.csprojResolveAssemblyReference.cache
 E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander.Model\obj\Debug\Ufo.Commander.Model.dll
 E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander.Model\obj\Debug\Ufo.Commander.Model.pdb

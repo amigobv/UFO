@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Ufo.DAL.Common;
-using Ufo.DAL.Common.Dao;
-using Ufo.DAL.Common.Domain;
+using Ufo.Domain;
 using Ufo.DAL.SqlServer;
 using Ufo.DAL.SqlServer.Dao;
 using Ufo.DAL.Test.Common;
@@ -11,8 +10,10 @@ using Xunit;
 
 namespace Ufo.DAL.Test
 {
-    public class VenueTest : DaoTest<Venue, int>
+    public class VenueTest
     {
+        private IList<Venue> items;
+
         private const string ALTER_LABEL = "Mamut Store";
 
         private const string LOCATION = "Hauptplatz";
@@ -33,7 +34,7 @@ namespace Ufo.DAL.Test
 
         private IDatabase database;
 
-        internal override void CreateTestData()
+        private void CreateTestData()
         {
             var loc = new Location(LOCATION_ID, LOCATION);
             var locationDao = new LocationDao(database);
@@ -43,6 +44,16 @@ namespace Ufo.DAL.Test
             items.Add(new Venue(VENUE1_ID, VENUE1_LABEL, VENUE1_SPECTATORS, loc));
             items.Add(new Venue(VENUE2_ID, VENUE2_LABEL, VENUE2_SPECTATORS, loc));
             items.Add(new Venue(VENUE3_ID, VENUE3_LABEL, VENUE3_SPECTATORS, loc));
+        }
+
+        void InsertDummyData(IVenueDao dao)
+        {
+            CreateTestData();
+
+            foreach (var item in items)
+            {
+                dao.Insert(item);
+            }
         }
 
         [Fact]

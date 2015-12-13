@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MvvmValidation;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Windows.Input;
 using Ufo.BL;
 using Ufo.BL.Interfaces;
 using Ufo.Commander.Model;
-using Ufo.DAL.Common.Domain;
+using Ufo.Domain;
 
 namespace Ufo.Commander.ViewModel
 {
@@ -18,6 +19,8 @@ namespace Ufo.Commander.ViewModel
         private IManager manager;
         private Artist artist;
         private ObservableCollection<Category> categories;
+        private bool? isValid;
+        private string validationErrorsString;
         #endregion
 
         #region ctor
@@ -29,6 +32,7 @@ namespace Ufo.Commander.ViewModel
             SaveCommand = new RelayCommand(o => manager.UpdateArtist(artist));
             RemoveCommand = new RelayCommand(o => manager.RemoveArtist(artist), o => false);
 
+            ValidateCommand = new RelayCommand(Validate);
         }
 
         public ArtistEditViewModel(Artist artist, IManager manager)
@@ -39,6 +43,7 @@ namespace Ufo.Commander.ViewModel
             SaveCommand = new RelayCommand(o => manager.UpdateArtist(artist));
             RemoveCommand = new RelayCommand(o => manager.RemoveArtist(artist), o => false);
         }
+
         #endregion
 
         #region properties
@@ -51,6 +56,7 @@ namespace Ufo.Commander.ViewModel
                 {
                     artist.Name = value;
                     RaisePropertyChangedEvent(nameof(Name));
+                    Validator.Validate(() => Name);
                 }
             }
         }
@@ -64,6 +70,7 @@ namespace Ufo.Commander.ViewModel
                 {
                     artist.Country = value;
                     RaisePropertyChangedEvent(nameof(Country));
+                    Validator.Validate(() => Country);
                 }
             }
         }
@@ -77,6 +84,7 @@ namespace Ufo.Commander.ViewModel
                 {
                     artist.Email = value;
                     RaisePropertyChangedEvent(nameof(Email));
+                    Validator.Validate(() => Email);
                 }   
             }
         }
@@ -90,6 +98,7 @@ namespace Ufo.Commander.ViewModel
                 {
                     artist.Description = value;
                     RaisePropertyChangedEvent(nameof(Description));
+                    Validator.Validate(() => Description);
                 }
             }
         }
@@ -103,6 +112,7 @@ namespace Ufo.Commander.ViewModel
                 {
                     artist.Homepage = value;
                     RaisePropertyChangedEvent(nameof(Homepage));
+                    Validator.Validate(() => Homepage);
                 }
             }
         }
@@ -142,6 +152,7 @@ namespace Ufo.Commander.ViewModel
                 {
                     artist.Category = value;
                     RaisePropertyChangedEvent(nameof(Category));
+                    Validator.Validate(() => Category);
                 }
             }
         }
@@ -154,6 +165,47 @@ namespace Ufo.Commander.ViewModel
 
         public ICommand SaveCommand { get; set; }
         public ICommand RemoveCommand { get; set; }
+        public ICommand ValidateCommand { get; set; }
+
+        public bool? IsValid
+        {
+            get { return isValid; }
+            private set
+            {
+                isValid = value;
+                RaisePropertyChangedEvent(nameof(IsValid));
+            }
+        }
+
+        public string ValidationErrorsString
+        {
+            get { return validationErrorsString; }
+            private set
+            {
+                validationErrorsString = value;
+                RaisePropertyChangedEvent(nameof(ValidationErrorsString));
+            }
+        }
         #endregion
+
+        private void Validate(object o)
+        {
+            var uiThread = TaskScheduler.FromCurrentSynchronizationContext();
+
+            Validator.ValidateAllAsync().ContinueWith(r => OnValidateAllCompleted(r.Result), uiThread);
+        }
+
+        private void OnValidateAllCompleted(ValidationResult validationResult)
+        {
+            UpdateValidationSummary(validationResult);
+        }
+
+        private void UpdateValidationSummary(ValidationResult validationResult)
+        {
+            IsValid = validationResult.IsValid;
+            ValidationErrorsString = validationResult.ToString();
+        }
+
+
     }
 }

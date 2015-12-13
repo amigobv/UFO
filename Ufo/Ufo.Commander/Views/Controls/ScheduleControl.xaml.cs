@@ -30,5 +30,17 @@ namespace Ufo.Commander.Views.Controls
         {
 
         }
+
+        private void Calendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var calendar = sender as Calendar;
+
+            // ... See if a date is selected.
+            if (calendar.SelectedDate.HasValue)
+            {
+                // ... Display SelectedDate in Title.
+                DateTime date = calendar.SelectedDate.Value;
+            }
+        }
     }
 }

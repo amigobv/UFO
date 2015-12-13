@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Ufo.BL.Interfaces;
-using Ufo.DAL.Common.Domain;
+using Ufo.Domain;
 
 namespace Ufo.Commander.ViewModel
 {

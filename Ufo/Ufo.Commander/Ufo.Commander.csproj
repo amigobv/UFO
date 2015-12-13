@@ -35,6 +35,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MvvmValidation, Version=2.0.2.0, Culture=neutral, PublicKeyToken=113792d2053ac461, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmValidation.2.0.2\lib\net40-client\MvvmValidation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
@@ -68,9 +72,6 @@
     <Compile Include="Views\AddVenueView.xaml.cs">
       <DependentUpon>AddVenueView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Controls\Calendar\ScheduleVenueRowControl.xaml.cs">
-      <DependentUpon>ScheduleVenueRowControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\Controls\CategoriesControl.xaml.cs">
       <DependentUpon>CategoriesControl.xaml</DependentUpon>
     </Compile>
@@ -79,12 +80,6 @@
     </Compile>
     <Compile Include="Views\Controls\ArtistsControl.xaml.cs">
       <DependentUpon>ArtistsControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Controls\Calendar\CalendarDayControl.xaml.cs">
-      <DependentUpon>CalendarDayControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Controls\Calendar\HourSlotControl.xaml.cs">
-      <DependentUpon>HourSlotControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Controls\CategoryControl.xaml.cs">
       <DependentUpon>CategoryControl.xaml</DependentUpon>
@@ -147,10 +142,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Controls\Calendar\ScheduleVenueRowControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\Controls\CategoriesControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -160,14 +151,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Controls\ArtistsControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Controls\Calendar\CalendarDayControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Controls\Calendar\HourSlotControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -234,6 +217,7 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -241,7 +225,9 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ufo.BL\Ufo.BL.csproj">
@@ -253,8 +239,13 @@
       <Name>Ufo.Commander.ViewModel</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Controls\Schedule\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(SolutionDir)Ufo.Dal.SqlServer\bin\$(ConfigurationName)\Ufo.Dal.SqlServer.dll" "$(TargetDir)"</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Ufo.DAL.Common</RootNamespace>
     <AssemblyName>Ufo.DAL.Common</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -39,18 +41,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IDao.cs" />
-    <Compile Include="Domain\Artist.cs" />
-    <Compile Include="Domain\Category.cs" />
-    <Compile Include="Domain\Restriction.cs" />
-    <Compile Include="Domain\Location.cs" />
-    <Compile Include="Domain\Performance.cs" />
-    <Compile Include="Domain\User.cs" />
-    <Compile Include="Domain\Venue.cs" />
+    <Compile Include="DalFactory.cs" />
+    <Compile Include="IArtistDao.cs" />
+    <Compile Include="ICategoryDao.cs" />
     <Compile Include="IDatabase.cs" />
+    <Compile Include="ILocationDao.cs" />
+    <Compile Include="IRestrictionDao.cs" />
+    <Compile Include="IUserDao.cs" />
+    <Compile Include="IVenueDao.cs" />
+    <Compile Include="IPerformanceDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Ufo.Domain\Ufo.Domain.csproj">
+      <Project>{373ab1e0-cb65-47bc-93d6-9437ecc9d636}</Project>
+      <Name>Ufo.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

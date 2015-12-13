@@ -43,12 +43,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TimeModel.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Ufo.DAL.Common\Ufo.DAL.Common.csproj">
-      <Project>{60a91325-248c-40d9-8b48-5689da5b0097}</Project>
-      <Name>Ufo.DAL.Common</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

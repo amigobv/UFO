@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,7 @@ namespace Ufo.DAL.SqlServer
         {
             get
             {
-                return @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = H:\Semester5\SWK5\Project\Ufo\Ufo.DAL.SqlServer\UfoDb.mdf; Integrated Security = True";
+                return ConfigurationManager.ConnectionStrings["DefaultConnectionString"].ConnectionString;
             }
         }
     }

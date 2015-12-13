@@ -4,19 +4,21 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Ufo.DAL.Common.Domain;
-using Ufo.DAL.SqlServer.Dao;
-using Ufo.DAL.SqlServer.Factories;
+using Ufo.DAL.Common;
+using Ufo.Domain;
+
 
 namespace Ufo.BL
 {
     public class ViewerImpl : IViewer
     {
         #region private members
-        private ArtistDao artistDao;
-        private VenueDao venueDao;
-        private PerformanceDao performanceDao;
-        private CategoryDao categoryDao;
+        private IDatabase database = DalFactory.CreateDatabase();
+
+        private IArtistDao artistDao;
+        private IVenueDao venueDao;
+        private IPerformanceDao performanceDao;
+        private ICategoryDao categoryDao;
         #endregion
 
         /// <summary>
@@ -24,10 +26,10 @@ namespace Ufo.BL
         /// </summary>
         public ViewerImpl()
         {
-            artistDao = ArtistDaoFactory.GetArtistDao();
-            venueDao = VenueDaoFactory.GetVenueDao();
-            performanceDao = PerformanceDaoFactory.GetPerformanceDao();
-            categoryDao = CategoryDaoFactory.GetCategoryDao();
+            artistDao = DalFactory.CreateArtistDao(database);
+            venueDao = DalFactory.CreateVenueDao(database);
+            performanceDao = DalFactory.CreatePerformanceDao(database);
+            categoryDao = DalFactory.CreateCategoryDao(database);
         }
 
         /// <summary>

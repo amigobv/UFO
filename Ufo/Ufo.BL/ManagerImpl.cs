@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 using System.Security.Cryptography;
 using Ufo.BL.Exceptions;
 using Ufo.BL.Interfaces;
-using Ufo.DAL.Common.Domain;
-using Ufo.DAL.SqlServer.Dao;
-using Ufo.DAL.SqlServer.Factories;
+using Ufo.Domain;
+using Ufo.DAL.Common;
 
 namespace Ufo.BL
 {
@@ -17,24 +16,26 @@ namespace Ufo.BL
     {
 
         #region private members
-        private UserDao userDao;
-        private ArtistDao artistDao;
-        private CategoryDao categoryDao;
-        private LocationDao locationDao;
-        private VenueDao venueDao;
-        private PerformanceDao performanceDao;
+        private IDatabase database = DalFactory.CreateDatabase();
+
+        private IUserDao userDao;
+        private IArtistDao artistDao;
+        private ICategoryDao categoryDao;
+        private ILocationDao locationDao;
+        private IVenueDao venueDao;
+        private IPerformanceDao performanceDao;
         private User currentUser;
         #endregion
 
         #region Ctor
         public ManagerImpl()
         {
-            userDao = UserDaoFactory.GetUserDao();
-            artistDao = ArtistDaoFactory.GetArtistDao();
-            categoryDao = CategoryDaoFactory.GetCategoryDao();
-            locationDao = LocationDaoFactory.GetLocationDao();
-            venueDao = VenueDaoFactory.GetVenueDao();
-            performanceDao = PerformanceDaoFactory.GetPerformanceDao();
+            userDao = DalFactory.CreateUserDao(database);
+            artistDao = DalFactory.CreateArtistDao(database);
+            categoryDao = DalFactory.CreateCategoryDao(database);
+            locationDao = DalFactory.CreateLocationDao(database);
+            venueDao = DalFactory.CreateVenueDao(database);
+            performanceDao = DalFactory.CreatePerformanceDao(database);
         }
         #endregion
 
@@ -416,7 +417,7 @@ namespace Ufo.BL
             if (venue == null)
                 throw new ArgumentNullException("Invalid venue!");
 
-            if (venueDao.FindById(venue.Id) != null)
+            if (venueDao.FindById(venue.Id, venue.Location.Id) != null)
             {
                 if (!venueDao.Update(venue))
                     throw new VenueException("Cannot update venue!");

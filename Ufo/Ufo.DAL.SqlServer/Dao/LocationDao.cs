@@ -5,12 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Ufo.DAL.Common;
-using Ufo.DAL.Common.Dao;
-using Ufo.DAL.Common.Domain;
+using Ufo.Domain;
 
 namespace Ufo.DAL.SqlServer.Dao
 {
-    public class LocationDao : IDao<Location, string>
+    public class LocationDao : ILocationDao
     {
         private const string SQL_COUNT =
             @"Select COUNT(idLocation) FROM Location";

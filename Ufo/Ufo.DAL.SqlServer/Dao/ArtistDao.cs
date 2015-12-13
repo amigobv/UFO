@@ -6,12 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Ufo.DAL.Common;
-using Ufo.DAL.Common.Dao;
-using Ufo.DAL.Common.Domain;
+using Ufo.Domain;
 
 namespace Ufo.DAL.SqlServer.Dao
 {
-    public class ArtistDao : IDao<Artist, int>
+    public class ArtistDao : IArtistDao
     {
         private const string SQL_COUNT =
             @"Select COUNT(idArtist) FROM Artist";

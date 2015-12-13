@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Ufo.DAL.Common;
-using Ufo.DAL.Common.Domain;
+using Ufo.Domain;
 using Ufo.DAL.SqlServer;
 using Ufo.DAL.SqlServer.Dao;
 using Ufo.DAL.Test.Common;
@@ -10,8 +10,10 @@ using Xunit;
 
 namespace Ufo.DAL.Test
 {
-    public class RestrictionTest : DaoTest<Restriction, int>
+    public class RestrictionTest
     {
+        private IList<Restriction> items;
+
         private const string LOCATION = "Hauptplatz";
         private const string LOCATION_ID = "H";
 
@@ -39,7 +41,7 @@ namespace Ufo.DAL.Test
 
         private IDatabase database;
 
-        internal override void CreateTestData()
+        private void CreateTestData()
         {
             var loc = new Location(LOCATION_ID, LOCATION);
             var locationDao = new LocationDao(database);
@@ -58,6 +60,16 @@ namespace Ufo.DAL.Test
             items.Add(new Restriction(2, RESTRICTION2_START, RESTRICTION2_STOP, venue, category));
             items.Add(new Restriction(3, RESTRICTION3_START, RESTRICTION3_STOP, venue, category));
             items.Add(new Restriction(4, RESTRICTION4_START, RESTRICTION4_STOP, venue, category));
+        }
+
+        void InsertDummyData(IRestrictionDao dao)
+        {
+            CreateTestData();
+
+            foreach (var item in items)
+            {
+                dao.Insert(item);
+            }
         }
 
         [Fact]

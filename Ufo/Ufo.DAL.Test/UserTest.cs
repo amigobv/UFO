@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Ufo.DAL.Common.Domain;
+using Ufo.Domain;
 using System.Security.Cryptography;
 using Xunit;
 using Ufo.DAL.Test.Common;
@@ -10,8 +10,10 @@ using Ufo.DAL.SqlServer.Dao;
 
 namespace Ufo.DAL.Test
 {
-    public class UserTest : DaoTest<User, string>
+    public class UserTest
     {
+        private IList<User> items;
+
         private const string ALTER_USERNAME = "newUser";
         private const string ALTER_PASSWORD = "newUserPassword";
         private const string ALTER_MAIL= "newUser@mail.com";
@@ -34,7 +36,7 @@ namespace Ufo.DAL.Test
         private const string USER4_MAIL = "testuser4@mail.com";
 
 
-        internal override void CreateTestData()
+        private void CreateTestData()
         {
             items = new List<User>();
             SHA1Managed security = new SHA1Managed();
@@ -42,6 +44,16 @@ namespace Ufo.DAL.Test
             items.Add(new User(USER2_NAME, USER2_PASSWORD, USER2_MAIL));
             items.Add(new User(USER3_NAME, USER3_PASSWORD, USER3_MAIL));
             items.Add(new User(USER4_NAME, USER4_PASSWORD, USER4_MAIL));
+        }
+
+        void InsertDummyData(IUserDao dao)
+        {
+            CreateTestData();
+
+            foreach (var item in items)
+            {
+                dao.Insert(item);
+            }
         }
 
 

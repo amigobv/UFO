@@ -8,5 +8,8 @@ D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.DAL.Common\obj\Debug\Ufo.DA
 D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.DAL.Common\obj\Debug\Ufo.DAL.Common.pdb
 E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.DAL.Common\bin\Debug\Ufo.DAL.Common.dll
 E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.DAL.Common\bin\Debug\Ufo.DAL.Common.pdb
+E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.DAL.Common\bin\Debug\Ufo.Domain.dll
+E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.DAL.Common\bin\Debug\Ufo.Domain.pdb
+E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.DAL.Common\obj\Debug\Ufo.DAL.Common.csprojResolveAssemblyReference.cache
 E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.DAL.Common\obj\Debug\Ufo.DAL.Common.dll
 E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.DAL.Common\obj\Debug\Ufo.DAL.Common.pdb

@@ -5,12 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Ufo.DAL.Common;
-using Ufo.DAL.Common.Dao;
-using Ufo.DAL.Common.Domain;
+using Ufo.Domain;
 
 namespace Ufo.DAL.SqlServer.Dao
 {
-    public class RestrictionDao : IDao<Restriction, int>
+    public class RestrictionDao : IRestrictionDao
     {
         private const string SQL_COUNT =
             @"Select COUNT(idRestrictions) FROM Restrictions";

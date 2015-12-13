@@ -65,13 +65,17 @@
       <Project>{60a91325-248c-40d9-8b48-5689da5b0097}</Project>
       <Name>Ufo.DAL.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Ufo.DAL.SqlServer\Ufo.DAL.SqlServer.csproj">
-      <Project>{b018ef58-9dcb-4bf9-bab0-706e2c8c0425}</Project>
-      <Name>Ufo.DAL.SqlServer</Name>
+    <ProjectReference Include="..\Ufo.Domain\Ufo.Domain.csproj">
+      <Project>{373ab1e0-cb65-47bc-93d6-9437ecc9d636}</Project>
+      <Name>Ufo.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

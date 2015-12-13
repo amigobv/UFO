@@ -7,12 +7,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using Ufo.DAL.Common;
-using Ufo.DAL.Common.Dao;
-using Ufo.DAL.Common.Domain;
+using Ufo.Domain;
 
 namespace Ufo.DAL.SqlServer.Dao
 {
-    public class CategoryDao : IDao<Category, string>
+    public class CategoryDao : ICategoryDao
     {
         private const string SQL_COUNT =
             @"Select COUNT(idCategory) FROM Category";

@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Data;
 using Ufo.DAL.Common;
-using Ufo.DAL.Common.Dao;
-using Ufo.DAL.Common.Domain;
+using Ufo.Domain;
 
 namespace Ufo.DAL.SqlServer.Dao
 {
-    public class VenueDao : IDao<Venue, int>
+    public class VenueDao : IVenueDao
     {
         private const string SQL_COUNT =
             @"Select COUNT(idVenue) FROM Venue";
@@ -180,16 +179,6 @@ namespace Ufo.DAL.SqlServer.Dao
             _database.DefineParameter(command, "@idLocation", DbType.String, idLocation);
 
             return _database.ExecuteNonQuery(command) == 1;
-        }
-
-        public Venue FindById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Delete(int id)
-        {
-            throw new NotImplementedException();
         }
     }
 }

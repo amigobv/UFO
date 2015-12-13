@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Ufo.DAL.Common;
-using Ufo.DAL.Common.Domain;
+using Ufo.Domain;
 using Ufo.DAL.SqlServer;
 using Ufo.DAL.SqlServer.Dao;
 using Ufo.DAL.Test.Common;
@@ -12,8 +12,10 @@ using Xunit;
 
 namespace Ufo.DAL.Test
 {
-    public class PerformanceTest : DaoTest<Performance, int>
+    public class PerformanceTest
     {
+        private IList<Performance> items;
+
         private const string LOCATION = "Hauptplatz";
         private const string LOCATION_ID = "H";
 
@@ -39,7 +41,7 @@ namespace Ufo.DAL.Test
 
         private IDatabase database;
 
-        internal override void CreateTestData()
+        private void CreateTestData()
         {
             var loc = new Location(LOCATION_ID, LOCATION);
             var locationDao = new LocationDao(database);
@@ -62,6 +64,16 @@ namespace Ufo.DAL.Test
             items.Add(new Performance(2, PERFORMANCE2_START, artist, venue));
             items.Add(new Performance(3, PERFORMANCE3_START, artist, venue));
             items.Add(new Performance(4, PERFORMANCE4_START, artist, venue));
+        }
+
+        void InsertDummyData(IPerformanceDao dao)
+        {
+            CreateTestData();
+
+            foreach (var item in items)
+            {
+                dao.Insert(item);
+            }
         }
 
         [Fact]

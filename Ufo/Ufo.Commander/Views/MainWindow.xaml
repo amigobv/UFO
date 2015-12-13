@@ -49,7 +49,7 @@
                 <ctrl:CategoriesControl DataContext="{Binding Categories}"/>
             </TabItem>
             <TabItem Header="{x:Static resx:Resources.LocationsText}" Margin="3,0,-3,0">
-                <ctrl:LocationsControl DataContext="{Binding Location}" />
+                <ctrl:LocationsControl DataContext="{Binding Locations}" />
             </TabItem>
         </TabControl>
 
