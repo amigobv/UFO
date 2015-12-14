@@ -228,4 +228,13 @@
   <data name="ExitText" xml:space="preserve">
     <value>Exit</value>
   </data>
+  <data name="DayOneText" xml:space="preserve">
+    <value>Day 1</value>
+  </data>
+  <data name="DayThreeText" xml:space="preserve">
+    <value>Day 3</value>
+  </data>
+  <data name="DayTwoText" xml:space="preserve">
+    <value>Day 2</value>
+  </data>
 </root>

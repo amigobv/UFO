@@ -90,8 +90,14 @@
     <Compile Include="Views\Controls\PerformanceControl.xaml.cs">
       <DependentUpon>PerformanceControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Controls\TimePickerControl.xaml.cs">
-      <DependentUpon>TimePickerControl.xaml</DependentUpon>
+    <Compile Include="Views\Controls\Schedule\Layout\MatrixGrid.cs" />
+    <Compile Include="Views\Controls\Schedule\Layout\MatrixGridChildConverter.cs" />
+    <Compile Include="Views\Controls\Schedule\Layout\MatrixGridChildMonitor.cs" />
+    <Compile Include="Views\Controls\Schedule\Matrix\SchedulerControl.xaml.cs">
+      <DependentUpon>SchedulerControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\TableControl.xaml.cs">
+      <DependentUpon>TableControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Controls\VenueControl.xaml.cs">
       <DependentUpon>VenueControl.xaml</DependentUpon>
@@ -114,6 +120,14 @@
     <Compile Include="Views\Controls\VenuesControl.xaml.cs">
       <DependentUpon>VenuesControl.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\Controls\Schedule\Matrix\SchedulerControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Controls\TableControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -163,10 +177,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Controls\PerformanceControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Controls\TimePickerControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -239,9 +249,7 @@
       <Name>Ufo.Commander.ViewModel</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Controls\Schedule\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy "$(SolutionDir)Ufo.Dal.SqlServer\bin\$(ConfigurationName)\Ufo.Dal.SqlServer.dll" "$(TargetDir)"</PostBuildEvent>

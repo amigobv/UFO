@@ -4,22 +4,56 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:resx="clr-namespace:Ufo.Commander.Resources"
-        xmlns:local="clr-namespace:Ufo.Commander.Views"
         xmlns:ctrl="clr-namespace:Ufo.Commander.Views.Controls"
         mc:Ignorable="d">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200" />
-            <ColumnDefinition Width="6*" />
-        </Grid.ColumnDefinitions>
+    <UserControl.Resources>
+        <DataTemplate x:Key="itemsTemplate">
+            <ctrl:TableControl />
+        </DataTemplate>
+    </UserControl.Resources>
+    <TabControl>
+        <TabItem Header="{x:Static resx:Resources.DayOneText}" Name="DayOne">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <ItemsControl HorizontalContentAlignment="Stretch" 
+                          Width="Auto" Height="Auto"
+                          ItemsSource="{Binding Path=Tables}" 
+                          ItemTemplate="{StaticResource itemsTemplate}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </ScrollViewer>
+        </TabItem>
+        <TabItem Header="{x:Static resx:Resources.DayTwoText}" Name="DayTwo">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <ItemsControl HorizontalContentAlignment="Stretch" 
+                          Width="Auto" Height="Auto"
+                          ItemsSource="{Binding Path=Tables}" 
+                          ItemTemplate="{StaticResource itemsTemplate}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </ScrollViewer>
+        </TabItem>
+        <TabItem Header="{x:Static resx:Resources.DayThreeText}" Name="DayThree">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <ItemsControl HorizontalContentAlignment="Stretch" 
+                          Width="Auto" Height="Auto"
+                          ItemsSource="{Binding Path=Tables}" 
+                          ItemTemplate="{StaticResource itemsTemplate}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </ScrollViewer>
+        </TabItem>
 
-        <Calendar Grid.Column="0" 
-                  SelectedDate=""
-                  DisplayMode="Month"
-                  SelectedDatesChanged="Calendar_SelectedDatesChanged"/>
-
-        <Grid Grid.Column="1">
-            <!--<ctrl:CalendarDayControl x:Name="customCalendar" DataContext="{Binding DaySchedule}"/>-->
-        </Grid>
-    </Grid>
+    </TabControl>
 </UserControl>

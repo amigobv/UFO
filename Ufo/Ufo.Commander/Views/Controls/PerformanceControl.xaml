@@ -48,12 +48,14 @@
 
                 <GroupBox Margin="5" Header="{x:Static resx:Resources.StartsAtText}">
                     <StackPanel Orientation="Vertical">
-                        <DatePicker Margin="5"
-                                Text="{Binding Date}"
-                                FontSize="14"/>
-                        <Grid HorizontalAlignment="Center" Margin="5">
-                            <local:TimePickerControl DockPanel.Dock="Bottom" DataContext="{Binding Time}"/>
-                        </Grid>
+                        <TextBox Margin="40, 5, 40, 5"
+                                 Text="{Binding Date}"
+                                 FontSize="14"
+                                 IsEnabled="false"/>
+                        <TextBox Margin="40, 5, 40, 5"
+                                 Text="{Binding Time}"
+                                 FontSize="14" 
+                                 IsEnabled="false"/>
                     </StackPanel>
                 </GroupBox>
 

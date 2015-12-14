@@ -34,6 +34,7 @@ D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander.ViewModel\obj\Deb
 D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander.ViewModel\obj\Debug\Ufo.Commander.ViewModel.pdb
 E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander.ViewModel\bin\Debug\Ufo.Commander.ViewModel.dll
 E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander.ViewModel\bin\Debug\Ufo.Commander.ViewModel.pdb
+E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander.ViewModel\bin\Debug\MvvmValidation.dll
 E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander.ViewModel\bin\Debug\Ufo.BL.dll
 E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander.ViewModel\bin\Debug\Ufo.Commander.Model.dll
 E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander.ViewModel\bin\Debug\Ufo.Domain.dll
@@ -41,9 +42,8 @@ E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander
 E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander.ViewModel\bin\Debug\Ufo.BL.pdb
 E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander.ViewModel\bin\Debug\Ufo.Commander.Model.pdb
 E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander.ViewModel\bin\Debug\Ufo.Domain.pdb
+E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander.ViewModel\bin\Debug\MvvmValidation.xml
 E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander.ViewModel\bin\Debug\Ufo.DAL.Common.pdb
 E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander.ViewModel\obj\Debug\Ufo.Commander.ViewModel.csprojResolveAssemblyReference.cache
 E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander.ViewModel\obj\Debug\Ufo.Commander.ViewModel.dll
 E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander.ViewModel\obj\Debug\Ufo.Commander.ViewModel.pdb
-E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander.ViewModel\bin\Debug\MvvmValidation.dll
-E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander.ViewModel\bin\Debug\MvvmValidation.xml

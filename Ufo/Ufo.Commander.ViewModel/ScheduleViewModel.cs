@@ -12,69 +12,40 @@ namespace Ufo.Commander.ViewModel
     public class ScheduleViewModel: ViewModelBase
     {
         #region private members
-        private DateTime date;
-        private Artist artist;
-        private Venue venue;
-        private DayViewModel dayVm;
+        private IManager manager;
+        private ObservableCollection<LocationSchedulerViewModel> tables;
         #endregion
 
         #region ctor
         public ScheduleViewModel(IManager manager)
         {
-            date = new DateTime(2016, 07, 22, 16, 0, 0);
-            dayVm = new DayViewModel(date, manager);
+            this.manager = manager;
+            tables = new ObservableCollection<LocationSchedulerViewModel>();
+            LoadLocations();
         }
         #endregion
 
+        private void LoadLocations()
+        {
+            Tables.Clear();
+            var locations = manager.GetAllLocations();
+
+            foreach(var location in locations)
+            {
+                Tables.Add(new LocationSchedulerViewModel(location, manager));
+            }
+        }
+
         #region properties
-        public DayViewModel DaySchedule
+        public ObservableCollection<LocationSchedulerViewModel> Tables
         {
-            get { return dayVm; }
+            get { return tables; }
             set
             {
-                if (dayVm != value)
+                if (tables != value)
                 {
-                    dayVm = value;
-                    RaisePropertyChangedEvent(nameof(DaySchedule));
-                }
-            }
-        }
-
-        public DateTime Date
-        {
-            get { return date; }
-            set
-            {
-                if (date != value)
-                {
-                    date = value;
-                    RaisePropertyChangedEvent(nameof(Date));
-                }
-            }
-        }
-
-        public Artist Artist
-        {
-            get { return artist; }
-            set
-            {
-                if (artist != value)
-                {
-                    artist = value;
-                    RaisePropertyChangedEvent(nameof(Artist));
-                }
-            }
-        }
-
-        public Venue Venue
-        {
-            get { return venue; }
-            set
-            {
-                if (venue != value)
-                {
-                    venue = value;
-                    RaisePropertyChangedEvent(nameof(Venue));
+                    tables = value;
+                    RaisePropertyChangedEvent(nameof(Tables));
                 }
             }
         }

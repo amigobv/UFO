@@ -34,7 +34,8 @@ namespace Ufo.DAL.SqlServer.Dao
         private const string SQL_FIND_ALL =
             @"SELECT v.idVenue, v.label, v.maxSpectators, v.location, l.label " +
             @"FROM Venue as v, Location as l " +
-            @"WHERE v.location = l.idLocation";
+            @"WHERE v.location = l.idLocation " +
+            @"ORDER BY v.location ASC";
 
         private const string SQL_INSERT =
             @"INSERT INTO Venue " +

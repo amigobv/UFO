@@ -151,6 +151,33 @@ namespace Ufo.Commander.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Day 1.
+        /// </summary>
+        public static string DayOneText {
+            get {
+                return ResourceManager.GetString("DayOneText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Day 3.
+        /// </summary>
+        public static string DayThreeText {
+            get {
+                return ResourceManager.GetString("DayThreeText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Day 2.
+        /// </summary>
+        public static string DayTwoText {
+            get {
+                return ResourceManager.GetString("DayTwoText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Description.
         /// </summary>
         public static string DescriptionText {

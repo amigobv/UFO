@@ -1,0 +1,81 @@
+﻿<UserControl x:Class="Ufo.Commander.Views.Controls.TableControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Ufo.Commander.Views.Controls"
+             xmlns:resx="clr-namespace:Ufo.Commander.Resources"
+             xmlns:matrix="clr-namespace:Ufo.Views.Controls.Schedule.Matrix"
+             xmlns:viewmodels="clr-namespace:Ufo.Commander.ViewModel;assembly=Ufo.Commander.ViewModel"
+             mc:Ignorable="d"
+             x:Name="tableControl">
+    <StackPanel Orientation="Vertical" Margin="5">
+        <TextBlock Text="{Binding Location}" FontSize="18" FontWeight="Bold" Margin="3"/>
+        <matrix:SchedulerControl ItemsSource="{Binding Path=Items}" >
+            <matrix:SchedulerControl.Resources>
+                <SolidColorBrush x:Key="BackBrush" 
+                                     Color="LightBlue" />
+                <SolidColorBrush x:Key="BorderBrush" 
+                                     Color="LightBlue" />
+                <Thickness x:Key="BorderThickness" 
+                               Left="0" 
+                               Top="0" 
+                               Right="0.5" 
+                               Bottom="0.5" />
+                <SolidColorBrush x:Key="HeaderForeground" 
+                                     Color="DarkBlue" />
+
+                <DataTemplate DataType="{x:Type viewmodels:SchedulerEmptyHeaderItem}">
+                    <Border Background="SteelBlue" Margin="2"/>
+                </DataTemplate>
+
+                <DataTemplate DataType="{x:Type viewmodels:SchedulerColumnHeaderItem}" >
+                    <Border Background="{StaticResource BackBrush}" 
+                            BorderBrush="{StaticResource BorderBrush}" 
+                            BorderThickness="{StaticResource BorderThickness}" 
+                            Padding="0,4"
+                            Margin="2">
+                        <DockPanel>
+                            <TextBlock FontWeight="Bold"
+                                           Foreground="{StaticResource HeaderForeground}"
+                                           Text="{Binding Path=Header, StringFormat=HH:mm}" 
+                                           TextAlignment="Center" MinWidth="150"/>
+                        </DockPanel>
+                    </Border>
+                </DataTemplate>
+
+                <DataTemplate DataType="{x:Type viewmodels:SchedulerRowHeaderItem}">
+                    <Border Background="{StaticResource BackBrush}" 
+                            BorderBrush="{StaticResource BorderBrush}" 
+                            BorderThickness="{StaticResource BorderThickness}"  
+                            Padding="4,0"
+                            Margin="2">
+                        <TextBlock FontWeight="Bold"
+                                       Foreground="{StaticResource HeaderForeground}"
+                                       HorizontalAlignment="Right" 
+                                       Text="{Binding Path=Header.Name}" 
+                                       VerticalAlignment="Center" MinHeight="50" MinWidth="150"/>
+                    </Border>
+                </DataTemplate>
+
+                <DataTemplate DataType="{x:Type viewmodels:SchedulerEmptyCellItem}">
+                    <Border Background="Red"
+                            Margin="2"
+                            PreviewMouseDown="OnMouseDown_Create"/>
+                </DataTemplate>
+
+                <DataTemplate DataType="{x:Type viewmodels:SchedulerCellItem}">
+                    <Border BorderBrush="{StaticResource BorderBrush}" 
+                            BorderThickness="{StaticResource BorderThickness}" 
+                            Margin="2"
+                            PreviewMouseDown="OnMouseDown_Change">
+                        <TextBlock HorizontalAlignment="Center"
+                                       Margin="0,0,4,0"
+                                       Text="{Binding Path=Value.Name}"  
+                                       VerticalAlignment="Center" />
+                    </Border>
+                </DataTemplate>
+            </matrix:SchedulerControl.Resources>
+        </matrix:SchedulerControl>
+    </StackPanel>
+</UserControl>

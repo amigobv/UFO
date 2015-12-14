@@ -57,8 +57,9 @@
     <Compile Include="PerformanceViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RelayCommand.cs" />
+    <Compile Include="LocationSchedulerViewModel.cs" />
+    <Compile Include="SchedulerViewModel.cs" />
     <Compile Include="ScheduleViewModel.cs" />
-    <Compile Include="TimeViewModel.cs" />
     <Compile Include="UserLoginViewModel.cs" />
     <Compile Include="UserRegistrationViewModel.cs" />
     <Compile Include="VenueEditViewModel.cs" />
