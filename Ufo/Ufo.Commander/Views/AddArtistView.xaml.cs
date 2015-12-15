@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Ufo.BL;
-using Ufo.Commander.ViewModel;
+using Ufo.Commander.ViewModel.Basic;
 
 namespace Ufo.Commander.Views
 {
@@ -24,7 +24,7 @@ namespace Ufo.Commander.Views
         public AddArtistView()
         {
             InitializeComponent();
-            DataContext = new ArtistEditViewModel(ManagerFactory.GetManager());
+            DataContext = new ArtistViewModel(ManagerFactory.GetManager());
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)

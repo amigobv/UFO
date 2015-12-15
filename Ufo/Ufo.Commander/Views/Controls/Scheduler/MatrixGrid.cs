@@ -4,7 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 
-namespace Ufo.Views.Controls.Schedule.Layout
+namespace Ufo.Views.Controls.Scheduler
 {
   /// <summary>
   /// A Grid panel that creates its own rows and columns based on the

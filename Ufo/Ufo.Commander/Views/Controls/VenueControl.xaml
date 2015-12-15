@@ -52,7 +52,7 @@
                           Margin="5"
                           ItemsSource="{Binding Locations}"
                           SelectedItem="{Binding Location}"
-                          DisplayMemberPath="Label"/>
+                          DisplayMemberPath="Name"/>
             </Grid>
         </GroupBox>
     </StackPanel>

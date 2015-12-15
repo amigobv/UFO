@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace Ufo.Views.Controls.Schedule.Layout
+namespace Ufo.Views.Controls.Scheduler
 {
   /// <summary>
   /// Exposes two dependency properties which are bound to in

@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander\App.xaml
-20-1281921130
+19-1796776204
 
-27-2141733910
+27-1553834846
 17-904778613
-Views\Controls\Schedule\Matrix\SchedulerControl.xaml;Views\Controls\TableControl.xaml;Views\MainWindow.xaml;Views\AddArtistView.xaml;Views\AddCategoryView.xaml;Views\AddLocationView.xaml;Views\AddVenueView.xaml;Views\Controls\CategoriesControl.xaml;Views\Controls\ArtistControl.xaml;Views\Controls\ArtistsControl.xaml;Views\Controls\CategoryControl.xaml;Views\Controls\LocationControl.xaml;Views\Controls\PerformanceControl.xaml;Views\Controls\VenueControl.xaml;Views\Controls\LocationsControl.xaml;Views\PerformanceEditView.xaml;Views\Controls\ScheduleControl.xaml;Views\UserLoginView.xaml;Views\UserRegistrationView.xaml;Views\Controls\VenuesControl.xaml;
+Views\Controls\Scheduler\SchedulerControl.xaml;Views\Controls\TableControl.xaml;Views\MainWindow.xaml;Views\AddArtistView.xaml;Views\AddCategoryView.xaml;Views\AddLocationView.xaml;Views\AddVenueView.xaml;Views\Controls\CategoriesControl.xaml;Views\Controls\ArtistControl.xaml;Views\Controls\ArtistsControl.xaml;Views\Controls\CategoryControl.xaml;Views\Controls\LocationControl.xaml;Views\AddPerformanceView.xaml;Views\Controls\VenueControl.xaml;Views\Controls\LocationsControl.xaml;Views\Controls\ScheduleControl.xaml;Views\UserLoginView.xaml;Views\UserRegistrationView.xaml;Views\Controls\VenuesControl.xaml;
 
 False
 

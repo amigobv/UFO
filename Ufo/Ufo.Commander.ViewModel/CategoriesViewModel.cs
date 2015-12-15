@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Ufo.BL.Interfaces;
+using Ufo.Commander.ViewModel.Basic;
 using Ufo.Domain;
 
 namespace Ufo.Commander.ViewModel
@@ -14,22 +15,22 @@ namespace Ufo.Commander.ViewModel
 
         #region private members
         private IManager manager;
-        private ObservableCollection<CategoryEditViewModel> categories;
-        private CategoryEditViewModel currentCategory;
+        private ObservableCollection<CategoryViewModel> categories;
+        private CategoryViewModel currentCategory;
         #endregion
 
         #region ctor
         public CategoriesViewModel(IManager manager)
         {
             this.manager = manager;
-            Categories = new ObservableCollection<CategoryEditViewModel>();
-            currentCategory = new CategoryEditViewModel(new Category(), manager);
+            Categories = new ObservableCollection<CategoryViewModel>();
+            currentCategory = new CategoryViewModel(new Category(), manager);
             LoadCategories();
         }
         #endregion
 
         #region properties
-        public ObservableCollection<CategoryEditViewModel> Categories
+        public ObservableCollection<CategoryViewModel> Categories
         {
             get { return categories; }
             set
@@ -42,7 +43,7 @@ namespace Ufo.Commander.ViewModel
             }
         }
 
-        public CategoryEditViewModel CurrentCategory
+        public CategoryViewModel CurrentCategory
         {
             get { return currentCategory; }
             set
@@ -65,7 +66,7 @@ namespace Ufo.Commander.ViewModel
 
             foreach(var category in categoriesList)
             {
-                Categories.Add(new CategoryEditViewModel(category, manager));
+                Categories.Add(new CategoryViewModel(category, manager));
             }
         }
 

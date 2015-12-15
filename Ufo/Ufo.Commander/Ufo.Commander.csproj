@@ -60,6 +60,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converter\ListCountToSelectedIndex.cs" />
     <Compile Include="Views\AddArtistView.xaml.cs">
       <DependentUpon>AddArtistView.xaml</DependentUpon>
     </Compile>
@@ -87,13 +88,13 @@
     <Compile Include="Views\Controls\LocationControl.xaml.cs">
       <DependentUpon>LocationControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Controls\PerformanceControl.xaml.cs">
-      <DependentUpon>PerformanceControl.xaml</DependentUpon>
+    <Compile Include="Views\AddPerformanceView.xaml.cs">
+      <DependentUpon>AddPerformanceView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Controls\Schedule\Layout\MatrixGrid.cs" />
-    <Compile Include="Views\Controls\Schedule\Layout\MatrixGridChildConverter.cs" />
-    <Compile Include="Views\Controls\Schedule\Layout\MatrixGridChildMonitor.cs" />
-    <Compile Include="Views\Controls\Schedule\Matrix\SchedulerControl.xaml.cs">
+    <Compile Include="Views\Controls\Scheduler\MatrixGrid.cs" />
+    <Compile Include="Views\Controls\Scheduler\MatrixGridChildConverter.cs" />
+    <Compile Include="Views\Controls\Scheduler\MatrixGridChildMonitor.cs" />
+    <Compile Include="Views\Controls\Scheduler\SchedulerControl.xaml.cs">
       <DependentUpon>SchedulerControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Controls\TableControl.xaml.cs">
@@ -104,9 +105,6 @@
     </Compile>
     <Compile Include="Views\Controls\LocationsControl.xaml.cs">
       <DependentUpon>LocationsControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\PerformanceEditView.xaml.cs">
-      <DependentUpon>PerformanceEditView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Controls\ScheduleControl.xaml.cs">
       <DependentUpon>ScheduleControl.xaml</DependentUpon>
@@ -120,7 +118,7 @@
     <Compile Include="Views\Controls\VenuesControl.xaml.cs">
       <DependentUpon>VenuesControl.xaml</DependentUpon>
     </Compile>
-    <Page Include="Views\Controls\Schedule\Matrix\SchedulerControl.xaml">
+    <Page Include="Views\Controls\Scheduler\SchedulerControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -176,7 +174,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Controls\PerformanceControl.xaml">
+    <Page Include="Views\AddPerformanceView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -185,10 +183,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Controls\LocationsControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\PerformanceEditView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

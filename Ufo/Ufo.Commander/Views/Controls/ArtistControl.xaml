@@ -82,7 +82,7 @@
                 <ComboBox Grid.Row="4" Grid.Column="1" 
                       Name="cbEmail"
                       Margin="5"
-                      DisplayMemberPath="Label"
+                      DisplayMemberPath="Name"
                       ItemsSource="{Binding Categories}"
                       SelectedItem="{Binding Category}">
                 </ComboBox>

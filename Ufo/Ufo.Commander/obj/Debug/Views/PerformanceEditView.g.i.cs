@@ -39,7 +39,7 @@ namespace Ufo.Commander.Views {
     /// <summary>
     /// PerformanceEditView
     /// </summary>
-    public partial class PerformanceEditView : System.Windows.Window, System.Windows.Markup.IComponentConnector {
+    public partial class PerformanceView : System.Windows.Window, System.Windows.Markup.IComponentConnector {
         
         private bool _contentLoaded;
         

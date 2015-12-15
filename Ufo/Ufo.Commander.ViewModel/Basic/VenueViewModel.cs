@@ -5,35 +5,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Ufo.BL;
 using Ufo.BL.Interfaces;
 using Ufo.Domain;
 
-namespace Ufo.Commander.ViewModel
+namespace Ufo.Commander.ViewModel.Basic
 {
-    public class VenueEditViewModel : ViewModelBase
+    public class VenueViewModel : ViewModelBase
     {
         #region private members
         private IManager manager;
         private Venue venue;
-        private ObservableCollection<Location> locations;
+        private ObservableCollection<LocationViewModel> locations;
         #endregion
 
         #region ctor
-        public VenueEditViewModel(IManager manager)
+        public VenueViewModel(IManager manager)
         {
             this.manager = manager;
             this.venue = new Venue();
-            this.locations = manager.GetAllLocations();
+            locations = new ObservableCollection<LocationViewModel>();
             SaveCommand = new RelayCommand(o => manager.UpdateVenue(venue));
             RemoveCommand = new RelayCommand(o => manager.RemoveVenue(venue));
         }
 
-        public VenueEditViewModel(Venue venue, IManager manager)
+        public VenueViewModel(Venue venue, IManager manager)
         {
             this.manager = manager;
             this.venue = venue;
-            this.locations = manager.GetAllLocations();
+            locations = new ObservableCollection<LocationViewModel>();
             SaveCommand = new RelayCommand(o => manager.UpdateVenue(venue));
             RemoveCommand = new RelayCommand(o => manager.RemoveVenue(venue));
         }
@@ -62,7 +61,7 @@ namespace Ufo.Commander.ViewModel
 
                 return venue.MaxSpectators.ToString();
             }
-        
+
             set
             {
                 var capacity = 0;
@@ -93,9 +92,13 @@ namespace Ufo.Commander.ViewModel
         }
 
 
-        public ObservableCollection<Location> Locations
+        public ObservableCollection<LocationViewModel> Locations
         {
-            get { return locations; }
+            get
+            {
+                LoadLocations();
+                return locations;
+            }
             set
             {
                 if (locations != value)
@@ -106,8 +109,23 @@ namespace Ufo.Commander.ViewModel
             }
         }
 
+        public string Id
+        {
+            get { return string.Format("{0}{1}", venue.Location.Id, venue.Id); }
+        }
+
         public ICommand SaveCommand { get; set; }
         public ICommand RemoveCommand { get; set; }
         #endregion
+
+        private void LoadLocations()
+        {
+            locations.Clear();
+            //TODO: only the artists that are aloud should be returned
+            var locationList = manager.GetAllLocations();
+
+            foreach (var location in locationList)
+                locations.Add(new LocationViewModel(location, manager));
+        }
     }
 }

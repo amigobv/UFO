@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Ufo.BL.Interfaces;
+using Ufo.Commander.ViewModel.Basic;
 using Ufo.Domain;
 
 namespace Ufo.Commander.ViewModel
@@ -13,22 +14,21 @@ namespace Ufo.Commander.ViewModel
     {
         #region private members
         private IManager manager;
-        private ObservableCollection<LocationEditViewModel> locations;
-        private LocationEditViewModel currentLocation;
+        private ObservableCollection<LocationViewModel> locations;
+        private LocationViewModel currentLocation;
         #endregion
 
         #region ctor
         public LocationsViewModel(IManager manager)
         {
             this.manager = manager;
-            Locations = new ObservableCollection<LocationEditViewModel>();
-            CurrentLocation = new LocationEditViewModel(new Location(), manager);
-            LoadLocations();
+            Locations = new ObservableCollection<LocationViewModel>();
+            CurrentLocation = new LocationViewModel(new Location(), manager);
         }
         #endregion
 
         #region properties
-        public LocationEditViewModel CurrentLocation
+        public LocationViewModel CurrentLocation
         {
             get { return currentLocation; }
             set
@@ -43,9 +43,13 @@ namespace Ufo.Commander.ViewModel
         }
 
 
-        public ObservableCollection<LocationEditViewModel> Locations
+        public ObservableCollection<LocationViewModel> Locations
         {
-            get { return locations; }
+            get
+            {
+                LoadLocations();
+                return locations;
+            }
             set
             {
                 if (locations != value)
@@ -59,11 +63,11 @@ namespace Ufo.Commander.ViewModel
 
         public void LoadLocations()
         {
-            Locations.Clear();
+            locations.Clear();
             var locationsList = manager.GetAllLocations();
 
             foreach (var location in locationsList)
-                Locations.Add(new LocationEditViewModel(location, manager));
+                locations.Add(new LocationViewModel(location, manager));
         }
     }
 }

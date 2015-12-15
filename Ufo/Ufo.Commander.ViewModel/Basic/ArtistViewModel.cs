@@ -1,52 +1,55 @@
-﻿using MvvmValidation;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Ufo.BL;
 using Ufo.BL.Interfaces;
-using Ufo.Commander.Model;
 using Ufo.Domain;
 
-namespace Ufo.Commander.ViewModel
+namespace Ufo.Commander.ViewModel.Basic
 {
-    public class ArtistEditViewModel : ViewModelBase
+    public class ArtistViewModel : ViewModelBase
     {
         #region private members
         private IManager manager;
         private Artist artist;
-        private ObservableCollection<Category> categories;
-        private bool? isValid;
-        private string validationErrorsString;
+        private ObservableCollection<CategoryViewModel> categories;
         #endregion
 
         #region ctor
-        public ArtistEditViewModel(IManager manager)
+        public ArtistViewModel(IManager manager)
         {
             this.artist = new Artist();
             this.manager = manager;
-            Categories = manager.GetAllCategories();
-            SaveCommand = new RelayCommand(o => manager.UpdateArtist(artist));
-            RemoveCommand = new RelayCommand(o => manager.RemoveArtist(artist), o => false);
+            categories = new ObservableCollection<CategoryViewModel>();
+            SaveCommand = new RelayCommand((o) => manager.UpdateArtist(artist));
+            RemoveCommand = new RelayCommand((o) => { });
+    }
 
-            ValidateCommand = new RelayCommand(Validate);
-        }
-
-        public ArtistEditViewModel(Artist artist, IManager manager)
+        public ArtistViewModel(Artist artist, IManager manager)
         {
             this.artist = artist;
             this.manager = manager;
-            Categories = manager.GetAllCategories();
-            SaveCommand = new RelayCommand(o => manager.UpdateArtist(artist));
-            RemoveCommand = new RelayCommand(o => manager.RemoveArtist(artist), o => false);
+            categories = new ObservableCollection<CategoryViewModel>();
         }
-
         #endregion
 
         #region properties
+        public int Id
+        {
+            get { return artist.Id; }
+            set
+            {
+                if (artist.Id != value)
+                {
+                    artist.Id = value;
+                    RaisePropertyChangedEvent(nameof(Id));
+                }
+            }
+        }
+
         public string Name
         {
             get { return artist.Name; }
@@ -56,7 +59,6 @@ namespace Ufo.Commander.ViewModel
                 {
                     artist.Name = value;
                     RaisePropertyChangedEvent(nameof(Name));
-                    Validator.Validate(() => Name);
                 }
             }
         }
@@ -70,7 +72,6 @@ namespace Ufo.Commander.ViewModel
                 {
                     artist.Country = value;
                     RaisePropertyChangedEvent(nameof(Country));
-                    Validator.Validate(() => Country);
                 }
             }
         }
@@ -84,8 +85,7 @@ namespace Ufo.Commander.ViewModel
                 {
                     artist.Email = value;
                     RaisePropertyChangedEvent(nameof(Email));
-                    Validator.Validate(() => Email);
-                }   
+                }
             }
         }
 
@@ -98,7 +98,6 @@ namespace Ufo.Commander.ViewModel
                 {
                     artist.Description = value;
                     RaisePropertyChangedEvent(nameof(Description));
-                    Validator.Validate(() => Description);
                 }
             }
         }
@@ -112,7 +111,6 @@ namespace Ufo.Commander.ViewModel
                 {
                     artist.Homepage = value;
                     RaisePropertyChangedEvent(nameof(Homepage));
-                    Validator.Validate(() => Homepage);
                 }
             }
         }
@@ -152,60 +150,39 @@ namespace Ufo.Commander.ViewModel
                 {
                     artist.Category = value;
                     RaisePropertyChangedEvent(nameof(Category));
-                    Validator.Validate(() => Category);
                 }
             }
         }
 
-        public ObservableCollection<Category> Categories
+        public ObservableCollection<CategoryViewModel> Categories
         {
-            get { return categories; }
-            set { categories = value; }
+            get
+            { 
+                LoadCategories();
+                return categories;
+            }
+            set
+            {
+                if (categories != value)
+                {
+                    categories = value;
+                    RaisePropertyChangedEvent(nameof(Categories));
+                }
+            }
         }
 
         public ICommand SaveCommand { get; set; }
         public ICommand RemoveCommand { get; set; }
-        public ICommand ValidateCommand { get; set; }
-
-        public bool? IsValid
-        {
-            get { return isValid; }
-            private set
-            {
-                isValid = value;
-                RaisePropertyChangedEvent(nameof(IsValid));
-            }
-        }
-
-        public string ValidationErrorsString
-        {
-            get { return validationErrorsString; }
-            private set
-            {
-                validationErrorsString = value;
-                RaisePropertyChangedEvent(nameof(ValidationErrorsString));
-            }
-        }
         #endregion
 
-        private void Validate(object o)
+        private void LoadCategories()
         {
-            var uiThread = TaskScheduler.FromCurrentSynchronizationContext();
+            categories.Clear();
+            var listCategories = manager.GetAllCategories();
 
-            Validator.ValidateAllAsync().ContinueWith(r => OnValidateAllCompleted(r.Result), uiThread);
+            foreach (var category in listCategories)
+                categories.Add(new CategoryViewModel(category, manager));
+
         }
-
-        private void OnValidateAllCompleted(ValidationResult validationResult)
-        {
-            UpdateValidationSummary(validationResult);
-        }
-
-        private void UpdateValidationSummary(ValidationResult validationResult)
-        {
-            IsValid = validationResult.IsValid;
-            ValidationErrorsString = validationResult.ToString();
-        }
-
-
     }
 }

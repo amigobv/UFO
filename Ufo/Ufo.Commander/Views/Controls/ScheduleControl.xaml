@@ -16,7 +16,7 @@
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <ItemsControl HorizontalContentAlignment="Stretch" 
                           Width="Auto" Height="Auto"
-                          ItemsSource="{Binding Path=Tables}" 
+                          ItemsSource="{Binding Path=ScheduleFirstDay}" 
                           ItemTemplate="{StaticResource itemsTemplate}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
@@ -30,7 +30,7 @@
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <ItemsControl HorizontalContentAlignment="Stretch" 
                           Width="Auto" Height="Auto"
-                          ItemsSource="{Binding Path=Tables}" 
+                          ItemsSource="{Binding Path=ScheduleSecondDay}" 
                           ItemTemplate="{StaticResource itemsTemplate}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
@@ -44,7 +44,7 @@
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <ItemsControl HorizontalContentAlignment="Stretch" 
                           Width="Auto" Height="Auto"
-                          ItemsSource="{Binding Path=Tables}" 
+                          ItemsSource="{Binding Path=ScheduleThirdDay}" 
                           ItemTemplate="{StaticResource itemsTemplate}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>

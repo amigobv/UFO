@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Ufo.Commander.Views.Controls"
              xmlns:resx="clr-namespace:Ufo.Commander.Resources"
-             xmlns:matrix="clr-namespace:Ufo.Views.Controls.Schedule.Matrix"
+             xmlns:matrix="clr-namespace:Ufo.Views.Controls.Scheduler"
              xmlns:viewmodels="clr-namespace:Ufo.Commander.ViewModel;assembly=Ufo.Commander.ViewModel"
              mc:Ignorable="d"
              x:Name="tableControl">
@@ -29,7 +29,7 @@
                     <Border Background="SteelBlue" Margin="2"/>
                 </DataTemplate>
 
-                <DataTemplate DataType="{x:Type viewmodels:SchedulerColumnHeaderItem}" >
+                <DataTemplate  DataType="{x:Type viewmodels:SchedulerColumnHeaderItem}" >
                     <Border Background="{StaticResource BackBrush}" 
                             BorderBrush="{StaticResource BorderBrush}" 
                             BorderThickness="{StaticResource BorderThickness}" 
@@ -37,9 +37,9 @@
                             Margin="2">
                         <DockPanel>
                             <TextBlock FontWeight="Bold"
-                                           Foreground="{StaticResource HeaderForeground}"
-                                           Text="{Binding Path=Header, StringFormat=HH:mm}" 
-                                           TextAlignment="Center" MinWidth="150"/>
+                                       Foreground="{StaticResource HeaderForeground}"
+                                       Text="{Binding Path=Header, StringFormat=HH:mm}" 
+                                       TextAlignment="Center"/>
                         </DockPanel>
                     </Border>
                 </DataTemplate>
@@ -49,12 +49,13 @@
                             BorderBrush="{StaticResource BorderBrush}" 
                             BorderThickness="{StaticResource BorderThickness}"  
                             Padding="4,0"
-                            Margin="2">
+                            Margin="2"
+                            MinHeight="50">
                         <TextBlock FontWeight="Bold"
-                                       Foreground="{StaticResource HeaderForeground}"
-                                       HorizontalAlignment="Right" 
-                                       Text="{Binding Path=Header.Name}" 
-                                       VerticalAlignment="Center" MinHeight="50" MinWidth="150"/>
+                                   Foreground="{StaticResource HeaderForeground}"
+                                   HorizontalAlignment="Right" 
+                                   Text="{Binding Path=Header.Name}" 
+                                   VerticalAlignment="Center"/>
                     </Border>
                 </DataTemplate>
 
@@ -69,10 +70,16 @@
                             BorderThickness="{StaticResource BorderThickness}" 
                             Margin="2"
                             PreviewMouseDown="OnMouseDown_Change">
-                        <TextBlock HorizontalAlignment="Center"
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock HorizontalAlignment="Center"
                                        Margin="0,0,4,0"
-                                       Text="{Binding Path=Value.Name}"  
+                                       Text="{Binding Path=Value.Artist.Name}"  
                                        VerticalAlignment="Center" />
+                            <TextBlock HorizontalAlignment="Center"
+                                   Margin="0,0,4,0"
+                                   Text="{Binding Path=Value.Artist.Country}"  
+                                   VerticalAlignment="Center" />
+                        </StackPanel>
                     </Border>
                 </DataTemplate>
             </matrix:SchedulerControl.Resources>

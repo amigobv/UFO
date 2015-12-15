@@ -10,21 +10,26 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Ufo.BL;
 using Ufo.Commander.ViewModel;
 
 namespace Ufo.Commander.Views
 {
     /// <summary>
-    /// Interaction logic for PerformanceEditView.xaml
+    /// Interaction logic for PerformanceControl.xaml
     /// </summary>
-    public partial class PerformanceEditView : Window
+    public partial class AddPerformanceView : Window
     {
-        public PerformanceEditView()
+        public AddPerformanceView()
         {
             InitializeComponent();
-            DataContext = new PerformanceEditViewModel(ManagerFactory.GetManager());
+        }
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = true;
+            this.Close();
         }
     }
 }

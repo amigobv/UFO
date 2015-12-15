@@ -150,11 +150,11 @@ namespace Ufo.Commander.ViewModel
 
         #region Abstract Methods
 
-        protected abstract IEnumerable<TColumn> GetColumnHeaders();
+        public abstract IEnumerable<TColumn> GetColumnHeaders();
 
-        protected abstract IEnumerable<TRow> GetRowHeaders();
+        public abstract IEnumerable<TRow> GetRowHeaders();
 
-        protected abstract object GetCellValue(TRow rowHeader, TColumn columnHeader);
+        public abstract object GetCellValue(TRow rowHeader, TColumn columnHeader);
 
         #endregion
 

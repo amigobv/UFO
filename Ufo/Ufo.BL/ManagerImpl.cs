@@ -235,6 +235,11 @@ namespace Ufo.BL
                     throw new ArgumentException("No valid artist");
         }
 
+        public ObservableCollection<Artist> GetArtistByName(string name)
+        {
+            return new ObservableCollection<Artist>(artistDao.FindByName(name));
+        }
+
         public ObservableCollection<Artist> GetAllArtists()
         {
             return new ObservableCollection<Artist>(artistDao.FindAll());
@@ -388,6 +393,14 @@ namespace Ufo.BL
                 throw new VenueException("Cannot insert venue!");
         }
 
+        public Venue GetVenueById(string id)
+        {
+            var venueId = (int)Char.GetNumericValue(id[1]);
+            var locationId = id[0].ToString();
+
+            return venueDao.FindById(venueId, locationId);
+        }
+
         public ObservableCollection<Venue> GetAllVenues()
         {
             return new ObservableCollection<Venue>(venueDao.FindAll());
@@ -472,8 +485,18 @@ namespace Ufo.BL
 
         public void UpdatePerformance(Performance performance)
         {
-            if (!performanceDao.Update(performance))
-                throw new PerformanceException("Cannot update performance!");
+            if (performance == null)
+                throw new ArgumentNullException("Invalid performance!");
+
+            if (performanceDao.FindById(performance.Id) != null)
+            {
+                if (!performanceDao.Update(performance))
+                    throw new VenueException("Cannot update performance!");
+            }
+            else
+            {
+                CreatePerformance(performance);
+            }
         }
         #endregion
 

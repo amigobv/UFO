@@ -23,6 +23,7 @@ namespace Ufo.BL.Interfaces
 
         #region Artist
         void CreateArtist(Artist artist);
+        ObservableCollection<Artist> GetArtistByName(string name);
         ObservableCollection<Artist> GetAllArtists();
         ObservableCollection<Artist> GetAllArtistsByCountry(string country);
         ObservableCollection<Artist> GetAllArtistsByCategory(Category category);
@@ -48,6 +49,7 @@ namespace Ufo.BL.Interfaces
 
         #region Venue
         void CreateVenue(Venue venue);
+        Venue GetVenueById(string id);
         ObservableCollection<Venue> GetAllVenues();
         ObservableCollection<Venue> GetVenuesBySpectators(int numberOfSpectators);
         ObservableCollection<Venue> GetVenuesByLocation(string location);

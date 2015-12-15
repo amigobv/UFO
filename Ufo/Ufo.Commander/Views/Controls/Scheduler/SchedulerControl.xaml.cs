@@ -1,4 +1,4 @@
-﻿namespace Ufo.Views.Controls.Schedule.Matrix
+﻿namespace Ufo.Views.Controls.Scheduler
 {
   public partial class SchedulerControl : System.Windows.Controls.ItemsControl
   {

@@ -7,9 +7,9 @@ using System.Windows.Input;
 using Ufo.BL.Interfaces;
 using Ufo.Domain;
 
-namespace Ufo.Commander.ViewModel
+namespace Ufo.Commander.ViewModel.Basic
 {
-    public class LocationEditViewModel : ViewModelBase
+    public class LocationViewModel : ViewModelBase
     {
         #region private members
         private IManager manager;
@@ -17,7 +17,7 @@ namespace Ufo.Commander.ViewModel
         #endregion
 
         #region ctor
-        public LocationEditViewModel(IManager manager)
+        public LocationViewModel(IManager manager)
         {
             this.manager = manager;
             this.location = new Location();
@@ -25,7 +25,7 @@ namespace Ufo.Commander.ViewModel
             RemoveCommand = new RelayCommand(o => manager.RemoveLocation(location), o => manager.LocationExists(location) == false);
         }
 
-        public LocationEditViewModel(Location location, IManager manager)
+        public LocationViewModel(Location location, IManager manager)
         {
             this.manager = manager;
             this.location = location;

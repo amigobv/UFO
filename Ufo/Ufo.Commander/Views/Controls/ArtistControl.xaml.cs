@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Ufo.Commander.ViewModel;
+using Ufo.Commander.ViewModel.Basic;
 
 namespace Ufo.Commander.Views.Controls
 {
@@ -21,11 +22,11 @@ namespace Ufo.Commander.Views.Controls
     /// </summary>
     public partial class ArtistControl : UserControl
     {
-        public ArtistEditViewModel ViewModel
+        public ArtistViewModel ViewModel
         {
             get
             {
-                return this.DataContext as ArtistEditViewModel;
+                return this.DataContext as ArtistViewModel;
             }
         }
 

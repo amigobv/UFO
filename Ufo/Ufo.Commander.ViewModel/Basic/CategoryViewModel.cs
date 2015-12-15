@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Ufo.BL;
 using Ufo.BL.Interfaces;
 using Ufo.Domain;
 
-namespace Ufo.Commander.ViewModel
+namespace Ufo.Commander.ViewModel.Basic
 {
-    public class CategoryEditViewModel : ViewModelBase
+    public class CategoryViewModel : ViewModelBase
     {
         #region private members
         private Category category;
@@ -18,7 +17,7 @@ namespace Ufo.Commander.ViewModel
         #endregion
 
         #region ctor
-        public CategoryEditViewModel(IManager manager)
+        public CategoryViewModel(IManager manager)
         {
             this.manager = manager;
             this.category = new Category();
@@ -26,7 +25,7 @@ namespace Ufo.Commander.ViewModel
             this.RemoveCommand = new RelayCommand(o => manager.RemoveCategory(category), o => manager.CategoryExists(category) == false);
         }
 
-        public CategoryEditViewModel(Category category, IManager manager)
+        public CategoryViewModel(Category category, IManager manager)
         {
             this.manager = manager;
             this.category = category;

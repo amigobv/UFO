@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Ufo.BL.Interfaces;
+using Ufo.Commander.ViewModel.Basic;
 using Ufo.Domain;
 
 namespace Ufo.Commander.ViewModel
@@ -13,25 +14,28 @@ namespace Ufo.Commander.ViewModel
     {
         #region private members
         private IManager manager;
-        private ObservableCollection<VenueEditViewModel> venues;
-        private VenueEditViewModel currentVenue;
+        private ObservableCollection<VenueViewModel> venues;
+        private VenueViewModel currentVenue;
         #endregion
 
         #region ctor
         public VenuesViewModel(IManager manager)
         {
             this.manager = manager;
-            Venues = new ObservableCollection<VenueEditViewModel>();
-            CurrentVenue = new VenueEditViewModel(new Venue(), manager);
-            LoadVenues();
+            Venues = new ObservableCollection<VenueViewModel>();
+            CurrentVenue = new VenueViewModel(new Venue(), manager);
         }
 
         #endregion
 
         #region properties
-        public ObservableCollection<VenueEditViewModel> Venues
+        public ObservableCollection<VenueViewModel> Venues
         {
-            get { return venues; }
+            get
+            {
+                LoadVenues();
+                return venues;
+            }
             set
             {
                 if (venues != value)
@@ -42,7 +46,7 @@ namespace Ufo.Commander.ViewModel
             }
         }
 
-        public VenueEditViewModel CurrentVenue
+        public VenueViewModel CurrentVenue
         {
             get { return currentVenue; }
             set
@@ -58,11 +62,11 @@ namespace Ufo.Commander.ViewModel
 
         public void LoadVenues()
         {
-            Venues.Clear();
+            venues.Clear();
             var venuesList = manager.GetAllVenues();
 
             foreach (var venue in venuesList)
-                Venues.Add(new VenueEditViewModel(venue, manager));
+                venues.Add(new VenueViewModel(venue, manager));
         }
     }
 }

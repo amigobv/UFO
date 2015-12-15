@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Windows.Controls;
 using System.Windows.Data;
 
-namespace Ufo.Views.Controls.Schedule.Layout
+namespace Ufo.Views.Controls.Scheduler
 {
   /// <summary>
   /// The value converter applied to bindings against properties of 

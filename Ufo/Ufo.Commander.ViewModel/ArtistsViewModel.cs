@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Ufo.BL;
 using Ufo.BL.Interfaces;
+using Ufo.Commander.ViewModel.Basic;
 using Ufo.Domain;
 
 namespace Ufo.Commander.ViewModel
@@ -13,23 +14,23 @@ namespace Ufo.Commander.ViewModel
     public class ArtistsViewModel : ViewModelBase
     {
         #region privae members
-        private ObservableCollection<ArtistEditViewModel> artists;
+        private ObservableCollection<ArtistViewModel> artists;
         private IManager manager;
-        private ArtistEditViewModel currentArtist;
+        private ArtistViewModel currentArtist;
         #endregion
 
         #region ctor
         public ArtistsViewModel(IManager manager)
         {
             this.manager = manager;
-            artists = new ObservableCollection<ArtistEditViewModel>();
-            currentArtist = new ArtistEditViewModel(new Artist(), manager);
+            artists = new ObservableCollection<ArtistViewModel>();
+            currentArtist = new ArtistViewModel(new Artist(), manager);
             LoadArtists();
         }
         #endregion
 
         #region properties
-        public ObservableCollection<ArtistEditViewModel> Artists
+        public ObservableCollection<ArtistViewModel> Artists
         {
             get { return artists; }
             set
@@ -42,9 +43,13 @@ namespace Ufo.Commander.ViewModel
             }
         }
 
-        public ArtistEditViewModel CurrentArtist
+        public ArtistViewModel CurrentArtist
         {
-            get { return currentArtist; }
+            get
+            {
+                LoadArtists();
+                return currentArtist;
+            }
             set
             {
                 if (currentArtist != value)
@@ -58,12 +63,12 @@ namespace Ufo.Commander.ViewModel
 
         public void LoadArtists()
         {
-            Artists.Clear();
+            artists.Clear();
             var artistsList = manager.GetAllArtists();
 
             foreach (var artist in artistsList)
             {
-                Artists.Add(new ArtistEditViewModel(artist, manager));
+                artists.Add(new ArtistViewModel(artist, manager));
             }
 
         }
