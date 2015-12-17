@@ -41,7 +41,7 @@ namespace Ufo.DAL.SqlServer.Dao
             @"WHERE p.artist = a.idArtist AND a.category = c.idCategory AND p.pVenue = v.idVenue AND p.pLocation = l.idLocation AND v.label = @venue " +
             @"ORDER BY p.start ASC";
 
-        private const string SQL_FIND_BY_DAY =
+        private const string SQL_FIND_BY_BETWEEN =
             @"SELECT p.idPerformance, p.start, a.idArtist, a.name, a.country, a.email, a.description, a.homepage, a.picture, a.video, " +
             @"c.idCategory, c.label, a.deleted, v.idVenue, v.label, v.maxSpectators, l.idLocation, l.label " +
             @"FROM Performance as p, Artist as a, Venue as v, Location as l, Category as c " +
@@ -156,9 +156,9 @@ namespace Ufo.DAL.SqlServer.Dao
             }
         }
 
-        public IList<Performance> FindByDay(DateTime start, DateTime end)
+        public IList<Performance> FindBetween(DateTime start, DateTime end)
         {
-            var command = _database.CreateCommand(SQL_FIND_BY_DAY);
+            var command = _database.CreateCommand(SQL_FIND_BY_BETWEEN);
             _database.DefineParameter(command, "@start", DbType.DateTime, start);
             _database.DefineParameter(command, "@end", DbType.DateTime, end);
 

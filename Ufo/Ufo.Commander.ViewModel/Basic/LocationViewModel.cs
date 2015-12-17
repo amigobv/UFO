@@ -22,7 +22,6 @@ namespace Ufo.Commander.ViewModel.Basic
             this.manager = manager;
             this.location = new Location();
             SaveCommand = new RelayCommand(o => manager.UpdateLocation(location));
-            RemoveCommand = new RelayCommand(o => manager.RemoveLocation(location), o => manager.LocationExists(location) == false);
         }
 
         public LocationViewModel(Location location, IManager manager)
@@ -30,7 +29,6 @@ namespace Ufo.Commander.ViewModel.Basic
             this.manager = manager;
             this.location = location;
             SaveCommand = new RelayCommand(o => manager.UpdateLocation(location));
-            RemoveCommand = new RelayCommand(o => manager.RemoveLocation(location), o => manager.LocationExists(location) == false);
         }
         #endregion
 
@@ -62,7 +60,22 @@ namespace Ufo.Commander.ViewModel.Basic
         }
 
         public ICommand SaveCommand { get; set; }
-        public ICommand RemoveCommand { get; set; }
         #endregion
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            var location = obj as LocationViewModel;
+
+            if (location == null)
+                return false;
+
+
+            return location.Equals(this.location);
+        }
     }
 }

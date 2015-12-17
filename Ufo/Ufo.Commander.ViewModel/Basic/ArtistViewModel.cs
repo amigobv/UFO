@@ -5,7 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Windows.Media.Imaging;
 using Ufo.BL.Interfaces;
+using Ufo.Command.ViewModel;
 using Ufo.Domain;
 
 namespace Ufo.Commander.ViewModel.Basic
@@ -15,6 +17,7 @@ namespace Ufo.Commander.ViewModel.Basic
         #region private members
         private IManager manager;
         private Artist artist;
+        private CategoryViewModel category;
         private ObservableCollection<CategoryViewModel> categories;
         #endregion
 
@@ -23,16 +26,20 @@ namespace Ufo.Commander.ViewModel.Basic
         {
             this.artist = new Artist();
             this.manager = manager;
+            category = new CategoryViewModel(manager);
             categories = new ObservableCollection<CategoryViewModel>();
-            SaveCommand = new RelayCommand((o) => manager.UpdateArtist(artist));
-            RemoveCommand = new RelayCommand((o) => { });
+            this.SaveCommand = new RelayCommand(o => manager.UpdateArtist(artist));
+            this.RemoveCommand = new RelayCommand(o => { });
     }
 
         public ArtistViewModel(Artist artist, IManager manager)
         {
             this.artist = artist;
             this.manager = manager;
+            category = new CategoryViewModel(artist.Category, manager);
             categories = new ObservableCollection<CategoryViewModel>();
+            this.SaveCommand = new RelayCommand(o => manager.UpdateArtist(artist));
+            this.RemoveCommand = new RelayCommand(o => { });
         }
         #endregion
 
@@ -141,14 +148,20 @@ namespace Ufo.Commander.ViewModel.Basic
             }
         }
 
-        public Category Category
+        public string CategoryName
         {
-            get { return artist.Category; }
+            get { return artist.Category == null ? "" : artist.Category.Label; }
+        }
+
+        public CategoryViewModel Category
+        {
+            get { return category; }
             set
             {
-                if (artist.Category != value)
+                if (category != value)
                 {
-                    artist.Category = value;
+                    category = value;
+                    CategoryVmToCategory(category);
                     RaisePropertyChangedEvent(nameof(Category));
                 }
             }
@@ -175,6 +188,22 @@ namespace Ufo.Commander.ViewModel.Basic
         public ICommand RemoveCommand { get; set; }
         #endregion
 
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            var artist = obj as ArtistViewModel;
+
+            if (artist == null)
+                return false;
+
+
+            return artist.artist.Equals(this.artist);
+        }
+
         private void LoadCategories()
         {
             categories.Clear();
@@ -183,6 +212,15 @@ namespace Ufo.Commander.ViewModel.Basic
             foreach (var category in listCategories)
                 categories.Add(new CategoryViewModel(category, manager));
 
+        }
+
+        private void CategoryVmToCategory(CategoryViewModel vm)
+        {
+            artist.Category = new Category()
+            {
+                Id = vm.Identifier,
+                Label = vm.Name
+            };
         }
     }
 }

@@ -50,8 +50,9 @@
                 <ComboBox Grid.Row="2" Grid.Column="1"
                           Name="cbLocation"
                           Margin="5"
+                          SelectedIndex="0"
                           ItemsSource="{Binding Locations}"
-                          SelectedItem="{Binding Location}"
+                          SelectedItem="{Binding Location, Mode=TwoWay}"
                           DisplayMemberPath="Name"/>
             </Grid>
         </GroupBox>

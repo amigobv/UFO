@@ -27,5 +27,9 @@ namespace Ufo.Commander.Views.Controls
             DataContext = new ScheduleViewModel(ManagerFactory.GetManager());
         }
 
+        private void Share(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

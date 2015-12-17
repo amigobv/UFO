@@ -11,49 +11,62 @@
             <ctrl:TableControl />
         </DataTemplate>
     </UserControl.Resources>
-    <TabControl>
-        <TabItem Header="{x:Static resx:Resources.DayOneText}" Name="DayOne">
-            <ScrollViewer VerticalScrollBarVisibility="Auto">
-                <ItemsControl HorizontalContentAlignment="Stretch" 
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+
+        <TabControl Grid.Row="0">
+            <TabItem Header="{x:Static resx:Resources.DayOneText}" Name="DayOne">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <ItemsControl HorizontalContentAlignment="Stretch" 
                           Width="Auto" Height="Auto"
                           ItemsSource="{Binding Path=ScheduleFirstDay}" 
                           ItemTemplate="{StaticResource itemsTemplate}">
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <StackPanel />
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                </ItemsControl>
-            </ScrollViewer>
-        </TabItem>
-        <TabItem Header="{x:Static resx:Resources.DayTwoText}" Name="DayTwo">
-            <ScrollViewer VerticalScrollBarVisibility="Auto">
-                <ItemsControl HorizontalContentAlignment="Stretch" 
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="{x:Static resx:Resources.DayTwoText}" Name="DayTwo">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <ItemsControl HorizontalContentAlignment="Stretch" 
                           Width="Auto" Height="Auto"
                           ItemsSource="{Binding Path=ScheduleSecondDay}" 
                           ItemTemplate="{StaticResource itemsTemplate}">
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <StackPanel/>
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                </ItemsControl>
-            </ScrollViewer>
-        </TabItem>
-        <TabItem Header="{x:Static resx:Resources.DayThreeText}" Name="DayThree">
-            <ScrollViewer VerticalScrollBarVisibility="Auto">
-                <ItemsControl HorizontalContentAlignment="Stretch" 
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="{x:Static resx:Resources.DayThreeText}" Name="DayThree">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <ItemsControl HorizontalContentAlignment="Stretch" 
                           Width="Auto" Height="Auto"
                           ItemsSource="{Binding Path=ScheduleThirdDay}" 
                           ItemTemplate="{StaticResource itemsTemplate}">
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <StackPanel/>
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                </ItemsControl>
-            </ScrollViewer>
-        </TabItem>
-
-    </TabControl>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
+                </ScrollViewer>
+            </TabItem>
+        </TabControl>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" FlowDirection="RightToLeft">
+            <Button Width="90"
+                    Name="btnShare" 
+                    Margin="5, 5, 5, 5"
+                    Content="{x:Static resx:Resources.ShareFestivalProgramText}"
+                    Click="Share"/>
+        </StackPanel>
+    </Grid>
 </UserControl>

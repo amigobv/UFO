@@ -47,9 +47,12 @@ namespace Ufo.Commander.Views.Controls
         {
             var vm = this.ViewModel;
 
-            if (vm != null)
+            if (vm != null && vm.CurrentVenue != null)
             {
-                vm.Venues.Add(vm.CurrentVenue);
+                vm.CurrentVenue.SaveCommand.Execute(null);
+
+                if (!vm.Venues.Contains(vm.CurrentVenue))
+                    vm.Venues.Add(vm.CurrentVenue);
             }
         }
 

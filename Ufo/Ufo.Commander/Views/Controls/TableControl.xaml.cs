@@ -40,7 +40,7 @@ namespace Ufo.Commander.Views.Controls
             if (src == null)
                 return;
 
-            var cellItem = src.DataContext as SchedulerEmptyCellItem;
+            var cellItem = src.DataContext as SchedulerCellItem;
 
             if (cellItem == null)
                 return;
@@ -59,6 +59,7 @@ namespace Ufo.Commander.Views.Controls
             window.Height = 350;
             window.Width = 400;
             window.ShowDialog();
+            window.Close();
 
             return;
         }
@@ -96,41 +97,9 @@ namespace Ufo.Commander.Views.Controls
             window.Width = 400;
 
             window.ShowDialog();
+            window.Close();
 
             return;
         }
-
-        private DependencyObject GetParent(DependencyObject obj)
-        {
-            if (obj == null)
-                return null;
-
-            ContentElement ce = obj as ContentElement;
-            if (ce != null)
-            {
-                DependencyObject parent = ContentOperations.GetParent(ce);
-                if (parent != null)
-                    return parent;
-
-                FrameworkContentElement fce = ce as FrameworkContentElement;
-                return fce != null ? fce.Parent : null;
-            }
-
-            return VisualTreeHelper.GetParent(obj);
-        }
-
-        private T FindAncestorOrSelf<T>(DependencyObject obj) where T : DependencyObject
-        {
-            while (obj != null)
-            {
-                T objTest = obj as T;
-                if (objTest != null)
-                    return objTest;
-                obj = GetParent(obj);
-            }
-
-            return null;
-        }
-
     }
 }

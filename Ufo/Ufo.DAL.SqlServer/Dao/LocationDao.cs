@@ -20,7 +20,8 @@ namespace Ufo.DAL.SqlServer.Dao
             @"WHERE idLocation = @id";
 
         private const string SQL_FIND_ALL =
-            @"SELECT * FROM Location ";
+            @"SELECT * FROM Location " +
+            @"ORDER BY label";
 
         private const string SQL_INSERT =
             @"INSERT INTO Location " +

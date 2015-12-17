@@ -32,5 +32,7 @@ namespace Ufo.BL
         ObservableCollection<Performance> GetPerformanceByArtist(Artist artist);
         ObservableCollection<Performance> GetPerformanceByVenue(Venue venue);
         #endregion
+
+        void SendEmail(string address, string subject, string content);
     }
 }

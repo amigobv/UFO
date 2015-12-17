@@ -24,7 +24,8 @@ namespace Ufo.DAL.SqlServer.Dao
         private const string SQL_FIND_ALL =
             @"SELECT a.idArtist, a.name, a.country, a.email, a.description, a.homepage, a.picture, a.video, c.idCategory, c.label, a.deleted " +
             @"FROM Artist as a, Category as c " +
-            @"WHERE a.category = c.idCategory";
+            @"WHERE a.category = c.idCategory " +
+            @"ORDER BY a.name";
 
         private const string SQL_FIND_BY_NAME =
             @"SELECT a.idArtist, a.name, a.country, a.email, a.description, a.homepage, a.picture, a.video, a.deleted, c.idCategory, c.label " +

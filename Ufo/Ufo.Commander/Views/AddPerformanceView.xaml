@@ -7,9 +7,9 @@
              xmlns:resx="clr-namespace:Ufo.Commander.Resources"
              xmlns:local="clr-namespace:Ufo.Commander.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="350" d:DesignWidth="400">
+             d:DesignHeight="350" d:DesignWidth="400" ResizeMode="NoResize">
     <Window.Resources>
-        <cv:ListCountToSelectedIndex x:Key="converter" />
+
     </Window.Resources>
     <StackPanel Orientation="Vertical" Margin="30, 30 , 30, 45">
         <GroupBox Margin="5" Header="{x:Static resx:Resources.PerformanceText}">
@@ -33,10 +33,11 @@
                           Name="cbArtist" 
                           Margin="5"
                           ItemsSource="{Binding Artists}"
-                          SelectedItem="{Binding Artist, Mode=TwoWay}"
+                          SelectedItem="{Binding Artist, Mode=OneWay}"
                           DisplayMemberPath="Name"
                           FontSize="14"
-                          IsSynchronizedWithCurrentItem="True"/>
+                          IsSynchronizedWithCurrentItem="True"
+                          />
 
                     <Label Grid.Row="1" Grid.Column="0"
                        Name="lblVenue" 
@@ -68,13 +69,27 @@
                                  IsEnabled="false"/>
                     </StackPanel>
                 </GroupBox>
+                <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
+                    <Button Name="btnSave" 
+                            Width="50"
+                            Margin="5"
+                            Content="{x:Static resx:Resources.SaveText}"
+                            Click="btnSave_Click"/>
+                    <Button Name="btnRemote" 
+                            Width="50"
+                            Margin="5"
+                            Content="{x:Static resx:Resources.RemoveText}"
+                            Command="{Binding RemoveCommand}"
+                            Click="btnRemote_Click"/>
+                    <Button Name="btnCancel"
+                            Width="50"
+                            Margin="5"
+                            Content="{x:Static resx:Resources.CancelText}"
+                            Click="btnCancel_Click"/>
+                </StackPanel>
+                
             </StackPanel>
-        </GroupBox>
 
-        <Button Name="btnSave" 
-                Margin="230, 5, 20, 5"
-                Content="{x:Static resx:Resources.SaveText}"
-                Command="{Binding SaveCommand}"
-                Click="btnSave_Click"/>
+        </GroupBox>
     </StackPanel>
 </Window>

@@ -31,6 +31,10 @@ namespace Ufo.Domain
                 video = ReadMedia(PictureUrl);
                 return video;   
             }
+            set
+            {
+                video = value;
+            }
         }
 
 
@@ -41,12 +45,20 @@ namespace Ufo.Domain
                 picture = ReadMedia(VideoUrl);
                 return picture;
             }
+            set
+            {
+                picture = value;
+            }
         }
 
         private byte[] ReadMedia(string url)
         {
             byte[] b;
-            using (var file = File.OpenRead(PictureUrl))
+
+            if (string.IsNullOrEmpty(url))
+                return null;
+
+            using (var file = File.OpenRead(url))
             {
                 b = new byte[file.Length];
                 while (file.Read(b, 0, b.Length) > 0) { }

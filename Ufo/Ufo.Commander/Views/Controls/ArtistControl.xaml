@@ -14,104 +14,139 @@
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
 
-        <GroupBox Margin="5" Header="{x:Static resx:Resources.ArtistText}">
-            <Grid Grid.Column="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*" />
-                    <ColumnDefinition Width="2*" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto" />
-                    <RowDefinition Height="auto" />
-                    <RowDefinition Height="auto" />
-                    <RowDefinition Height="auto" />
-                    <RowDefinition Height="auto" />
-                    <RowDefinition Height="auto" />
-                </Grid.RowDefinitions>
+        <StackPanel Grid.Column="1"  Orientation="Vertical">
+            <GroupBox Margin="5" Header="{x:Static resx:Resources.ArtistEditText}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="2*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
 
-
-                <Label Grid.Row="0" Grid.Column="0" 
+                    <Label Grid.Row="0" Grid.Column="0" 
                    Name="lblName" 
                    Margin="5"
                    Content="{x:Static resx:Resources.NameText}"/>
 
-                <TextBox Grid.Row="0" Grid.Column="1" 
+                    <TextBox Grid.Row="0" Grid.Column="1" 
                      Name="txtName" 
                      Margin="5"
                      Text="{Binding Name}"
                      FontSize="14"/>
 
-                <Label Grid.Row="1" Grid.Column="0" 
-                   Name="lblCountry"
-                   Margin="5"
-                   Content="{x:Static resx:Resources.CountryText}"/>
+                    <Label Grid.Row="1" Grid.Column="0" 
+                       Name="lblCountry"
+                       Margin="5"
+                       Content="{x:Static resx:Resources.CountryText}"/>
 
-                <TextBox Grid.Row="1" Grid.Column="1" 
+                    <TextBox Grid.Row="1" Grid.Column="1" 
                      Name="txtCountry" 
                      Margin="5"
                      Text="{Binding Country}"
                      FontSize="14"/>
 
-                <Label Grid.Row="2" Grid.Column="0" 
-                   Name="lblEmail" 
-                   Margin="5"
-                   Content="{x:Static resx:Resources.EmailText}"/>
+                    <Label Grid.Row="2" Grid.Column="0" 
+                       Name="lblEmail" 
+                       Margin="5"
+                       Content="{x:Static resx:Resources.EmailText}"/>
 
-                <TextBox Grid.Row="2" Grid.Column="1" 
+                    <TextBox Grid.Row="2" Grid.Column="1" 
                      Name="txtEmail" 
                      Margin="5"
                      Text="{Binding Email}"
                      FontSize="14"/>
 
-                <Label Grid.Row="3" Grid.Column="0" 
+                    <Label Grid.Row="3" Grid.Column="0" 
                    Name="lblHomepage" 
                    Margin="5"
                    Content="{x:Static resx:Resources.HomepageText}"/>
 
-                <TextBox Grid.Row="3" Grid.Column="1" 
+                    <TextBox Grid.Row="3" Grid.Column="1" 
                      Name="txtHomepage" 
                      Margin="5"
                      Text="{Binding Homepage}"
                      FontSize="14"/>
 
-                <Label Grid.Row="4" Grid.Column="0"
-                   Name="lblCategory" 
-                   Margin="5"
-                   Content="{x:Static resx:Resources.CategoryText}"/>
+                    <Label Grid.Row="4" Grid.Column="0" 
+                       Name="lblDecription"
+                       Margin="5"
+                       Content="{x:Static resx:Resources.DescriptionText}"/>
 
-                <ComboBox Grid.Row="4" Grid.Column="1" 
-                      Name="cbEmail"
-                      Margin="5"
-                      DisplayMemberPath="Name"
-                      ItemsSource="{Binding Categories}"
-                      SelectedItem="{Binding Category}">
-                </ComboBox>
+                    <TextBox Grid.Row="4" Grid.Column="1" 
+                             MinLines="5" MaxLines="5"
+                             TextWrapping="Wrap" 
+                             VerticalScrollBarVisibility="Auto" 
+                             AcceptsReturn="True"
+                             Name="txtDescription" 
+                             Margin="5"
+                             Text="{Binding Description}"
+                             FontSize="14"/>
 
-                <StackPanel Grid.Row="5" Grid.Column="1" Orientation="Horizontal">
-                    <Button Name="btnBrowsePicture"
+                    <Label Grid.Row="5" Grid.Column="0"
+                       Name="lblCategory" 
+                       Margin="5"
+                       Content="{x:Static resx:Resources.CategoryText}"/>
+
+                    <ComboBox Grid.Row="5" Grid.Column="1" 
+                              Name="cbCategory"
+                              Margin="5"
+                              DisplayMemberPath="Name"
+                              SelectedIndex="0"    
+                              ItemsSource="{Binding Categories}"
+                              SelectedItem="{Binding Category, Mode=TwoWay}">
+                    </ComboBox>
+
+                    <StackPanel Grid.Row="6" Grid.Column="1" Orientation="Horizontal">
+                        <Button Name="btnBrowsePicture"
                         Margin="10, 5, 5, 5"
                         Content="{x:Static resx:Resources.BrowsePictureText}"
                         Click="BrowsePicture_Click"/>
 
-                    <Button Name="btnBrowseVideo"
+                        <Button Name="btnBrowseVideo"
                         Margin="5"
                         Content="{x:Static resx:Resources.BrowseVideoText}"
                         Click="BrowseVideo_Click" />
-                </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </GroupBox>
 
+            <GroupBox Margin="5" Header="{x:Static resx:Resources.ArtistText}">
+                <Grid Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" Orientation="Vertical">
+                        <TextBlock Text="{Binding Name}" Margin="2"/>
+                        <TextBlock Text="{Binding Country}" Margin="2"/>
+                        <TextBlock  TextWrapping="Wrap"
+                                    Text="{Binding Description}" Margin="2"/>
+                        <TextBlock Text="{Binding CategoryName}" Margin="2"/>
+                        <TextBlock Text="{Binding Homepage}" Margin="2"/>
+                        <TextBlock Text="{Binding Email}" Margin="2"/>
+                    </StackPanel>
+                    <Image Grid.Column="1" Source="{Binding Picture}" Width="150" Height="100" Margin="3"/>
 
-            </Grid>
-        </GroupBox>
+                </Grid>
+            </GroupBox>
+        </StackPanel>
 
-        <GroupBox Grid.Column="1" Margin="5" Header="{x:Static resx:Resources.MediaText}">
+        <GroupBox Grid.Column="0" Margin="5" Header="{x:Static resx:Resources.MediaText}">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*" />
                     <RowDefinition Height="1*" />
                 </Grid.RowDefinitions>
-
-                <Image Grid.Row="0" Source="{Binding Picture}" />
-                <MediaElement Grid.Row="1" Source="{Binding Video}" />
+                <MediaElement Grid.Row="0" Source="{Binding Video}" />
             </Grid>
         </GroupBox>
     </Grid>

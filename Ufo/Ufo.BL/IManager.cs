@@ -65,6 +65,9 @@ namespace Ufo.BL.Interfaces
         ObservableCollection<Performance> GetPerformanceByVenue(Venue venue);
         void RemovePerformance(Performance performance);
         void UpdatePerformance(Performance performance);
+        bool IsPerformanceValid(Performance performance);
         #endregion
+
+        void SendEmail(string address, string subject, string content);
     }
 }

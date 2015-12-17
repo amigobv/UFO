@@ -21,7 +21,7 @@ namespace Ufo.DAL.Common
 
         IList<Performance> FindByVenue(string venue);
 
-        IList<Performance> FindByDay(DateTime start, DateTime end);
+        IList<Performance> FindBetween(DateTime start, DateTime end);
 
         bool Insert(Performance o);
 

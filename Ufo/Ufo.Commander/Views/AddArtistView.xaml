@@ -9,23 +9,6 @@
         mc:Ignorable="d"
         Title="AddArtistView" Height="400" Width="600">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="5*"/>
-            <RowDefinition Height="auto"/>
-        </Grid.RowDefinitions>
-
         <ctrl:ArtistControl Grid.Row="0" />
-        <StackPanel Grid.Row="1" Orientation="Horizontal" FlowDirection="RightToLeft">
-            <Button Width="70"
-                    Name="btnSave" 
-                    Margin="5, 5, 5, 5"
-                    Content="{x:Static resx:Resources.SaveText}"
-                    Command="{Binding SaveCommand}"/>
-            <Button Width="70"
-                    Name="btnCancel" 
-                    Margin="5, 5, 5, 5"
-                    Content="{x:Static resx:Resources.CancelText}"
-                    Click="Cancel_Click"/>
-        </StackPanel>
     </Grid>
 </Window>

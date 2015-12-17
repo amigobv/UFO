@@ -24,6 +24,7 @@
                     Margin="10, 5, 10, 5"
                     MaxWidth="150"
                     Content="{x:Static resx:Resources.NewArtistText}"
+
                     Click="CreateArtist"/>
             <ListBox Grid.Row="1"  BorderThickness="0"
                      Name="listArtists"
@@ -51,7 +52,6 @@
                         Name="btnSave" 
                         Margin="5, 5, 5, 5"
                         Content="{x:Static resx:Resources.SaveText}"
-                        Command="{Binding CurrentArtist.SaveCommand}"
                         Click="SavePressed"/>
                 <Button Width="70"
                         Name="btnRemove" 
@@ -59,11 +59,6 @@
                         Content="{x:Static resx:Resources.RemoveText}"
                         Command="{Binding CurrentArtist.RemoveCommand}"
                         IsEnabled="False"/>
-                <Button Width="70"
-                        Name="btnCancel" 
-                        Margin="5, 5, 5, 5"
-                        Content="{x:Static resx:Resources.CancelText}"
-                        Click="Cancel"/>
             </StackPanel>
         </Grid>
     </Grid>

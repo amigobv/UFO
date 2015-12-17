@@ -61,6 +61,15 @@ namespace Ufo.Commander.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit artist.
+        /// </summary>
+        public static string ArtistEditText {
+            get {
+                return ResourceManager.GetString("ArtistEditText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Artists.
         /// </summary>
         public static string ArtistsText {
@@ -372,6 +381,15 @@ namespace Ufo.Commander.Resources {
         public static string ScheduleText {
             get {
                 return ResourceManager.GetString("ScheduleText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Share schedule.
+        /// </summary>
+        public static string ShareFestivalProgramText {
+            get {
+                return ResourceManager.GetString("ShareFestivalProgramText", resourceCulture);
             }
         }
         

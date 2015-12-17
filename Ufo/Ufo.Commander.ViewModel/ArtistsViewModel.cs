@@ -25,14 +25,17 @@ namespace Ufo.Commander.ViewModel
             this.manager = manager;
             artists = new ObservableCollection<ArtistViewModel>();
             currentArtist = new ArtistViewModel(new Artist(), manager);
-            LoadArtists();
         }
         #endregion
 
         #region properties
         public ObservableCollection<ArtistViewModel> Artists
         {
-            get { return artists; }
+            get
+            {
+                LoadArtists();
+                return artists;
+            }
             set
             {
                 if (artists != value)
@@ -45,11 +48,7 @@ namespace Ufo.Commander.ViewModel
 
         public ArtistViewModel CurrentArtist
         {
-            get
-            {
-                LoadArtists();
-                return currentArtist;
-            }
+            get { return currentArtist; }
             set
             {
                 if (currentArtist != value)

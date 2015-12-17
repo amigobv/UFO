@@ -237,4 +237,10 @@
   <data name="DayTwoText" xml:space="preserve">
     <value>Day 2</value>
   </data>
+  <data name="ShareFestivalProgramText" xml:space="preserve">
+    <value>Share schedule</value>
+  </data>
+  <data name="ArtistEditText" xml:space="preserve">
+    <value>Edit artist</value>
+  </data>
 </root>

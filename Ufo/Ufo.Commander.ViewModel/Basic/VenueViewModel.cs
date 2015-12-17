@@ -15,6 +15,7 @@ namespace Ufo.Commander.ViewModel.Basic
         #region private members
         private IManager manager;
         private Venue venue;
+        private LocationViewModel location;
         private ObservableCollection<LocationViewModel> locations;
         #endregion
 
@@ -23,18 +24,18 @@ namespace Ufo.Commander.ViewModel.Basic
         {
             this.manager = manager;
             this.venue = new Venue();
+            location = new LocationViewModel(manager);
             locations = new ObservableCollection<LocationViewModel>();
             SaveCommand = new RelayCommand(o => manager.UpdateVenue(venue));
-            RemoveCommand = new RelayCommand(o => manager.RemoveVenue(venue));
         }
 
         public VenueViewModel(Venue venue, IManager manager)
         {
             this.manager = manager;
             this.venue = venue;
+            location = new LocationViewModel(venue.Location, manager);
             locations = new ObservableCollection<LocationViewModel>();
             SaveCommand = new RelayCommand(o => manager.UpdateVenue(venue));
-            RemoveCommand = new RelayCommand(o => manager.RemoveVenue(venue));
         }
         #endregion
 
@@ -78,14 +79,15 @@ namespace Ufo.Commander.ViewModel.Basic
             }
         }
 
-        public Location Location
+        public LocationViewModel Location
         {
-            get { return venue.Location; }
+            get { return location; }
             set
             {
-                if (venue.Location != value)
+                if (location != value)
                 {
-                    venue.Location = value;
+                    location = value;
+                    LocationVmToLocation(location);
                     RaisePropertyChangedEvent(nameof(Location));
                 }
             }
@@ -115,8 +117,23 @@ namespace Ufo.Commander.ViewModel.Basic
         }
 
         public ICommand SaveCommand { get; set; }
-        public ICommand RemoveCommand { get; set; }
         #endregion
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            var venue = obj as VenueViewModel;
+
+            if (venue == null)
+                return false;
+
+
+            return venue.Equals(this.venue);
+        }
 
         private void LoadLocations()
         {
@@ -126,6 +143,15 @@ namespace Ufo.Commander.ViewModel.Basic
 
             foreach (var location in locationList)
                 locations.Add(new LocationViewModel(location, manager));
+        }
+
+        private void LocationVmToLocation(LocationViewModel vm)
+        {
+            venue.Location = new Location()
+            {
+                Id = vm.Identifier,
+                Label = vm.Name
+            };
         }
     }
 }

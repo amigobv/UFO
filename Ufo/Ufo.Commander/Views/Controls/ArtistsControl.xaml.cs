@@ -44,15 +44,13 @@ namespace Ufo.Commander.Views.Controls
         {
             var vm = this.ViewModel;
 
-            if (vm != null)
+            if (vm != null && vm.CurrentArtist != null)
             {
-                vm.Artists.Add(vm.CurrentArtist);
+                vm.CurrentArtist.SaveCommand.Execute(null);
+
+                if (!vm.Artists.Contains(vm.CurrentArtist))
+                    vm.Artists.Add(vm.CurrentArtist);
             }
-        }
-
-        private void Cancel(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

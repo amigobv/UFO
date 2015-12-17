@@ -22,7 +22,6 @@ namespace Ufo.Commander.ViewModel.Basic
             this.manager = manager;
             this.category = new Category();
             this.SaveCommand = new RelayCommand(o => manager.UpdateCategory(category));
-            this.RemoveCommand = new RelayCommand(o => manager.RemoveCategory(category), o => manager.CategoryExists(category) == false);
         }
 
         public CategoryViewModel(Category category, IManager manager)
@@ -30,7 +29,6 @@ namespace Ufo.Commander.ViewModel.Basic
             this.manager = manager;
             this.category = category;
             this.SaveCommand = new RelayCommand(o => manager.UpdateCategory(category));
-            this.RemoveCommand = new RelayCommand(o => manager.RemoveCategory(category), o => manager.CategoryExists(category) == false);
         }
         #endregion
 
@@ -62,7 +60,23 @@ namespace Ufo.Commander.ViewModel.Basic
         }
 
         public ICommand SaveCommand { get; set; }
-        public ICommand RemoveCommand { get; set; }
         #endregion
+
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            var category = obj as CategoryViewModel;
+
+            if (category == null)
+                return false;
+
+
+            return category.Equals(this.category);
+        }
     }
 }

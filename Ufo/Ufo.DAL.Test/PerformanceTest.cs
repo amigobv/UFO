@@ -206,7 +206,7 @@ namespace Ufo.DAL.Test
             InsertDummyData(performanceDao);
             Assert.Equal(items.Count, performanceDao.Count());
 
-            IList<Performance> dbPerformance = performanceDao.FindByDay(PERFORMANCE1_START, PERFORMANCE4_START);
+            IList<Performance> dbPerformance = performanceDao.FindBetween(PERFORMANCE1_START, PERFORMANCE4_START);
             Assert.NotNull(dbPerformance);
             Assert.Equal(2, dbPerformance.Count);
         }

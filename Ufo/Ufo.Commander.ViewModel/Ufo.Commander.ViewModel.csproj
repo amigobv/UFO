@@ -61,6 +61,7 @@
     <Compile Include="ScheduleViewModel.cs" />
     <Compile Include="UserLoginViewModel.cs" />
     <Compile Include="UserRegistrationViewModel.cs" />
+    <Compile Include="Utils.cs" />
     <Compile Include="VenuesViewModel.cs" />
     <Compile Include="ViewModelBase.cs" />
   </ItemGroup>

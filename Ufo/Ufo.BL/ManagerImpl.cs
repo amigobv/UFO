@@ -9,6 +9,7 @@ using Ufo.BL.Exceptions;
 using Ufo.BL.Interfaces;
 using Ufo.Domain;
 using Ufo.DAL.Common;
+using System.Net.Mail;
 
 namespace Ufo.BL
 {
@@ -302,7 +303,7 @@ namespace Ufo.BL
             if (category == null)
                 throw new ArgumentNullException("Invalid category!");
 
-            if (categoryDao.Insert(category))
+            if (!categoryDao.Insert(category))
                 throw new CategoryException("Cannot insert category!");
         }
 
@@ -316,7 +317,7 @@ namespace Ufo.BL
             if (category == null)
                 throw new ArgumentNullException("Invalid category!");
 
-            if (categoryDao.Delete(category.Id))
+            if (!categoryDao.Delete(category.Id))
                 throw new CategoryException("Cannot remove category!");
         }
 
@@ -327,7 +328,7 @@ namespace Ufo.BL
 
             if (categoryDao.FindById(category.Id) != null)
             {
-                if (categoryDao.Update(category))
+                if (!categoryDao.Update(category))
                     throw new CategoryException("Cannot update category!");
             }
             else
@@ -448,8 +449,6 @@ namespace Ufo.BL
             if (performance == null)
                 throw new ArgumentNullException("Invalid performance!");
 
-
-            //TODO: check artist performance
             if (!performanceDao.Insert(performance))
                 throw new PerformanceException("Cannot create performance!");
         }
@@ -464,7 +463,7 @@ namespace Ufo.BL
             DateTime start = new DateTime(day.Year, day.Month, day.Day, 0, 0, 0);
             DateTime end = new DateTime(day.Year, day.Month, day.Day, 23, 59, 59);
 
-            return new ObservableCollection<Performance>(performanceDao.FindByDay(start, end));
+            return new ObservableCollection<Performance>(performanceDao.FindBetween(start, end));
         }
 
         public ObservableCollection<Performance> GetPerformanceByArtist(Artist artist)
@@ -498,7 +497,52 @@ namespace Ufo.BL
                 CreatePerformance(performance);
             }
         }
+
+        public bool IsPerformanceValid(Performance p)
+        {
+            if (p == null ||
+                p.Artist == null ||
+                p.Venue == null)
+                return false;
+
+            DateTime start = new DateTime(p.Start.Year, 
+                                          p.Start.Month, 
+                                          p.Start.Day, 0, 0, 0);
+
+            DateTime end = new DateTime(p.Start.Year, 
+                                        p.Start.Month, 
+                                        p.Start.Day, 23, 59, 59);
+
+            var listPerformances = performanceDao.FindBetween(start, end);
+
+            foreach(var performance in listPerformances)
+            {
+                if (p.Artist.Equals(performance.Artist))
+                {
+                    DateTime next = p.Start.AddHours(1);
+                    DateTime prev = p.Start.AddHours(-1);
+                    if (p.Start.Equals(performance.Start) || 
+                        next.Equals(performance.Start) ||
+                        prev.Equals(performance.Start))
+                        return false;
+                }
+            }
+
+            return true;
+        }
         #endregion
 
+        public void SendEmail(string address, string subject, string content)
+        {
+            SmtpClient client = new SmtpClient();
+            MailMessage mail = new MailMessage()
+            {
+                To = { new MailAddress(address) },
+                Subject = subject,
+                Body = content
+            };
+
+            client.Send(mail);
+        }
     }
 }

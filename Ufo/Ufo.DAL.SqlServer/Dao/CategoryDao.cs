@@ -22,7 +22,8 @@ namespace Ufo.DAL.SqlServer.Dao
             @"WHERE idCategory = @id";
 
         private const string SQL_FIND_ALL =
-            @"SELECT * FROM Category";
+            @"SELECT * FROM Category " +
+            @"ORDER BY label";
 
         private const string SQL_INSERT =
             @"INSERT INTO Category " +

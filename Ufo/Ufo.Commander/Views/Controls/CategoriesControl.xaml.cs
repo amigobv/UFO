@@ -45,15 +45,12 @@ namespace Ufo.Commander.Views.Controls
         {
             var vm = this.ViewModel;
 
-            if (vm != null)
+            if (vm != null && vm.CurrentCategory != null)
             {
-                vm.Categories.Add(vm.CurrentCategory);
+                vm.CurrentCategory.SaveCommand.Execute(null);
+                if (!vm.Categories.Contains(vm.CurrentCategory))
+                    vm.Categories.Add(vm.CurrentCategory);
             }
-        }
-
-        private void Cancel(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

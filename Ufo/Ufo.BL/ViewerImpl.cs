@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using Ufo.DAL.Common;
@@ -108,7 +109,7 @@ namespace Ufo.BL
             DateTime start = new DateTime(day.Year, day.Month, day.Day, 0, 0, 0);
             DateTime end = new DateTime(day.Year, day.Month, day.Day, 23, 59, 59);
 
-            return new ObservableCollection<Performance>(performanceDao.FindByDay(start, end));
+            return new ObservableCollection<Performance>(performanceDao.FindBetween(start, end));
         }
 
         /// <summary>
@@ -139,6 +140,19 @@ namespace Ufo.BL
         public ObservableCollection<Category> GetAllCategories()
         {
             return new ObservableCollection<Category>(categoryDao.FindAll());
+        }
+
+        public void SendEmail(string address, string subject, string content)
+        {
+            SmtpClient client = new SmtpClient();
+            MailMessage mail = new MailMessage()
+            {
+                To = { new MailAddress(address) },
+                Subject = subject,
+                Body = content
+            };
+
+            client.Send(mail);
         }
     }
 }

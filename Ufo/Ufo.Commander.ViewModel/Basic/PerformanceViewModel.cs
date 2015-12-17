@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Ufo.BL.Interfaces;
+using Ufo.Command.ViewModel;
 using Ufo.Domain;
 
 namespace Ufo.Commander.ViewModel.Basic
@@ -47,6 +48,7 @@ namespace Ufo.Commander.ViewModel.Basic
             this.venues = new ObservableCollection<VenueViewModel>();
 
             SaveCommand = new RelayCommand(o => manager.UpdatePerformance(performance));
+            RemoveCommand = new RelayCommand(o => manager.RemovePerformance(performance));
         }
 
         public PerformanceViewModel(IManager manager)
@@ -60,6 +62,8 @@ namespace Ufo.Commander.ViewModel.Basic
             this.venues = new ObservableCollection<VenueViewModel>();
 
             SaveCommand = new RelayCommand(o => manager.UpdatePerformance(performance));
+            RemoveCommand = new RelayCommand(o => manager.RemovePerformance(performance));
+
         }
 
         public PerformanceViewModel(Performance performance, IManager manager)
@@ -74,6 +78,7 @@ namespace Ufo.Commander.ViewModel.Basic
             this.venues = new ObservableCollection<VenueViewModel>();
 
             SaveCommand = new RelayCommand(o => manager.UpdatePerformance(performance));
+            RemoveCommand = new RelayCommand(o => manager.RemovePerformance(performance));
         }
         #endregion
 
@@ -86,6 +91,7 @@ namespace Ufo.Commander.ViewModel.Basic
                 if (artistVm != value)
                 {
                     artistVm = value;
+                    ArtistVmToArtist(artistVm);
                     RaisePropertyChangedEvent(nameof(Artist));
                 }
             }
@@ -99,6 +105,7 @@ namespace Ufo.Commander.ViewModel.Basic
                 if (venueVm != value)
                 {
                     venueVm = value;
+                    VenueVmToVenue(venueVm);
                     RaisePropertyChangedEvent(nameof(Venue));
                 }
             }
@@ -158,6 +165,7 @@ namespace Ufo.Commander.ViewModel.Basic
         }
 
         public ICommand SaveCommand { get; set; }
+        public ICommand RemoveCommand { get; set; }
         #endregion
 
         #region private helpers
@@ -176,8 +184,48 @@ namespace Ufo.Commander.ViewModel.Basic
             //TODO: only the artists that are aloud should be returned
             var artistsList = manager.GetAllArtists();
 
+            artists.Add(new ArtistViewModel(manager));
+
             foreach (var artist in artistsList)
                 artists.Add(new ArtistViewModel(artist, manager));
+        }
+
+        private void ArtistVmToArtist(ArtistViewModel vm)
+        {
+            performance.Artist = new Artist()
+            {
+                Id = vm.Id,
+                Name = vm.Name,
+                Country = vm.Country,
+                Description = vm.Description,
+                Email = vm.Email,
+                Homepage = vm.Homepage,
+                PictureUrl = vm.Picture,
+                VideoUrl = vm.Video,
+                Category = new Category(vm.Category.Identifier, vm.Category.Name)
+            };
+        }
+
+        private void VenueVmToVenue(VenueViewModel vm)
+        {
+            int capacity;
+            if (!int.TryParse(vm.Capacity, out capacity))
+                capacity = 0;
+
+            performance.Venue = new Venue()
+            {
+                Id = (int)Char.GetNumericValue(vm.Id[1]),
+                Label = vm.Name,
+                MaxSpectators = capacity,
+                Location = new Location(vm.Location.Identifier, vm.Location.Name)
+            };
+        }
+        #endregion
+
+        #region public methods
+        public bool IsValid()
+        {
+            return manager.IsPerformanceValid(performance);
         }
         #endregion
     }

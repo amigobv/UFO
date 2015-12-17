@@ -51,19 +51,7 @@
                         Name="btnSave" 
                         Margin="5, 5, 5, 5"
                         Content="{x:Static resx:Resources.SaveText}"
-                        Command="{Binding CurrentLocation.SaveCommand}"
                         Click="SavePressed"/>
-                <Button Width="70"
-                        Name="btnRemove" 
-                        Margin="5, 5, 5, 5"
-                        Content="{x:Static resx:Resources.RemoveText}"
-                        Command="{Binding CurrentLocation.RemoveCommand}"
-                        IsEnabled="False"/>
-                <Button Width="70"
-                    Name="btnCancel" 
-                    Margin="5, 5, 5, 5"
-                    Content="{x:Static resx:Resources.CancelText}"
-                    Click="Cancel"/>
             </StackPanel>
         </Grid>
     </Grid>
