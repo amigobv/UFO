@@ -183,3 +183,9 @@ E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander
 E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander\obj\Debug\Ufo.Commander.csproj.GenerateResource.Cache
 E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander\obj\Debug\Ufo.Commander.exe
 E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander\obj\Debug\Ufo.Commander.pdb
+E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander\bin\Debug\NLog.config
+E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander\bin\Debug\NLog.dll
+E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander\bin\Debug\NLog.xml
+E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander\obj\Debug\Ufo.Commander_Content.g.cs
+E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander\obj\Debug\Views\Controls\VideoViewer.baml
+E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander\obj\Debug\Views\Controls\VideoViewer.g.cs

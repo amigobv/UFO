@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Ufo.BL.Interfaces;
+using Ufo.Commander.ViewModel.Basic;
 
 namespace Ufo.Commander.ViewModel
 {

@@ -18,7 +18,6 @@ namespace Ufo.Commander.ViewModel
 
         readonly DateTime[] hours = new DateTime[]
         {
-          new DateTime(2016, 7, 22, 15, 0, 0),
           new DateTime(2016, 7, 22, 16, 0, 0),
           new DateTime(2016, 7, 22, 17, 0, 0),
           new DateTime(2016, 7, 22, 18, 0, 0),

@@ -18,27 +18,27 @@ namespace Ufo.DAL.SqlServer.Dao
             @"SELECT p.idPerformance, p.start, a.idArtist, a.name, a.country, a.email, a.description, a.homepage, a.picture, a.video, " +
             @"c.idCategory, c.label, a.deleted, v.idVenue, v.label, v.maxSpectators, l.idLocation, l.label " +
             @"FROM Performance as p, Artist as a, Venue as v, Location as l, Category as c " +
-            @"WHERE p.artist = a.idArtist AND a.category = c.idCategory AND p.pVenue = v.idVenue AND p.pLocation = l.idLocation AND p.idPerformance = @id";
+            @"WHERE p.artist = a.idArtist AND a.category = c.idCategory AND p.pVenue = v.idVenue AND p.pLocation = v.location AND p.pLocation = l.idLocation AND p.idPerformance = @id";
 
         private const string SQL_FIND_BY_ARTIST =
             @"SELECT p.idPerformance, p.start, a.idArtist, a.name, a.country, a.email, a.description, a.homepage, a.picture, a.video, " +
             @"c.idCategory, c.label, a.deleted, v.idVenue, v.label, v.maxSpectators, l.idLocation, l.label " +
             @"FROM Performance as p, Artist as a, Venue as v, Location as l, Category as c " +
-            @"WHERE p.artist = a.idArtist AND a.category = c.idCategory AND p.pVenue = v.idVenue AND p.pLocation = l.idLocation AND a.name LIKE @artist " +
+            @"WHERE p.artist = a.idArtist AND a.category = c.idCategory AND p.pVenue = v.idVenue AND p.pLocation = l.idLocation AND p.pLocation = v.location AND a.name LIKE @artist " +
             @"ORDER BY p.start ASC";
 
         private const string SQL_FIND_BY_ARTIST_ID =
             @"SELECT p.idPerformance, p.start, a.idArtist, a.name, a.country, a.email, a.description, a.homepage, a.picture, a.video, " +
             @"c.idCategory, c.label, a.deleted, v.idVenue, v.label, v.maxSpectators, l.idLocation, l.label " +
             @"FROM Performance as p, Artist as a, Venue as v, Location as l, Category as c " +
-            @"WHERE p.artist = a.idArtist AND a.category = c.idCategory AND p.pVenue = v.idVenue AND p.pLocation = l.idLocation AND p.artist = @artist " +
+            @"WHERE p.artist = a.idArtist AND a.category = c.idCategory AND p.pVenue = v.idVenue AND p.pLocation = l.idLocation AND p.pLocation = v.location AND p.artist = @artist " +
             @"ORDER BY p.start ASC";
 
         private const string SQL_FIND_BY_VENUE =
             @"SELECT p.idPerformance, p.start, a.idArtist, a.name, a.country, a.email, a.description, a.homepage, a.picture, a.video, " +
             @"c.idCategory, c.label, a.deleted, v.idVenue, v.label, v.maxSpectators, l.idLocation, l.label " +
             @"FROM Performance as p, Artist as a, Venue as v, Location as l, Category as c " +
-            @"WHERE p.artist = a.idArtist AND a.category = c.idCategory AND p.pVenue = v.idVenue AND p.pLocation = l.idLocation AND v.label = @venue " +
+            @"WHERE p.artist = a.idArtist AND a.category = c.idCategory AND p.pVenue = v.idVenue AND p.pLocation = v.location AND p.pLocation = l.idLocation AND v.label = @venue " +
             @"ORDER BY p.start ASC";
 
         private const string SQL_FIND_BY_BETWEEN =

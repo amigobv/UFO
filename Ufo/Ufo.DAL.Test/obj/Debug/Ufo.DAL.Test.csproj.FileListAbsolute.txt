@@ -75,3 +75,6 @@ E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.DAL.Test\
 E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.DAL.Test\obj\Debug\Ufo.DAL.Test.csprojResolveAssemblyReference.cache
 E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.DAL.Test\obj\Debug\Ufo.DAL.Test.dll
 E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.DAL.Test\obj\Debug\Ufo.DAL.Test.pdb
+E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.DAL.Test\bin\Debug\NLog.config
+E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.DAL.Test\bin\Debug\NLog.dll
+E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.DAL.Test\bin\Debug\NLog.xml

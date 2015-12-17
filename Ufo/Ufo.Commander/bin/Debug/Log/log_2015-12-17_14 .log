@@ -1,0 +1,182 @@
+2015-12-17 14:05:55.7051 |                INFO |                Start application |                Ufo.Commander.App 
+2015-12-17 14:06:54.1414 |                INFO |                Start application |                Ufo.Commander.App 
+2015-12-17 14:09:29.1673 |                INFO |                Start application |                Ufo.Commander.App 
+2015-12-17 14:09:32.6735 |                FATAL |                Unhandler exception thrown! |                Ufo.Commander.App 
+System.NullReferenceException: Der Objektverweis wurde nicht auf eine Objektinstanz festgelegt.
+   bei System.Windows.Media.MediaPlayerState.OpenMedia(Uri source)
+   bei System.Windows.Media.MediaPlayerState.SetSource(Uri source)
+   bei System.Windows.Media.MediaPlayerState.Open(Uri source)
+   bei System.Windows.Controls.AVElementHelper.HandleStateChange()
+   bei System.Windows.Controls.AVElementHelper.OnLoaded(Object sender, RoutedEventArgs args)
+   bei System.Windows.RoutedEventHandlerInfo.InvokeHandler(Object target, RoutedEventArgs routedEventArgs)
+   bei System.Windows.EventRoute.InvokeHandlersImpl(Object source, RoutedEventArgs args, Boolean reRaised)
+   bei System.Windows.UIElement.RaiseEventImpl(DependencyObject sender, RoutedEventArgs args)
+   bei System.Windows.UIElement.RaiseEvent(RoutedEventArgs e)
+   bei System.Windows.BroadcastEventHelper.BroadcastEvent(DependencyObject root, RoutedEvent routedEvent)
+   bei System.Windows.BroadcastEventHelper.BroadcastLoadedEvent(Object root)
+   bei MS.Internal.LoadedOrUnloadedOperation.DoWork()
+   bei System.Windows.Media.MediaContext.FireLoadedPendingCallbacks()
+   bei System.Windows.Media.MediaContext.FireInvokeOnRenderCallbacks()
+   bei System.Windows.Media.MediaContext.RenderMessageHandlerCore(Object resizedCompositionTarget)
+   bei System.Windows.Media.MediaContext.RenderMessageHandler(Object resizedCompositionTarget)
+   bei System.Windows.Media.MediaContext.Resize(ICompositionTarget resizedCompositionTarget)
+   bei System.Windows.Interop.HwndTarget.OnResize()
+   bei System.Windows.Interop.HwndTarget.HandleMessage(WindowMessage msg, IntPtr wparam, IntPtr lparam)
+   bei System.Windows.Interop.HwndSource.HwndTargetFilterMessage(IntPtr hwnd, Int32 msg, IntPtr wParam, IntPtr lParam, Boolean& handled)
+   bei MS.Win32.HwndWrapper.WndProc(IntPtr hwnd, Int32 msg, IntPtr wParam, IntPtr lParam, Boolean& handled)
+   bei MS.Win32.HwndSubclass.DispatcherCallbackOperation(Object o)
+   bei System.Windows.Threading.ExceptionWrapper.InternalRealCall(Delegate callback, Object args, Int32 numArgs)
+   bei System.Windows.Threading.ExceptionWrapper.TryCatchWhen(Object source, Delegate callback, Object args, Int32 numArgs, Delegate catchHandler)
+2015-12-17 14:09:35.9427 |                FATAL |                Unhandler exception thrown! |                Ufo.Commander.App 
+System.NullReferenceException: Der Objektverweis wurde nicht auf eine Objektinstanz festgelegt.
+   bei System.Windows.Media.MediaPlayerState.OpenMedia(Uri source)
+   bei System.Windows.Media.MediaPlayerState.SetSource(Uri source)
+   bei System.Windows.Media.MediaPlayerState.Open(Uri source)
+   bei System.Windows.Controls.AVElementHelper.HandleStateChange()
+   bei System.Windows.Controls.AVElementHelper.OnLoaded(Object sender, RoutedEventArgs args)
+   bei System.Windows.RoutedEventHandlerInfo.InvokeHandler(Object target, RoutedEventArgs routedEventArgs)
+   bei System.Windows.EventRoute.InvokeHandlersImpl(Object source, RoutedEventArgs args, Boolean reRaised)
+   bei System.Windows.UIElement.RaiseEventImpl(DependencyObject sender, RoutedEventArgs args)
+   bei System.Windows.UIElement.RaiseEvent(RoutedEventArgs e)
+   bei System.Windows.BroadcastEventHelper.BroadcastEvent(DependencyObject root, RoutedEvent routedEvent)
+   bei System.Windows.BroadcastEventHelper.BroadcastLoadedEvent(Object root)
+   bei MS.Internal.LoadedOrUnloadedOperation.DoWork()
+   bei System.Windows.Media.MediaContext.FireLoadedPendingCallbacks()
+   bei System.Windows.Media.MediaContext.FireInvokeOnRenderCallbacks()
+   bei System.Windows.Media.MediaContext.RenderMessageHandlerCore(Object resizedCompositionTarget)
+   bei System.Windows.Media.MediaContext.RenderMessageHandler(Object resizedCompositionTarget)
+   bei System.Windows.Threading.ExceptionWrapper.InternalRealCall(Delegate callback, Object args, Int32 numArgs)
+   bei System.Windows.Threading.ExceptionWrapper.TryCatchWhen(Object source, Delegate callback, Object args, Int32 numArgs, Delegate catchHandler)
+2015-12-17 14:14:53.6318 |                INFO |                Start application |                Ufo.Commander.App 
+2015-12-17 14:14:57.8391 |                FATAL |                Unhandler exception thrown! |                Ufo.Commander.App 
+System.NotSupportedException: Das angegebene Pfadformat wird nicht unterstützt.
+   bei System.Security.Util.StringExpressionSet.CanonicalizePath(String path, Boolean needFullPath)
+   bei System.Security.Util.StringExpressionSet.CreateListFromExpressions(String[] str, Boolean needFullPath)
+   bei System.Security.Permissions.FileIOPermission.AddPathList(FileIOPermissionAccess access, AccessControlActions control, String[] pathListOrig, Boolean checkForDuplicates, Boolean needFullPath, Boolean copyPathList)
+   bei System.Security.Permissions.FileIOPermission..ctor(FileIOPermissionAccess access, String path)
+   bei System.Windows.Media.MediaPlayerState.DemandPermissions(Uri absoluteUri)
+   bei System.Windows.Media.MediaPlayerState.OpenMedia(Uri source)
+   bei System.Windows.Media.MediaPlayerState.SetSource(Uri source)
+   bei System.Windows.Media.MediaPlayerState.Open(Uri source)
+   bei System.Windows.Controls.AVElementHelper.HandleStateChange()
+   bei System.Windows.Controls.AVElementHelper.OnLoaded(Object sender, RoutedEventArgs args)
+   bei System.Windows.RoutedEventHandlerInfo.InvokeHandler(Object target, RoutedEventArgs routedEventArgs)
+   bei System.Windows.EventRoute.InvokeHandlersImpl(Object source, RoutedEventArgs args, Boolean reRaised)
+   bei System.Windows.UIElement.RaiseEventImpl(DependencyObject sender, RoutedEventArgs args)
+   bei System.Windows.UIElement.RaiseEvent(RoutedEventArgs e)
+   bei System.Windows.BroadcastEventHelper.BroadcastEvent(DependencyObject root, RoutedEvent routedEvent)
+   bei System.Windows.BroadcastEventHelper.BroadcastLoadedEvent(Object root)
+   bei MS.Internal.LoadedOrUnloadedOperation.DoWork()
+   bei System.Windows.Media.MediaContext.FireLoadedPendingCallbacks()
+   bei System.Windows.Media.MediaContext.FireInvokeOnRenderCallbacks()
+   bei System.Windows.Media.MediaContext.RenderMessageHandlerCore(Object resizedCompositionTarget)
+   bei System.Windows.Media.MediaContext.RenderMessageHandler(Object resizedCompositionTarget)
+   bei System.Windows.Media.MediaContext.Resize(ICompositionTarget resizedCompositionTarget)
+   bei System.Windows.Interop.HwndTarget.OnResize()
+   bei System.Windows.Interop.HwndTarget.HandleMessage(WindowMessage msg, IntPtr wparam, IntPtr lparam)
+   bei System.Windows.Interop.HwndSource.HwndTargetFilterMessage(IntPtr hwnd, Int32 msg, IntPtr wParam, IntPtr lParam, Boolean& handled)
+   bei MS.Win32.HwndWrapper.WndProc(IntPtr hwnd, Int32 msg, IntPtr wParam, IntPtr lParam, Boolean& handled)
+   bei MS.Win32.HwndSubclass.DispatcherCallbackOperation(Object o)
+   bei System.Windows.Threading.ExceptionWrapper.InternalRealCall(Delegate callback, Object args, Int32 numArgs)
+   bei System.Windows.Threading.ExceptionWrapper.TryCatchWhen(Object source, Delegate callback, Object args, Int32 numArgs, Delegate catchHandler)
+2015-12-17 14:15:05.7945 |                FATAL |                Unhandler exception thrown! |                Ufo.Commander.App 
+System.NotSupportedException: Das angegebene Pfadformat wird nicht unterstützt.
+   bei System.Security.Util.StringExpressionSet.CanonicalizePath(String path, Boolean needFullPath)
+   bei System.Security.Util.StringExpressionSet.CreateListFromExpressions(String[] str, Boolean needFullPath)
+   bei System.Security.Permissions.FileIOPermission.AddPathList(FileIOPermissionAccess access, AccessControlActions control, String[] pathListOrig, Boolean checkForDuplicates, Boolean needFullPath, Boolean copyPathList)
+   bei System.Security.Permissions.FileIOPermission..ctor(FileIOPermissionAccess access, String path)
+   bei System.Windows.Media.MediaPlayerState.DemandPermissions(Uri absoluteUri)
+   bei System.Windows.Media.MediaPlayerState.OpenMedia(Uri source)
+   bei System.Windows.Media.MediaPlayerState.SetSource(Uri source)
+   bei System.Windows.Media.MediaPlayerState.Open(Uri source)
+   bei System.Windows.Controls.AVElementHelper.HandleStateChange()
+   bei System.Windows.Controls.AVElementHelper.OnLoaded(Object sender, RoutedEventArgs args)
+   bei System.Windows.RoutedEventHandlerInfo.InvokeHandler(Object target, RoutedEventArgs routedEventArgs)
+   bei System.Windows.EventRoute.InvokeHandlersImpl(Object source, RoutedEventArgs args, Boolean reRaised)
+   bei System.Windows.UIElement.RaiseEventImpl(DependencyObject sender, RoutedEventArgs args)
+   bei System.Windows.UIElement.RaiseEvent(RoutedEventArgs e)
+   bei System.Windows.BroadcastEventHelper.BroadcastEvent(DependencyObject root, RoutedEvent routedEvent)
+   bei System.Windows.BroadcastEventHelper.BroadcastLoadedEvent(Object root)
+   bei MS.Internal.LoadedOrUnloadedOperation.DoWork()
+   bei System.Windows.Media.MediaContext.FireLoadedPendingCallbacks()
+   bei System.Windows.Media.MediaContext.FireInvokeOnRenderCallbacks()
+   bei System.Windows.Media.MediaContext.RenderMessageHandlerCore(Object resizedCompositionTarget)
+   bei System.Windows.Media.MediaContext.RenderMessageHandler(Object resizedCompositionTarget)
+   bei System.Windows.Threading.ExceptionWrapper.InternalRealCall(Delegate callback, Object args, Int32 numArgs)
+   bei System.Windows.Threading.ExceptionWrapper.TryCatchWhen(Object source, Delegate callback, Object args, Int32 numArgs, Delegate catchHandler)
+2015-12-17 14:15:50.7701 |                INFO |                Start application |                Ufo.Commander.App 
+2015-12-17 14:16:10.5982 |                FATAL |                Unhandler exception thrown! |                Ufo.Commander.App 
+System.NotSupportedException: Das angegebene Pfadformat wird nicht unterstützt.
+   bei System.Security.Util.StringExpressionSet.CanonicalizePath(String path, Boolean needFullPath)
+   bei System.Security.Util.StringExpressionSet.CreateListFromExpressions(String[] str, Boolean needFullPath)
+   bei System.Security.Permissions.FileIOPermission.AddPathList(FileIOPermissionAccess access, AccessControlActions control, String[] pathListOrig, Boolean checkForDuplicates, Boolean needFullPath, Boolean copyPathList)
+   bei System.Security.Permissions.FileIOPermission..ctor(FileIOPermissionAccess access, String path)
+   bei System.Windows.Media.MediaPlayerState.DemandPermissions(Uri absoluteUri)
+   bei System.Windows.Media.MediaPlayerState.OpenMedia(Uri source)
+   bei System.Windows.Media.MediaPlayerState.SetSource(Uri source)
+   bei System.Windows.Media.MediaPlayerState.Open(Uri source)
+   bei System.Windows.Controls.AVElementHelper.HandleStateChange()
+   bei System.Windows.Controls.AVElementHelper.OnLoaded(Object sender, RoutedEventArgs args)
+   bei System.Windows.RoutedEventHandlerInfo.InvokeHandler(Object target, RoutedEventArgs routedEventArgs)
+   bei System.Windows.EventRoute.InvokeHandlersImpl(Object source, RoutedEventArgs args, Boolean reRaised)
+   bei System.Windows.UIElement.RaiseEventImpl(DependencyObject sender, RoutedEventArgs args)
+   bei System.Windows.UIElement.RaiseEvent(RoutedEventArgs e)
+   bei System.Windows.BroadcastEventHelper.BroadcastEvent(DependencyObject root, RoutedEvent routedEvent)
+   bei System.Windows.BroadcastEventHelper.BroadcastLoadedEvent(Object root)
+   bei MS.Internal.LoadedOrUnloadedOperation.DoWork()
+   bei System.Windows.Media.MediaContext.FireLoadedPendingCallbacks()
+   bei System.Windows.Media.MediaContext.FireInvokeOnRenderCallbacks()
+   bei System.Windows.Media.MediaContext.RenderMessageHandlerCore(Object resizedCompositionTarget)
+   bei System.Windows.Media.MediaContext.RenderMessageHandler(Object resizedCompositionTarget)
+   bei System.Windows.Media.MediaContext.Resize(ICompositionTarget resizedCompositionTarget)
+   bei System.Windows.Interop.HwndTarget.OnResize()
+   bei System.Windows.Interop.HwndTarget.HandleMessage(WindowMessage msg, IntPtr wparam, IntPtr lparam)
+   bei System.Windows.Interop.HwndSource.HwndTargetFilterMessage(IntPtr hwnd, Int32 msg, IntPtr wParam, IntPtr lParam, Boolean& handled)
+   bei MS.Win32.HwndWrapper.WndProc(IntPtr hwnd, Int32 msg, IntPtr wParam, IntPtr lParam, Boolean& handled)
+   bei MS.Win32.HwndSubclass.DispatcherCallbackOperation(Object o)
+   bei System.Windows.Threading.ExceptionWrapper.InternalRealCall(Delegate callback, Object args, Int32 numArgs)
+   bei System.Windows.Threading.ExceptionWrapper.TryCatchWhen(Object source, Delegate callback, Object args, Int32 numArgs, Delegate catchHandler)
+2015-12-17 14:16:14.0114 |                FATAL |                Unhandler exception thrown! |                Ufo.Commander.App 
+System.NotSupportedException: Das angegebene Pfadformat wird nicht unterstützt.
+   bei System.Security.Util.StringExpressionSet.CanonicalizePath(String path, Boolean needFullPath)
+   bei System.Security.Util.StringExpressionSet.CreateListFromExpressions(String[] str, Boolean needFullPath)
+   bei System.Security.Permissions.FileIOPermission.AddPathList(FileIOPermissionAccess access, AccessControlActions control, String[] pathListOrig, Boolean checkForDuplicates, Boolean needFullPath, Boolean copyPathList)
+   bei System.Security.Permissions.FileIOPermission..ctor(FileIOPermissionAccess access, String path)
+   bei System.Windows.Media.MediaPlayerState.DemandPermissions(Uri absoluteUri)
+   bei System.Windows.Media.MediaPlayerState.OpenMedia(Uri source)
+   bei System.Windows.Media.MediaPlayerState.SetSource(Uri source)
+   bei System.Windows.Media.MediaPlayerState.Open(Uri source)
+   bei System.Windows.Controls.AVElementHelper.HandleStateChange()
+   bei System.Windows.Controls.AVElementHelper.OnLoaded(Object sender, RoutedEventArgs args)
+   bei System.Windows.RoutedEventHandlerInfo.InvokeHandler(Object target, RoutedEventArgs routedEventArgs)
+   bei System.Windows.EventRoute.InvokeHandlersImpl(Object source, RoutedEventArgs args, Boolean reRaised)
+   bei System.Windows.UIElement.RaiseEventImpl(DependencyObject sender, RoutedEventArgs args)
+   bei System.Windows.UIElement.RaiseEvent(RoutedEventArgs e)
+   bei System.Windows.BroadcastEventHelper.BroadcastEvent(DependencyObject root, RoutedEvent routedEvent)
+   bei System.Windows.BroadcastEventHelper.BroadcastLoadedEvent(Object root)
+   bei MS.Internal.LoadedOrUnloadedOperation.DoWork()
+   bei System.Windows.Media.MediaContext.FireLoadedPendingCallbacks()
+   bei System.Windows.Media.MediaContext.FireInvokeOnRenderCallbacks()
+   bei System.Windows.Media.MediaContext.RenderMessageHandlerCore(Object resizedCompositionTarget)
+   bei System.Windows.Media.MediaContext.RenderMessageHandler(Object resizedCompositionTarget)
+   bei System.Windows.Threading.ExceptionWrapper.InternalRealCall(Delegate callback, Object args, Int32 numArgs)
+   bei System.Windows.Threading.ExceptionWrapper.TryCatchWhen(Object source, Delegate callback, Object args, Int32 numArgs, Delegate catchHandler)
+2015-12-17 14:16:51.9636 |                INFO |                Start application |                Ufo.Commander.App 
+2015-12-17 14:20:15.0602 |                INFO |                Start application |                Ufo.Commander.App 
+2015-12-17 14:24:31.1039 |                INFO |                Start application |                Ufo.Commander.App 
+2015-12-17 14:27:55.0665 |                INFO |                Start application |                Ufo.Commander.App 
+2015-12-17 14:32:56.1968 |                INFO |                Start application |                Ufo.Commander.App 
+2015-12-17 14:34:35.3114 |                INFO |                Start application |                Ufo.Commander.App 
+2015-12-17 14:36:39.4755 |                INFO |                Start application |                Ufo.Commander.App 
+2015-12-17 14:38:25.3556 |                INFO |                Start application |                Ufo.Commander.App 
+2015-12-17 14:39:39.5448 |                INFO |                Start application |                Ufo.Commander.App 
+2015-12-17 14:40:48.9028 |                INFO |                Start application |                Ufo.Commander.App 
+2015-12-17 14:41:35.7235 |                INFO |                Start application |                Ufo.Commander.App 
+2015-12-17 14:42:37.0120 |                INFO |                Start application |                Ufo.Commander.App 
+2015-12-17 14:43:12.3260 |                INFO |                Start application |                Ufo.Commander.App 
+2015-12-17 14:44:14.4496 |                INFO |                Start application |                Ufo.Commander.App 
+2015-12-17 14:44:45.5613 |                INFO |                Start application |                Ufo.Commander.App 
+2015-12-17 14:45:27.4777 |                INFO |                Start application |                Ufo.Commander.App 
+2015-12-17 14:50:06.2837 |                INFO |                Start application |                Ufo.Commander.App 
+2015-12-17 14:51:57.0800 |                INFO |                Start application |                Ufo.Commander.App 
+2015-12-17 14:52:58.5185 |                INFO |                Start application |                Ufo.Commander.App 

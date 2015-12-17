@@ -4,10 +4,11 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Ufo.BL.Interfaces;
 using Ufo.Domain;
 
-namespace Ufo.Commander.ViewModel
+namespace Ufo.Commander.ViewModel.Basic
 {
     public class ScheduleViewModel: ViewModelBase
     {
@@ -25,73 +26,19 @@ namespace Ufo.Commander.ViewModel
             scheduleFirstDay = new ObservableCollection<PerformanceSchedulerViewModel>();
             scheduleSecondDay = new ObservableCollection<PerformanceSchedulerViewModel>();
             scheduleThirdDay = new ObservableCollection<PerformanceSchedulerViewModel>();
-            LoadScheduleForDayOne();
-            LoadScheduleForDayTwo();
-            LoadScheduleForDayThree();
-        }
-        #endregion
+            ShareCommand = new RelayCommand(o => manager.NotifiyAllArtists());
 
-        #region private methods
-        private void LoadScheduleForDayOne()
-        {
-            ScheduleFirstDay.Clear();
-            var locations = manager.GetAllLocations();
-
-            foreach(var location in locations)
-            {
-                ScheduleFirstDay.Add(new PerformanceSchedulerViewModel(new DateTime(2016, 07, 22), location, manager));
-            }
-        }
-
-        private void LoadScheduleForDayTwo()
-        {
-            ScheduleSecondDay.Clear();
-            var locations = manager.GetAllLocations();
-
-            foreach (var location in locations)
-            {
-                ScheduleSecondDay.Add(new PerformanceSchedulerViewModel(new DateTime(2016, 07, 23), location, manager));
-            }
-        }
-
-        private void LoadScheduleForDayThree()
-        {
-            ScheduleThirdDay.Clear();
-            var locations = manager.GetAllLocations();
-
-            foreach (var location in locations)
-            {
-                ScheduleThirdDay.Add(new PerformanceSchedulerViewModel(new DateTime(2016, 07, 24), location, manager));
-            }
-        }
-
-        private Task LoadScheduleForDayOneAsync()
-        {
-            return Task.Run(() => LoadScheduleForDayOne());
-        }
-
-        private Task LoadScheduleForDayTwoAsync()
-        {
-            return Task.Run(() => LoadScheduleForDayTwo());
-        }
-
-        private Task LoadScheduleForDayThreeAsync()
-        {
-            return Task.Run(() => LoadScheduleForDayOne());
-        }
-
-        private async void LoadAsync()
-        {
-            await LoadScheduleForDayOneAsync();
-            await LoadScheduleForDayTwoAsync();
-            await LoadScheduleForDayThreeAsync();
         }
         #endregion
 
         #region properties
         public ObservableCollection<PerformanceSchedulerViewModel> ScheduleFirstDay
         {
-            get { return scheduleFirstDay; }
+            get
+            {
+                LoadScheduleForDayOne();
+                return scheduleFirstDay;
+            }
             set
             {
                 if (scheduleFirstDay != value)
@@ -104,7 +51,11 @@ namespace Ufo.Commander.ViewModel
 
         public ObservableCollection<PerformanceSchedulerViewModel> ScheduleSecondDay
         {
-            get { return scheduleSecondDay; }
+            get
+            {
+                LoadScheduleForDayTwo();
+                return scheduleSecondDay;
+            }
             set
             {
                 if (scheduleSecondDay != value)
@@ -117,7 +68,11 @@ namespace Ufo.Commander.ViewModel
 
         public ObservableCollection<PerformanceSchedulerViewModel> ScheduleThirdDay
         {
-            get { return scheduleThirdDay; }
+            get
+            {
+                LoadScheduleForDayThree();
+                return scheduleThirdDay;
+            }
             set
             {
                 if (scheduleThirdDay != value)
@@ -127,7 +82,43 @@ namespace Ufo.Commander.ViewModel
                 }
             }
         }
+
+        public ICommand ShareCommand { get; set; }
         #endregion
 
+        #region private methods
+        private void LoadScheduleForDayOne()
+        {
+            scheduleFirstDay.Clear();
+            var locations = manager.GetAllLocations();
+
+            foreach (var location in locations)
+            {
+                scheduleFirstDay.Add(new PerformanceSchedulerViewModel(new DateTime(2016, 07, 22), location, manager));
+            }
+        }
+
+        private void LoadScheduleForDayTwo()
+        {
+            scheduleSecondDay.Clear();
+            var locations = manager.GetAllLocations();
+
+            foreach (var location in locations)
+            {
+                scheduleSecondDay.Add(new PerformanceSchedulerViewModel(new DateTime(2016, 07, 23), location, manager));
+            }
+        }
+
+        private void LoadScheduleForDayThree()
+        {
+            scheduleThirdDay.Clear();
+            var locations = manager.GetAllLocations();
+
+            foreach (var location in locations)
+            {
+                scheduleThirdDay.Add(new PerformanceSchedulerViewModel(new DateTime(2016, 07, 24), location, manager));
+            }
+        }
+        #endregion
     }
 }

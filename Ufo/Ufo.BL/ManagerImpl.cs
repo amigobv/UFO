@@ -535,14 +535,43 @@ namespace Ufo.BL
         public void SendEmail(string address, string subject, string content)
         {
             SmtpClient client = new SmtpClient();
-            MailMessage mail = new MailMessage()
+
+            MailMessage mail = new MailMessage("s1310307036@students.fh-hagenberg.com", address)
             {
-                To = { new MailAddress(address) },
                 Subject = subject,
-                Body = content
+                Body = content,
+                BodyEncoding = System.Text.Encoding.UTF8,
+                SubjectEncoding = System.Text.Encoding.UTF8
             };
 
             client.Send(mail);
+        }
+
+        public void NotifiyAllArtists()
+        {
+            var artists = artistDao.FindAll();
+
+            foreach(var artist in artists)
+            {
+                NotifyArtist(artist);
+            }
+        }
+
+        public void NotifyArtist(Artist artist)
+        {
+            var performances = performanceDao.FindByArtistId(artist.Id);
+
+            var sb = new StringBuilder();
+
+            sb.AppendLine("Here is your festival schedule: ");
+            foreach(var p in performances)
+            {
+                sb.AppendLine(p.Start.ToString("yyyy.MM.dd HH:mm") + " - " + 
+                             p.Venue.Location.Id + p.Venue.Id + " " +
+                             p.Venue.Label);
+            }
+
+            SendEmail(artist.Email, "Personal festival schedule", sb.ToString());
         }
     }
 }

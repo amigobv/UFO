@@ -69,5 +69,6 @@ namespace Ufo.BL.Interfaces
         #endregion
 
         void SendEmail(string address, string subject, string content);
+        void NotifiyAllArtists();
     }
 }

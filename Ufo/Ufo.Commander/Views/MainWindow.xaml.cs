@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Ufo.BL;
 using Ufo.Commander.ViewModel;
+using Ufo.Commander.ViewModel.Basic;
 
 namespace Ufo.Commander.Views
 {

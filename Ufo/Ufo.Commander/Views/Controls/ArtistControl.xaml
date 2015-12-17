@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:resx="clr-namespace:Ufo.Commander.Resources"
       xmlns:local="clr-namespace:Ufo.Commander.Views"
+      xmlns:ctrl="clr-namespace:Ufo.Commander.Views.Controls"
       mc:Ignorable="d" 
       d:DesignHeight="400" d:DesignWidth="600">
 
@@ -118,9 +119,16 @@
                     </StackPanel>
                 </Grid>
             </GroupBox>
+        </StackPanel>
 
-            <GroupBox Margin="5" Header="{x:Static resx:Resources.ArtistText}">
-                <Grid Grid.Column="1">
+        <GroupBox Grid.Column="0" Margin="5" Header="{x:Static resx:Resources.ArtistText}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
@@ -134,19 +142,9 @@
                         <TextBlock Text="{Binding Homepage}" Margin="2"/>
                         <TextBlock Text="{Binding Email}" Margin="2"/>
                     </StackPanel>
-                    <Image Grid.Column="1" Source="{Binding Picture}" Width="150" Height="100" Margin="3"/>
-
+                    <Image Grid.Column="1" Grid.Row="0" Source="{Binding Picture}" Width="150" Height="100" Margin="3"/>
                 </Grid>
-            </GroupBox>
-        </StackPanel>
-
-        <GroupBox Grid.Column="0" Margin="5" Header="{x:Static resx:Resources.MediaText}">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1*" />
-                    <RowDefinition Height="1*" />
-                </Grid.RowDefinitions>
-                <MediaElement Grid.Row="0" Source="{Binding Video}" />
+                <ctrl:VideoViewer Grid.Row="1" DataContext="{Binding Video}" Margin="5"/>
             </Grid>
         </GroupBox>
     </Grid>

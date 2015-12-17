@@ -3,38 +3,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Ufo.BL;
 using Ufo.BL.Interfaces;
 using Ufo.Commander.Model;
 using Ufo.Domain;
 
-namespace Ufo.Commander.ViewModel
+namespace Ufo.Commander.ViewModel.Basic
 {
-    public class UserLoginViewModel: ViewModelBase
+    public class UserRegistrationViewModel : ViewModelBase
     {
-        #region Private Members
+        #region private members
         private User user;
         private IManager manager;
         #endregion
 
-        #region Ctor
-        /// <summary>
-        /// Initializes a new instance of the <see cref="UserLoginViewModel"/> class.
-        /// </summary>
-        public UserLoginViewModel(IManager manager)
+        #region ctor
+        public UserRegistrationViewModel(IManager manager)
         {
             this.user = new User();
             this.manager = manager;
         }
 
-        public UserLoginViewModel(User user, IManager manager)
+        public UserRegistrationViewModel(User user, IManager manager)
         {
             this.user = user;
             this.manager = manager;
         }
         #endregion
 
-        #region Properties
+        #region properties
         /// <summary>
         /// Gets or sets the username.
         /// </summary>
@@ -43,11 +41,7 @@ namespace Ufo.Commander.ViewModel
         /// </value>
         public string Username
         {
-            get
-            {
-                return user.Username;
-            }
-
+            get { return user.Username; }
             set
             {
                 if (user.Username != value)
@@ -66,11 +60,7 @@ namespace Ufo.Commander.ViewModel
         /// </value>
         public string Password
         {
-            get
-            {
-                return user.Password;
-            }
-
+            get { return user.Password; }
             set
             {
                 if (user.Password != value)
@@ -81,21 +71,38 @@ namespace Ufo.Commander.ViewModel
             }
         }
 
-        public bool IsLoginSuccessful
+        /// <summary>
+        /// Gets or sets the email.
+        /// </summary>
+        /// <value>
+        /// The email.
+        /// </value>
+        public string Email
+        {
+            get { return user.Email; }
+            set
+            {
+                if (user.Email != value)
+                {
+                    user.Email = value;
+                    RaisePropertyChangedEvent("Email");
+                }
+            }
+        }
+
+
+        public bool IsRegistrationSuccessful
         {
             get { return manager.GetActiveUser() != null; }
         }
         #endregion
 
-        #region Methods
-        /// <summary>
-        /// Logins this instance.
-        /// </summary>
-        public void Login()
+        #region methods
+        public void Registrate()
         {
             try
             {
-                manager.Login(user);
+                manager.Registrate(user);
             }
             catch(Exception)
             {
