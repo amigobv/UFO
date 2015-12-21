@@ -48,7 +48,7 @@ namespace Ufo.Commander.Views
             var item = cbArtist.SelectedItem;
             vm.Artist = (ArtistViewModel)item;
 
-            if (vm.IsValid())
+            if (vm.IsValidArtist())
             {
                 vm.SaveCommand.Execute(null);
                 Close();

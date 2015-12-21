@@ -12,13 +12,6 @@ namespace Ufo.Commander.ViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public ViewModelBase()
-        {
-            Validator = new ValidationHelper();
-        }
-
-        protected ValidationHelper Validator { get; private set; }
-
         protected void RaisePropertyChangedEvent([CallerMemberName]string propertyName = "")
         {
             if (PropertyChanged != null)

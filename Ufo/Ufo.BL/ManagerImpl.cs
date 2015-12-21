@@ -17,7 +17,7 @@ namespace Ufo.BL
     {
 
         #region private members
-        private IDatabase database = DalFactory.CreateDatabase();
+        private IDatabase database;
 
         private IUserDao userDao;
         private IArtistDao artistDao;
@@ -31,6 +31,7 @@ namespace Ufo.BL
         #region Ctor
         public ManagerImpl()
         {
+            database = DalFactory.CreateDatabase();
             userDao = DalFactory.CreateUserDao(database);
             artistDao = DalFactory.CreateArtistDao(database);
             categoryDao = DalFactory.CreateCategoryDao(database);

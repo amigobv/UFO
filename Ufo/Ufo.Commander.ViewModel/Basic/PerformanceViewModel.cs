@@ -1,17 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MvvmValidation;
 using System.Windows.Input;
 using Ufo.BL.Interfaces;
-using Ufo.Command.ViewModel;
 using Ufo.Domain;
 
 namespace Ufo.Commander.ViewModel.Basic
 {
-    public class PerformanceViewModel : ViewModelBase
+    public class PerformanceViewModel : ValidableViewModelBase
     {
         private IManager manager;
         private ArtistViewModel artistVm;
@@ -39,8 +36,6 @@ namespace Ufo.Commander.ViewModel.Basic
             if (venue != null)
                 this.performance.Venue = venue;
 
-            
-
             this.venueVm = venueVm;
             this.artistVm = artistVm;
             this.day = day;
@@ -63,7 +58,6 @@ namespace Ufo.Commander.ViewModel.Basic
 
             SaveCommand = new RelayCommand(o => manager.UpdatePerformance(performance));
             RemoveCommand = new RelayCommand(o => manager.RemovePerformance(performance));
-
         }
 
         public PerformanceViewModel(Performance performance, IManager manager)
@@ -94,6 +88,7 @@ namespace Ufo.Commander.ViewModel.Basic
                     ArtistVmToArtist(artistVm);
                     RaisePropertyChangedEvent(nameof(Artist));
                 }
+                Validator.ValidateAsync(() => Artist);
             }
         }
 
@@ -223,7 +218,7 @@ namespace Ufo.Commander.ViewModel.Basic
         #endregion
 
         #region public methods
-        public bool IsValid()
+        public bool IsValidArtist()
         {
             return manager.IsPerformanceValid(performance);
         }

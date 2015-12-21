@@ -1,0 +1,129 @@
+a {
+	font-family: Verdana, Tahoma;
+	font-size: 11px;
+	color: #FF4040;
+	text-decoration: none;
+}
+a:hover, a:active {
+	text-decoration: underline;
+}
+h1 {
+	font-family: Verdana, Tahoma;
+	font-size: 16px;
+	color: #333333;
+	font-weight: bold;
+	text-transform: uppercase;
+	padding: 4px;
+	margin: 4px;
+}
+h2 {
+	font-family: Verdana, Tahoma;
+	font-size: 14px;
+	color: #333333;
+	font-weight: normal;
+	margin: 2px;
+	padding: 2px;
+}
+h3 {
+	font-family: Verdana, Tahoma;
+	font-size: 11px;
+	color: #333333;
+	font-weight: normal;
+	margin: 2px;
+	padding: 2px;
+}
+h4 {
+	font-family: Verdana, Tahoma;
+	font-size: 9px;
+	color: #666666;
+	margin-bottom: 1px;
+	font-weight: normal;
+	margin-top: 1px;
+}
+BODY {
+	scrollbar-face-color:#CCCC33;
+	scrollbar-arrow-color:#FFFFFF;
+	scrollbar-track-color: #FFFFFF;
+	scrollbar-3dlight-color: #000000;
+	scrollbar-darkshadow-color: #000000;
+	margin-top: 1px;
+	margin-bottom: 1px;
+	background-color: #FFFFFF;
+}
+li {
+	font-family: Verdana, Tahoma;
+	font-size: 11px;
+	color: #666666;
+	padding: 0px;
+	background-position: 0px;
+	list-style-position: outside;
+	list-style-type: none;
+	margin-top: 10px;
+}
+.line {
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #E1E1E1;
+}
+.border {
+	margin: 1px;
+	padding: 1px;
+	border: 1px solid #006699;
+}
+.border2 {
+	margin: 2px;
+	padding: 2px;
+	border: 1px dotted #E1E1E1;
+}
+.asmall {
+	font-size: 9px;
+}
+ul {
+	margin-top: 0px;
+	margin-bottom: 0px;
+	font-size: 9px;
+}
+img {
+	border: 0px;
+}
+.bl {
+	font-family: Verdana, Tahoma;
+	font-size: 11px;
+	font-weight: bold;
+	color: #FFFFFF;
+	background-color: #006699;
+}
+.gr {
+	background-color: #CCFF99;
+}
+.ol {
+	background-color: #CCFF66;
+}
+.ad_attribution {
+	color:#666;
+	text-align:left;
+	text-decoration:none
+}
+.ad_title, .ad_title_large {
+	font-family:Verdana, Tahoma;
+	font-size:13px;
+	font-weight:700;
+	line-height:20px;
+	text-decoration:none
+}
+.ad_text, .ad_text_large {
+	color:#333;
+	font-family:Verdana, Tahoma;
+	font-size:12px;
+	line-height:20px
+}
+.ad_url, .ad_url_large {
+	color:#999;
+	font-family:Verdana, Tahoma;
+	font-size:11px;
+	line-height:20px;
+	text-decoration:none
+}

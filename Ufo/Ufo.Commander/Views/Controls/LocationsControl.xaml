@@ -44,13 +44,14 @@
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
-            <ctrl:LocationControl Grid.Row="0" DataContext="{Binding CurrentLocation}" Width="350" MaxWidth="450"/>
+            <ctrl:LocationControl Grid.Row="0" DataContext="{Binding CurrentLocation}"/>
 
             <StackPanel Grid.Row="1" Orientation="Horizontal" FlowDirection="RightToLeft">
                 <Button Width="70"
                         Name="btnSave" 
                         Margin="5, 5, 5, 5"
                         Content="{x:Static resx:Resources.SaveText}"
+                        IsEnabled="{Binding CurrentLocation.IsValid}"
                         Click="SavePressed"/>
             </StackPanel>
         </Grid>

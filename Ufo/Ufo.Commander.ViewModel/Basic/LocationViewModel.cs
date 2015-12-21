@@ -1,19 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MvvmValidation;
 using System.Windows.Input;
 using Ufo.BL.Interfaces;
 using Ufo.Domain;
 
 namespace Ufo.Commander.ViewModel.Basic
 {
-    public class LocationViewModel : ViewModelBase
+    public class LocationViewModel : ValidableViewModelBase
     {
         #region private members
         private IManager manager;
         private Location location;
+        private string validationErrorsString;
+        private bool? isValid;
         #endregion
 
         #region ctor
@@ -22,15 +20,35 @@ namespace Ufo.Commander.ViewModel.Basic
             this.manager = manager;
             this.location = new Location();
             SaveCommand = new RelayCommand(o => manager.UpdateLocation(location));
+            ConfigureValidation();
         }
 
         public LocationViewModel(Location location, IManager manager)
         {
             this.manager = manager;
-            this.location = location;
+
+            if (location == null)
+                this.location = new Location();
+            else
+                this.location = location;
             SaveCommand = new RelayCommand(o => manager.UpdateLocation(location));
+            ConfigureValidation();
         }
         #endregion
+
+        private void ConfigureValidation()
+        {
+            Validator.AddRule(() => Identifier,
+                              () => RuleResult.Assert(!string.IsNullOrEmpty(Identifier), "Short name is required!")
+                              );
+
+            Validator.AddRule(() => Identifier,
+                              () => RuleResult.Assert(Identifier.Length < 5, "Short name it too long!"));
+
+            Validator.AddRule(() => Identifier,
+                              () => RuleResult.Assert(!manager.LocationExists(new Location(Identifier, "")), "This location already exists!"));
+            Validator.ResultChanged += OnValidationResultChanged;
+        }
 
         #region properties
         public string Identifier
@@ -41,8 +59,9 @@ namespace Ufo.Commander.ViewModel.Basic
                 if (location.Id != value)
                 {
                     location.Id = value;
-                    RaisePropertyChangedEvent(nameof(Identifier));
+                    RaisePropertyChangedEvent(nameof(Identifier)); 
                 }
+                Validator.ValidateAsync(() => Identifier);
             }
         }
 
@@ -61,6 +80,42 @@ namespace Ufo.Commander.ViewModel.Basic
 
         public ICommand SaveCommand { get; set; }
         #endregion
+
+        #region validation
+        public string ValidationErrorsString
+        {
+            get { return validationErrorsString; }
+            private set
+            {
+                validationErrorsString = value;
+                RaisePropertyChangedEvent(nameof(ValidationErrorsString));
+            }
+        }
+
+        public bool? IsValid
+        {
+            get { return isValid; }
+            private set
+            {
+                isValid = value;
+                RaisePropertyChangedEvent(nameof(IsValid));
+            }
+        }
+
+        private void OnValidationResultChanged(object sender, ValidationResultChangedEventArgs e)
+        {
+            // Get current state of the validation
+            ValidationResult validationResult = Validator.GetResult();
+            UpdateValidationSummary(validationResult);
+        }
+
+        private void UpdateValidationSummary(ValidationResult validationResult)
+        {
+            IsValid = validationResult.IsValid;
+            ValidationErrorsString = validationResult.ToString();
+        }
+        #endregion
+
 
         public override int GetHashCode()
         {

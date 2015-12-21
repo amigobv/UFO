@@ -1,22 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
+using MvvmValidation;
 using System.Windows.Input;
 using Ufo.BL.Interfaces;
 using Ufo.Domain;
+using System.Linq;
 
 namespace Ufo.Commander.ViewModel.Basic
 {
-    public class VenueViewModel : ViewModelBase
+    public class VenueViewModel : ValidableViewModelBase
     {
         #region private members
         private IManager manager;
         private Venue venue;
         private LocationViewModel location;
         private ObservableCollection<LocationViewModel> locations;
+        private string validationErrorsString;
+        private bool? isValid;
         #endregion
 
         #region ctor
@@ -27,6 +26,7 @@ namespace Ufo.Commander.ViewModel.Basic
             location = new LocationViewModel(manager);
             locations = new ObservableCollection<LocationViewModel>();
             SaveCommand = new RelayCommand(o => manager.UpdateVenue(venue));
+            ConfigureValidation();
         }
 
         public VenueViewModel(Venue venue, IManager manager)
@@ -36,8 +36,18 @@ namespace Ufo.Commander.ViewModel.Basic
             location = new LocationViewModel(venue.Location, manager);
             locations = new ObservableCollection<LocationViewModel>();
             SaveCommand = new RelayCommand(o => manager.UpdateVenue(venue));
+            ConfigureValidation();
         }
         #endregion
+
+        private void ConfigureValidation()
+        {
+            Validator.AddRule(() => Name,
+                              () => RuleResult.Assert(!string.IsNullOrEmpty(Name), "Short name is required!")
+                              );
+
+            Validator.ResultChanged += OnValidationResultChanged;
+        }
 
         #region properties
         public string Name
@@ -50,6 +60,7 @@ namespace Ufo.Commander.ViewModel.Basic
                     venue.Label = value;
                     RaisePropertyChangedEvent(nameof(Name));
                 }
+                Validator.ValidateAsync(() => Name);
             }
         }
 
@@ -75,7 +86,6 @@ namespace Ufo.Commander.ViewModel.Basic
                         RaisePropertyChangedEvent(nameof(Capacity));
                     }
                 }
-
             }
         }
 
@@ -119,6 +129,41 @@ namespace Ufo.Commander.ViewModel.Basic
         public ICommand SaveCommand { get; set; }
         #endregion
 
+        #region validation
+        public string ValidationErrorsString
+        {
+            get { return validationErrorsString; }
+            private set
+            {
+                validationErrorsString = value;
+                RaisePropertyChangedEvent(nameof(ValidationErrorsString));
+            }
+        }
+
+        public bool? IsValid
+        {
+            get { return isValid; }
+            private set
+            {
+                isValid = value;
+                RaisePropertyChangedEvent(nameof(IsValid));
+            }
+        }
+
+        private void OnValidationResultChanged(object sender, ValidationResultChangedEventArgs e)
+        {
+            // Get current state of the validation
+            ValidationResult validationResult = Validator.GetResult();
+            UpdateValidationSummary(validationResult);
+        }
+
+        private void UpdateValidationSummary(ValidationResult validationResult)
+        {
+            IsValid = validationResult.IsValid;
+            ValidationErrorsString = validationResult.ToString();
+        }
+        #endregion
+
         public override int GetHashCode()
         {
             return base.GetHashCode();
@@ -147,6 +192,9 @@ namespace Ufo.Commander.ViewModel.Basic
 
         private void LocationVmToLocation(LocationViewModel vm)
         {
+            if (vm == null)
+                return; 
+
             venue.Location = new Location()
             {
                 Id = vm.Identifier,

@@ -4,43 +4,28 @@
     <Name>Dao</Name>
     <Language>CSharp</Language>
     <Entities>
-      <Entity type="Interface">
-        <Name>IDao&lt;T, V&gt;</Name>
-        <Access>Public</Access>
-        <Location left="867" top="482" />
-        <Size width="162" height="163" />
-        <Collapsed>False</Collapsed>
-        <Member type="Method">int Count()</Member>
-        <Member type="Method">T FindById(V id)</Member>
-        <Member type="Method">IList&lt;T&gt; FindAll()</Member>
-        <Member type="Method">bool Insert(T o)</Member>
-        <Member type="Method">bool Update(T o)</Member>
-        <Member type="Method">bool Delete(V id)</Member>
-      </Entity>
       <Entity type="Class">
         <Name>ArtistDao</Name>
         <Access>Public</Access>
-        <Location left="171" top="725" />
-        <Size width="162" height="112" />
+        <Location left="334" top="380" />
+        <Size width="162" height="104" />
         <Collapsed>False</Collapsed>
-        <Member type="Field">private IDatabase database</Member>
         <Member type="Constructor">public ArtistDao(IDatabase db)</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>CategoryDao</Name>
         <Access>Public</Access>
-        <Location left="355" top="725" />
-        <Size width="175" height="112" />
+        <Location left="243" top="249" />
+        <Size width="175" height="101" />
         <Collapsed>False</Collapsed>
-        <Member type="Field">private IDatabase database</Member>
         <Member type="Constructor">public CategoryDao(IDatabase db)</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>LocationDao</Name>
         <Access>Public</Access>
-        <Location left="554" top="725" />
+        <Location left="442" top="504" />
         <Size width="175" height="112" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private IDatabase database</Member>
@@ -50,17 +35,16 @@
       <Entity type="Class">
         <Name>PerformanceDao</Name>
         <Access>Public</Access>
-        <Location left="757" top="725" />
+        <Location left="520" top="637" />
         <Size width="188" height="112" />
         <Collapsed>False</Collapsed>
-        <Member type="Field">private IDatabase database</Member>
         <Member type="Constructor">public PerformanceDao(IDatabase db)</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>RestrictionsDao</Name>
         <Access>Public</Access>
-        <Location left="979" top="725" />
+        <Location left="795" top="591" />
         <Size width="184" height="112" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private IDatabase database</Member>
@@ -70,27 +54,25 @@
       <Entity type="Class">
         <Name>UserDao</Name>
         <Access>Public</Access>
-        <Location left="1196" top="725" />
-        <Size width="162" height="112" />
+        <Location left="999" top="516" />
+        <Size width="162" height="102" />
         <Collapsed>False</Collapsed>
-        <Member type="Field">private IDatabase database</Member>
         <Member type="Constructor">public UserDao(IDatabase db)</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>VenueDao</Name>
         <Access>Public</Access>
-        <Location left="1380" top="725" />
-        <Size width="162" height="112" />
+        <Location left="999" top="332" />
+        <Size width="162" height="94" />
         <Collapsed>False</Collapsed>
-        <Member type="Field">private IDatabase database</Member>
         <Member type="Constructor">public VenueDao(IDatabase db)</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Interface">
         <Name>IDatabase</Name>
         <Access>Public</Access>
-        <Location left="328" top="49" />
+        <Location left="548" top="36" />
         <Size width="490" height="216" />
         <Collapsed>False</Collapsed>
         <Member type="Method">DbCommand CreateCommand(string commandTxt)</Member>
@@ -105,46 +87,287 @@
       <Entity type="Class">
         <Name>Database</Name>
         <Access>Public</Access>
-        <Location left="442" top="352" />
+        <Location left="706" top="306" />
         <Size width="176" height="120" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private string connectionString</Member>
         <Member type="Constructor">public Database(string connString)</Member>
         <Modifier>None</Modifier>
       </Entity>
+      <Entity type="Interface">
+        <Name>IArtistDao</Name>
+        <Access>Public</Access>
+        <Location left="122" top="504" />
+        <Size width="162" height="231" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">int Count()</Member>
+        <Member type="Method">IList&lt;Artist&gt; FindAll()</Member>
+        <Member type="Method">Artist FindById(int id)</Member>
+        <Member type="Method">IList&lt;Artists&gt; FindByName(string name)</Member>
+        <Member type="Method">IList&lt;Artist&gt; FindByCountry(string country)</Member>
+        <Member type="Method">IList&lt;Artist&gt; FindByCategory(string category)</Member>
+        <Member type="Method">IList&lt;Artist&gt; FindByCategoryId(string id)</Member>
+        <Member type="Method">bool Insert(Artist a)</Member>
+        <Member type="Method">bool Update(Artist a)</Member>
+        <Member type="Method">bool Delete(int id)</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>ICategoryDao</Name>
+        <Access>Public</Access>
+        <Location left="243" top="36" />
+        <Size width="162" height="170" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">int Count()</Member>
+        <Member type="Method">IList&lt;Category&gt; FindAll()</Member>
+        <Member type="Method">Category FindById(string id)</Member>
+        <Member type="Method">bool Insert(Category c)</Member>
+        <Member type="Method">bool Update(Category c)</Member>
+        <Member type="Method">bool Delete(string id)</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IPerformanceDao</Name>
+        <Access>Public</Access>
+        <Location left="649" top="777" />
+        <Size width="162" height="231" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">int Count()</Member>
+        <Member type="Method">IList&lt;Performance&gt; FindAll()</Member>
+        <Member type="Method">Performance FindById(int id)</Member>
+        <Member type="Method">IList&lt;Performance&gt; FindByArtistId(int id)</Member>
+        <Member type="Method">IList&lt;Performance&gt; FindByArtist(Artist a)</Member>
+        <Member type="Method">IList&lt;Performance&gt; FindByVenue(Venue v)</Member>
+        <Member type="Method">IList&lt;Performance&gt; FindBetween(DateTime start, DateTime stop)</Member>
+        <Member type="Method">bool Insert(Performance p)</Member>
+        <Member type="Method">bool Update(Performance p)</Member>
+        <Member type="Method">bool Delete(int id)</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>ILocationDao</Name>
+        <Access>Public</Access>
+        <Location left="349" top="737" />
+        <Size width="162" height="170" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">int Count()</Member>
+        <Member type="Method">IList&lt;Location&gt; FindAll()</Member>
+        <Member type="Method">Category FindById(string id)</Member>
+        <Member type="Method">bool Insert(Location l)</Member>
+        <Member type="Method">bool Update(Location l)</Member>
+        <Member type="Method">bool Delete(string id)</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IRestrictionDao</Name>
+        <Access>Public</Access>
+        <Location left="1031" top="705" />
+        <Size width="162" height="170" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">int Count()</Member>
+        <Member type="Method">IList&lt;Restriction&gt; FindAll()</Member>
+        <Member type="Method">Restriction FindById(int id)</Member>
+        <Member type="Method">bool Insert(Restriction r)</Member>
+        <Member type="Method">bool Update(Restriction r)</Member>
+        <Member type="Method">bool Delete(int id)</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>UserDao</Name>
+        <Access>Public</Access>
+        <Location left="1219" top="536" />
+        <Size width="162" height="170" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">int Count()</Member>
+        <Member type="Method">IList&lt;User&gt; FindAll()</Member>
+        <Member type="Method">User FindById(string id)</Member>
+        <Member type="Method">bool Insert(User u)</Member>
+        <Member type="Method">bool Update(User u)</Member>
+        <Member type="Method">bool Delete(string id)</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IVenueDao</Name>
+        <Access>Public</Access>
+        <Location left="1238" top="257" />
+        <Size width="162" height="231" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">int Count()</Member>
+        <Member type="Method">IList&lt;Venue&gt; FindAll()</Member>
+        <Member type="Method">Venue FindById(int venueId, int locationId)</Member>
+        <Member type="Method">IList&lt;Venue&gt; FindByLocationId(string id)</Member>
+        <Member type="Method">IList&lt;Venue&gt; FindByLocation(string location)</Member>
+        <Member type="Method">IList&lt;Venue&gt; FindWhereCapacity(int spectators)</Member>
+        <Member type="Method">bool Insert(Venue o)</Member>
+        <Member type="Method">bool Update(Venue o)</Member>
+        <Member type="Method">bool Delete(int id)</Member>
+      </Entity>
     </Entities>
     <Relationships>
-      <Relationship type="Realization" first="1" second="0">
+      <Relationship type="Realization" first="8" second="7">
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
       </Relationship>
-      <Relationship type="Realization" first="2" second="0">
-        <StartOrientation>Vertical</StartOrientation>
+      <Relationship type="Realization" first="0" second="9">
+        <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>309</X>
+          <Y>431</Y>
+        </BendPoint>
       </Relationship>
-      <Relationship type="Realization" first="3" second="0">
+      <Relationship type="Realization" first="1" second="10">
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>324</X>
+          <Y>220</Y>
+        </BendPoint>
       </Relationship>
-      <Relationship type="Realization" first="4" second="0">
-        <StartOrientation>Vertical</StartOrientation>
+      <Relationship type="Realization" first="2" second="12">
+        <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>417</X>
+          <Y>556</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>417</X>
+          <Y>712</Y>
+        </BendPoint>
       </Relationship>
-      <Relationship type="Realization" first="6" second="0">
+      <Relationship type="Realization" first="3" second="11">
         <StartOrientation>Vertical</StartOrientation>
-        <EndOrientation>Vertical</EndOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>604</X>
+          <Y>774</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>613</X>
+          <Y>863</Y>
+        </BendPoint>
       </Relationship>
-      <Relationship type="Realization" first="7" second="0">
+      <Relationship type="Realization" first="4" second="13">
         <StartOrientation>Vertical</StartOrientation>
-        <EndOrientation>Vertical</EndOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>895</X>
+          <Y>728</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1006</X>
+          <Y>728</Y>
+        </BendPoint>
       </Relationship>
-      <Relationship type="Realization" first="5" second="0">
-        <StartOrientation>Vertical</StartOrientation>
-        <EndOrientation>Vertical</EndOrientation>
+      <Relationship type="Realization" first="5" second="14">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1187</X>
+          <Y>581</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1189</X>
+          <Y>582</Y>
+        </BendPoint>
       </Relationship>
-      <Relationship type="Realization" first="9" second="8">
+      <Relationship type="Realization" first="6" second="15">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1195</X>
+          <Y>391</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1211</X>
+          <Y>391</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Association" first="1" second="8">
+        <Label>verwendet</Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>443</X>
+          <Y>295</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>681</X>
+          <Y>332</Y>
+        </BendPoint>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="0" second="8">
+        <Label>verwendet</Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="2" second="8">
+        <Label>verwendet</Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>689</X>
+          <Y>472</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>677</X>
+          <Y>406</Y>
+        </BendPoint>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="3" second="8">
+        <Label>verwendet</Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>733</X>
+          <Y>647</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>730</X>
+          <Y>451</Y>
+        </BendPoint>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="4" second="8">
+        <Label>verwendet</Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="5" second="8">
+        <Label>verwendet</Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>840</X>
+          <Y>453</Y>
+        </BendPoint>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="6" second="8">
+        <Label>verwendet</Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
       </Relationship>
     </Relationships>
   </ProjectItem>
@@ -263,53 +486,47 @@
     </Entities>
     <Relationships>
       <Relationship type="Association" first="1" second="0">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="0" second="4">
-        <Label>
-        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="2" second="5">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="5" second="4">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="1" second="6">
-        <Label>
-        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="5" second="6">
-        <Label>
-        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
     </Relationships>
+  </ProjectItem>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>Commander</Name>
+    <Language>CSharp</Language>
+    <Entities />
+    <Relationships />
   </ProjectItem>
 </Project>

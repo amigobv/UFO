@@ -12,6 +12,9 @@
 \usepackage{lastpage}
 \usepackage{amsmath}
 
+\inputencoding{latin2}
+\inputencoding{utf8}
+
 \geometry{,
   margin=2.54cm
 }
@@ -41,16 +44,12 @@
 \definecolor{greencomments}{rgb}{0,0.5,0}
 \definecolor{bluestrings}{rgb}{0.13,0.5,0.5}
 
-\setlength{\parskip}{\baselineskip}
-\setlength{\parindent}{0pt} 
-
-\makeatletter
-\title{Semesterassignment} \let\Title\@title
-\author{Rotaru Daniel} \let\Author\@author
-\makeatother
+\author{Rotaru Daniel}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \cfoot{\thepage\ of \pageref{LastPage} }
+
+\DeclareUnicodeCharacter{FEFF}{ }
 
 \begin{document}
 \lstset{language=csh,
@@ -69,8 +68,6 @@
         showtabs=false,
         tabsize=2
         }
-
-
 \section{Ultimate Festival Organizer (UFO)}
 
 \subsection{Datenmodell}
@@ -89,7 +86,7 @@ Die Entität \textit{Artist} Besitz ein Attribut der Typ Bool \textit{deleted}, 
 
 \subsection{Datenzugriffsschicht}
 
-Um eine möglich gute Abstraktion zu erreichen wurde eine generische \textit{IDao}-Interface implementiert. Jede \textit{Dao} muss diese Interface implementieren.
+Um eine möglich gute Abstraktion zu erreichen, wurde für jede Domainklasse eine \textit{Dao} Interface angelegt. Die Daten aus der Datenbank können nur über die Methoden, die im jeweilige Interface deklariert wurden, zugegriffen werden.
 
 \begin{figure}[h] 	
 	\centering
@@ -105,7 +102,12 @@ Um die Daten besser zwischen unterschiedlichen Schichten zu transportieren, wurd
 	\caption{Domain Classes}
 \end{figure}
 
-\subsection{Unit-Tests}
+\clearpage 
+\subsubsection{Unit-Tests}
+
+Für jede implementierte DAO-Methode wurde jeweils ein Unit-Test implementiert. Dafür wurde eine eigene Testdatenbank erstellt. Als Testumgebung wurde XUnit-Framework verwendet. Diesen \textit{Framework} bietet ein \textit{AutoRollback}-Attribut, der von Entwickler implementiert werden muss. Diesen Attribut verwendet Datenbanktransaktionen um die Unit-Test Daten nicht in die Datenbank zu speichern. Damit gibt es keine Abhängigkeit zwischen einzelnen Unit-Tests und jeden Unit-Test ist atomar.
+
+\lstinputlisting{../Ufo/Ufo.DAL.Test/AutoRollbackAttribute.cs}
 
 \begin{figure}[h] 	
 	\centering
@@ -113,11 +115,96 @@ Um die Daten besser zwischen unterschiedlichen Schichten zu transportieren, wurd
 	\caption{Ergebnis Unit-Tests}
 \end{figure}
 
+\clearpage
+\subsection{Geschäftslogic}
 
-Für jede implementierte DAO-Methode wurde jeweils ein Unit-Test implementiert. Dafür wurde eine eigene Testdatenbank erstellt. Als Testumgebung wurde XUnit-Framework verwendet. Diesen \textit{Framework} bietet ein \textit{AutoRollback}-Attribut, der von Entwickler implementiert werden muss. Diesen Attribut verwendet Datenbanktransaktionen um die Unit-Test Daten nicht in die Datenbank zu speichern. Damit gibt es keine Abhängigkeit zwischen einzelnen Unit-Tests und jeden Unit-Test ist atomar.
+Die Geschäftslogic ist die einzige Komponente, die mit die Datenzugriffsschicht kommuniziert und stellt die Daten für die Präsentantionsschicht zur Verfügung. Dafür werden zwei Schnittstellen implementiert:
+
+\begin{figure}[h] 	
+	\centering
+		\includegraphics[width=0.5\textwidth]{Server.png}
+	\caption{Ergebnis Unit-Tests}
+\end{figure}
+
+Die erste Schnittstelle bietet alle Operationen die von UFO Commander verwendet werden. Diese Operationen können verwendet um Benutzer, Kategorien, Künstler, Spielstätten, Aufführungen zu verwalten. 
+Es können neue Künstler oder Spielstätte angelegt, neue Kategorien definiert oder Aufführungen von Künstler editieren. Die Präsentationsschicht für den UFO Commander ist nur von diese Schnittstelle abhängig. Die Klasse ManagerImpl implementiert diese Schnittstelle. Um die Geschäftslogic zu verwendet wird eine Factory-Methode zur Verfügung gestellt. Diese Methode erstellt ein Business Logic-Objekt.
+
+Die zweite Schnittstelle stellt alle Informationen zur Verfügung, die auf einem Client angezeigt werden. Das heißt, diese Schnittstelle bietet nur read-only Operationen. Ein Client kann somit nur Daten
+anzeigen und keine Daten bearbeiten. Er kann ein Programmübersicht anzeigen oder Informationen von Künstler, Spielstätten und Aufführungen abfragen.Die Klasse ViewerImpl implementiert diese Schnittstelle.
+
+\subsubsection{Unit-Tests}
+
+Für jede Methode aus der Geschäftslogic wurde ein Test-case geschrieben. Damit wird sichergestellt, dass die Geschäftslogic immer die richtige Daten an die höhere Schicht liefert.
+
+
+\subsection{Präsentationsschicht}
+
+Die Präsentationsschicht für den UFO Commander wird im WPF nach der Model-View-ViewModel Pattern realisiert. Als Model werden die Domainklassen verwendet.
+
+\begin{figure}[h] 	
+	\centering
+		\includegraphics[width=0.5\textwidth]{Layers.png}
+	\caption{Schichten}
+\end{figure}
+
+Der ViewModel wird verwendet, um die Sicht unabhängig von die Domainklassen zu implementieren.
+
+\begin{figure}[h] 	
+	\centering
+		\includegraphics[width=0.4\textwidth]{Arhitecture.png}
+	\caption{Komponentenübersicht}
+\end{figure}
+
+\subsubsection{Benutzerhandbuch}
+
+Beim starten der Applikation wird der Benutzer aufgefordert, sich mit Benutzername und Kennword anzumelden. Im Datenbank wurde ein Benutzer mit der Name \textit{swk5} und Kennword \textit{swk5} angelegt. Nach der Anmeldung, wird als Startbild der Applikation die Programmübersicht des ersten Tages angezeigt. Hier kann der Benutzer das Programm editieren, indem er eine Kachel anklickt. 
+
+
+\begin{figure}[h] 	
+	\centering
+		\includegraphics[width=1.0\textwidth]{Startbild.png}
+	\caption{Startbild}
+\end{figure}
+
+Die Applikation öffnet ein Editierfenster und der Benutzer kann hier aus eine Liste mit alle Künstler ein Künstler auswählen und der Auswahl mit save speichern. Falls der Künstler zu diesem Zeitpunkt, zu keinem anderen Auftritt zugeteilt ist und er zumindest eine Stunden Pause gehabt hat, wird der Künstler gespeichert, ansonsten wird dem Benutzer mitgeteilt, dass diesen Künstler nicht ausgewählt werden kann.
+
+\begin{figure}[h] 	
+	\centering
+		\includegraphics[width=0.5\textwidth]{EditPerformance.png}
+	\caption{Aufführung editieren.}
+\end{figure}
 
 \clearpage 
-\lstinputlisting{../Ufo/Ufo.DAL.Test/AutoRollbackAttribute.cs}
+Im Reiter \textit{Artists} wird auf die Linke Seite des Fensters eine Liste mit alle im System vorhandene Künstler. Wird ein Künstler ausgewählt, so wird auf die Rechte Seite des Fensters aller Informationen zu dem ausgewählten Künstler angezeigt. Diese Informationen können hier auch editiert und gespeichert werden, oder neue Künstler angelegt.
 
+\begin{figure}[h] 	
+	\centering
+		\includegraphics[width=1.0\textwidth]{ArtistWindow.png}
+	\caption{Startbild}
+\end{figure}
+\clearpage 
+Im Reiter \textit{Venues} wird auf die Linke Seite des Fensters eine Liste mit alle im System vorhandene Spielstätten. Wird eine Spielstätte ausgewählt, so wird auf die Rechte Seite des Fensters aller Informationen zu der ausgewählte Spielstätte angezeigt. Diese Informationen können hier auch editiert und gespeichert werden, oder neue Spielstätten angelegt.
+
+\begin{figure}[h] 	
+	\centering
+		\includegraphics[width=1.0\textwidth]{VenueWindow.png}
+	\caption{Startbild}
+\end{figure}
+\clearpage 
+Im Reiter \textit{Categories} wird auf die Linke Seite des Fensters eine Liste mit alle im System vorhandene Kategorien. Wird eine Kategorie ausgewählt, so wird auf die Rechte Seite des Fensters aller Informationen zu der ausgewählte Kategorie angezeigt. Diese Informationen können hier auch editiert und gespeichert werden, oder neue Kategorien angelegt.
+
+\begin{figure}[h] 	
+	\centering
+		\includegraphics[width=1.0\textwidth]{CategoryWindow.png}
+	\caption{Startbild}
+\end{figure}
+\clearpage 
+Im Reiter \textit{Locations} wird auf die Linke Seite des Fensters eine Liste mit alle im System vorhandene Standorte. Wird ein Standort ausgewählt, wird auf die Rechte Seite des Fensters aller Informationen zu dem ausgewählten Standort angezeigt. Diese Informationen können hier auch editiert und gespeichert werden, oder neue Standorte angelegt.
+
+\begin{figure}[h] 	
+	\centering
+		\includegraphics[width=1.0\textwidth]{LocationWindow.png}
+	\caption{Startbild}
+\end{figure}
 
 \end{document}

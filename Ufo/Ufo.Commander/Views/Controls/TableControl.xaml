@@ -4,11 +4,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Ufo.Commander.Views.Controls"
+             xmlns:conv="clr-namespace:Ufo.Commander.Converter"
              xmlns:resx="clr-namespace:Ufo.Commander.Resources"
              xmlns:matrix="clr-namespace:Ufo.Views.Controls.Scheduler"
              xmlns:viewmodels="clr-namespace:Ufo.Commander.ViewModel;assembly=Ufo.Commander.ViewModel"
              mc:Ignorable="d"
              x:Name="tableControl">
+    <UserControl.Resources>
+        <conv:CategoryToColorConverter x:Key="categoryConverter" />
+    </UserControl.Resources>
     <StackPanel Orientation="Vertical" Margin="5">
         <TextBlock Text="{Binding Location}" FontSize="18" FontWeight="Bold" Margin="3"/>
         <matrix:SchedulerControl ItemsSource="{Binding Path=Items}" >
@@ -69,7 +73,8 @@
                     <Border BorderBrush="{StaticResource BorderBrush}" 
                             BorderThickness="{StaticResource BorderThickness}" 
                             Margin="2"
-                            PreviewMouseDown="OnMouseDown_Change">
+                            PreviewMouseDown="OnMouseDown_Change"
+                            Background="{Binding Path=Value.Artist.Category.Name, Converter={StaticResource categoryConverter}}">
                         <StackPanel Orientation="Vertical">
                             <TextBlock HorizontalAlignment="Center"
                                        Margin="0,0,4,0"

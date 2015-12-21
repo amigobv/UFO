@@ -103,7 +103,10 @@
                               DisplayMemberPath="Name"
                               SelectedIndex="0"    
                               ItemsSource="{Binding Categories}"
-                              SelectedItem="{Binding Category, Mode=TwoWay}">
+                              SelectedItem="{Binding Category, Mode=TwoWay}"
+                              SelectedValue="{Binding Path=Category.Name}"
+                              SelectedValuePath="Name"
+                              IsSynchronizedWithCurrentItem="False">
                     </ComboBox>
 
                     <StackPanel Grid.Row="6" Grid.Column="1" Orientation="Horizontal">

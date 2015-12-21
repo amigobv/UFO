@@ -3,58 +3,182 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+			 xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
              xmlns:resx="clr-namespace:Ufo.Commander.Resources"
              xmlns:local="clr-namespace:Ufo.Commander.Views.Controls"
+             xmlns:vm="clr-namespace:Ufo.Commander.ViewModel.Basic;assembly=Ufo.Commander.ViewModel"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DataContext="{d:DesignInstance vm:VenueViewModel}">
     <StackPanel Orientation="Vertical" Margin="30, 50">
-        <GroupBox Margin="5" Header="Venue">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="4*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
+        <i:Interaction.Behaviors>
+            <ei:DataStateBehavior Binding="{Binding IsValid}"
+								  Value="True"
+								  TrueState="ValidState"
+								  FalseState="InvalidState" />
+        </i:Interaction.Behaviors>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="ValidationSummaryStates">
+                <VisualState x:Name="ValidState">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+													   Storyboard.TargetName="ValidSummaryContainer">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Visible</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
+													   Storyboard.TargetName="BackgroundOverlayBorder">
+                            <EasingDoubleKeyFrame KeyTime="0:0:1"
+												  Value="0.5" />
+                            <EasingDoubleKeyFrame KeyTime="0:0:2"
+												  Value="0" />
+                        </DoubleAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="InvalidState">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+													   Storyboard.TargetName="ErrorsSummaryContainer">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Visible</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)"
+													   Storyboard.TargetName="border">
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.066"
+												  Value="-10" />
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.134"
+												  Value="10" />
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.2"
+												  Value="0" />
+                        </DoubleAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
 
-                <Label Grid.Row="0" Grid.Column="0"
-                   Name="lblName" 
-                   Margin="4"
-                   Content="{x:Static resx:Resources.NameText}"/>
+        <Border x:Name="BackgroundOverlayBorder"
+				Background="#FF06C409"
+				Opacity="0" />
 
-                <TextBox Grid.Row="0" Grid.Column="1"
-                    Name="txtNamer" 
-                    Margin="5"
-                    Text="{Binding Name}"
-                    FontSize="14"/>
+        <Border x:Name="border"
+				Width="350"
+				MinHeight="200"
+				Background="White"
+				CornerRadius="5"
+				VerticalAlignment="Center"
+				HorizontalAlignment="Center"
+				Padding="20"
+				RenderTransformOrigin="0.5,0.5">
+            <Border.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform />
+                    <SkewTransform />
+                    <RotateTransform />
+                    <TranslateTransform />
+                </TransformGroup>
+            </Border.RenderTransform>
+            <Border.Effect>
+                <DropShadowEffect Color="#FF252525"
+								  Opacity="0.7" />
+            </Border.Effect>
+            <GroupBox Margin="5" Header="Venue">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
 
-                <Label Grid.Row="1" Grid.Column="0"
-                       Name="lblCapacity" 
-                       Margin="4"
-                       Content="{x:Static resx:Resources.CapacityText}"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="4*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
 
-                <TextBox Grid.Row="1" Grid.Column="1" 
-                    Name="txtCapacity" 
-                    Margin="5"
-                    Text="{Binding Capacity}"
-                    FontSize="14"/>
+                        <Label Grid.Row="0" Grid.Column="0"
+                               Name="lblName" 
+                               Margin="4"
+                               Content="{x:Static resx:Resources.NameText}"/>
 
-                <Label Grid.Row="2" Grid.Column="0"
-                       Name="lblLocation" 
-                       Margin="4"
-                       Content="{x:Static resx:Resources.LocationText}"/>
+                        <TextBox Grid.Row="0" Grid.Column="1"
+                                Name="txtNamer" 
+                                Margin="5"
+                                Text="{Binding Name}"
+                                FontSize="14"/>
 
-                <ComboBox Grid.Row="2" Grid.Column="1"
-                          Name="cbLocation"
-                          Margin="5"
-                          SelectedIndex="0"
-                          ItemsSource="{Binding Locations}"
-                          SelectedItem="{Binding Location, Mode=TwoWay}"
-                          DisplayMemberPath="Name"/>
-            </Grid>
-        </GroupBox>
+                        <Label Grid.Row="1" Grid.Column="0"
+                               Name="lblCapacity" 
+                               Margin="4"
+                               Content="{x:Static resx:Resources.CapacityText}"/>
+
+                        <TextBox Grid.Row="1" Grid.Column="1" 
+                                Name="txtCapacity" 
+                                Margin="5"
+                                Text="{Binding Capacity}"
+                                FontSize="14"/>
+
+                        <Label Grid.Row="2" Grid.Column="0"
+                               Name="lblLocation" 
+                               Margin="4"
+                               Content="{x:Static resx:Resources.LocationText}"/>
+
+                        <ComboBox Grid.Row="2" Grid.Column="1"
+                                  Name="cbLocation"
+                                  Margin="5"
+                                  ItemsSource="{Binding Locations}"
+                                  SelectedItem="{Binding Location, Mode=TwoWay}"
+                                  DisplayMemberPath="Name"
+                                  SelectedValue="{Binding Path=Location.Name}"
+                                  SelectedValuePath="Name"
+                                  IsSynchronizedWithCurrentItem="False"/>
+                    </Grid>
+
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid x:Name="ErrorsSummaryContainer"
+						  Grid.Column="0"
+						  Visibility="Collapsed"
+						  Margin="0,10,10,0">
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Text="Please correct the following errors:"
+								   Foreground="Red"
+								   FontWeight="Bold" />
+                            <TextBlock Grid.Row="1"
+								   Text="{Binding ValidationErrorsString}"
+								   Foreground="Red"
+								   Margin="0,5,0,0" />
+
+                        </Grid>
+
+                        <Grid x:Name="ValidSummaryContainer"
+						  Grid.Column="0"
+						  Visibility="Collapsed"
+						  VerticalAlignment="Center"
+						  HorizontalAlignment="Left"
+						  Margin="0,10,5,0">
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </GroupBox>
+        </Border>
     </StackPanel>
 </UserControl>

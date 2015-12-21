@@ -44,14 +44,14 @@
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
-            <ctrl:CategoryControl Grid.Row="0" DataContext="{Binding CurrentCategory}" Width="350" MaxWidth="450"/>
+            <ctrl:CategoryControl Grid.Row="0" DataContext="{Binding CurrentCategory}"/>
 
             <StackPanel Grid.Row="1" Orientation="Horizontal" FlowDirection="RightToLeft">
                 <Button Width="70"
                         Name="btnSave" 
                         Margin="5, 5, 5, 5"
                         Content="{x:Static resx:Resources.SaveText}"
-
+                        IsEnabled="{Binding CurrentCategory.IsValid}"
                         Click="SavePressed"/>
             </StackPanel>
         </Grid>

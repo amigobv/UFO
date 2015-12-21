@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Ufo.Commander.ViewModel.Basic;
 
 namespace Ufo.Commander.Views.Controls
 {
@@ -20,9 +21,28 @@ namespace Ufo.Commander.Views.Controls
     /// </summary>
     public partial class VenueControl : UserControl
     {
+        private VenueViewModel ViewModel
+        {
+            get { return DataContext as VenueViewModel; }
+            set { DataContext = value; }
+        }
+
         public VenueControl()
         {
             InitializeComponent();
+        }
+
+        private void LocationsLoaded(object sender, RoutedEventArgs e)
+        {
+            var vm = ViewModel;
+
+            if (vm == null)
+                return;
+        }
+
+        private void LocationChanged(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

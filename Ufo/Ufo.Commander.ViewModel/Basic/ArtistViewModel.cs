@@ -216,6 +216,9 @@ namespace Ufo.Commander.ViewModel.Basic
 
         private void CategoryVmToCategory(CategoryViewModel vm)
         {
+            if (vm == null)
+                return;
+
             artist.Category = new Category()
             {
                 Id = vm.Identifier,
