@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;UfoClient/WebContent/WEB-INF/templates/basicTemplate.html&apos; to &apos;basicTemplate.xhtml&apos;" description="Rename resource &apos;basicTemplate.html&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="WebContent/WEB-INF/templates/basicTemplate.html" name="basicTemplate.xhtml" stamp="1451069276636" updateReferences="true"/>
+</session>
