@@ -1,19 +1,30 @@
 <div xmlns:ui="http://java.sun.com/jsf/facelets"
-	 xmlns:h="http://java.sun.com/jsf/html">
-	
-	<div style="width:100%;font-size:36px;line-height:48px;background-color:navy;color:white">
-		Pflasterspektakel
-	</div>
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
 
-<!-- 
-	<h:form id="navForm">
-		<h:panelGrid columns="5">
-			<h:commandButton type="submit" value="Home" action="GoHomeEvent" />
-			<h:commandButton type="submit" value="Browse Books" action="#{webShopUser.allArticles}" />
-			<h:commandButton type="submit" value="Browse Books with Search" action="#{webShopUser.allArticlesSearch}" />
-			<h:commandButton type="submit" value="Show Cart" action="ShowCartEvent" />
-			<h:commandButton type="submit" value="Checkout" action="#{webShopUser.checkout}" />
-		</h:panelGrid>
-	</h:form>
--->
+	<div>
+		<h3>30th Street Performance Festival Linz 2016</h3>
+	
+		<h:form id="navForm">
+			<nav class = "mainNav">
+		        <ul>
+		          <li class="is-active">
+		            <p:commandLink type="submit" value="Home" action="goHomeAction" ajax="false" />
+		          </li>
+		          <li>
+		            <p:commandLink type="submit" value="Programm" action="#{service.getAllPerformances}" ajax="false" />
+		          </li>
+		          <li>
+		            <p:commandLink type="submit" value="Artists" action="#{service.getAllArtists}" ajax="false"/>
+		          </li>
+		          <li>
+		            <p:commandLink type="submit" value="Venues" action="#{service.getAllVenues}" ajax="false"/>
+		          </li>
+		          <li>
+		            <p:commandLink type="submit" value="Login" action="loginAction" ajax="false"/>
+		          </li>
+		        </ul>
+		      </nav>
+		</h:form>	
+	</div>	
 </div>

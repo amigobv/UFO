@@ -1,0 +1,56 @@
+package ufo.client.warehouse;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class DummyUfoDelegate implements UfoDelegate {
+
+	private Map<String, Category> categories = new HashMap<String, Category>();
+	private Map<Integer, Artist> artists = new HashMap<Integer, Artist>();
+	private Map<Integer, Venue> venues = new HashMap<Integer, Venue>();
+	private Map<String, Location> location = new HashMap<String, Location>();
+	private Map<Integer, Performance> performances = new HashMap<Integer, Performance>();
+	
+	public public DummyUfoDelegate() {
+		
+		Category acrobatic = new Category("A", "Akrobatik");
+		Category comedy = new Category("K", "Komedy");
+		Category music = new Category("M", "Musik");
+		Category fire = new Category("F", "Feuershow");
+		
+		Location hauptplatz = new Location("H", "Hauptplatz");
+		Location landstrasse = new Location("L", "Landstraﬂe");
+		Location altstadt = new Location("A", "Alststadt");
+		
+		Venue venue1 = new Venue(1, "Haltestelle", hauptplatz, 100);
+		Venue venue2 = new Venue(2, "Altes Rathaus", hauptplatz, 100);
+		Venue venue3 = new Venue(3, "Schlossmuseum", altstadt, 100);
+		Venue venue4 = new Venue(4, "Ursulinenkirche", landstrasse, 100);
+		Venue venue5 = new Venue(5, "Taubenmarkt", landstrasse, 100);
+		
+		
+		
+		Artist artists1 = new Artist(1,
+				"")
+
+	}
+	
+	@Override
+	public List<Artist> getAllArtists() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Venue> getAllVenues() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Performance> getAllPerformances() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+}

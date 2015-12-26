@@ -1,0 +1,8 @@
+package ufo.client.warehouse;
+
+public class Venue {
+    private int id;
+    private String label;
+    private Location location;
+    private int capacity;
+}

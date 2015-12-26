@@ -1,0 +1,32 @@
+<div xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+	<div id="header">
+		<div id="pageHeader">
+			<h3>30th Street Performance Festival Linz 2016</h3>
+		</div>
+	
+		<h:form id="navForm">
+			<nav class = "mainNav">
+		        <ul>
+		          <li class="is-active">
+		            <p:commandLink type="submit" value="Home" action="goHomeAction" ajax="false" />
+		          </li>
+		          <li>
+		            <p:commandLink type="submit" value="Programm" action="#{service.getAllPerformances}" ajax="false" />
+		          </li>
+		          <li>
+		            <p:commandLink type="submit" value="Artists" action="#{service.getAllArtists}" ajax="false"/>
+		          </li>
+		          <li>
+		            <p:commandLink type="submit" value="Venues" action="#{service.getAllVenues}" ajax="false"/>
+		          </li>
+		          <li>
+		            <p:commandLink type="submit" value="Login" action="loginAction" ajax="false"/>
+		          </li>
+		        </ul>
+			</h:form>	
+		</div>
+	</div>	
+</div>

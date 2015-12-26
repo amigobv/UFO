@@ -1,0 +1,13 @@
+package ufo.client.warehouse;
+
+public class Artist {
+    public int id; 
+    public String name;
+    public String country;
+    public String email;
+    public String homepage;
+    public String description;
+    public String picture;
+    public String video;
+    public Category category;
+}

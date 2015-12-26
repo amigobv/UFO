@@ -1,0 +1,12 @@
+package ufo.client.warehouse;
+
+import java.util.logging.Logger;
+
+/**
+ * This delegate provides test data from the service.
+ */
+public class ServiceUfoDelegate implements  {
+	private static Logger logger = Logger.getLogger(ServiceDelegate.class.getName());
+	
+	
+}

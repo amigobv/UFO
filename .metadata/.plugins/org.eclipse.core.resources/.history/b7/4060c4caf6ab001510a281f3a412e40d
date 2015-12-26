@@ -1,0 +1,19 @@
+<div xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+	<div id="pageHeader">
+		<h3>Pflasterspektakel 2016</h3>
+	</div>
+
+	<h:form id="navForm">
+		<p:growl id="growl" life="2000" />
+		
+		<p:commandButton type="submit" value="Home" action="goHomeAction" ajax="false" />
+		<p:commandButton type="submit" value="Programm" action="#{service.getAllPerformances}" ajax="false" />
+		<p:commandButton type="submit" value="Artists" action="#{service.getAllArtists}" ajax="false"/>
+		<p:commandButton type="submit" value="Venues" action="#{service.getAllVenues}" ajax="false"/>	
+		<p:commandButton type="submit" value="Login" action="loginAction" ajax="false"/>
+	</h:form>
+	
+</div>

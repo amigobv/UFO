@@ -1,0 +1,6 @@
+package ufo.client.warehouse;
+
+public interface UfoDelegate {
+	public List<Artist> getAllArtists();
+	public Artist getArtist
+}

@@ -22,8 +22,20 @@
     <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
     <param-value>resources.application</param-value>
   </context-param>
+  
   <listener>
     <listener-class>com.sun.faces.config.ConfigureListener</listener-class>
   </listener>
-
+  
+  <listener>
+  	<listener-class>ufo.client.InitializeContextListener</listener-class>
+  </listener>
+  <context-param>
+  	<param-name>UFO_DELEGATE</param-name>
+  	<param-value>ufo.client.warehouse.DummyUfoDelegate</param-value>
+  </context-param>
+  <context-param>
+  	<param-name>SERVICE_URL</param-name>
+  	<param-value>https://demo.nexperts.com/MOC5/AmazingRaceService/AmazingRaceService.svc</param-value>
+  </context-param>
 </web-app>

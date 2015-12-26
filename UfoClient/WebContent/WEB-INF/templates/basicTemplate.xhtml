@@ -10,20 +10,25 @@
 	<h:body>
 		<ui:debug hotkey="x" rendered="#{initParam['javax.faces.FACELETS_DEVELOPMENT']}"/>
 		
-		<div id="header">
+		<h:outputStylesheet library="css" name="normalize.css" />
+		<h:outputStylesheet library="css" name="base.css" />
+		<h:outputStylesheet library="css" name="nav.css" />
+		<h:outputStylesheet library="css" name="layout.css" />
+		
+		<div class="pageheader">
 		    <ui:insert name="header">
 		    	<ui:include src="header.xhtml"/> 
 		    </ui:insert>
 		</div>
 		
 		
-		<div id="content">
+		<div class="pageContent">
 		  <ui:insert name="content">
 		
 		  </ui:insert>
 		</div>
 		
-		<div id="footer">
+		<div class="pageFooter">
 		  <ui:insert name="footer">
 				<ui:include src="footer.xhtml"/>
 		  </ui:insert>

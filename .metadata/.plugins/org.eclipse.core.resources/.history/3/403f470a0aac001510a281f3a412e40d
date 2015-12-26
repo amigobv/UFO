@@ -1,0 +1,5 @@
+package ufo.client;
+
+public class ServiceLocator {
+
+}

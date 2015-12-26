@@ -1,0 +1,6 @@
+package ufo.client.warehouse;
+
+public class Location {
+	private String name;
+	private String id;
+}

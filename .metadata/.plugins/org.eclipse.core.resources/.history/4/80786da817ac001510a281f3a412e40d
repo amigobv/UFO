@@ -1,0 +1,12 @@
+package ufo.client.warehouse;
+
+import java.time.LocalDateTime;
+
+public class Performance {
+    private int id;
+    private LocalDateTime start;
+    private Artist artist;
+    private Venue venue;
+    
+    
+}

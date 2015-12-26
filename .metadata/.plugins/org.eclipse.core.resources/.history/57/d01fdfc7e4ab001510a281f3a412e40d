@@ -1,0 +1,34 @@
+<div xmlns:ui="http://java.sun.com/jsf/facelets"
+	 xmlns:h="http://java.sun.com/jsf/html"
+	 xmlns:p="http://primefaces.org/ui">
+	
+	<div class="pageHeader" style="width:100%;font-size:36px;line-height:48px;background-color:navy;color:white">
+		<h3>Pflasterspektakel 2016</h3>
+	</div>
+
+	<div>
+		<h:form id="navForm">
+			<h:panelGrid columns="5">
+				<h:commandButton type="submit" value="Home" action="GoHomeEvent" />
+				<h:commandButton type="submit" value="Programm" action="#{service.getAllPerformances}" />
+				<h:commandButton type="submit" value="Artists" action="#{service.getAllArtists}" />
+				<h:commandButton type="submit" value="Venues" action="#{service.getAllVenues}" />
+				<!-- <h:commandButton type="submit" value="Checkout" action="#{webShopUser.checkout}" />  -->
+			</h:panelGrid>
+		</h:form>
+	
+		<div class="login">
+	        <h:form class="userLogin" method="post" target="_self">
+	          <label>
+	            <p:inputText id="user" type="text" name="user" placeholder="Your username"/>
+	          </label>
+	          <label>
+	            <p:password id="pwd" type="password" name="pwd" placeholder="Your password"/>
+	          </label>
+	          <label>
+	            <p:commandButton class="signIn" type="submit" value="Sign in" action="SignIn"/> 
+	          </label>
+	        </h:form>
+		</div>
+	</div>
+</div>
