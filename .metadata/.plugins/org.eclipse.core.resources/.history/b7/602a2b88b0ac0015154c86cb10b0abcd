@@ -1,0 +1,7 @@
+package ufo.client;
+
+import java.util.logging.Logger;
+
+public class Service {
+	private static Logger logger = Logger.getLogger("Service");
+}

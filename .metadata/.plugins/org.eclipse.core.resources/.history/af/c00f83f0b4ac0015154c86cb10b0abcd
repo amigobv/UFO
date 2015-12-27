@@ -1,0 +1,15 @@
+package ufo.client;
+
+import java.util.logging.Logger;
+
+public class Service {
+	private static Logger logger = Logger.getLogger("Service");
+	
+	public String allArtists() {
+		try {
+			
+		} catch (Exception ex) {
+			return FacesUtil.createFailure(ex, logger);
+		}
+	}
+}

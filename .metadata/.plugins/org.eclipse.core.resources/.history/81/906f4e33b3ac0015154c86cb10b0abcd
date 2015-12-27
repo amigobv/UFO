@@ -1,0 +1,5 @@
+package ufo.client.util;
+
+public class FacesUtil {
+
+}

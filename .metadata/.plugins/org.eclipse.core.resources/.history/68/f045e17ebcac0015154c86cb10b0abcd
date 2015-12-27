@@ -1,0 +1,19 @@
+package ufo.client;
+
+import java.util.logging.Logger;
+
+import ufo.client.util.FacesUtil;
+
+public class Service {
+	private static Logger logger = Logger.getLogger("Service");
+	
+	public String getAllArtists() {
+		try {
+			ArtistDataTable artistDataTable = (ArtistDataTable)FacesUtil.getSessionVariable("getAllArtistsDataTable");
+			
+			if ()
+		} catch (Exception ex) {
+			return FacesUtil.createFailure(ex, logger);
+		}
+	}
+}

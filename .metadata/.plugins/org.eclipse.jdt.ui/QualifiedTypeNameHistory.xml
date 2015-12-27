@@ -1,19 +1,35 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="java.lang.SuppressWarnings"/>
-<fullyQualifiedTypeName name="java.util.logging.Level"/>
-<fullyQualifiedTypeName name="ufo.client.warehouse.UfoDelegate"/>
 <fullyQualifiedTypeName name="java.lang.reflect.Constructor"/>
-<fullyQualifiedTypeName name="javax.servlet.ServletException"/>
 <fullyQualifiedTypeName name="javax.servlet.ServletContextListener"/>
 <fullyQualifiedTypeName name="javax.servlet.ServletContext"/>
-<fullyQualifiedTypeName name="com.sun.istack.internal.logging.Logger"/>
-<fullyQualifiedTypeName name="java.util.logging.Logger"/>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.time.LocalDateTime"/>
 <fullyQualifiedTypeName name="java.util.Map"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
 <fullyQualifiedTypeName name="ufo.client.warehouse.Performance"/>
-<fullyQualifiedTypeName name="ufo.client.warehouse.Artist"/>
+<fullyQualifiedTypeName name="com.sun.istack.internal.logging.Logger"/>
+<fullyQualifiedTypeName name="javax.faces.bean.RequestScoped"/>
+<fullyQualifiedTypeName name="java.io.StringWriter"/>
+<fullyQualifiedTypeName name="java.io.PrintWriter"/>
+<fullyQualifiedTypeName name="javax.servlet.ServletException"/>
+<fullyQualifiedTypeName name="javax.faces.context.FacesContext"/>
+<fullyQualifiedTypeName name="javax.faces.application.Application"/>
+<fullyQualifiedTypeName name="javax.el.ExpressionFactory"/>
+<fullyQualifiedTypeName name="javax.el.ELContext"/>
+<fullyQualifiedTypeName name="javax.el.ValueExpression"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
+<fullyQualifiedTypeName name="java.util.Enumeration"/>
+<fullyQualifiedTypeName name="java.util.logging.Logger"/>
+<fullyQualifiedTypeName name="javax.faces.model.DataModel"/>
+<fullyQualifiedTypeName name="java.util.logging.Level"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="javax.faces.model.ListDataModel"/>
+<fullyQualifiedTypeName name="ufo.client.util.FacesUtil"/>
+<fullyQualifiedTypeName name="ufo.client.util.ArtistsDataTable"/>
+<fullyQualifiedTypeName name="ufo.client.warehouse.UfoDelegate"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="ufo.client.warehouse.Artist"/>
+<fullyQualifiedTypeName name="javax.faces.bean.ManagedBean"/>
+<fullyQualifiedTypeName name="javax.faces.bean.SessionScoped"/>
 </qualifiedTypeNameHistroy>
