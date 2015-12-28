@@ -5,3 +5,4 @@
 1451163085567	Rename type 'SeviceDelegate'
 1451163180103	Rename compilation unit 'ServiceDelegate.java'
 1451238579602	Delete element
+1451254969066	Move 'venuesView.xhtml' to 'WebContent'

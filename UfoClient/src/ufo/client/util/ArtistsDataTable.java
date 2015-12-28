@@ -14,11 +14,13 @@ public class ArtistsDataTable {
 	private static Logger logger = Logger.getAnonymousLogger();
 	private DataModel<List<Artist>> model = null;
 	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public ArtistsDataTable() {
 		model = new ListDataModel(new ArrayList<Artist>());
 		logger.log(Level.INFO, "Artists data model initialized");
 	}
 	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public ArtistsDataTable(List<Artist> artists) {
 		model = new ListDataModel(artists);
 	}
@@ -28,6 +30,7 @@ public class ArtistsDataTable {
 		return model;
 	}
 	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void setArtists(List<Artist> artists) {
 		model = new ListDataModel(artists);
 	}

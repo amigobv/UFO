@@ -28,7 +28,7 @@ body {
 
 .pageContent {
   margin: auto;
-  width: 70%;
+  width: 85%;
   overflow: hidden;
   padding-bottom: 30px;
 }
@@ -59,15 +59,10 @@ body {
   perspective: 500px;
 }
 
-/* flip the pane when hovered */
-.teaserContainer:hover .content {
-  transform: rotateY(-45deg);
-}
-
 .teaserContainer, .front {
   padding: 5px;
-  width: 390px;
-  height: 200px;
+  width: 300px;
+  height: 390px;
   color: #A8F82D;
 }
 
@@ -77,17 +72,13 @@ body {
   border: 1px solid #000;
   background: #5A5A5A;
   
-  /*background-image: linear-gradient(135deg, #fff, #8DB4CD);*/
-  
   margin: 20px;
   border-radius: 20px;
   box-shadow: 5px
               5px
               3px;
               
-  transition: transform 0.3s;
   position: relative;
-  
 }
 
 .snippet {

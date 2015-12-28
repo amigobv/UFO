@@ -2,31 +2,27 @@ package ufo.client.warehouse;
 
 public class Venue {
     private int id;
-    private String label;
+    private String name;
     private Location location;
     private int capacity;
     
-	public Venue(int id, String label, Location location, int capacity) {
+	public Venue(int id, String name, Location location, int capacity) {
 		this.id = id;
-		this.label = label;
+		this.name = name;
 		this.location = location;
 		this.capacity = capacity;
 	}
 	
-	public int getId() {
-		return id;
+	public String getId() {
+		return String.format("%s%d", location.getId(), id);
 	}
 	
-	public void setId(int id) {
-		this.id = id;
+	public String getName() {
+		return name;
 	}
 	
-	public String getLabel() {
-		return label;
-	}
-	
-	public void setLabel(String label) {
-		this.label = label;
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	public Location getLocation() {

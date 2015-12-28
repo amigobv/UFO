@@ -8,38 +8,21 @@
 	</ui:define>
 	<ui:define name="content">
 		<h3>Article Overview</h3>
-	    
-	    <h:dataTable value="#{allArtistsDataTable.artists}" var="item" border="3" bgcolor="#C6BFF7">
-	    	<h:column id="column1">
-	    		<f:facet name="header">
-	    			<h:outputText value="Name"/>
-	    		</f:facet>
-	    		<h:outputText value="#{item.name}"/>
-	    	</h:column>
-	    	<h:column id="column2">
-	    		<f:facet name="header">
-	    			<h:outputText value="Country"/>
-	    		</f:facet>
-	    		<h:outputText value="#{item.country}"/>
-	    	</h:column>
-	    	<h:column id="column3">
-	    		<f:facet name="header">
-	    			<h:outputText value="Description"/>
-	    		</f:facet>
-	    		<h:outputText value="#{item.description}"/>
-	    	</h:column>
-	    	<h:column id="column4">
-	    		<f:facet name="header">
-	    			<h:outputText value="Email"/>
-	    		</f:facet>
-	    		<h:outputText value="#{item.email}"/>
-	    	</h:column>
-	    	<h:column id="column5">
-	    		<f:facet name="header">
-	    			<h:outputText value="Homepage"/>
-	    		</f:facet>
-	    		<h:outputText value="#{item.homepage}"/>
-	    	</h:column>
-	    </h:dataTable>
+
+		<div class="teaser wrap">
+			<ui:repeat var="artist" value="#{allArtistsDataTable.artists}">
+				<div class="teaserContainer">
+					<div class="content">
+						<div class="front">
+							<h:outputText value="#{artist.name}" />
+							<h:outputText value="#{artist.country}" />
+							<h:outputText value="#{artist.description}" />
+							<h:outputText value="#{artist.homepage}" />
+							<h:outputText value="#{artist.email}" />
+						</div>
+					</div>
+				</div>
+			</ui:repeat>
+		</div>
 	</ui:define>
 </ui:composition>

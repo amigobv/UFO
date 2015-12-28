@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14512375799550" configfile="/UfoClient/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="index.xhtml" id="pf14512565960094" referenceLink="//@navigationRule.6/@navigationCase.0/@toViewId|" outlinks="pf14512565960095 pf14512565960096 pf14512565960097 pf14512565960098" inlinks="pf14512565960098 pf145125695084612 pf145125695084613 pf145125696950714" path="/index.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="artistsView.xhtml" id="pf14512565960109" referenceLink="//@navigationRule.4/@fromViewId|" outlinks="pf145125695084612" inlinks="pf14512565960095" path="/artistsView.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="venuesView.xhtml" id="pf145125659601010" referenceLink="//@navigationRule.6/@fromViewId|" outlinks="pf145125695084613" inlinks="pf14512565960096" path="/venuesView.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="performancesView.xhtml" id="pf145125659601011" referenceLink="//@navigationRule.6/@fromViewId|" outlinks="pf145125696950714" inlinks="pf14512565960097" path="/performancesView.xhtml"/>
+  <links id="pf14512565960095" target="pf14512565960109" source="pf14512565960094" outcome="BrowseAllArtistsEvent"/>
+  <links id="pf14512565960096" target="pf145125659601010" source="pf14512565960094" outcome="BrowseAllVenuesEvent"/>
+  <links id="pf14512565960097" target="pf145125659601011" source="pf14512565960094" outcome="BrowseAllPerformancesEvent"/>
+  <links id="pf14512565960098" target="pf14512565960094" source="pf14512565960094" outcome="GoHomeEvent"/>
+  <links id="pf145125695084612" target="pf14512565960094" source="pf14512565960109" outcome="GoHomeEvent"/>
+  <links id="pf145125695084613" target="pf14512565960094" source="pf145125659601010" outcome="GoHomeEvent"/>
+  <links id="pf145125696950714" target="pf14512565960094" source="pf145125659601011" outcome="GoHomeEvent"/>
+</pageflow:Pageflow>

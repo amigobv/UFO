@@ -1,5 +1,9 @@
 package ufo.client.warehouse;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Month;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -9,9 +13,9 @@ public class DummyUfoDelegate implements UfoDelegate {
 
 	private Map<String, Category> categories = new HashMap<String, Category>();
 	private Map<Integer, Artist> artists = new HashMap<Integer, Artist>();
-	private Map<Integer, Venue> venues = new HashMap<Integer, Venue>();
+	private Map<String, Venue> venues = new HashMap<String, Venue>();
 	private Map<String, Location> locations = new HashMap<String, Location>();
-	private Map<Integer, Performance> performances = new HashMap<Integer, Performance>();
+	private List<Performance> performances = new ArrayList<Performance>();
 	
 	public DummyUfoDelegate() {
 		
@@ -59,7 +63,7 @@ public class DummyUfoDelegate implements UfoDelegate {
 				"Jean Philippe Kikolas",
 				"Spanien",
 				"JeanPhilippeKikolas@dayrep.com",
-				"www.JeanPhilippeKikolas.es",
+				"http://www.JeanPhilippeKikolas.es",
 				"Description",
 				"",
 				"",
@@ -69,7 +73,7 @@ public class DummyUfoDelegate implements UfoDelegate {
 				"Hint",
 				"Schweden",
 				"Hint@dayrep.com",
-				"www.Hint.sw",
+				"http://www.Hint.sw",
 				"Description",
 				"",
 				"",
@@ -79,7 +83,7 @@ public class DummyUfoDelegate implements UfoDelegate {
 				"Derek Derek",
 				"USA",
 				"DerekDerek@cuvox.de",
-				"www.DerekDerek.ch",
+				"http://www.DerekDerek.ch",
 				"Description",
 				"",
 				"",
@@ -89,17 +93,31 @@ public class DummyUfoDelegate implements UfoDelegate {
 				"Die Buschs",
 				"Deutschland",
 				"DieBuschs@cuvox.de",
-				"www.CircoPitaga.ch",
+				"http://www.CircoPitaga.ch",
 				"Description",
 				"",
 				"",
 				comedy);
+		
+		Performance performance1 = new Performance(1, LocalDateTime.of(2016, Month.JULY, 21, 16, 0), artist1, venue1);
+		Performance performance2 = new Performance(2, LocalDateTime.of(2016, Month.JULY, 21, 17, 0), artist2, venue2);
+		Performance performance3 = new Performance(3, LocalDateTime.of(2016, Month.JULY, 21, 18, 0), artist3, venue3);
+		Performance performance4 = new Performance(4, LocalDateTime.of(2016, Month.JULY, 22, 19, 0), artist4, venue4);
+		Performance performance5 = new Performance(5, LocalDateTime.of(2016, Month.JULY, 23, 20, 0), artist5, venue5);
+				
 		
 		artists.put(artist1.getId(), artist1);
 		artists.put(artist2.getId(), artist2);
 		artists.put(artist3.getId(), artist3);
 		artists.put(artist4.getId(), artist4);
 		artists.put(artist5.getId(), artist5);
+		
+		
+		performances.add(performance1);
+		performances.add(performance2);
+		performances.add(performance3);
+		performances.add(performance4);
+		performances.add(performance5);
 	}
 	
 	@Override
@@ -118,8 +136,20 @@ public class DummyUfoDelegate implements UfoDelegate {
 
 	@Override
 	public List<Performance> getAllPerformances() {
+		return performances;
+	}
+	
+	@Override
+	public List<Performance> getPerformanceByDay(LocalDate date) {
 		List<Performance> list = new ArrayList<Performance>();
-		list.addAll(performances.values());
+
+		for (Performance performance: performances) {
+			String str = performance.getStart().substring(0, 10);
+			LocalDate start = LocalDate.parse(str);
+			if (start.equals(date)) {
+				list.add(performance);
+			}
+		}
 		return list;
 	}
 }
