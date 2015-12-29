@@ -8,4 +8,5 @@ public interface UfoDelegate {
 	public List<Venue> getAllVenues();
 	public List<Performance> getAllPerformances();
 	public List<Performance> getPerformanceByDay(LocalDate date);
+	public boolean userExists(String username, String password);
 }

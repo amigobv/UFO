@@ -1,5 +1,6 @@
 package ufo.client.warehouse;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -25,5 +26,17 @@ public class ServiceUfoDelegate implements UfoDelegate {
 	public List<Performance> getAllPerformances() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<Performance> getPerformanceByDay(LocalDate date) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean userExists(String username, String password) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

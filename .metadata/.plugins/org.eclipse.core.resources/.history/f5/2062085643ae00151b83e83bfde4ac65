@@ -1,0 +1,43 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="WEB-INF/templates/basicTemplate.xhtml">
+	<ui:define name="title">
+		Login
+	</ui:define>	
+	<ui:define name="content">
+		<h:form	class="loginForm" id="userLogin">
+			<div class="formRow">
+				<label>
+					<span class="formField">
+						<h:panelGrid if="grid" columns="2" cellpadding="5">
+							<p:inputText id="regUser" value="#{user.username}" required="true" />
+							<p:message for="regUser" />
+						</h:panelGrid>
+					</span>
+				</label>
+			</div>
+			<div class="formRow">
+				<label>
+					<span class="formField">
+						<p:password id="regPwd" value="#{user.password}" placeholder="Enter your password" 
+							required="true" requiredMessage="Password required!"/>
+					</span>
+				</label>
+			</div>
+			
+			<div class="formRow">
+				<label>
+					<span class="formField">
+						<p:commandButton id="loginBtn" value="Login" styleClass="loginBtn"
+							action="#{user.checkLogin}"/>				
+					</span>
+				</label>
+			</div>
+			
+			<p:message for="loginBtn" value="#{user.msg}" />
+		</h:form>
+	</ui:define>
+</ui:composition>

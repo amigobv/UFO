@@ -9,33 +9,42 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import ufo.client.util.FacesUtil;
+
 public class DummyUfoDelegate implements UfoDelegate {
 
-	private Map<String, Category> categories = new HashMap<String, Category>();
-	private Map<Integer, Artist> artists = new HashMap<Integer, Artist>();
-	private Map<String, Venue> venues = new HashMap<String, Venue>();
-	private Map<String, Location> locations = new HashMap<String, Location>();
+	private List<Category> categories = new ArrayList<Category>();
+	private List<Artist> artists = new ArrayList<Artist>();
+	private List<Venue> venues = new ArrayList<Venue>();
+	private List<Location> locations = new ArrayList<Location>();
 	private List<Performance> performances = new ArrayList<Performance>();
+	private List<User> users = new ArrayList<User>();
 	
 	public DummyUfoDelegate() {
+		
+		User admin = new User("admin", FacesUtil.encryptPassword("admin"));
+		User swk5 = new User("swk5", FacesUtil.encryptPassword("swk5"));
+		
+		users.add(admin);
+		users.add(swk5);
 		
 		Category acrobatic = new Category("A", "Akrobatik");
 		Category comedy = new Category("K", "Komedy");
 		Category music = new Category("M", "Musik");
 		Category fire = new Category("F", "Feuershow");
 		
-		categories.put(acrobatic.getId(), acrobatic);
-		categories.put(comedy.getId(), comedy);
-		categories.put(music.getId(), music);
-		categories.put(fire.getId(), fire);
+		categories.add(acrobatic);
+		categories.add(comedy);
+		categories.add(music);
+		categories.add(fire);
 		
 		Location hauptplatz = new Location("H", "Hauptplatz");
 		Location landstrasse = new Location("L", "Landstraﬂe");
 		Location altstadt = new Location("A", "Alststadt");
 		
-		locations.put(hauptplatz.getId(), hauptplatz);
-		locations.put(landstrasse.getId(), landstrasse);
-		locations.put(altstadt.getId(), altstadt);
+		locations.add(hauptplatz);
+		locations.add(landstrasse);
+		locations.add(altstadt);
 		
 		Venue venue1 = new Venue(1, "Haltestelle", hauptplatz, 100);
 		Venue venue2 = new Venue(2, "Altes Rathaus", hauptplatz, 100);
@@ -43,11 +52,11 @@ public class DummyUfoDelegate implements UfoDelegate {
 		Venue venue4 = new Venue(4, "Ursulinenkirche", landstrasse, 100);
 		Venue venue5 = new Venue(5, "Taubenmarkt", landstrasse, 100);
 		
-		venues.put(venue1.getId(), venue1);
-		venues.put(venue2.getId(), venue2);
-		venues.put(venue3.getId(), venue3);
-		venues.put(venue4.getId(), venue4);
-		venues.put(venue5.getId(), venue5);
+		venues.add(venue1);
+		venues.add(venue2);
+		venues.add(venue3);
+		venues.add(venue4);
+		venues.add(venue5);
 		
 		Artist artist1 = new Artist(1,
 				"circoPitanga",
@@ -104,15 +113,13 @@ public class DummyUfoDelegate implements UfoDelegate {
 		Performance performance3 = new Performance(3, LocalDateTime.of(2016, Month.JULY, 21, 18, 0), artist3, venue3);
 		Performance performance4 = new Performance(4, LocalDateTime.of(2016, Month.JULY, 22, 19, 0), artist4, venue4);
 		Performance performance5 = new Performance(5, LocalDateTime.of(2016, Month.JULY, 23, 20, 0), artist5, venue5);
+						
+		artists.add(artist1);
+		artists.add(artist2);
+		artists.add(artist3);
+		artists.add(artist4);
+		artists.add(artist5);
 				
-		
-		artists.put(artist1.getId(), artist1);
-		artists.put(artist2.getId(), artist2);
-		artists.put(artist3.getId(), artist3);
-		artists.put(artist4.getId(), artist4);
-		artists.put(artist5.getId(), artist5);
-		
-		
 		performances.add(performance1);
 		performances.add(performance2);
 		performances.add(performance3);
@@ -122,16 +129,12 @@ public class DummyUfoDelegate implements UfoDelegate {
 	
 	@Override
 	public List<Artist> getAllArtists() {
-		List<Artist> list = new ArrayList<Artist>();
-		list.addAll(artists.values());
-		return list;
+		return artists;
 	}
 
 	@Override
 	public List<Venue> getAllVenues() {
-		List<Venue> list = new ArrayList<Venue>();
-		list.addAll(venues.values());
-		return list;
+		return venues;
 	}
 
 	@Override
@@ -151,5 +154,16 @@ public class DummyUfoDelegate implements UfoDelegate {
 			}
 		}
 		return list;
+	}
+	
+	@Override
+	public boolean userExists(String username, String password) {
+		for(User user : users) {
+			if (user.getUsername().equals(username) &&
+				user.getPassword().equals(password))
+				return true;
+		}
+		
+		return false;
 	}
 }

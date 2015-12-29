@@ -1,6 +1,10 @@
 package ufo.client.util;
 
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Enumeration;
+import java.util.Formatter;
 import java.util.logging.Logger;
 
 import javax.el.ELContext;
@@ -14,7 +18,37 @@ import javax.servlet.http.HttpServletRequest;
  * Util class for common JSF methods.
  */
 public class FacesUtil {
-
+	private static Logger logger = Logger.getLogger("FacesUtil");
+	
+	public static String encryptPassword(String password) {
+		String sha1 = "";
+		
+		try {
+			MessageDigest hashAlgo = MessageDigest.getInstance("SHA-1");
+			hashAlgo.reset();
+			hashAlgo.update(password.getBytes("UTF-8"));
+			sha1 = byteToHex(hashAlgo.digest());
+		} catch(NoSuchAlgorithmException ex) {
+			FacesUtil.createFailure(ex, logger);
+		} catch(UnsupportedEncodingException ex) {
+			FacesUtil.createFailure(ex, logger);
+		}
+		
+		return sha1;
+	}
+	
+	private static String byteToHex(final byte[] hash)
+	{
+	    Formatter formatter = new Formatter();
+	    for (byte b : hash)
+	    {
+	        formatter.format("%02x", b);
+	    }
+	    String result = formatter.toString();
+	    formatter.close();
+	    return result;
+	}
+	
 	/**
 	 * Returns a JSF managed bean.
 	 * 
