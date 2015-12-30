@@ -8,7 +8,7 @@ using System.ComponentModel;
 
 namespace Ufo.Commander.ViewModel
 {
-    public class ValidableViewModelBase : ViewModelBase, IValidatable
+    public abstract partial class ValidableViewModelBase : ViewModelBase, IValidatable
     {
         protected ValidationHelper Validator { get; private set; }
         private IDataErrorInfo DataErrorInfoAdapter { get; set; }
@@ -17,14 +17,14 @@ namespace Ufo.Commander.ViewModel
         {
             Validator = new ValidationHelper();
             DataErrorInfoAdapter = new DataErrorInfoAdapter(Validator);
-            //OnCreated();
+            OnCreated();
         }
 
-        public Task<ValidationResult> Validate()
+        Task<ValidationResult> IValidatable.Validate()
         {
             return Validator.ValidateAllAsync();
         }
 
-       // partial void OnCreated();
+        partial void OnCreated();
     }
 }

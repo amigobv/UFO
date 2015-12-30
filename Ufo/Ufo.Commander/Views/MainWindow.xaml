@@ -7,7 +7,8 @@
         xmlns:resx="clr-namespace:Ufo.Commander.Resources"
         xmlns:local="clr-namespace:Ufo.Commander"
         mc:Ignorable="d"
-        Title="Commander" Width="Auto" Height="Auto">
+        Title="Commander" Width="Auto" Height="Auto"
+        WindowState="Maximized">
 
     <Grid>
         <TabControl TabStripPlacement="Top" Margin="10" BorderBrush="Gainsboro" >

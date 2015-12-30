@@ -1,0 +1,30 @@
+<ui:composition 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:p="http://primefaces.org/ui"
+	template="WEB-INF/templates/basicTemplate.xhtml">
+	
+	<ui:define name="content">
+		<p:carousel numVisible="1" effect="easeInStrong" headerText="Plasterspektakel" style="width:100%;height:100px;">
+			<p:tab title="">
+				<p:graphicImage name="img/img1.jpg" />
+			</p:tab>
+			<p:tab title="">
+				<p:graphicImage name="img/img2.jpg" />
+			</p:tab>
+			<p:tab title="">
+				<p:graphicImage name="img/img3.jpg" />
+			</p:tab>
+			<p:tab title="">
+				<p:graphicImage name="img/img4.jpg" />
+			</p:tab>
+			<p:tab title="">
+				<p:graphicImage name="img/img1.jpg" />
+			</p:tab>    
+		</p:carousel>
+	    <p:gmap center="48.306368, 14.286277" zoom="16" type="classic" styleClass="map" model="#{mapBean.model}" 
+	    		navigationControl="false" draggable="false" disableDefaultUI="true" disableDoubleClickZoom="true"/>
+	</ui:define>
+</ui:composition>

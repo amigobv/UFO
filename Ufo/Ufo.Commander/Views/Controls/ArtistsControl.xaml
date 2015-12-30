@@ -52,6 +52,7 @@
                         Name="btnSave" 
                         Margin="5, 5, 5, 5"
                         Content="{x:Static resx:Resources.SaveText}"
+                        IsEnabled="{Binding CurrentArtist.IsValid}"
                         Click="SavePressed"/>
                 <Button Width="70"
                         Name="btnRemove" 

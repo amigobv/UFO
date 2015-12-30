@@ -49,16 +49,16 @@ namespace Ufo.Commander.Views.Controls
 
             if (vm != null && vm.CurrentVenue != null)
             {
-                vm.CurrentVenue.SaveCommand.Execute(null);
+                vm.CurrentVenue.Validation();
 
-                if (!vm.Venues.Contains(vm.CurrentVenue))
-                    vm.Venues.Add(vm.CurrentVenue);
+                if (vm.CurrentVenue.IsValid ?? false)
+                {
+                    vm.CurrentVenue.SaveCommand.Execute(null);
+
+                    if (!vm.Venues.Contains(vm.CurrentVenue))
+                        vm.Venues.Add(vm.CurrentVenue);
+                }
             }
-        }
-
-        private void Cancel(object o, RoutedEventArgs e)
-        {
-
         }
     }
 }

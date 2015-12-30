@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MvvmValidation;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -12,13 +13,15 @@ using Ufo.Domain;
 
 namespace Ufo.Commander.ViewModel.Basic
 {
-    public class ArtistViewModel : ViewModelBase
+    public class ArtistViewModel : ValidableViewModelBase
     {
         #region private members
         private IManager manager;
         private Artist artist;
         private CategoryViewModel category;
         private ObservableCollection<CategoryViewModel> categories;
+        private string validationErrorsString;
+        private bool? isValid;
         #endregion
 
         #region ctor
@@ -30,7 +33,8 @@ namespace Ufo.Commander.ViewModel.Basic
             categories = new ObservableCollection<CategoryViewModel>();
             this.SaveCommand = new RelayCommand(o => manager.UpdateArtist(artist));
             this.RemoveCommand = new RelayCommand(o => { });
-    }
+            ConfigureValidation();
+        }
 
         public ArtistViewModel(Artist artist, IManager manager)
         {
@@ -40,8 +44,44 @@ namespace Ufo.Commander.ViewModel.Basic
             categories = new ObservableCollection<CategoryViewModel>();
             this.SaveCommand = new RelayCommand(o => manager.UpdateArtist(artist));
             this.RemoveCommand = new RelayCommand(o => { });
+            ConfigureValidation();
         }
         #endregion
+
+        private void ConfigureValidation()
+        {
+            Validator.AddRule(() => Name,
+                              () => RuleResult.Assert(!string.IsNullOrEmpty(Name), "Name is required!")
+                              );
+
+            Validator.AddRule(() => Name,
+                              () => RuleResult.Assert(!string.IsNullOrEmpty(Name) && Name.Length > 2, "Name too short!")
+                              );
+
+            Validator.AddRule(() => Country,
+                              () => RuleResult.Assert(!string.IsNullOrEmpty(Country), "Country is required!"));
+
+            Validator.AddRule(() => Email,
+                              () => RuleResult.Assert(!string.IsNullOrEmpty(Email), "Email is required!"));
+
+            Validator.AddRule(() => Email,
+                              () => RuleResult.Assert(Email.Contains("@"), "Wrong Email format! Domain is missing (e.g. @google.com)"));
+
+            Validator.AddRule(() => Email,
+                              () => RuleResult.Assert(Email.Contains("."), "Wrong Email format! Domain is missing. (e.g. @google.com)"));
+
+            Validator.AddRule(() => Category,
+                              () => RuleResult.Assert(!string.IsNullOrEmpty(Category.Name), "Category is required!"));
+
+
+            Validator.ResultChanged += OnValidationResultChanged;
+        }
+
+        public void Validation()
+        {
+            Validator.ValidateAsync(() => Category);
+            Validate();
+        }
 
         #region properties
         public int Id
@@ -67,6 +107,7 @@ namespace Ufo.Commander.ViewModel.Basic
                     artist.Name = value;
                     RaisePropertyChangedEvent(nameof(Name));
                 }
+                Validator.ValidateAsync(() => Name);
             }
         }
 
@@ -80,6 +121,7 @@ namespace Ufo.Commander.ViewModel.Basic
                     artist.Country = value;
                     RaisePropertyChangedEvent(nameof(Country));
                 }
+                Validator.ValidateAsync(() => Country);
             }
         }
 
@@ -93,6 +135,7 @@ namespace Ufo.Commander.ViewModel.Basic
                     artist.Email = value;
                     RaisePropertyChangedEvent(nameof(Email));
                 }
+                Validator.ValidateAsync(() => Email);
             }
         }
 
@@ -158,11 +201,12 @@ namespace Ufo.Commander.ViewModel.Basic
             get { return category; }
             set
             {
-                if (category != value)
+                if (value != null && category != value)
                 {
                     category = value;
                     CategoryVmToCategory(category);
                     RaisePropertyChangedEvent(nameof(Category));
+                    Validator.ValidateAsync(() => Category);
                 }
             }
         }
@@ -186,6 +230,57 @@ namespace Ufo.Commander.ViewModel.Basic
 
         public ICommand SaveCommand { get; set; }
         public ICommand RemoveCommand { get; set; }
+        public ICommand ValidateCommand { get; set; }
+        #endregion
+
+        #region validation
+        public string ValidationErrorsString
+        {
+            get { return validationErrorsString; }
+            private set
+            {
+                validationErrorsString = value;
+                RaisePropertyChangedEvent(nameof(ValidationErrorsString));
+            }
+        }
+
+        public bool? IsValid
+        {
+            get { return isValid; }
+            private set
+            {
+                isValid = value;
+                RaisePropertyChangedEvent(nameof(IsValid));
+            }
+        }
+
+        private void Validate()
+        {
+            var uiThread = TaskScheduler.FromCurrentSynchronizationContext();
+
+            Validator.ValidateAllAsync().ContinueWith(r => OnValidateAllCompleted(r.Result), uiThread);
+        }
+
+        private void OnValidateAllCompleted(ValidationResult validationResult)
+        {
+            UpdateValidationSummary(validationResult);
+        }
+
+        private void OnValidationResultChanged(object sender, ValidationResultChangedEventArgs e)
+        {
+            // Get current state of the validation
+            if (!IsValid.GetValueOrDefault(true))
+            {
+                ValidationResult validationResult = Validator.GetResult();
+                UpdateValidationSummary(validationResult);
+            }
+        }
+
+        private void UpdateValidationSummary(ValidationResult validationResult)
+        {
+            IsValid = validationResult.IsValid;
+            ValidationErrorsString = validationResult.ToString();
+        }
         #endregion
 
         public override int GetHashCode()

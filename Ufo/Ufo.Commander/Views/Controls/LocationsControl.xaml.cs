@@ -47,16 +47,16 @@ namespace Ufo.Commander.Views.Controls
 
             if (vm != null && vm.CurrentLocation != null)
             {
-                vm.CurrentLocation.SaveCommand.Execute(null);
+                vm.CurrentLocation.Validation();
 
-                if (!vm.Locations.Contains(vm.CurrentLocation))
-                    vm.Locations.Add(vm.CurrentLocation);
+                if (vm.CurrentLocation.IsValid ?? false)
+                {
+                    vm.CurrentLocation.SaveCommand.Execute(null);
+
+                    if (!vm.Locations.Contains(vm.CurrentLocation))
+                        vm.Locations.Add(vm.CurrentLocation);
+                }
             }
-        }
-
-        private void Cancel(object sender, RoutedEventArgs e)
-        {
-            
         }
     }
 }

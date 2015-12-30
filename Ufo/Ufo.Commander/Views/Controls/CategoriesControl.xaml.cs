@@ -47,9 +47,15 @@ namespace Ufo.Commander.Views.Controls
 
             if (vm != null && vm.CurrentCategory != null)
             {
-                vm.CurrentCategory.SaveCommand.Execute(null);
-                if (!vm.Categories.Contains(vm.CurrentCategory))
-                    vm.Categories.Add(vm.CurrentCategory);
+                vm.CurrentCategory.Validation();
+
+                if (vm.CurrentCategory.IsValid ?? false)
+                {
+                    vm.CurrentCategory.SaveCommand.Execute(null);
+
+                    if (!vm.Categories.Contains(vm.CurrentCategory))
+                        vm.Categories.Add(vm.CurrentCategory);
+                }
             }
         }
     }

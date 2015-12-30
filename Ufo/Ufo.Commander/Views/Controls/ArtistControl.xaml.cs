@@ -85,7 +85,7 @@ namespace Ufo.Commander.Views.Controls
 
         private void BrowseVideo_Click(object sender, RoutedEventArgs e)
         {
-            Stream picture;
+            Stream video;
             var fileDialog = new OpenFileDialog();
 
             fileDialog.InitialDirectory = "C:\\";
@@ -97,11 +97,24 @@ namespace Ufo.Commander.Views.Controls
             {
                 try
                 {
-                    if ((picture = fileDialog.OpenFile()) != null)
+                    if ((video = fileDialog.OpenFile()) != null)
                     {
-                        using (picture)
+                        using (video)
                         {
-                            // Insert code to read the stream here.
+                            var folder = @"C:\Temp\Commander\Videos\";
+
+                            if (!Directory.Exists(folder))
+                                Directory.CreateDirectory(folder);
+
+                            var url = folder + System.IO.Path.GetFileName(fileDialog.FileName);
+
+                            using (var file = File.Create(url))
+                            {
+                                video.CopyTo(file);
+
+                            }
+
+                            ViewModel.Video = url;
                         }
                     }
                 }

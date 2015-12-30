@@ -3,13 +3,11 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:p="http://primefaces.org/ui"
 	template="WEB-INF/templates/basicTemplate.xhtml">
 	
-	<ui:define name="title">
-	    Pflasterspektakel 2016
-	</ui:define>
-	
 	<ui:define name="content">
-	    <h3>Welcome to Pflasterspektakel 2016</h3>
+	    <p:gmap center="48.306368, 14.286277" zoom="16" type="classic" styleClass="map" model="#{mapBean.model}" 
+	    		navigationControl="false" draggable="false" disableDefaultUI="true" disableDoubleClickZoom="true" scrollwheel="false"/>
 	</ui:define>
 </ui:composition>

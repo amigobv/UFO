@@ -46,10 +46,15 @@ namespace Ufo.Commander.Views.Controls
 
             if (vm != null && vm.CurrentArtist != null)
             {
-                vm.CurrentArtist.SaveCommand.Execute(null);
+                vm.CurrentArtist.Validation();
 
-                if (!vm.Artists.Contains(vm.CurrentArtist))
-                    vm.Artists.Add(vm.CurrentArtist);
+                if (vm.CurrentArtist.IsValid ?? false)
+                {
+                    vm.CurrentArtist.SaveCommand.Execute(null);
+
+                    if (!vm.Artists.Contains(vm.CurrentArtist))
+                        vm.Artists.Add(vm.CurrentArtist);
+                }
             }
         }
     }

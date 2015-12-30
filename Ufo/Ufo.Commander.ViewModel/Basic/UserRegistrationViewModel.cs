@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Ufo.BL;
 using Ufo.BL.Interfaces;
-using Ufo.Commander.Model;
 using Ufo.Domain;
 
 namespace Ufo.Commander.ViewModel.Basic

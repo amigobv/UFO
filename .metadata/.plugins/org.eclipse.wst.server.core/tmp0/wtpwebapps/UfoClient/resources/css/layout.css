@@ -81,16 +81,13 @@ body {
   position: relative;
 }
 
-.snippet {
-  background: transparent;
-  margin: 0;
-  color: #fff;
+.map {
+	scrollwheel: false;
+	margin: 10px;
+	width: 100%;
+	height: 80%;
 }
 
-.keyword {
-  color: #ff0000;
-  font-weight: bold;
-}
 
 @media (min-width: 500px) {
   .teaser {

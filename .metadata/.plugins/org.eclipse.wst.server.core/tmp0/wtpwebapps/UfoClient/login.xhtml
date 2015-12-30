@@ -20,7 +20,8 @@
 			<div class="formRow">
 				<label>
 					<span class="formField">
-						<p:inputText id="regUser" value="#{user.username}" required="true" requiredMessage="Username required!"/>
+						<p:inputText id="regUser" value="#{user.username}" placeholder="Username"
+						required="true" requiredMessage="Username required!"/>
 					</span>
 				</label>
 			</div>
@@ -28,7 +29,7 @@
 			<div class="formRow">
 				<label>
 					<span class="formField">
-						<p:password id="regPwd" value="#{user.password}" placeholder="Enter your password" 
+						<p:password id="regPwd" value="#{user.password}" placeholder="Password" 
 							required="true" requiredMessage="Password required!"/>
 					</span>
 				</label>

@@ -25,6 +25,11 @@
 		<managed-bean-class>ufo.client.util.UserBean</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>mapBean</managed-bean-name>
+		<managed-bean-class>ufo.client.util.MapBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
 	
 	<!-- Home -->
 	<navigation-rule>
@@ -229,15 +234,5 @@
 			<to-view-id>/index.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-	<!-- 
-	<navigation-rule>
-		<display-name>login.xhtml</display-name>
-		<from-view-id>/login.xhtml</from-view-id>
-		<navigation-case>
-			<from-outcome>failed</from-outcome>
-			<to-view-id>/Failure.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-	 -->
 
 </faces-config>

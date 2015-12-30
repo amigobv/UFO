@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using Ufo.BL;
 using Ufo.Commander.ViewModel.Basic;
 
 namespace Ufo.Commander.Views
@@ -20,33 +21,37 @@ namespace Ufo.Commander.Views
         public UserLoginView()
         {
             InitializeComponent();
-            //this.DataContext = new UserLoginViewModel(ManagerFactory.GetManager());
+            this.DataContext = new UserLoginViewModel(ManagerFactory.GetManager());
         }
 
         public void Login(object sender, RoutedEventArgs e)
         {
-            if (ViewModel == null)
+            var vm = ViewModel;
+            if (vm == null)
             {
                 //TODO log
                 return;
             }
 
-            try
-            {
-                ViewModel.Password = txtPassword.Password;
-                ViewModel.Login();
+            vm.Validation();
 
-                if (ViewModel.IsLoginSuccessful)
-                {
-                    DialogResult = true;
-                    Close();
-                }
-            }
-            catch(Exception ex)
+            if (vm.IsValid ?? false)
             {
-                MessageBox.Show(ex.Message);
-                DialogResult = false;
-                Close();
+                try
+                {
+                    ViewModel.Password = txtPassword.Password;
+                    ViewModel.Login();
+
+                    if (ViewModel.IsLoginSuccessful)
+                    {
+                        DialogResult = true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    DialogResult = false;
+                }
             }
         }
 
@@ -56,13 +61,11 @@ namespace Ufo.Commander.Views
             registerWindow.ShowDialog();
 
             DialogResult = registerWindow.DialogResult.GetValueOrDefault();
-            Close();
         }
 
         private void Exit(object sender, RoutedEventArgs e)
         {
             DialogResult = false;
-            Close();
         }
     }
 }

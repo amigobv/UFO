@@ -68,6 +68,7 @@
     <Compile Include="Basic\UserRegistrationViewModel.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="ValidableViewModelBase.cs" />
+    <Compile Include="ValidableViewModelBase.Desktop.cs" />
     <Compile Include="VenuesViewModel.cs" />
     <Compile Include="ViewModelBase.cs" />
   </ItemGroup>

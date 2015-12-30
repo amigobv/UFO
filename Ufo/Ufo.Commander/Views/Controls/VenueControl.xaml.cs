@@ -39,10 +39,5 @@ namespace Ufo.Commander.Views.Controls
             if (vm == null)
                 return;
         }
-
-        private void LocationChanged(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

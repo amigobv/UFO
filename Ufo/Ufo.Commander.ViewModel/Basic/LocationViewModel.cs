@@ -1,4 +1,5 @@
 ﻿using MvvmValidation;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Ufo.BL.Interfaces;
 using Ufo.Domain;
@@ -47,7 +48,16 @@ namespace Ufo.Commander.ViewModel.Basic
 
             Validator.AddRule(() => Identifier,
                               () => RuleResult.Assert(!manager.LocationExists(new Location(Identifier, "")), "This location already exists!"));
+
+            Validator.AddRule(() => Name,
+                              () => RuleResult.Assert(!string.IsNullOrEmpty(Name), "Name is required"));
+
             Validator.ResultChanged += OnValidationResultChanged;
+        }
+
+        public void Validation()
+        {
+            Validate();
         }
 
         #region properties
@@ -61,7 +71,7 @@ namespace Ufo.Commander.ViewModel.Basic
                     location.Id = value;
                     RaisePropertyChangedEvent(nameof(Identifier)); 
                 }
-                Validator.ValidateAsync(() => Identifier);
+                Validator.Validate(() => Identifier);
             }
         }
 
@@ -75,6 +85,7 @@ namespace Ufo.Commander.ViewModel.Basic
                     location.Label = value;
                     RaisePropertyChangedEvent(nameof(Name));
                 }
+                Validator.Validate(() => Name);
             }
         }
 
@@ -102,11 +113,26 @@ namespace Ufo.Commander.ViewModel.Basic
             }
         }
 
+        private void Validate()
+        {
+            var uiThread = TaskScheduler.FromCurrentSynchronizationContext();
+
+            Validator.ValidateAllAsync().ContinueWith(r => OnValidateAllCompleted(r.Result), uiThread);
+        }
+
+        private void OnValidateAllCompleted(ValidationResult validationResult)
+        {
+            UpdateValidationSummary(validationResult);
+        }
+
         private void OnValidationResultChanged(object sender, ValidationResultChangedEventArgs e)
         {
             // Get current state of the validation
-            ValidationResult validationResult = Validator.GetResult();
-            UpdateValidationSummary(validationResult);
+            if (!IsValid.GetValueOrDefault(true))
+            {
+                ValidationResult validationResult = Validator.GetResult();
+                UpdateValidationSummary(validationResult);
+            }
         }
 
         private void UpdateValidationSummary(ValidationResult validationResult)

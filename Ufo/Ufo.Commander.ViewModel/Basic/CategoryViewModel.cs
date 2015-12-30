@@ -2,6 +2,7 @@
 using Ufo.BL.Interfaces;
 using Ufo.Domain;
 using MvvmValidation;
+using System.Threading.Tasks;
 
 namespace Ufo.Commander.ViewModel.Basic
 {
@@ -47,7 +48,16 @@ namespace Ufo.Commander.ViewModel.Basic
 
             Validator.AddRule(() => Identifier,
                               () => RuleResult.Assert(!manager.CategoryExists(new Category(Identifier, "")), "This category already exists!"));
+
+            Validator.AddRule(() => Name,
+                              () => RuleResult.Assert(!string.IsNullOrEmpty(Name), "Category name is required!"));
+
             Validator.ResultChanged += OnValidationResultChanged;
+        }
+
+        public void Validation()
+        {
+            Validate();
         }
 
         #region properties
@@ -61,6 +71,7 @@ namespace Ufo.Commander.ViewModel.Basic
                     category.Label = value;
                     RaisePropertyChangedEvent(nameof(Name));
                 }
+                Validator.ValidateAsync(() => Name);
             }
         }
 
@@ -102,11 +113,26 @@ namespace Ufo.Commander.ViewModel.Basic
             }
         }
 
+        private void Validate()
+        {
+            var uiThread = TaskScheduler.FromCurrentSynchronizationContext();
+
+            Validator.ValidateAllAsync().ContinueWith(r => OnValidateAllCompleted(r.Result), uiThread);
+        }
+
+        private void OnValidateAllCompleted(ValidationResult validationResult)
+        {
+            UpdateValidationSummary(validationResult);
+        }
+
         private void OnValidationResultChanged(object sender, ValidationResultChangedEventArgs e)
         {
             // Get current state of the validation
-            ValidationResult validationResult = Validator.GetResult();
-            UpdateValidationSummary(validationResult);
+            if (!IsValid.GetValueOrDefault(true))
+            {
+                ValidationResult validationResult = Validator.GetResult();
+                UpdateValidationSummary(validationResult);
+            }
         }
 
         private void UpdateValidationSummary(ValidationResult validationResult)

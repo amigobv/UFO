@@ -10,7 +10,7 @@
              xmlns:vm="clr-namespace:Ufo.Commander.ViewModel.Basic;assembly=Ufo.Commander.ViewModel"
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance vm:VenueViewModel}">
-    <StackPanel Orientation="Vertical" Margin="30, 50">
+    <StackPanel Orientation="Vertical" Margin="30, 200">
         <i:Interaction.Behaviors>
             <ei:DataStateBehavior Binding="{Binding IsValid}"
 								  Value="True"
@@ -113,7 +113,7 @@
                         <TextBox Grid.Row="0" Grid.Column="1"
                                 Name="txtNamer" 
                                 Margin="5"
-                                Text="{Binding Name}"
+                                Text="{Binding Name, Mode=TwoWay, ValidatesOnDataErrors=True}"
                                 FontSize="14"/>
 
                         <Label Grid.Row="1" Grid.Column="0"
@@ -124,7 +124,7 @@
                         <TextBox Grid.Row="1" Grid.Column="1" 
                                 Name="txtCapacity" 
                                 Margin="5"
-                                Text="{Binding Capacity}"
+                                Text="{Binding Capacity, Mode=TwoWay, ValidatesOnDataErrors=True}"
                                 FontSize="14"/>
 
                         <Label Grid.Row="2" Grid.Column="0"
@@ -136,7 +136,7 @@
                                   Name="cbLocation"
                                   Margin="5"
                                   ItemsSource="{Binding Locations}"
-                                  SelectedItem="{Binding Location, Mode=TwoWay}"
+                                  SelectedItem="{Binding Location, Mode=TwoWay, ValidatesOnDataErrors=True}"
                                   DisplayMemberPath="Name"
                                   SelectedValue="{Binding Path=Location.Name}"
                                   SelectedValuePath="Name"
@@ -180,5 +180,24 @@
                 </Grid>
             </GroupBox>
         </Border>
+
+        <Validation.ErrorTemplate>
+            <ControlTemplate>
+                <Grid>
+                    <AdornedElementPlaceholder Name="customAdorner"
+										       VerticalAlignment="Center">
+                    </AdornedElementPlaceholder>
+
+                    <TextBlock x:Name="textBlock"
+						   Text="{Binding ElementName=customAdorner, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}"
+						   HorizontalAlignment="Right"
+						   Margin="10,0,5,0"
+						   MaxWidth="150"
+						   TextWrapping="Wrap"
+						   TextTrimming="WordEllipsis"
+						   Foreground="Red" />
+                </Grid>
+            </ControlTemplate>
+        </Validation.ErrorTemplate>
     </StackPanel>
 </UserControl>

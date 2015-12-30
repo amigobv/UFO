@@ -16,55 +16,26 @@ namespace Ufo.Domain
         public string Email { get; set; }
         public string Homepage { get; set; }
         public string Description { get; set; }
-        public string PictureUrl { get; set; }
-        public string VideoUrl { get; set; }
         public Category Category { get; set; }
         public bool IsDeleted { get; set; }
+        public string PictureUrl { get; set; }
+        public string VideoUrl { get; set; }
 
-        private byte[] picture;
-        private byte[] video;
+        //private byte[] ReadMedia(string url)
+        //{
+        //    byte[] b;
 
-        public byte[] Video
-        {
-            get
-            {
-                video = ReadMedia(PictureUrl);
-                return video;   
-            }
-            set
-            {
-                video = value;
-            }
-        }
+        //    if (string.IsNullOrEmpty(url))
+        //        return null;
 
+        //    using (var file = File.OpenRead(url))
+        //    {
+        //        b = new byte[file.Length];
+        //        while (file.Read(b, 0, b.Length) > 0) {;}
 
-        public byte[] Picture
-        {
-            get
-            {
-                picture = ReadMedia(VideoUrl);
-                return picture;
-            }
-            set
-            {
-                picture = value;
-            }
-        }
-
-        private byte[] ReadMedia(string url)
-        {
-            byte[] b;
-
-            if (string.IsNullOrEmpty(url))
-                return null;
-
-            using (var file = File.OpenRead(url))
-            {
-                b = new byte[file.Length];
-                while (file.Read(b, 0, b.Length) > 0) { }
-            }
-            return b;
-        }
+        //    }
+        //    return b;
+        //}
         #endregion
 
         #region ctor

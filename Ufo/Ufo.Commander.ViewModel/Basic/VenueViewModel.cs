@@ -4,6 +4,8 @@ using System.Windows.Input;
 using Ufo.BL.Interfaces;
 using Ufo.Domain;
 using System.Linq;
+using System.Threading.Tasks;
+using System;
 
 namespace Ufo.Commander.ViewModel.Basic
 {
@@ -43,10 +45,20 @@ namespace Ufo.Commander.ViewModel.Basic
         private void ConfigureValidation()
         {
             Validator.AddRule(() => Name,
-                              () => RuleResult.Assert(!string.IsNullOrEmpty(Name), "Short name is required!")
-                              );
+                              () => RuleResult.Assert(!string.IsNullOrEmpty(Name), "Name is required!"));
+
+            Validator.AddRule(() => Capacity,
+                              () => RuleResult.Assert(!string.IsNullOrEmpty(Capacity) && Capacity.All(Char.IsDigit), "Capacity has to be a number !"));
+
+            Validator.AddRule(() => Location,
+                              () => RuleResult.Assert(!string.IsNullOrEmpty(Location.Name), "Location is required!"));
 
             Validator.ResultChanged += OnValidationResultChanged;
+        }
+
+        public void Validation()
+        {
+            Validate();
         }
 
         #region properties
@@ -78,6 +90,7 @@ namespace Ufo.Commander.ViewModel.Basic
             {
                 var capacity = 0;
 
+                Validator.ValidateAsync(() => Capacity);
                 if (int.TryParse(value, out capacity))
                 {
                     if (venue.MaxSpectators != capacity)
@@ -94,11 +107,14 @@ namespace Ufo.Commander.ViewModel.Basic
             get { return location; }
             set
             {
-                if (location != value)
+                if (value != null && location != value)
                 {
                     location = value;
                     LocationVmToLocation(location);
                     RaisePropertyChangedEvent(nameof(Location));
+
+                    if (IsValid != null)
+                        Validator.ValidateAsync(() => Location);
                 }
             }
         }
@@ -150,11 +166,26 @@ namespace Ufo.Commander.ViewModel.Basic
             }
         }
 
+        private void Validate()
+        {
+            var uiThread = TaskScheduler.FromCurrentSynchronizationContext();
+
+            Validator.ValidateAllAsync().ContinueWith(r => OnValidateAllCompleted(r.Result), uiThread);
+        }
+
+        private void OnValidateAllCompleted(ValidationResult validationResult)
+        {
+            UpdateValidationSummary(validationResult);
+        }
+
         private void OnValidationResultChanged(object sender, ValidationResultChangedEventArgs e)
         {
             // Get current state of the validation
-            ValidationResult validationResult = Validator.GetResult();
-            UpdateValidationSummary(validationResult);
+            if (!IsValid.GetValueOrDefault(true))
+            {
+                ValidationResult validationResult = Validator.GetResult();
+                UpdateValidationSummary(validationResult);
+            }
         }
 
         private void UpdateValidationSummary(ValidationResult validationResult)

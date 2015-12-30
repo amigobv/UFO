@@ -33,6 +33,7 @@ namespace Ufo.Commander.Views
 
                 login.DataContext = loginVm;
                 login.ShowDialog();
+                login.Close();
 
                 // If login window didn't return true (login failed), exit application
                 if (!login.DialogResult.GetValueOrDefault())

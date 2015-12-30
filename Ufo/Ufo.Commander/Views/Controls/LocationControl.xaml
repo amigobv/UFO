@@ -10,7 +10,7 @@
              xmlns:vm="clr-namespace:Ufo.Commander.ViewModel.Basic;assembly=Ufo.Commander.ViewModel"
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance vm:LocationViewModel}">
-    <StackPanel Orientation="Vertical" Margin="25, 50">
+    <StackPanel Orientation="Vertical" Margin="25, 200">
         <i:Interaction.Behaviors>
             <ei:DataStateBehavior Binding="{Binding IsValid}"
 								  Value="True"
