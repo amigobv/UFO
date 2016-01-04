@@ -51,11 +51,9 @@ namespace Ufo.Commander.ViewModel
             LoadVenues();
             LoadPerformances();
         }
-
         #endregion
 
         #region Override
-
         public override object GetCellValue(VenueViewModel rowHeader, DateTime columnHeader)
         {
             if (performanceDict.ContainsKey(columnHeader.TimeOfDay)) 
@@ -80,7 +78,6 @@ namespace Ufo.Commander.ViewModel
         {
             return Venues;
         }
-
         #endregion
 
         #region private helpers
@@ -112,24 +109,6 @@ namespace Ufo.Commander.ViewModel
         private string BuildVenueIdString(Venue venue)
         {
             return string.Format("{0}{1}", venue.Location.Id, venue.Id);
-        }
-        #endregion
-
-        #region public methods
-        public Task LoadVenuesAsync()
-        {
-            return Task.Run(() => LoadVenues());
-        }
-
-        public Task LoadPerformancesAsync()
-        {
-            return Task.Run(() => LoadPerformances());
-        }
-
-        public async void LoadAsync()
-        {
-            await LoadVenuesAsync();
-            await LoadPerformancesAsync();
         }
         #endregion
 

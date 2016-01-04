@@ -39,5 +39,17 @@ namespace Ufo.Commander.Views.Controls
             if (vm == null)
                 return;
         }
+
+        private void DropDownOpened(object sender, EventArgs e)
+        {
+            var vm = ViewModel;
+
+            if (vm != null)
+            {
+                // do a dummy read to update alll locations
+                var locations = vm.Locations;
+            }
+            
+        }
     }
 }

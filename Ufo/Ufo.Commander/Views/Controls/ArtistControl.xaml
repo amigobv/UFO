@@ -224,7 +224,8 @@
                                               SelectedItem="{Binding Category, Mode=TwoWay, ValidatesOnDataErrors=True}"
                                               SelectedValue="{Binding Path=Category.Name}"
                                               SelectedValuePath="Name"
-                                              IsSynchronizedWithCurrentItem="False">
+                                              IsSynchronizedWithCurrentItem="False"
+                                              DropDownOpened="DropDownOpened">
                             </ComboBox>
 
                             <StackPanel Grid.Row="6" Grid.Column="1" Orientation="Horizontal">

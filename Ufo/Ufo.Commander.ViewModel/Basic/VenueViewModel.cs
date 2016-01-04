@@ -6,11 +6,16 @@ using Ufo.Domain;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
+using Ufo.Commander.ViewModel.Validator;
 
 namespace Ufo.Commander.ViewModel.Basic
 {
     public class VenueViewModel : ValidableViewModelBase
     {
+        #region events
+        public Action NotifyUpdate;
+        #endregion
+
         #region private members
         private IManager manager;
         private Venue venue;
@@ -27,7 +32,7 @@ namespace Ufo.Commander.ViewModel.Basic
             this.venue = new Venue();
             location = new LocationViewModel(manager);
             locations = new ObservableCollection<LocationViewModel>();
-            SaveCommand = new RelayCommand(o => manager.UpdateVenue(venue));
+            SaveCommand = new RelayCommand(o => UpdateVenue());
             ConfigureValidation();
         }
 
@@ -37,8 +42,18 @@ namespace Ufo.Commander.ViewModel.Basic
             this.venue = venue;
             location = new LocationViewModel(venue.Location, manager);
             locations = new ObservableCollection<LocationViewModel>();
-            SaveCommand = new RelayCommand(o => manager.UpdateVenue(venue));
+            SaveCommand = new RelayCommand(o => UpdateVenue());
             ConfigureValidation();
+        }
+
+        private void UpdateVenue()
+        {
+            manager.UpdateVenue(venue);
+
+            if (NotifyUpdate != null)
+            {
+                NotifyUpdate();
+            }
         }
         #endregion
 
@@ -58,7 +73,7 @@ namespace Ufo.Commander.ViewModel.Basic
 
         public void Validation()
         {
-            Validate();
+            UpdateValidationSummary(Validator.ValidateAll());
         }
 
         #region properties
@@ -166,18 +181,6 @@ namespace Ufo.Commander.ViewModel.Basic
             }
         }
 
-        private void Validate()
-        {
-            var uiThread = TaskScheduler.FromCurrentSynchronizationContext();
-
-            Validator.ValidateAllAsync().ContinueWith(r => OnValidateAllCompleted(r.Result), uiThread);
-        }
-
-        private void OnValidateAllCompleted(ValidationResult validationResult)
-        {
-            UpdateValidationSummary(validationResult);
-        }
-
         private void OnValidationResultChanged(object sender, ValidationResultChangedEventArgs e)
         {
             // Get current state of the validation
@@ -214,7 +217,6 @@ namespace Ufo.Commander.ViewModel.Basic
         private void LoadLocations()
         {
             locations.Clear();
-            //TODO: only the artists that are aloud should be returned
             var locationList = manager.GetAllLocations();
 
             foreach (var location in locationList)

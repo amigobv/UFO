@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-using MvvmValidation;
 using System.Windows.Input;
 using Ufo.BL.Interfaces;
 using Ufo.Domain;
+using Ufo.Commander.ViewModel.Validator;
 
 namespace Ufo.Commander.ViewModel.Basic
 {
@@ -30,7 +30,7 @@ namespace Ufo.Commander.ViewModel.Basic
             if (artist != null && artist.Count > 0)
                 this.performance.Artist = artist.ElementAt(0);
             else
-                this.performance.Artist = new Domain.Artist();
+                this.performance.Artist = new Artist();
 
             var venue = manager.GetVenueById(venueVm.Id);
             if (venue != null)

@@ -15,7 +15,7 @@ namespace Ufo.BL.Interfaces
         bool Exist(string username);
         void Login(User user);
         void Registrate(User user);
-        ObservableCollection<User> GetAllUsers();
+        IList<User> GetAllUsers();
         void RemoveUser(User user);
         void UpdateUser(User user);
         User GetActiveUser();
@@ -23,10 +23,10 @@ namespace Ufo.BL.Interfaces
 
         #region Artist
         void CreateArtist(Artist artist);
-        ObservableCollection<Artist> GetArtistByName(string name);
-        ObservableCollection<Artist> GetAllArtists();
-        ObservableCollection<Artist> GetAllArtistsByCountry(string country);
-        ObservableCollection<Artist> GetAllArtistsByCategory(Category category);
+        IList<Artist> GetArtistByName(string name);
+        IList<Artist> GetAllArtists();
+        IList<Artist> GetAllArtistsByCountry(string country);
+        IList<Artist> GetAllArtistsByCategory(Category category);
         void RemoveArtist(Artist artist);
         void UpdateArtist(Artist artist);
         #endregion
@@ -34,7 +34,7 @@ namespace Ufo.BL.Interfaces
         #region Category
         bool CategoryExists(Category category);
         void CreateCategory(Category category);
-        ObservableCollection<Category> GetAllCategories();
+        IList<Category> GetAllCategories();
         void RemoveCategory(Category category);
         void UpdateCategory(Category category);
         #endregion
@@ -42,7 +42,7 @@ namespace Ufo.BL.Interfaces
         #region Location
         bool LocationExists(Location location);
         void CreateLocation(Location location);
-        ObservableCollection<Location> GetAllLocations();
+        IList<Location> GetAllLocations();
         void RemoveLocation(Location location);
         void UpdateLocation(Location location);
         #endregion
@@ -50,19 +50,19 @@ namespace Ufo.BL.Interfaces
         #region Venue
         void CreateVenue(Venue venue);
         Venue GetVenueById(string id);
-        ObservableCollection<Venue> GetAllVenues();
-        ObservableCollection<Venue> GetVenuesBySpectators(int numberOfSpectators);
-        ObservableCollection<Venue> GetVenuesByLocation(string location);
+        IList<Venue> GetAllVenues();
+        IList<Venue> GetVenuesBySpectators(int numberOfSpectators);
+        IList<Venue> GetVenuesByLocation(string location);
         void RemoveVenue(Venue venue);
         void UpdateVenue(Venue venue);
         #endregion
 
         #region Performance
         void CreatePerformance(Performance performance);
-        ObservableCollection<Performance> GetAllPerformances();
-        ObservableCollection<Performance> GetPerformanceByDay(DateTime day);
-        ObservableCollection<Performance> GetPerformanceByArtist(Artist artist);
-        ObservableCollection<Performance> GetPerformanceByVenue(Venue venue);
+        IList<Performance> GetAllPerformances();
+        IList<Performance> GetPerformanceByDay(DateTime day);
+        IList<Performance> GetPerformanceByArtist(Artist artist);
+        IList<Performance> GetPerformanceByVenue(Venue venue);
         void RemovePerformance(Performance performance);
         void UpdatePerformance(Performance performance);
         bool IsPerformanceValid(Performance performance);

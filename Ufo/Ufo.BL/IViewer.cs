@@ -11,26 +11,26 @@ namespace Ufo.BL
     public interface IViewer
     {
         #region Artist
-        ObservableCollection<Artist> GetAllArtists();
-        ObservableCollection<Artist> GetAllArtistsByCountry(string country);
-        ObservableCollection<Artist> GetAllArtistsByCategory(Category category);
+        IList<Artist> GetAllArtists();
+        IList<Artist> GetAllArtistsByCountry(string country);
+        IList<Artist> GetAllArtistsByCategory(Category category);
         #endregion
 
         #region Category
-        ObservableCollection<Category> GetAllCategories();
+        IList<Category> GetAllCategories();
         #endregion
 
 
         #region Venue
-        ObservableCollection<Venue> GetAllVenues();
-        ObservableCollection<Venue> GetVenuesByLocation(string location);
+        IList<Venue> GetAllVenues();
+        IList<Venue> GetVenuesByLocation(string location);
         #endregion
 
         #region Performance
-        ObservableCollection<Performance> GetAllPerformances();
-        ObservableCollection<Performance> GetPerformanceByDay(DateTime day);
-        ObservableCollection<Performance> GetPerformanceByArtist(Artist artist);
-        ObservableCollection<Performance> GetPerformanceByVenue(Venue venue);
+        IList<Performance> GetAllPerformances();
+        IList<Performance> GetPerformanceByDay(DateTime day);
+        IList<Performance> GetPerformanceByArtist(Artist artist);
+        IList<Performance> GetPerformanceByVenue(Venue venue);
         #endregion
 
         void SendEmail(string address, string subject, string content);

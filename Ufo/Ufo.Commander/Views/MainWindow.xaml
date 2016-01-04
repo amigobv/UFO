@@ -37,7 +37,8 @@
                     </Setter>
                 </Style>
             </TabControl.Resources>
-            <TabItem Header="{x:Static resx:Resources.ScheduleText}">
+            <TabItem Header="{x:Static resx:Resources.ScheduleText}"
+                     GotFocus="GotFocus">
                 <ctrl:ScheduleControl DataContext="{Binding Schedule}" />   
             </TabItem>
             <TabItem Header="{x:Static resx:Resources.ArtistsText}">

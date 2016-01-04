@@ -56,7 +56,7 @@
     <Compile Include="Basic\VenueViewModel.cs" />
     <Compile Include="CategoriesViewModel.cs" />
     <Compile Include="Basic\LocationViewModel.cs" />
-    <Compile Include="DataErrorInfoAdapter.cs" />
+    <Compile Include="Validator\DataErrorInfoAdapter.cs" />
     <Compile Include="LocationsViewModel.cs" />
     <Compile Include="MainViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -67,8 +67,8 @@
     <Compile Include="Basic\UserLoginViewModel.cs" />
     <Compile Include="Basic\UserRegistrationViewModel.cs" />
     <Compile Include="Utils.cs" />
-    <Compile Include="ValidableViewModelBase.cs" />
-    <Compile Include="ValidableViewModelBase.Desktop.cs" />
+    <Compile Include="Validator\ValidableViewModelBase.cs" />
+    <Compile Include="Validator\ValidableViewModelBase.Desktop.cs" />
     <Compile Include="VenuesViewModel.cs" />
     <Compile Include="ViewModelBase.cs" />
   </ItemGroup>
@@ -86,9 +86,7 @@
       <Name>Ufo.Domain</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="List\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

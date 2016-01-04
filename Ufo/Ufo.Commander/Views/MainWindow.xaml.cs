@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using Ufo.BL;
 using Ufo.Commander.ViewModel;
 using Ufo.Commander.ViewModel.Basic;
+using Ufo.Commander.Views.Controls;
 
 namespace Ufo.Commander.Views
 {
@@ -26,24 +27,50 @@ namespace Ufo.Commander.Views
     {
         public MainWindow()
         {
+            MainViewModel vm = new MainViewModel(BLFactory.GetManager());
+            vm.LoadDataAsync();
+
             if (Boolean.Parse(ConfigurationManager.AppSettings["Login"]))
             {
                 var login = new UserLoginView();
-                var loginVm = new UserLoginViewModel(ManagerFactory.GetManager());
+                var loginVm = new UserLoginViewModel(BLFactory.GetManager());
 
                 login.DataContext = loginVm;
                 login.ShowDialog();
                 login.Close();
 
-                // If login window didn't return true (login failed), exit application
-                if (!login.DialogResult.GetValueOrDefault())
-                {
+                 // If login window didn't return true (login failed), exit application
+                 if (!login.DialogResult.GetValueOrDefault())
+                 {
                     Environment.Exit(0);
-                }
+                 }
             }
 
             InitializeComponent();
-            DataContext = new MainViewModel(ManagerFactory.GetManager());
+            DataContext = vm;
+        }
+
+        private void GotFocus(object sender, RoutedEventArgs e)
+        {
+            //TabItem tabItem = sender as TabItem;
+            //if (tabItem == null)
+            //    return;
+
+            //var schedule = tabItem.Content as ScheduleControl;
+
+            //if (schedule == null)
+            //    return;
+
+            //var vm = this.DataContext as MainViewModel;
+
+            //if (vm == null)
+            //    return;
+
+            //if (tabItem.Header.Equals("Schedule"))
+            //{  
+            //    //Call ICommand to refresh presenter
+            //    vm.Schedule.RefreshCommand.Execute(null);
+            //}
         }
     }
 }

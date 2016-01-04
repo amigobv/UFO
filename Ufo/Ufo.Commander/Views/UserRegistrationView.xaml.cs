@@ -22,7 +22,7 @@ namespace Ufo.Commander.Views
         {
             InitializeComponent();
 
-            this.DataContext = new UserRegistrationViewModel(ManagerFactory.GetManager());
+            this.DataContext = new UserRegistrationViewModel(BLFactory.GetManager());
         }
 
         private void Register(object sender, RoutedEventArgs e)

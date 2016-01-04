@@ -24,6 +24,7 @@ namespace Ufo.Commander.ViewModel
             this.manager = manager;
             Venues = new ObservableCollection<VenueViewModel>();
             CurrentVenue = new VenueViewModel(new Venue(), manager);
+            CurrentVenue.NotifyUpdate += () => LoadVenues();
         }
 
         #endregion
@@ -33,7 +34,6 @@ namespace Ufo.Commander.ViewModel
         {
             get
             {
-                LoadVenues();
                 return venues;
             }
             set
@@ -67,6 +67,8 @@ namespace Ufo.Commander.ViewModel
 
             foreach (var venue in venuesList)
                 venues.Add(new VenueViewModel(venue, manager));
+
+            Venues = venues;
         }
     }
 }

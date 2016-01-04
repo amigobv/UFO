@@ -27,7 +27,6 @@ namespace Ufo.Commander.Views.Controls
         public CategoriesControl()
         {
             InitializeComponent();
-            //DataContext = new CategoriesViewModel(ManagerFactory.GetManager());
         }
 
         private void CreateCategory(object sender, RoutedEventArgs e)
@@ -36,9 +35,8 @@ namespace Ufo.Commander.Views.Controls
 
             if (vm != null)
             {
-                vm.CurrentCategory = new CategoryViewModel(ManagerFactory.GetManager());
+                vm.CurrentCategory = new CategoryViewModel(BLFactory.GetManager());
             }
-
         }
 
         private void SavePressed(object sender, RoutedEventArgs e)
@@ -52,9 +50,6 @@ namespace Ufo.Commander.Views.Controls
                 if (vm.CurrentCategory.IsValid ?? false)
                 {
                     vm.CurrentCategory.SaveCommand.Execute(null);
-
-                    if (!vm.Categories.Contains(vm.CurrentCategory))
-                        vm.Categories.Add(vm.CurrentCategory);
                 }
             }
         }

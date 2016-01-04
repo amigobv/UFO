@@ -1,0 +1,51 @@
+2016-01-04 19:03:47.4239 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-04 19:10:30.9960 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-04 19:12:01.0531 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-04 19:19:41.3774 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-04 19:43:36.9646 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-04 19:50:03.1306 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-04 19:52:11.2750 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-04 19:54:40.7545 |                FATAL |                Unhandler exception thrown! |                Ufo.Commander.App 
+System.IndexOutOfRangeException: Der Index war auﬂerhalb des Arraybereichs.
+   bei System.String.get_Chars(Int32 index)
+   bei Ufo.BL.ManagerImpl.GetVenueById(String id) in E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.BL\ManagerImpl.cs:Zeile 400.
+   bei Ufo.Commander.ViewModel.Basic.PerformanceViewModel..ctor(VenueViewModel venueVm, ArtistViewModel artistVm, DateTime day, IManager manager) in E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander.ViewModel\Basic\PerformanceViewModel.cs:Zeile 35.
+   bei Ufo.Commander.Views.Controls.TableControl.OnMouseDown_Create(Object sender, MouseButtonEventArgs e) in E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander\Views\Controls\TableControl.xaml.cs:Zeile 56.
+   bei System.Windows.Input.MouseButtonEventArgs.InvokeEventHandler(Delegate genericHandler, Object genericTarget)
+   bei System.Windows.RoutedEventArgs.InvokeHandler(Delegate handler, Object target)
+   bei System.Windows.RoutedEventHandlerInfo.InvokeHandler(Object target, RoutedEventArgs routedEventArgs)
+   bei System.Windows.EventRoute.InvokeHandlersImpl(Object source, RoutedEventArgs args, Boolean reRaised)
+   bei System.Windows.UIElement.RaiseEventImpl(DependencyObject sender, RoutedEventArgs args)
+   bei System.Windows.UIElement.RaiseTrustedEvent(RoutedEventArgs args)
+   bei System.Windows.Input.InputManager.ProcessStagingArea()
+   bei System.Windows.Input.InputManager.ProcessInput(InputEventArgs input)
+   bei System.Windows.Input.InputProviderSite.ReportInput(InputReport inputReport)
+   bei System.Windows.Interop.HwndMouseInputProvider.ReportInput(IntPtr hwnd, InputMode mode, Int32 timestamp, RawMouseActions actions, Int32 x, Int32 y, Int32 wheel)
+   bei System.Windows.Interop.HwndMouseInputProvider.FilterMessage(IntPtr hwnd, WindowMessage msg, IntPtr wParam, IntPtr lParam, Boolean& handled)
+   bei System.Windows.Interop.HwndSource.InputFilterMessage(IntPtr hwnd, Int32 msg, IntPtr wParam, IntPtr lParam, Boolean& handled)
+   bei MS.Win32.HwndWrapper.WndProc(IntPtr hwnd, Int32 msg, IntPtr wParam, IntPtr lParam, Boolean& handled)
+   bei MS.Win32.HwndSubclass.DispatcherCallbackOperation(Object o)
+   bei System.Windows.Threading.ExceptionWrapper.InternalRealCall(Delegate callback, Object args, Int32 numArgs)
+   bei System.Windows.Threading.ExceptionWrapper.TryCatchWhen(Object source, Delegate callback, Object args, Int32 numArgs, Delegate catchHandler)
+2016-01-04 19:55:59.0170 |                FATAL |                Unhandler exception thrown! |                Ufo.Commander.App 
+System.IndexOutOfRangeException: Der Index war auﬂerhalb des Arraybereichs.
+   bei System.String.get_Chars(Int32 index)
+   bei Ufo.BL.ManagerImpl.GetVenueById(String id) in E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.BL\ManagerImpl.cs:Zeile 400.
+   bei Ufo.Commander.ViewModel.Basic.PerformanceViewModel..ctor(VenueViewModel venueVm, ArtistViewModel artistVm, DateTime day, IManager manager) in E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander.ViewModel\Basic\PerformanceViewModel.cs:Zeile 35.
+   bei Ufo.Commander.Views.Controls.TableControl.OnMouseDown_Create(Object sender, MouseButtonEventArgs e) in E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander\Views\Controls\TableControl.xaml.cs:Zeile 56.
+   bei System.Windows.Input.MouseButtonEventArgs.InvokeEventHandler(Delegate genericHandler, Object genericTarget)
+   bei System.Windows.RoutedEventArgs.InvokeHandler(Delegate handler, Object target)
+   bei System.Windows.RoutedEventHandlerInfo.InvokeHandler(Object target, RoutedEventArgs routedEventArgs)
+   bei System.Windows.EventRoute.InvokeHandlersImpl(Object source, RoutedEventArgs args, Boolean reRaised)
+   bei System.Windows.UIElement.RaiseEventImpl(DependencyObject sender, RoutedEventArgs args)
+   bei System.Windows.UIElement.RaiseTrustedEvent(RoutedEventArgs args)
+   bei System.Windows.Input.InputManager.ProcessStagingArea()
+   bei System.Windows.Input.InputManager.ProcessInput(InputEventArgs input)
+   bei System.Windows.Input.InputProviderSite.ReportInput(InputReport inputReport)
+   bei System.Windows.Interop.HwndMouseInputProvider.ReportInput(IntPtr hwnd, InputMode mode, Int32 timestamp, RawMouseActions actions, Int32 x, Int32 y, Int32 wheel)
+   bei System.Windows.Interop.HwndMouseInputProvider.FilterMessage(IntPtr hwnd, WindowMessage msg, IntPtr wParam, IntPtr lParam, Boolean& handled)
+   bei System.Windows.Interop.HwndSource.InputFilterMessage(IntPtr hwnd, Int32 msg, IntPtr wParam, IntPtr lParam, Boolean& handled)
+   bei MS.Win32.HwndWrapper.WndProc(IntPtr hwnd, Int32 msg, IntPtr wParam, IntPtr lParam, Boolean& handled)
+   bei MS.Win32.HwndSubclass.DispatcherCallbackOperation(Object o)
+   bei System.Windows.Threading.ExceptionWrapper.InternalRealCall(Delegate callback, Object args, Int32 numArgs)
+   bei System.Windows.Threading.ExceptionWrapper.TryCatchWhen(Object source, Delegate callback, Object args, Int32 numArgs, Delegate catchHandler)

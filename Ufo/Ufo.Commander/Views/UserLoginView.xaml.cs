@@ -21,7 +21,7 @@ namespace Ufo.Commander.Views
         public UserLoginView()
         {
             InitializeComponent();
-            this.DataContext = new UserLoginViewModel(ManagerFactory.GetManager());
+            this.DataContext = new UserLoginViewModel(BLFactory.GetManager());
         }
 
         public void Login(object sender, RoutedEventArgs e)

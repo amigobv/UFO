@@ -1,13 +1,19 @@
 ﻿using MvvmValidation;
+using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Ufo.BL.Interfaces;
+using Ufo.Commander.ViewModel.Validator;
 using Ufo.Domain;
 
 namespace Ufo.Commander.ViewModel.Basic
 {
     public class LocationViewModel : ValidableViewModelBase
     {
+        #region events
+        public Action NotifyUpdate;
+        #endregion
+
         #region private members
         private IManager manager;
         private Location location;
@@ -20,7 +26,7 @@ namespace Ufo.Commander.ViewModel.Basic
         {
             this.manager = manager;
             this.location = new Location();
-            SaveCommand = new RelayCommand(o => manager.UpdateLocation(location));
+            SaveCommand = new RelayCommand(o => UpdateLocation());
             ConfigureValidation();
         }
 
@@ -32,8 +38,19 @@ namespace Ufo.Commander.ViewModel.Basic
                 this.location = new Location();
             else
                 this.location = location;
-            SaveCommand = new RelayCommand(o => manager.UpdateLocation(location));
+            SaveCommand = new RelayCommand(o => UpdateLocation());
             ConfigureValidation();
+        }
+
+        private void UpdateLocation()
+        {
+            manager.UpdateLocation(location);
+
+            // notify observers
+            if (NotifyUpdate != null)
+            {
+                NotifyUpdate();
+            }
         }
         #endregion
 
@@ -57,7 +74,7 @@ namespace Ufo.Commander.ViewModel.Basic
 
         public void Validation()
         {
-            Validate();
+            UpdateValidationSummary(Validator.ValidateAll());
         }
 
         #region properties
@@ -71,7 +88,7 @@ namespace Ufo.Commander.ViewModel.Basic
                     location.Id = value;
                     RaisePropertyChangedEvent(nameof(Identifier)); 
                 }
-                Validator.Validate(() => Identifier);
+                Validator.ValidateAsync(() => Identifier);
             }
         }
 
@@ -85,7 +102,7 @@ namespace Ufo.Commander.ViewModel.Basic
                     location.Label = value;
                     RaisePropertyChangedEvent(nameof(Name));
                 }
-                Validator.Validate(() => Name);
+                Validator.ValidateAsync(() => Name);
             }
         }
 
@@ -111,18 +128,6 @@ namespace Ufo.Commander.ViewModel.Basic
                 isValid = value;
                 RaisePropertyChangedEvent(nameof(IsValid));
             }
-        }
-
-        private void Validate()
-        {
-            var uiThread = TaskScheduler.FromCurrentSynchronizationContext();
-
-            Validator.ValidateAllAsync().ContinueWith(r => OnValidateAllCompleted(r.Result), uiThread);
-        }
-
-        private void OnValidateAllCompleted(ValidationResult validationResult)
-        {
-            UpdateValidationSummary(validationResult);
         }
 
         private void OnValidationResultChanged(object sender, ValidationResultChangedEventArgs e)

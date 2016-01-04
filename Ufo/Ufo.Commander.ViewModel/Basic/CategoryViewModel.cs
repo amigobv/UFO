@@ -3,11 +3,18 @@ using Ufo.BL.Interfaces;
 using Ufo.Domain;
 using MvvmValidation;
 using System.Threading.Tasks;
+using Ufo.Commander.ViewModel.Validator;
+using System;
 
 namespace Ufo.Commander.ViewModel.Basic
 {
     public class CategoryViewModel : ValidableViewModelBase
     {
+        #region events
+        public Action NotifyUpdate;
+        #endregion
+
+
         #region private members
         private Category category;
         private IManager manager;
@@ -20,7 +27,7 @@ namespace Ufo.Commander.ViewModel.Basic
         {
             this.manager = manager;
             this.category = new Category();
-            this.SaveCommand = new RelayCommand(o => manager.UpdateCategory(category));
+            this.SaveCommand = new RelayCommand(o => UpdateCategory());
             ConfigureValidation();
         }
 
@@ -32,8 +39,19 @@ namespace Ufo.Commander.ViewModel.Basic
                 this.category = new Category();
             else
                 this.category = category;
-            this.SaveCommand = new RelayCommand(o => manager.UpdateCategory(category));
+            this.SaveCommand = new RelayCommand(o => UpdateCategory());
             ConfigureValidation();
+        }
+
+        private void UpdateCategory()
+        {
+            manager.UpdateCategory(category);
+
+            //notify observers
+            if (NotifyUpdate != null)
+            {
+                NotifyUpdate();
+            }
         }
         #endregion
 
@@ -57,7 +75,7 @@ namespace Ufo.Commander.ViewModel.Basic
 
         public void Validation()
         {
-            Validate();
+            UpdateValidationSummary(Validator.ValidateAll());
         }
 
         #region properties
@@ -106,23 +124,11 @@ namespace Ufo.Commander.ViewModel.Basic
         public bool? IsValid
         {
             get { return isValid; }
-            private set
+            set
             {
                 isValid = value;
                 RaisePropertyChangedEvent(nameof(IsValid));
             }
-        }
-
-        private void Validate()
-        {
-            var uiThread = TaskScheduler.FromCurrentSynchronizationContext();
-
-            Validator.ValidateAllAsync().ContinueWith(r => OnValidateAllCompleted(r.Result), uiThread);
-        }
-
-        private void OnValidateAllCompleted(ValidationResult validationResult)
-        {
-            UpdateValidationSummary(validationResult);
         }
 
         private void OnValidationResultChanged(object sender, ValidationResultChangedEventArgs e)

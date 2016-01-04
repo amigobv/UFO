@@ -24,7 +24,7 @@ namespace Ufo.Commander.Views
         public AddArtistView()
         {
             InitializeComponent();
-            DataContext = new ArtistViewModel(ManagerFactory.GetManager());
+            DataContext = new ArtistViewModel(BLFactory.GetManager());
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)

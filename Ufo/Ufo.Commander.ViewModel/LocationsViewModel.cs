@@ -24,6 +24,7 @@ namespace Ufo.Commander.ViewModel
             this.manager = manager;
             Locations = new ObservableCollection<LocationViewModel>();
             CurrentLocation = new LocationViewModel(new Location(), manager);
+            CurrentLocation.NotifyUpdate += () => LoadLocations();
         }
         #endregion
 
@@ -34,7 +35,6 @@ namespace Ufo.Commander.ViewModel
             set
             {
                 if (currentLocation != value)
-                currentLocation = value;
                 {
                     currentLocation = value;
                     RaisePropertyChangedEvent(nameof(CurrentLocation));
@@ -47,7 +47,7 @@ namespace Ufo.Commander.ViewModel
         {
             get
             {
-                LoadLocations();
+                //LoadLocations();
                 return locations;
             }
             set
@@ -68,6 +68,8 @@ namespace Ufo.Commander.ViewModel
 
             foreach (var location in locationsList)
                 locations.Add(new LocationViewModel(location, manager));
+
+            Locations = locations;
         }
     }
 }

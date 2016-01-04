@@ -140,7 +140,8 @@
                                   DisplayMemberPath="Name"
                                   SelectedValue="{Binding Path=Location.Name}"
                                   SelectedValuePath="Name"
-                                  IsSynchronizedWithCurrentItem="False"/>
+                                  IsSynchronizedWithCurrentItem="False"
+                                  DropDownOpened="DropDownOpened"/>
                     </Grid>
 
                     <Grid Grid.Row="1">

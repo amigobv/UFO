@@ -25,7 +25,7 @@ namespace Ufo.Commander.ViewModel
             this.manager = manager;
             Categories = new ObservableCollection<CategoryViewModel>();
             currentCategory = new CategoryViewModel(new Category(), manager);
-            LoadCategories();
+            currentCategory.NotifyUpdate += () => LoadCategories();
         }
         #endregion
 
@@ -45,7 +45,11 @@ namespace Ufo.Commander.ViewModel
 
         public CategoryViewModel CurrentCategory
         {
-            get { return currentCategory; }
+            get
+            {
+                //LoadCategories();
+                return currentCategory;
+            }
             set
             {
                 if (currentCategory != value)
@@ -61,13 +65,15 @@ namespace Ufo.Commander.ViewModel
 
         public void LoadCategories()
         {
-            Categories.Clear();
+            categories.Clear();
             var categoriesList = manager.GetAllCategories();
 
             foreach(var category in categoriesList)
             {
-                Categories.Add(new CategoryViewModel(category, manager));
+                categories.Add(new CategoryViewModel(category, manager));
             }
+
+            Categories = categories;
         }
 
 

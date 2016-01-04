@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Ufo.Domain
 {
+    [Serializable]
     public class Artist
     {
         #region Properties

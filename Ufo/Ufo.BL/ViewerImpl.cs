@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
 using System.Net.Mail;
-using System.Text;
-using System.Threading.Tasks;
 using Ufo.DAL.Common;
 using Ufo.Domain;
 
@@ -37,9 +33,9 @@ namespace Ufo.BL
         /// Gets all artists.
         /// </summary>
         /// <returns></returns>
-        public ObservableCollection<Artist> GetAllArtists()
+        public IList<Artist> GetAllArtists()
         {
-            return new ObservableCollection<Artist>(artistDao.FindAll());
+            return artistDao.FindAll();
         }
 
         /// <summary>
@@ -48,13 +44,13 @@ namespace Ufo.BL
         /// <param name="category">The category.</param>
         /// <returns></returns>
         /// <exception cref="System.ArgumentNullException">Invalid Country provided</exception>
-        public ObservableCollection<Artist> GetAllArtistsByCategory(Category category)
+        public IList<Artist> GetAllArtistsByCategory(Category category)
         {
             if (category == null ||
                 category.Id == null)
                 throw new ArgumentNullException("Invalid Country provided");
 
-            return new ObservableCollection<Artist>(artistDao.FindByCategoryId(category.Id));
+            return artistDao.FindByCategoryId(category.Id);
         }
 
         /// <summary>
@@ -63,30 +59,30 @@ namespace Ufo.BL
         /// <param name="country">The country.</param>
         /// <returns></returns>
         /// <exception cref="System.ArgumentNullException">Invalid Country provided</exception>
-        public ObservableCollection<Artist> GetAllArtistsByCountry(string country)
+        public IList<Artist> GetAllArtistsByCountry(string country)
         {
             if (country == null)
                 throw new ArgumentNullException("Invalid Country provided");
 
-            return new ObservableCollection<Artist>(artistDao.FindByCountry(country));
+            return artistDao.FindByCountry(country);
         }
 
         /// <summary>
         /// Gets all performances.
         /// </summary>
         /// <returns></returns>
-        public ObservableCollection<Performance> GetAllPerformances()
+        public IList<Performance> GetAllPerformances()
         {
-            return new ObservableCollection<Performance>(performanceDao.FindAll());
+            return performanceDao.FindAll();
         }
 
         /// <summary>
         /// Gets all venues.
         /// </summary>
         /// <returns></returns>
-        public ObservableCollection<Venue> GetAllVenues()
+        public IList<Venue> GetAllVenues()
         {
-            return new ObservableCollection<Venue>(venueDao.FindAll());
+            return venueDao.FindAll();
         }
 
         /// <summary>
@@ -94,9 +90,9 @@ namespace Ufo.BL
         /// </summary>
         /// <param name="artist">The artist.</param>
         /// <returns></returns>
-        public ObservableCollection<Performance> GetPerformanceByArtist(Artist artist)
+        public IList<Performance> GetPerformanceByArtist(Artist artist)
         {
-            return new ObservableCollection<Performance>(performanceDao.FindByArtistId(artist.Id));
+            return performanceDao.FindByArtistId(artist.Id);
         }
 
         /// <summary>
@@ -104,12 +100,12 @@ namespace Ufo.BL
         /// </summary>
         /// <param name="day">The day.</param>
         /// <returns></returns>
-        public ObservableCollection<Performance> GetPerformanceByDay(DateTime day)
+        public IList<Performance> GetPerformanceByDay(DateTime day)
         {
             DateTime start = new DateTime(day.Year, day.Month, day.Day, 0, 0, 0);
             DateTime end = new DateTime(day.Year, day.Month, day.Day, 23, 59, 59);
 
-            return new ObservableCollection<Performance>(performanceDao.FindBetween(start, end));
+            return performanceDao.FindBetween(start, end);
         }
 
         /// <summary>
@@ -117,9 +113,9 @@ namespace Ufo.BL
         /// </summary>
         /// <param name="venue">The venue.</param>
         /// <returns></returns>
-        public ObservableCollection<Performance> GetPerformanceByVenue(Venue venue)
+        public IList<Performance> GetPerformanceByVenue(Venue venue)
         {
-            return new ObservableCollection<Performance>(performanceDao.FindByVenue(venue.Label));
+            return performanceDao.FindByVenue(venue.Label);
         }
 
         /// <summary>
@@ -127,9 +123,9 @@ namespace Ufo.BL
         /// </summary>
         /// <param name="location">The location.</param>
         /// <returns></returns>
-        public ObservableCollection<Venue> GetVenuesByLocation(string location)
+        public IList<Venue> GetVenuesByLocation(string location)
         {
-            return new ObservableCollection<Venue>(venueDao.FindByLocationId(location));
+            return venueDao.FindByLocationId(location);
         }
 
 
@@ -137,9 +133,9 @@ namespace Ufo.BL
         /// Gets all categories.
         /// </summary>
         /// <returns></returns>
-        public ObservableCollection<Category> GetAllCategories()
+        public IList<Category> GetAllCategories()
         {
-            return new ObservableCollection<Category>(categoryDao.FindAll());
+            return categoryDao.FindAll();
         }
 
         public void SendEmail(string address, string subject, string content)

@@ -35,7 +35,7 @@ namespace Ufo.Commander.Views.Controls
 
             if (vm != null)
             {
-                vm.CurrentArtist = new ArtistViewModel(ManagerFactory.GetManager());
+                vm.CurrentArtist = new ArtistViewModel(BLFactory.GetManager());
             }
 
         }
@@ -51,9 +51,6 @@ namespace Ufo.Commander.Views.Controls
                 if (vm.CurrentArtist.IsValid ?? false)
                 {
                     vm.CurrentArtist.SaveCommand.Execute(null);
-
-                    if (!vm.Artists.Contains(vm.CurrentArtist))
-                        vm.Artists.Add(vm.CurrentArtist);
                 }
             }
         }

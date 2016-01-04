@@ -36,7 +36,7 @@ namespace Ufo.Commander.Views.Controls
 
             if (vm != null)
             {
-                vm.CurrentLocation = new LocationViewModel(ManagerFactory.GetManager());
+                vm.CurrentLocation = new LocationViewModel(BLFactory.GetManager());
             }
 
         }
@@ -52,9 +52,6 @@ namespace Ufo.Commander.Views.Controls
                 if (vm.CurrentLocation.IsValid ?? false)
                 {
                     vm.CurrentLocation.SaveCommand.Execute(null);
-
-                    if (!vm.Locations.Contains(vm.CurrentLocation))
-                        vm.Locations.Add(vm.CurrentLocation);
                 }
             }
         }

@@ -1,0 +1,35 @@
+2016-01-04 22:01:30.4626 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-04 22:04:15.8341 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-04 22:06:47.3207 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-04 22:08:37.2270 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-04 22:09:52.9363 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-04 22:11:12.2389 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-04 22:11:46.0758 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-04 22:12:26.5521 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-04 22:17:43.5583 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-04 22:29:18.0130 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-04 22:36:25.4464 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-04 22:37:47.2091 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-04 22:42:51.5265 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-04 22:44:58.7818 |                FATAL |                Unhandler exception thrown! |                Ufo.Commander.App 
+System.IndexOutOfRangeException: Der Index war auﬂerhalb des Arraybereichs.
+   bei System.String.get_Chars(Int32 index)
+   bei Ufo.BL.ManagerImpl.GetVenueById(String id) in E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.BL\ManagerImpl.cs:Zeile 400.
+   bei Ufo.Commander.ViewModel.Basic.PerformanceViewModel..ctor(VenueViewModel venueVm, ArtistViewModel artistVm, DateTime day, IManager manager) in E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander.ViewModel\Basic\PerformanceViewModel.cs:Zeile 35.
+   bei Ufo.Commander.Views.Controls.TableControl.OnMouseDown_Create(Object sender, MouseButtonEventArgs e) in E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander\Views\Controls\TableControl.xaml.cs:Zeile 56.
+   bei System.Windows.Input.MouseButtonEventArgs.InvokeEventHandler(Delegate genericHandler, Object genericTarget)
+   bei System.Windows.RoutedEventArgs.InvokeHandler(Delegate handler, Object target)
+   bei System.Windows.RoutedEventHandlerInfo.InvokeHandler(Object target, RoutedEventArgs routedEventArgs)
+   bei System.Windows.EventRoute.InvokeHandlersImpl(Object source, RoutedEventArgs args, Boolean reRaised)
+   bei System.Windows.UIElement.RaiseEventImpl(DependencyObject sender, RoutedEventArgs args)
+   bei System.Windows.UIElement.RaiseTrustedEvent(RoutedEventArgs args)
+   bei System.Windows.Input.InputManager.ProcessStagingArea()
+   bei System.Windows.Input.InputManager.ProcessInput(InputEventArgs input)
+   bei System.Windows.Input.InputProviderSite.ReportInput(InputReport inputReport)
+   bei System.Windows.Interop.HwndMouseInputProvider.ReportInput(IntPtr hwnd, InputMode mode, Int32 timestamp, RawMouseActions actions, Int32 x, Int32 y, Int32 wheel)
+   bei System.Windows.Interop.HwndMouseInputProvider.FilterMessage(IntPtr hwnd, WindowMessage msg, IntPtr wParam, IntPtr lParam, Boolean& handled)
+   bei System.Windows.Interop.HwndSource.InputFilterMessage(IntPtr hwnd, Int32 msg, IntPtr wParam, IntPtr lParam, Boolean& handled)
+   bei MS.Win32.HwndWrapper.WndProc(IntPtr hwnd, Int32 msg, IntPtr wParam, IntPtr lParam, Boolean& handled)
+   bei MS.Win32.HwndSubclass.DispatcherCallbackOperation(Object o)
+   bei System.Windows.Threading.ExceptionWrapper.InternalRealCall(Delegate callback, Object args, Int32 numArgs)
+   bei System.Windows.Threading.ExceptionWrapper.TryCatchWhen(Object source, Delegate callback, Object args, Int32 numArgs, Delegate catchHandler)

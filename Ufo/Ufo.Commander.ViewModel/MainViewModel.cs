@@ -97,5 +97,17 @@ namespace Ufo.Commander.ViewModel
             }
         }
         #endregion
+
+        public Task LoadDataAsync()
+        {
+            return Task.Run(() =>
+            {
+                locationVm.LoadLocations();
+                categoryVm.LoadCategories();
+                venueVm.LoadVenues();
+                artistVm.LoadArtists();
+                scheduleVm.LoadSchedule();
+            });
+        }
     }
 }

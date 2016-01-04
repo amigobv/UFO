@@ -11,7 +11,7 @@ namespace Ufo.BL.Test
         [AutoRollback]
         public void UserExistTest()
         {
-            IManager manager = ManagerFactory.GetManager();
+            IManager manager = BLFactory.GetManager();
 
             manager.Registrate(new Domain.User("swk5", "swk5", "swk5@students.fh-hagenberg.at"));
 
@@ -23,7 +23,7 @@ namespace Ufo.BL.Test
         [AutoRollback]
         public void GetUsersTest()
         {
-            IManager manager = ManagerFactory.GetManager();
+            IManager manager = BLFactory.GetManager();
 
             manager.Registrate(new Domain.User("swk5", "swk5", "swk5@students.fh-hagenberg.at"));
             manager.Registrate(new Domain.User("Daniel", "Daniel", "Daniel@students.fh-hagenberg.at"));
@@ -41,7 +41,7 @@ namespace Ufo.BL.Test
         [AutoRollback]
         public void LoginTest()
         {
-            IManager manager = ManagerFactory.GetManager();
+            IManager manager = BLFactory.GetManager();
 
             var user = new Domain.User("swk5", "swk5", "swk5@students.fh-hagenberg.at");        
             manager.Registrate(user);

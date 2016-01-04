@@ -13,7 +13,7 @@ namespace Ufo.Commander.ViewModel
 {
     public class ArtistsViewModel : ViewModelBase
     {
-        #region privae members
+        #region private members
         private ObservableCollection<ArtistViewModel> artists;
         private IManager manager;
         private ArtistViewModel currentArtist;
@@ -25,6 +25,7 @@ namespace Ufo.Commander.ViewModel
             this.manager = manager;
             artists = new ObservableCollection<ArtistViewModel>();
             currentArtist = new ArtistViewModel(new Artist(), manager);
+            currentArtist.NotifyUpdate += () => LoadArtists();
         }
         #endregion
 
@@ -33,7 +34,6 @@ namespace Ufo.Commander.ViewModel
         {
             get
             {
-                LoadArtists();
                 return artists;
             }
             set
@@ -70,6 +70,7 @@ namespace Ufo.Commander.ViewModel
                 artists.Add(new ArtistViewModel(artist, manager));
             }
 
+            Artists = artists;
         }
     }
 }

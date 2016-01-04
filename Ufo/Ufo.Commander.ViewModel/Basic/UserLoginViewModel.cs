@@ -1,11 +1,8 @@
 ﻿using MvvmValidation;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Ufo.BL;
 using Ufo.BL.Interfaces;
+using Ufo.Commander.ViewModel.Validator;
 using Ufo.Domain;
 
 namespace Ufo.Commander.ViewModel.Basic
@@ -49,7 +46,7 @@ namespace Ufo.Commander.ViewModel.Basic
 
         public void Validation()
         {
-            Validate();
+            UpdateValidationSummary(Validator.ValidateAll());
         }
 
         #region Properties
@@ -120,18 +117,6 @@ namespace Ufo.Commander.ViewModel.Basic
                 isValid = value;
                 RaisePropertyChangedEvent(nameof(IsValid));
             }
-        }
-
-        private void Validate()
-        {
-            var uiThread = TaskScheduler.FromCurrentSynchronizationContext();
-
-            Validator.ValidateAllAsync().ContinueWith(r => OnValidateAllCompleted(r.Result), uiThread);
-        }
-
-        private void OnValidateAllCompleted(ValidationResult validationResult)
-        {
-            UpdateValidationSummary(validationResult);
         }
 
         private void OnValidationResultChanged(object sender, ValidationResultChangedEventArgs e)

@@ -124,5 +124,16 @@ namespace Ufo.Commander.Views.Controls
                 }
             }
         }
+
+        private void DropDownOpened(object sender, EventArgs e)
+        {
+            var vm = ViewModel;
+
+            if (vm != null)
+            {
+                // do a dummy read to update the category list
+                var categories = vm.Categories;
+            }
+        }
     }
 }

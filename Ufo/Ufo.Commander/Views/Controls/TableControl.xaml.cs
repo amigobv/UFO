@@ -52,7 +52,7 @@ namespace Ufo.Commander.Views.Controls
             var venue = ViewModel.GetRowHeaders().ElementAt(row);
 
             var window = new AddPerformanceView();
-            var manager = ManagerFactory.GetManager();
+            var manager = BLFactory.GetManager();
             var performance = new PerformanceViewModel(venue, new ArtistViewModel(manager), hour, manager);
 
             window.DataContext = performance;
@@ -90,7 +90,7 @@ namespace Ufo.Commander.Views.Controls
                 return;
 
             var window = new AddPerformanceView();
-            var manager = ManagerFactory.GetManager();
+            var manager = BLFactory.GetManager();
 
             window.DataContext = performance;
             window.Height = 350;

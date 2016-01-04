@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLFactory.cs" />
     <Compile Include="Exceptions\CategoryException.cs" />
     <Compile Include="Exceptions\DataAccessException.cs" />
     <Compile Include="Exceptions\InvalidUserException.cs" />
@@ -55,7 +56,6 @@
     <Compile Include="IManager.cs" />
     <Compile Include="IViewer.cs" />
     <Compile Include="ManagerImpl.cs" />
-    <Compile Include="ManagerFactory.cs" />
     <Compile Include="Exceptions\InvalidUrlException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewerImpl.cs" />

@@ -1,20 +1,21 @@
 ﻿using MvvmValidation;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using System.Windows.Media.Imaging;
 using Ufo.BL.Interfaces;
-using Ufo.Command.ViewModel;
+using Ufo.Commander.ViewModel.Validator;
 using Ufo.Domain;
 
 namespace Ufo.Commander.ViewModel.Basic
 {
     public class ArtistViewModel : ValidableViewModelBase
     {
+        #region events
+        public Action NotifyUpdate;
+        public Action NotifyDelete;
+        #endregion 
+
         #region private members
         private IManager manager;
         private Artist artist;
@@ -31,8 +32,8 @@ namespace Ufo.Commander.ViewModel.Basic
             this.manager = manager;
             category = new CategoryViewModel(manager);
             categories = new ObservableCollection<CategoryViewModel>();
-            this.SaveCommand = new RelayCommand(o => manager.UpdateArtist(artist));
-            this.RemoveCommand = new RelayCommand(o => { });
+            this.SaveCommand = new RelayCommand(o => UpdateArtist());
+            this.RemoveCommand = new RelayCommand(o => DeleteArtist());
             ConfigureValidation();
         }
 
@@ -42,9 +43,31 @@ namespace Ufo.Commander.ViewModel.Basic
             this.manager = manager;
             category = new CategoryViewModel(artist.Category, manager);
             categories = new ObservableCollection<CategoryViewModel>();
-            this.SaveCommand = new RelayCommand(o => manager.UpdateArtist(artist));
-            this.RemoveCommand = new RelayCommand(o => { });
+            this.SaveCommand = new RelayCommand(o => UpdateArtist());
+            this.RemoveCommand = new RelayCommand(o => DeleteArtist());
             ConfigureValidation();
+        }
+
+        private void UpdateArtist()
+        {
+            manager.UpdateArtist(artist);
+
+            // notify observers
+            if (NotifyUpdate != null)
+            {
+                NotifyUpdate();
+            }
+        }
+
+        private void DeleteArtist()
+        {
+            //manager.RemoveArtist(artist);
+
+            // notify observers
+            if (NotifyDelete != null)
+            {
+                NotifyDelete();
+            }
         }
         #endregion
 
@@ -80,7 +103,7 @@ namespace Ufo.Commander.ViewModel.Basic
         public void Validation()
         {
             Validator.ValidateAsync(() => Category);
-            Validate();
+            UpdateValidationSummary(Validator.ValidateAll());
         }
 
         #region properties
@@ -254,18 +277,6 @@ namespace Ufo.Commander.ViewModel.Basic
             }
         }
 
-        private void Validate()
-        {
-            var uiThread = TaskScheduler.FromCurrentSynchronizationContext();
-
-            Validator.ValidateAllAsync().ContinueWith(r => OnValidateAllCompleted(r.Result), uiThread);
-        }
-
-        private void OnValidateAllCompleted(ValidationResult validationResult)
-        {
-            UpdateValidationSummary(validationResult);
-        }
-
         private void OnValidationResultChanged(object sender, ValidationResultChangedEventArgs e)
         {
             // Get current state of the validation
@@ -306,7 +317,6 @@ namespace Ufo.Commander.ViewModel.Basic
 
             foreach (var category in listCategories)
                 categories.Add(new CategoryViewModel(category, manager));
-
         }
 
         private void CategoryVmToCategory(CategoryViewModel vm)

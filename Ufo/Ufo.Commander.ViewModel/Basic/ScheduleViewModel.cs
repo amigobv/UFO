@@ -27,6 +27,12 @@ namespace Ufo.Commander.ViewModel.Basic
             scheduleSecondDay = new ObservableCollection<PerformanceSchedulerViewModel>();
             scheduleThirdDay = new ObservableCollection<PerformanceSchedulerViewModel>();
             ShareCommand = new RelayCommand(o => manager.NotifiyAllArtists());
+            RefreshCommand = new RelayCommand(o =>
+                {
+                    LoadScheduleForDayOne();
+                    LoadScheduleForDayTwo();
+                    LoadScheduleForDayTwo();
+                });
 
         }
         #endregion
@@ -36,7 +42,6 @@ namespace Ufo.Commander.ViewModel.Basic
         {
             get
             {
-                LoadScheduleForDayOne();
                 return scheduleFirstDay;
             }
             set
@@ -53,7 +58,6 @@ namespace Ufo.Commander.ViewModel.Basic
         {
             get
             {
-                LoadScheduleForDayTwo();
                 return scheduleSecondDay;
             }
             set
@@ -70,7 +74,6 @@ namespace Ufo.Commander.ViewModel.Basic
         {
             get
             {
-                LoadScheduleForDayThree();
                 return scheduleThirdDay;
             }
             set
@@ -84,7 +87,15 @@ namespace Ufo.Commander.ViewModel.Basic
         }
 
         public ICommand ShareCommand { get; set; }
+        public ICommand RefreshCommand { get; set; }
         #endregion
+
+        public void LoadSchedule()
+        {
+            LoadScheduleForDayOne();
+            LoadScheduleForDayTwo();
+            LoadScheduleForDayThree();
+        }
 
         #region private methods
         private void LoadScheduleForDayOne()
@@ -96,6 +107,8 @@ namespace Ufo.Commander.ViewModel.Basic
             {
                 scheduleFirstDay.Add(new PerformanceSchedulerViewModel(new DateTime(2016, 07, 22), location, manager));
             }
+
+            ScheduleFirstDay = scheduleFirstDay;
         }
 
         private void LoadScheduleForDayTwo()
@@ -107,6 +120,8 @@ namespace Ufo.Commander.ViewModel.Basic
             {
                 scheduleSecondDay.Add(new PerformanceSchedulerViewModel(new DateTime(2016, 07, 23), location, manager));
             }
+
+            ScheduleSecondDay = scheduleSecondDay;
         }
 
         private void LoadScheduleForDayThree()
@@ -118,6 +133,8 @@ namespace Ufo.Commander.ViewModel.Basic
             {
                 scheduleThirdDay.Add(new PerformanceSchedulerViewModel(new DateTime(2016, 07, 24), location, manager));
             }
+
+            ScheduleThirdDay = scheduleThirdDay;
         }
         #endregion
     }
