@@ -1,0 +1,36 @@
+2016-01-06 18:04:05.1333 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-06 18:04:25.9805 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-06 18:06:58.8733 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-06 18:07:55.7805 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-06 18:33:00.0656 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-06 18:33:28.2462 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-06 18:50:01.9090 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-06 18:50:33.7608 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-06 18:50:46.7066 |                FATAL |                Unhandler exception thrown! |                Ufo.Commander.App 
+System.Windows.Markup.XamlParseException: Zeilennummer "8" und Zeilenposition "9" von "Durch den Aufruf des Konstruktors für Typ "Ufo.Commander.Views.MainWindow", der den angegebenen Bindungseinschränkungen entspricht, wurde eine Ausnahme ausgelöst.". ---> System.AccessViolationException: Es wurde versucht, im geschützten Speicher zu lesen oder zu schreiben. Dies ist häufig ein Hinweis darauf, dass anderer Speicher beschädigt ist.
+   bei MS.Win32.UnsafeNativeMethods.DispatchMessage(MSG& msg)
+   bei System.Windows.Threading.Dispatcher.PushFrameImpl(DispatcherFrame frame)
+   bei System.Windows.Threading.Dispatcher.PushFrame(DispatcherFrame frame)
+   bei System.Windows.Window.ShowHelper(Object booleanBox)
+   bei System.Windows.Window.Show()
+   bei System.Windows.Window.ShowDialog()
+   bei Ufo.Commander.Views.MainWindow..ctor() in E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander\Views\MainWindow.xaml.cs:Zeile 39.
+   --- Ende der internen Ausnahmestapelüberwachung ---
+   bei System.Windows.Markup.WpfXamlLoader.Load(XamlReader xamlReader, IXamlObjectWriterFactory writerFactory, Boolean skipJournaledProperties, Object rootObject, XamlObjectWriterSettings settings, Uri baseUri)
+   bei System.Windows.Markup.WpfXamlLoader.LoadBaml(XamlReader xamlReader, Boolean skipJournaledProperties, Object rootObject, XamlAccessLevel accessLevel, Uri baseUri)
+   bei System.Windows.Markup.XamlReader.LoadBaml(Stream stream, ParserContext parserContext, Object parent, Boolean closeStream)
+   bei System.Windows.Application.LoadBamlStreamWithSyncInfo(Stream stream, ParserContext pc)
+   bei System.Windows.Application.LoadComponent(Uri resourceLocator, Boolean bSkipJournaledProperties)
+   bei System.Windows.Application.DoStartup()
+   bei System.Windows.Application.<_ctor>b__0(Object unused)
+   bei System.Windows.Threading.ExceptionWrapper.InternalRealCall(Delegate callback, Object args, Int32 numArgs)
+   bei System.Windows.Threading.ExceptionWrapper.TryCatchWhen(Object source, Delegate callback, Object args, Int32 numArgs, Delegate catchHandler)
+2016-01-06 18:50:53.1610 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-06 18:55:23.4454 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-06 18:55:43.6766 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-06 18:56:00.6475 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-06 18:56:21.1067 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-06 18:58:18.6674 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-06 18:58:37.5305 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-06 18:59:31.4766 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-06 18:59:54.3119 |                INFO |                Start application |                Ufo.Commander.App 

@@ -9,6 +9,7 @@ using System.Windows;
 using System.Windows.Threading;
 using Ufo.BL;
 using Ufo.Commander.ViewModel;
+using Ufo.Commander.ViewModel.Basic;
 using Ufo.Commander.Views;
 
 namespace Ufo.Commander
@@ -25,6 +26,7 @@ namespace Ufo.Commander
             logger.Info("Start application");
             DispatcherUnhandledException += App_DispatscheUnhandledExceptions;
         }
+
 
         private void App_DispatscheUnhandledExceptions(object sender, DispatcherUnhandledExceptionEventArgs e)
         {

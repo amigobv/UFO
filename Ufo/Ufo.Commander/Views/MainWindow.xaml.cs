@@ -30,47 +30,44 @@ namespace Ufo.Commander.Views
             MainViewModel vm = new MainViewModel(BLFactory.GetManager());
             vm.LoadDataAsync();
 
-            if (Boolean.Parse(ConfigurationManager.AppSettings["Login"]))
-            {
-                var login = new UserLoginView();
-                var loginVm = new UserLoginViewModel(BLFactory.GetManager());
-
-                login.DataContext = loginVm;
-                login.ShowDialog();
-                login.Close();
-
-                 // If login window didn't return true (login failed), exit application
-                 if (!login.DialogResult.GetValueOrDefault())
-                 {
-                    Environment.Exit(0);
-                 }
-            }
-
             InitializeComponent();
             DataContext = vm;
         }
 
-        private void GotFocus(object sender, RoutedEventArgs e)
+        private void SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //TabItem tabItem = sender as TabItem;
-            //if (tabItem == null)
-            //    return;
+            var tab = sender as TabControl;
+            if (tab == null)
+                return;
 
-            //var schedule = tabItem.Content as ScheduleControl;
+            var tabItem = tab.SelectedItem as TabItem;
 
-            //if (schedule == null)
-            //    return;
+            if (tabItem == null)
+                return;
 
-            //var vm = this.DataContext as MainViewModel;
+            if (tabItem.Header.Equals("Schedule"))
+            {
+                var content = tabItem.Content as ScheduleControl;
 
-            //if (vm == null)
-            //    return;
+                if (content == null)
+                    return;
 
-            //if (tabItem.Header.Equals("Schedule"))
-            //{  
-            //    //Call ICommand to refresh presenter
-            //    vm.Schedule.RefreshCommand.Execute(null);
-            //}
+                var vm = content.DataContext as ScheduleViewModel;
+
+                if (vm == null)
+                    return;
+
+                if (content.DayOne.IsSelected)
+                {
+                    vm.LoadScheduleForDayOne();
+                } else if (content.DayTwo.IsSelected)
+                {
+                    vm.LoadScheduleForDayTwo();
+                } else if (content.DayThree.IsSelected)
+                {
+                    vm.LoadScheduleForDayThree();
+                }
+            }
         }
     }
 }

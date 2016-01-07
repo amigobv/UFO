@@ -27,13 +27,6 @@ namespace Ufo.Commander.ViewModel.Basic
             scheduleSecondDay = new ObservableCollection<PerformanceSchedulerViewModel>();
             scheduleThirdDay = new ObservableCollection<PerformanceSchedulerViewModel>();
             ShareCommand = new RelayCommand(o => manager.NotifiyAllArtists());
-            RefreshCommand = new RelayCommand(o =>
-                {
-                    LoadScheduleForDayOne();
-                    LoadScheduleForDayTwo();
-                    LoadScheduleForDayTwo();
-                });
-
         }
         #endregion
 
@@ -87,18 +80,9 @@ namespace Ufo.Commander.ViewModel.Basic
         }
 
         public ICommand ShareCommand { get; set; }
-        public ICommand RefreshCommand { get; set; }
         #endregion
 
-        public void LoadSchedule()
-        {
-            LoadScheduleForDayOne();
-            LoadScheduleForDayTwo();
-            LoadScheduleForDayThree();
-        }
-
-        #region private methods
-        private void LoadScheduleForDayOne()
+        public void LoadScheduleForDayOne()
         {
             scheduleFirstDay.Clear();
             var locations = manager.GetAllLocations();
@@ -111,7 +95,7 @@ namespace Ufo.Commander.ViewModel.Basic
             ScheduleFirstDay = scheduleFirstDay;
         }
 
-        private void LoadScheduleForDayTwo()
+        public void LoadScheduleForDayTwo()
         {
             scheduleSecondDay.Clear();
             var locations = manager.GetAllLocations();
@@ -124,7 +108,7 @@ namespace Ufo.Commander.ViewModel.Basic
             ScheduleSecondDay = scheduleSecondDay;
         }
 
-        private void LoadScheduleForDayThree()
+        public void LoadScheduleForDayThree()
         {
             scheduleThirdDay.Clear();
             var locations = manager.GetAllLocations();
@@ -136,6 +120,5 @@ namespace Ufo.Commander.ViewModel.Basic
 
             ScheduleThirdDay = scheduleThirdDay;
         }
-        #endregion
     }
 }

@@ -1,0 +1,52 @@
+2016-01-06 19:05:59.0488 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-06 19:08:04.9990 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-06 19:11:19.7951 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-06 19:38:03.1538 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-06 19:43:33.7617 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-06 19:44:51.4362 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-06 19:48:37.8091 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-06 19:50:30.3546 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-06 19:51:58.7756 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-06 19:53:09.0186 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-06 19:53:52.1781 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-06 19:54:06.3119 |                FATAL |                Unhandler exception thrown! |                Ufo.Commander.App 
+System.Windows.Markup.XamlParseException: Zeilennummer "8" und Zeilenposition "9" von "Durch den Aufruf des Konstruktors für Typ "Ufo.Commander.Views.MainWindow", der den angegebenen Bindungseinschränkungen entspricht, wurde eine Ausnahme ausgelöst.". ---> System.AccessViolationException: Es wurde versucht, im geschützten Speicher zu lesen oder zu schreiben. Dies ist häufig ein Hinweis darauf, dass anderer Speicher beschädigt ist.
+   bei MS.Win32.UnsafeNativeMethods.DispatchMessage(MSG& msg)
+   bei System.Windows.Threading.Dispatcher.PushFrameImpl(DispatcherFrame frame)
+   bei System.Windows.Threading.Dispatcher.PushFrame(DispatcherFrame frame)
+   bei System.Windows.Window.ShowHelper(Object booleanBox)
+   bei System.Windows.Window.Show()
+   bei System.Windows.Window.ShowDialog()
+   bei Ufo.Commander.Views.MainWindow..ctor() in E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander\Views\MainWindow.xaml.cs:Zeile 39.
+   --- Ende der internen Ausnahmestapelüberwachung ---
+   bei System.Windows.Markup.WpfXamlLoader.Load(XamlReader xamlReader, IXamlObjectWriterFactory writerFactory, Boolean skipJournaledProperties, Object rootObject, XamlObjectWriterSettings settings, Uri baseUri)
+   bei System.Windows.Markup.WpfXamlLoader.LoadBaml(XamlReader xamlReader, Boolean skipJournaledProperties, Object rootObject, XamlAccessLevel accessLevel, Uri baseUri)
+   bei System.Windows.Markup.XamlReader.LoadBaml(Stream stream, ParserContext parserContext, Object parent, Boolean closeStream)
+   bei System.Windows.Application.LoadBamlStreamWithSyncInfo(Stream stream, ParserContext pc)
+   bei System.Windows.Application.LoadComponent(Uri resourceLocator, Boolean bSkipJournaledProperties)
+   bei System.Windows.Application.DoStartup()
+   bei System.Windows.Application.<_ctor>b__0(Object unused)
+   bei System.Windows.Threading.ExceptionWrapper.InternalRealCall(Delegate callback, Object args, Int32 numArgs)
+   bei System.Windows.Threading.ExceptionWrapper.TryCatchWhen(Object source, Delegate callback, Object args, Int32 numArgs, Delegate catchHandler)
+2016-01-06 19:54:17.5166 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-06 19:54:41.1369 |                FATAL |                Unhandler exception thrown! |                Ufo.Commander.App 
+System.Windows.Markup.XamlParseException: Zeilennummer "8" und Zeilenposition "9" von "Durch den Aufruf des Konstruktors für Typ "Ufo.Commander.Views.MainWindow", der den angegebenen Bindungseinschränkungen entspricht, wurde eine Ausnahme ausgelöst.". ---> System.AccessViolationException: Es wurde versucht, im geschützten Speicher zu lesen oder zu schreiben. Dies ist häufig ein Hinweis darauf, dass anderer Speicher beschädigt ist.
+   bei MS.Win32.UnsafeNativeMethods.DispatchMessage(MSG& msg)
+   bei System.Windows.Threading.Dispatcher.PushFrameImpl(DispatcherFrame frame)
+   bei System.Windows.Threading.Dispatcher.PushFrame(DispatcherFrame frame)
+   bei System.Windows.Window.ShowHelper(Object booleanBox)
+   bei System.Windows.Window.Show()
+   bei System.Windows.Window.ShowDialog()
+   bei Ufo.Commander.Views.MainWindow..ctor() in E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander\Views\MainWindow.xaml.cs:Zeile 39.
+   --- Ende der internen Ausnahmestapelüberwachung ---
+   bei System.Windows.Markup.WpfXamlLoader.Load(XamlReader xamlReader, IXamlObjectWriterFactory writerFactory, Boolean skipJournaledProperties, Object rootObject, XamlObjectWriterSettings settings, Uri baseUri)
+   bei System.Windows.Markup.WpfXamlLoader.LoadBaml(XamlReader xamlReader, Boolean skipJournaledProperties, Object rootObject, XamlAccessLevel accessLevel, Uri baseUri)
+   bei System.Windows.Markup.XamlReader.LoadBaml(Stream stream, ParserContext parserContext, Object parent, Boolean closeStream)
+   bei System.Windows.Application.LoadBamlStreamWithSyncInfo(Stream stream, ParserContext pc)
+   bei System.Windows.Application.LoadComponent(Uri resourceLocator, Boolean bSkipJournaledProperties)
+   bei System.Windows.Application.DoStartup()
+   bei System.Windows.Application.<_ctor>b__0(Object unused)
+   bei System.Windows.Threading.ExceptionWrapper.InternalRealCall(Delegate callback, Object args, Int32 numArgs)
+   bei System.Windows.Threading.ExceptionWrapper.TryCatchWhen(Object source, Delegate callback, Object args, Int32 numArgs, Delegate catchHandler)
+2016-01-06 19:55:01.4281 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-06 19:55:46.0426 |                INFO |                Start application |                Ufo.Commander.App 

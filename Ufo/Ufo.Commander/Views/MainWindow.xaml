@@ -11,7 +11,10 @@
         WindowState="Maximized">
 
     <Grid>
-        <TabControl TabStripPlacement="Top" Margin="10" BorderBrush="Gainsboro" >
+        <TabControl TabStripPlacement="Top"
+                    Margin="10"
+                    BorderBrush="Gainsboro"
+                    SelectionChanged="SelectionChanged">
             <TabControl.Resources>
                 <Style TargetType="TabItem">
                     <Setter Property="Template">
@@ -37,8 +40,7 @@
                     </Setter>
                 </Style>
             </TabControl.Resources>
-            <TabItem Header="{x:Static resx:Resources.ScheduleText}"
-                     GotFocus="GotFocus">
+            <TabItem Header="{x:Static resx:Resources.ScheduleText}">
                 <ctrl:ScheduleControl DataContext="{Binding Schedule}" />   
             </TabItem>
             <TabItem Header="{x:Static resx:Resources.ArtistsText}">

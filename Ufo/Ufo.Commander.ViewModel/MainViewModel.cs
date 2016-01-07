@@ -102,11 +102,10 @@ namespace Ufo.Commander.ViewModel
         {
             return Task.Run(() =>
             {
-                locationVm.LoadLocations();
                 categoryVm.LoadCategories();
+                locationVm.LoadLocations();
                 venueVm.LoadVenues();
                 artistVm.LoadArtists();
-                scheduleVm.LoadSchedule();
             });
         }
     }

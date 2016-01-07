@@ -29,7 +29,6 @@ namespace Ufo.Commander.Views
             var vm = ViewModel;
             if (vm == null)
             {
-                //TODO log
                 return;
             }
 
@@ -44,28 +43,31 @@ namespace Ufo.Commander.Views
 
                     if (ViewModel.IsLoginSuccessful)
                     {
-                        DialogResult = true;
+                        var main = new MainWindow();
+                        this.Close();
+                        main.Show();
                     }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
-                    DialogResult = false;
                 }
             }
         }
 
-        public void Register(object sender, RoutedEventArgs e)
-        {
-            var registerWindow = new UserRegistrationView();
-            registerWindow.ShowDialog();
+        //public void Register(object sender, RoutedEventArgs e)
+        //{
+        //    var registerWindow = new UserRegistrationView();
+        //    registerWindow.ShowDialog();
 
-            DialogResult = registerWindow.DialogResult.GetValueOrDefault();
-        }
+        //    var main = new MainWindow();
+        //    this.Close();
+        //    main.Show();
+        //}
 
         private void Exit(object sender, RoutedEventArgs e)
         {
-            DialogResult = false;
+            Environment.Exit(-1);
         }
     }
 }

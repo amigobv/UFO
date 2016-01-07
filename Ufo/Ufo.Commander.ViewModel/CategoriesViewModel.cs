@@ -70,7 +70,8 @@ namespace Ufo.Commander.ViewModel
 
             foreach(var category in categoriesList)
             {
-                categories.Add(new CategoryViewModel(category, manager));
+                var categ = new CategoryViewModel(category, manager);
+                categories.Add(categ);
             }
 
             Categories = categories;
