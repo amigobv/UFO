@@ -11,37 +11,44 @@
 		<div class="days">
 			<div class="day">
 				<h:form>
-					<p:commandLink type="submit" value="Tag 1" action="#{service.getPerformancesByDay}" ajax="false" styleClass="day-content" >
-						<f:param name="day" value="2016-07-21" />
-					</p:commandLink>
-				</h:form>
-			</div>
-			
-			<div class="day">
-				<h:form>
-					<p:commandLink type="submit" value="Tag 2" action="#{service.getPerformancesByDay}" ajax="false" styleClass="day-content" >
+					<p:commandLink type="submit" value="Tag 1"
+						action="#{service.getPerformancesByDay}" ajax="false"
+						styleClass="day-content">
 						<f:param name="day" value="2016-07-22" />
 					</p:commandLink>
 				</h:form>
 			</div>
-			
+
 			<div class="day">
 				<h:form>
-					<p:commandLink type="submit" value="Tag 3" action="#{service.getPerformancesByDay}" ajax="false" styleClass="day-content" >
+					<p:commandLink type="submit" value="Tag 2"
+						action="#{service.getPerformancesByDay}" ajax="false"
+						styleClass="day-content">
 						<f:param name="day" value="2016-07-23" />
 					</p:commandLink>
 				</h:form>
 			</div>
+
+			<div class="day">
+				<h:form>
+					<p:commandLink type="submit" value="Tag 3"
+						action="#{service.getPerformancesByDay}" ajax="false"
+						styleClass="day-content">
+						<f:param name="day" value="2016-07-24" />
+					</p:commandLink>
+				</h:form>
+			</div>
 		</div>
-	    
-	    <div class="teaser wrap">
-			<ui:repeat var="performance" value="#{performancesByDayDataTable.performances}">
+
+		<div class="teaser wrap">
+			<ui:repeat var="performance"
+				value="#{performancesByDayDataTable.performances}">
 				<div class="teaserContainer">
 					<div class="content">
 						<div class="front">
 							<h:outputText value="#{performance.start}" />
 							<h:outputText value="#{performance.artist.name}" />
-							<h:outputText value="#{performance.venue.name}" />
+							<h:outputText value="#{performance.venue.label}" />
 						</div>
 					</div>
 				</div>

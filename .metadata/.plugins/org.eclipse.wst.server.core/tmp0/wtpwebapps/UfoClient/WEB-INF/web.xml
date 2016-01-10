@@ -32,10 +32,10 @@
   </listener>
   <context-param>
   	<param-name>UFO_DELEGATE</param-name>
-  	<param-value>ufo.client.warehouse.DummyUfoDelegate</param-value>
+  	<param-value>ufo.client.warehouse.ServiceUfoDelegate</param-value>
   </context-param>
   <context-param>
   	<param-name>SERVICE_URL</param-name>
-  	<param-value>https://demo.nexperts.com/MOC5/AmazingRaceService/AmazingRaceService.svc</param-value>
+  	<param-value>http://localhost:5000/UfoService.asmx</param-value>
   </context-param>
 </web-app>

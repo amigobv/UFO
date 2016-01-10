@@ -6,9 +6,6 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
-import ufo.client.warehouse.DummyUfoDelegate;
-import ufo.client.warehouse.UfoDelegate;
-
 @ManagedBean
 @SessionScoped
 public class UserBean {
@@ -41,16 +38,17 @@ public class UserBean {
     }
 	
 	public String checkLogin() {
-		UfoDelegate ufoWebService = new DummyUfoDelegate();
-		
-		if (ufoWebService.userExists(username, password)) {
-			FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-			return "success";
-		} else {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, 
-																				"Incorrect Username or Password!", 
-																				"Please enter correct username and Password!"));
-			return "failed";
-		}
+		return "success";
+//		UfoDelegate ufoWebService = new DummyUfoDelegate();
+//		
+//		if (ufoWebService.userExists(username, password)) {
+//			FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+//			return "success";
+//		} else {
+//			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, 
+//																				"Incorrect Username or Password!", 
+//																				"Please enter correct username and Password!"));
+//			return "failed";
+//		}
 	}
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src"/>
+	<classpathentry excluding="ufo/client/warehouse/DummyUfoDelegate.java|ufo/client/warehouse/Venue.java|ufo/client/warehouse/UfoDelegate.java|ufo/client/warehouse/User.java|ufo/client/warehouse/Performance.java|ufo/client/warehouse/Location.java|ufo/client/warehouse/Category.java|ufo/client/warehouse/Artist.java|ufo/client/ServiceLocator.java" kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre1.8.0_65">
 		<attributes>
 			<attribute name="owner.project.facets" value="java"/>

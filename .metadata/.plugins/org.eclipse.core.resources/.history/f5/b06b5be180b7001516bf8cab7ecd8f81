@@ -1,0 +1,9 @@
+eclipse.preferences.version=1
+encoding//src/at/ufo2016/Artist.java=UTF-8
+encoding//src/at/ufo2016/Category.java=UTF-8
+encoding//src/at/ufo2016/Location.java=UTF-8
+encoding//src/at/ufo2016/Performance.java=UTF-8
+encoding//src/at/ufo2016/UfoService.java=UTF-8
+encoding//src/at/ufo2016/UfoServiceSoap.java=UTF-8
+encoding//src/at/ufo2016/UfoServiceSoapStub.java=UTF-8
+encoding//src/at/ufo2016/Venue.java=UTF-8

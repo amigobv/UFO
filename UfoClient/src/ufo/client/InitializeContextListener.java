@@ -4,6 +4,8 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
+import at.ufo2016.UfoServiceLocator;
+
 public class InitializeContextListener implements ServletContextListener {
 
 	@Override
@@ -19,7 +21,7 @@ public class InitializeContextListener implements ServletContextListener {
 		String url = servletContext.getInitParameter("SERVICE_URL");
 		String delegateClass = servletContext.getInitParameter("UFO_DELEGATE");
 		
-		ServiceLocator.getInstance().init(url, delegateClass);
+		UfoServiceLocator.getInstance().init(url, delegateClass);
 	}
 	
 }

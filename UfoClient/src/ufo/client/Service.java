@@ -3,6 +3,7 @@ package ufo.client;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
@@ -11,14 +12,15 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+import at.ufo2016.Artist;
+import at.ufo2016.Performance;
+import at.ufo2016.UfoServiceLocator;
+import at.ufo2016.UfoServiceSoap;
+import at.ufo2016.Venue;
 import ufo.client.util.ArtistsDataTable;
 import ufo.client.util.FacesUtil;
 import ufo.client.util.PerformancesDataTable;
 import ufo.client.util.VenuesDataTable;
-import ufo.client.warehouse.Artist;
-import ufo.client.warehouse.Performance;
-import ufo.client.warehouse.UfoDelegate;
-import ufo.client.warehouse.Venue;
 
 @ManagedBean
 @SessionScoped
@@ -30,8 +32,8 @@ public class Service {
 			ArtistsDataTable artistsDataTable = (ArtistsDataTable)FacesUtil.getSessionVariable("allArtistsDataTable");
 			
 			if (artistsDataTable.getArtists().getRowCount() == 0) {
-				UfoDelegate ufo = ServiceLocator.getInstance().getUfoDelegate();
-				List<Artist> artists = ufo.getAllArtists();
+				UfoServiceSoap ufo = UfoServiceLocator.getInstance().getUfoDelegate();
+				List<Artist> artists = Arrays.asList(ufo.getAllArtists());
 				artistsDataTable.setArtists(artists);
 			}
 			
@@ -46,8 +48,8 @@ public class Service {
 			VenuesDataTable venuesDataTable = (VenuesDataTable)FacesUtil.getSessionVariable("allVenuesDataTable");
 			
 			if (venuesDataTable.getVenues().getRowCount() == 0) {
-				UfoDelegate ufo = ServiceLocator.getInstance().getUfoDelegate();
-				List<Venue> venues = ufo.getAllVenues();
+				UfoServiceSoap ufo = UfoServiceLocator.getInstance().getUfoDelegate();
+				List<Venue> venues = Arrays.asList(ufo.getAllVenues());
 				venuesDataTable.setArtists(venues);
 			}
 			
@@ -62,8 +64,8 @@ public class Service {
 			PerformancesDataTable performancesDataTable = (PerformancesDataTable)FacesUtil.getSessionVariable("allPerformancesDataTable");
 			
 			if (performancesDataTable.getPerformances().getRowCount() == 0) {
-				UfoDelegate ufo = ServiceLocator.getInstance().getUfoDelegate();
-				List<Performance> performances = ufo.getAllPerformances();
+				UfoServiceSoap ufo = UfoServiceLocator.getInstance().getUfoDelegate();
+				List<Performance> performances = Arrays.asList(ufo.getAllPerformances());
 				performancesDataTable.setPerformances(performances);
 			}
 			
@@ -82,9 +84,11 @@ public class Service {
 			PerformancesDataTable performancesDataTable = (PerformancesDataTable)FacesUtil.getSessionVariable("performancesByDayDataTable");
 			
 			//if (performancesDataTable.getPerformances().getRowCount() == 0) {
-				UfoDelegate ufo = ServiceLocator.getInstance().getUfoDelegate();
-				LocalDate date= LocalDate.parse(day);
-				List<Performance> performances = ufo.getPerformanceByDay(date);
+				UfoServiceSoap ufo = UfoServiceLocator.getInstance().getUfoDelegate();
+				DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+				LocalDate date= LocalDate.parse(day, fmt);
+				logger.info(date.toString());
+				List<Performance> performances = Arrays.asList(ufo.getPerformancesByDay(date.toString()));
 				performancesDataTable.setPerformances(performances);
 			//}
 			

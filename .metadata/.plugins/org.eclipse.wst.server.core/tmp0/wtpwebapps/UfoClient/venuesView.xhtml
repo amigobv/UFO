@@ -7,16 +7,14 @@
 	    List with all venues.
 	</ui:define>
 	<ui:define name="content">
-		<h3>Venues Overview</h3>
-	    
 	   	<div class="teaser wrap">
 			<ui:repeat var="venue" value="#{allVenuesDataTable.venues}">
 				<div class="teaserContainer">
 					<div class="content">
 						<div class="front">
-							<h:outputText value="#{venue.name}" />
-							<h:outputText value="#{venue.location.name}" />
-							<h:outputText value="#{venue.capacity}" />
+							<h:outputText value="#{venue.label}" />
+							<h:outputText value="#{venue.location.label}" />
+							<h:outputText value="#{venue.maxSpectators}" />
 						</div>
 					</div>
 				</div>

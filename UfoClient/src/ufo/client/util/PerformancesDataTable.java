@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 
-import ufo.client.warehouse.Performance;
+import at.ufo2016.Performance;
 
 public class PerformancesDataTable {
 	private static Logger logger = Logger.getAnonymousLogger();

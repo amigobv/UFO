@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 
-import ufo.client.warehouse.Venue;
+import at.ufo2016.Venue;
 
 public class VenuesDataTable {
 	private static Logger logger = Logger.getAnonymousLogger();
