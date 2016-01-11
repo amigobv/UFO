@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14512375799550" configfile="/UfoClient/WebContent/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="index.xhtml" x="492" y="24" id="pf14512394985621" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf14512394985622 pf14512550159120" path="/index.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="artistsView.xhtml" x="96" y="180" id="pf14512394985623" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf14512394985622" path="/artistsView.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="venuesView.xhtml" x="315" y="225" id="pf14512550159121" inlinks="pf14512550159120" path="/venuesView.xhtml"/>
-  <links id="pf14512394985622" target="pf14512394985623" source="pf14512394985621" outcome="BrowseAllArtistsEvent"/>
-  <links id="pf14512550159120" target="pf14512550159121" source="pf14512394985621" outcome="BrowseAllVenuesEvent"/>
-</pageflow:Pageflow>

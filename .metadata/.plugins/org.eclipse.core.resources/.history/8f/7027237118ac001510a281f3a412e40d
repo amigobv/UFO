@@ -1,7 +1,0 @@
-package ufo.client.warehouse;
-
-import java.util.List;
-
-public interface UfoDelegate {
-	public List<Artist> getAllArtists();
-}

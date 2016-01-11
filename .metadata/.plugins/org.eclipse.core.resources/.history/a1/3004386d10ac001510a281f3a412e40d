@@ -1,5 +1,0 @@
-package ufo.client;
-
-public class InitializeContextListener {
-
-}
