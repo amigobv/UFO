@@ -18,48 +18,48 @@ namespace Ufo.DAL.SqlServer.Dao
             @"SELECT p.idPerformance, p.start, a.idArtist, a.name, a.country, a.email, a.description, a.homepage, a.picture, a.video, " +
             @"c.idCategory, c.label, a.deleted, v.idVenue, v.label, v.maxSpectators, l.idLocation, l.label, v.latitude, v.longitude " +
             @"FROM Performance as p, Artist as a, Venue as v, Location as l, Category as c " +
-            @"WHERE p.artist = a.idArtist AND a.category = c.idCategory AND p.pVenue = v.idVenue AND p.pLocation = v.location AND p.pLocation = l.idLocation AND p.idPerformance = @id";
+            @"WHERE p.artist = a.idArtist AND a.category = c.idCategory AND p.pVenue = v.idVenue AND p.pLocation = v.location AND p.pLocation = l.idLocation AND p.idPerformance = @id AND a.deleted = 'FALSE' ";
 
         private const string SQL_FIND_BY_ARTIST =
             @"SELECT p.idPerformance, p.start, a.idArtist, a.name, a.country, a.email, a.description, a.homepage, a.picture, a.video, " +
             @"c.idCategory, c.label, a.deleted, v.idVenue, v.label, v.maxSpectators, l.idLocation, l.label, v.latitude, v.longitude " +
             @"FROM Performance as p, Artist as a, Venue as v, Location as l, Category as c " +
-            @"WHERE p.artist = a.idArtist AND a.category = c.idCategory AND p.pVenue = v.idVenue AND p.pLocation = l.idLocation AND p.pLocation = v.location AND a.name LIKE @artist " +
+            @"WHERE p.artist = a.idArtist AND a.category = c.idCategory AND p.pVenue = v.idVenue AND p.pLocation = l.idLocation AND p.pLocation = v.location AND a.name LIKE @artist AND a.deleted = 'FALSE' " +
             @"ORDER BY p.start ASC";
 
         private const string SQL_FIND_BY_ARTIST_ID =
             @"SELECT p.idPerformance, p.start, a.idArtist, a.name, a.country, a.email, a.description, a.homepage, a.picture, a.video, " +
             @"c.idCategory, c.label, a.deleted, v.idVenue, v.label, v.maxSpectators, l.idLocation, l.label, v.latitude, v.longitude " +
             @"FROM Performance as p, Artist as a, Venue as v, Location as l, Category as c " +
-            @"WHERE p.artist = a.idArtist AND a.category = c.idCategory AND p.pVenue = v.idVenue AND p.pLocation = l.idLocation AND p.pLocation = v.location AND p.artist = @artist " +
+            @"WHERE p.artist = a.idArtist AND a.category = c.idCategory AND p.pVenue = v.idVenue AND p.pLocation = l.idLocation AND p.pLocation = v.location AND p.artist = @artist AND a.deleted = 'FALSE' " +
             @"ORDER BY p.start ASC";
 
         private const string SQL_FIND_BY_VENUE =
             @"SELECT p.idPerformance, p.start, a.idArtist, a.name, a.country, a.email, a.description, a.homepage, a.picture, a.video, " +
             @"c.idCategory, c.label, a.deleted, v.idVenue, v.label, v.maxSpectators, l.idLocation, l.label, v.latitude, v.longitude " +
             @"FROM Performance as p, Artist as a, Venue as v, Location as l, Category as c " +
-            @"WHERE p.artist = a.idArtist AND a.category = c.idCategory AND p.pVenue = v.idVenue AND p.pLocation = v.location AND p.pLocation = l.idLocation AND v.label = @venue " +
+            @"WHERE p.artist = a.idArtist AND a.category = c.idCategory AND p.pVenue = v.idVenue AND p.pLocation = v.location AND p.pLocation = l.idLocation AND v.label = @venue AND a.deleted = 'FALSE' " +
             @"ORDER BY p.start ASC";
 
         private const string SQL_FIND_BY_BETWEEN =
             @"SELECT p.idPerformance, p.start, a.idArtist, a.name, a.country, a.email, a.description, a.homepage, a.picture, a.video, " +
             @"c.idCategory, c.label, a.deleted, v.idVenue, v.label, v.maxSpectators, l.idLocation, l.label, v.latitude, v.longitude " +
             @"FROM Performance as p, Artist as a, Venue as v, Location as l, Category as c " +
-            @"WHERE p.artist = a.idArtist AND a.category = c.idCategory AND p.pVenue = v.idVenue AND p.pLocation = l.idLocation AND p.pLocation = v.location AND p.start BETWEEN @start AND @end " +
+            @"WHERE p.artist = a.idArtist AND a.category = c.idCategory AND p.pVenue = v.idVenue AND p.pLocation = l.idLocation AND p.pLocation = v.location AND p.start BETWEEN @start AND @end AND a.deleted = 'FALSE' " +
             @"ORDER BY p.start ASC";
 
         private const string SQL_FIND_BY_VENUE_AND_DATE =
             @"SELECT p.idPerformance, p.start, a.idArtist, a.name, a.country, a.email, a.description, a.homepage, a.picture, a.video, " +
             @"c.idCategory, c.label, a.deleted, v.idVenue, v.label, v.maxSpectators, l.idLocation, l.label, v.latitude, v.longitude "+ 
             @"FROM Performance as p, Artist as a, Venue as v, Location as l, Category as c " +
-            @"WHERE p.artist = a.idArtist AND a.category = c.idCategory AND p.pVenue = v.idVenue AND p.pLocation = v.location AND p.pLocation = l.idLocation AND v.label = @venue AND p.start BETWEEN @start AND @end " +
+            @"WHERE p.artist = a.idArtist AND a.category = c.idCategory AND p.pVenue = v.idVenue AND p.pLocation = v.location AND p.pLocation = l.idLocation AND v.label = @venue AND p.start BETWEEN @start AND @end AND a.deleted = 'FALSE' " +
             @"ORDER BY p.start ASC";
 
         private const string SQL_FIND_ALL =
             @"SELECT p.idPerformance, p.start, a.idArtist, a.name, a.country, a.email, a.description, a.homepage, a.picture, a.video, " +
             @"c.idCategory, c.label, a.deleted, v.idVenue, v.label, v.maxSpectators, l.idLocation, l.label, v.latitude, v.longitude " +
             @"FROM Performance as p, Artist as a, Venue as v, Location as l, Category as c " +
-            @"WHERE p.artist = a.idArtist AND a.category = c.idCategory AND p.pVenue = v.idVenue AND p.pLocation = v.location AND p.pLocation = l.idLocation";
+            @"WHERE p.artist = a.idArtist AND a.category = c.idCategory AND p.pVenue = v.idVenue AND p.pLocation = v.location AND p.pLocation = l.idLocation AND a.deleted = 'FALSE' ";
 
         private const string SQL_INSERT =
             @"INSERT INTO Performance " +
@@ -108,27 +108,31 @@ namespace Ufo.DAL.SqlServer.Dao
 
             while (reader.Read())
             {
-                performancies.Add(new Performance((int)reader[0],                   // performance id
-                                                      (DateTime)reader[1],              // performance start
-                                                      new Artist((int)reader[2],        // artist id
-                                                                 (string)reader[3],     // artist name
-                                                                 (string)reader[4],     // artist country
-                                                                 (string)reader[5],     // artist email   
-                                                                 (reader[6] == DBNull.Value) ? string.Empty : (string)reader[6],     // artist description
-                                                                 (reader[7] == DBNull.Value) ? string.Empty : (string)reader[7],     // artist homepage
-                                                                 (reader[8] == DBNull.Value) ? string.Empty : (string)reader[8],     // artist picture 
-                                                                 (reader[9] == DBNull.Value) ? string.Empty : (string)reader[9],     // artist video
-                                                                 new Category((string)reader[10],    // category id
-                                                                              (string)reader[11]),   // category label
-                                                                 (bool)reader[12]),     // artist deleted
-                                                      new Venue((int)reader[13],        // venue id
-                                                                (string)reader[14],     // venue label
-                                                                (int)reader[15],        // venue spectators
-                                                                new Location((string)reader[16],    // location id
-                                                                             (string)reader[17]),    // location label
-                                                                (double)reader[18],     // venue latitude
-                                                                (double)reader[19]      // venue longitude
-                                                      )));
+
+                Performance performance = new Performance((int)reader[0],                   // performance id
+                                                          (DateTime)reader[1],              // performance start
+                                                          new Artist((int)reader[2],        // artist id
+                                                                     (string)reader[3],     // artist name
+                                                                     (string)reader[4],     // artist country
+                                                                     (string)reader[5],     // artist email   
+                                                                     (reader[6] == DBNull.Value) ? string.Empty : (string)reader[6],     // artist description
+                                                                     (reader[7] == DBNull.Value) ? string.Empty : (string)reader[7],     // artist homepage
+                                                                     (reader[8] == DBNull.Value) ? string.Empty : (string)reader[8],     // artist picture 
+                                                                     (reader[9] == DBNull.Value) ? string.Empty : (string)reader[9],     // artist video
+                                                                     new Category((string)reader[10],    // category id
+                                                                                  (string)reader[11]),   // category label
+                                                                     (bool)reader[12]),     // artist deleted
+                                                          new Venue((int)reader[13],        // venue id
+                                                                    (string)reader[14],     // venue label
+                                                                    (int)reader[15],        // venue spectators
+                                                                    new Location((string)reader[16],    // location id
+                                                                                 (string)reader[17]),    // location label
+                                                                    (double)reader[18],     // venue latitude
+                                                                    (double)reader[19]      // venue longitude
+                                                          ));
+
+                if (!performance.Artist.IsDeleted)
+                    performancies.Add(performance);
             }
 
             return performancies;
@@ -202,27 +206,31 @@ namespace Ufo.DAL.SqlServer.Dao
                 if (reader.Read())
                 {
 
-                    return new Performance((int)reader[0],                   // performance id
-                                           (DateTime)reader[1],              // performance start
-                                           new Artist((int)reader[2],        // artist id
-                                                      (string)reader[3],     // artist name
-                                                      (string)reader[4],     // artist country
-                                                      (string)reader[5],     // artist email   
-                                                      (reader[6] == DBNull.Value) ? string.Empty : (string)reader[6],     // artist description
-                                                      (reader[7] == DBNull.Value) ? string.Empty : (string)reader[7],     // artist homepage
-                                                      (reader[8] == DBNull.Value) ? string.Empty : (string)reader[8],     // artist picture 
-                                                      (reader[9] == DBNull.Value) ? string.Empty : (string)reader[9],     // artist video
-                                                      new Category((string)reader[10],    // category id
-                                                                   (string)reader[11]),   // category label
-                                                      (bool)reader[12]),     // artist deleted
-                                                      new Venue((int)reader[13],        // venue id
-                                                                (string)reader[14],     // venue label
-                                                                (int)reader[15],        // venue spectators
-                                                                new Location((string)reader[16],    // location id
-                                                                             (string)reader[17]),    // location label
-                                                                (double)reader[18],     // venue latitude
-                                                                (double)reader[19]      // venue longitude
-                                                      ));
+                    Performance performance = new Performance((int)reader[0],                   // performance id
+                                                               (DateTime)reader[1],              // performance start
+                                                               new Artist((int)reader[2],        // artist id
+                                                                          (string)reader[3],     // artist name
+                                                                          (string)reader[4],     // artist country
+                                                                          (string)reader[5],     // artist email   
+                                                                          (reader[6] == DBNull.Value) ? string.Empty : (string)reader[6],     // artist description
+                                                                          (reader[7] == DBNull.Value) ? string.Empty : (string)reader[7],     // artist homepage
+                                                                          (reader[8] == DBNull.Value) ? string.Empty : (string)reader[8],     // artist picture 
+                                                                          (reader[9] == DBNull.Value) ? string.Empty : (string)reader[9],     // artist video
+                                                                          new Category((string)reader[10],    // category id
+                                                                                       (string)reader[11]),   // category label
+                                                                          (bool)reader[12]),     // artist deleted
+                                                                          new Venue((int)reader[13],        // venue id
+                                                                                    (string)reader[14],     // venue label
+                                                                                    (int)reader[15],        // venue spectators
+                                                                                    new Location((string)reader[16],    // location id
+                                                                                                 (string)reader[17]),    // location label
+                                                                                    (double)reader[18],     // venue latitude
+                                                                                    (double)reader[19]      // venue longitude
+                                                                          ));
+
+                    if (!performance.Artist.IsDeleted)
+                        return performance;
+
                 }
 
                 return null;

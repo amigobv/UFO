@@ -1,0 +1,66 @@
+2016-01-28 21:21:28.7926 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-28 21:21:50.5929 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-28 21:29:23.0729 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-28 21:30:34.9083 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-28 21:31:14.1114 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-28 21:32:05.5525 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-28 21:33:00.1460 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-28 21:34:00.0741 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-28 21:35:59.3003 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-28 21:43:13.0094 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-28 21:46:30.6376 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-28 21:48:12.8287 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-28 21:48:49.6468 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-28 21:49:28.9183 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-28 21:52:58.3520 |                FATAL |                Unhandler exception thrown! |                Ufo.Commander.App 
+System.Data.SqlClient.SqlException (0x80131904): String or binary data would be truncated.
+The statement has been terminated.
+   bei System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   bei System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   bei System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   bei System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   bei System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   bei System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   bei System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   bei System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   bei System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   bei Ufo.DAL.SqlServer.Database.ExecuteNonQuery(DbCommand command)
+   bei Ufo.DAL.SqlServer.Dao.ArtistDao.Update(Artist o)
+   bei Ufo.BL.ManagerImpl.UpdateArtist(Artist artist) in D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.BL\ManagerImpl.cs:Zeile 278.
+   bei Ufo.Commander.ViewModel.Basic.ArtistViewModel.UpdateArtist() in D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander.ViewModel\Basic\ArtistViewModel.cs:Zeile 52.
+   bei Ufo.Commander.ViewModel.Basic.ArtistViewModel.<.ctor>b__9_0(Object o) in D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander.ViewModel\Basic\ArtistViewModel.cs:Zeile 45.
+   bei Ufo.Commander.ViewModel.RelayCommand.Execute(Object parameter) in D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander.ViewModel\RelayCommand.cs:Zeile 34.
+   bei Ufo.Commander.Views.Controls.ArtistsControl.SavePressed(Object sender, RoutedEventArgs e) in D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander\Views\Controls\ArtistsControl.xaml.cs:Zeile 53.
+   bei System.Windows.RoutedEventHandlerInfo.InvokeHandler(Object target, RoutedEventArgs routedEventArgs)
+   bei System.Windows.EventRoute.InvokeHandlersImpl(Object source, RoutedEventArgs args, Boolean reRaised)
+   bei System.Windows.UIElement.RaiseEventImpl(DependencyObject sender, RoutedEventArgs args)
+   bei System.Windows.UIElement.RaiseEvent(RoutedEventArgs e)
+   bei System.Windows.Controls.Primitives.ButtonBase.OnClick()
+   bei System.Windows.Controls.Button.OnClick()
+   bei System.Windows.Controls.Primitives.ButtonBase.OnMouseLeftButtonUp(MouseButtonEventArgs e)
+   bei System.Windows.UIElement.OnMouseLeftButtonUpThunk(Object sender, MouseButtonEventArgs e)
+   bei System.Windows.Input.MouseButtonEventArgs.InvokeEventHandler(Delegate genericHandler, Object genericTarget)
+   bei System.Windows.RoutedEventArgs.InvokeHandler(Delegate handler, Object target)
+   bei System.Windows.RoutedEventHandlerInfo.InvokeHandler(Object target, RoutedEventArgs routedEventArgs)
+   bei System.Windows.EventRoute.InvokeHandlersImpl(Object source, RoutedEventArgs args, Boolean reRaised)
+   bei System.Windows.UIElement.ReRaiseEventAs(DependencyObject sender, RoutedEventArgs args, RoutedEvent newEvent)
+   bei System.Windows.UIElement.OnMouseUpThunk(Object sender, MouseButtonEventArgs e)
+   bei System.Windows.Input.MouseButtonEventArgs.InvokeEventHandler(Delegate genericHandler, Object genericTarget)
+   bei System.Windows.RoutedEventArgs.InvokeHandler(Delegate handler, Object target)
+   bei System.Windows.RoutedEventHandlerInfo.InvokeHandler(Object target, RoutedEventArgs routedEventArgs)
+   bei System.Windows.EventRoute.InvokeHandlersImpl(Object source, RoutedEventArgs args, Boolean reRaised)
+   bei System.Windows.UIElement.RaiseEventImpl(DependencyObject sender, RoutedEventArgs args)
+   bei System.Windows.UIElement.RaiseTrustedEvent(RoutedEventArgs args)
+   bei System.Windows.UIElement.RaiseEvent(RoutedEventArgs args, Boolean trusted)
+   bei System.Windows.Input.InputManager.ProcessStagingArea()
+   bei System.Windows.Input.InputManager.ProcessInput(InputEventArgs input)
+   bei System.Windows.Input.InputProviderSite.ReportInput(InputReport inputReport)
+   bei System.Windows.Interop.HwndMouseInputProvider.ReportInput(IntPtr hwnd, InputMode mode, Int32 timestamp, RawMouseActions actions, Int32 x, Int32 y, Int32 wheel)
+   bei System.Windows.Interop.HwndMouseInputProvider.FilterMessage(IntPtr hwnd, WindowMessage msg, IntPtr wParam, IntPtr lParam, Boolean& handled)
+   bei System.Windows.Interop.HwndSource.InputFilterMessage(IntPtr hwnd, Int32 msg, IntPtr wParam, IntPtr lParam, Boolean& handled)
+   bei MS.Win32.HwndWrapper.WndProc(IntPtr hwnd, Int32 msg, IntPtr wParam, IntPtr lParam, Boolean& handled)
+   bei MS.Win32.HwndSubclass.DispatcherCallbackOperation(Object o)
+   bei System.Windows.Threading.ExceptionWrapper.InternalRealCall(Delegate callback, Object args, Int32 numArgs)
+   bei System.Windows.Threading.ExceptionWrapper.TryCatchWhen(Object source, Delegate callback, Object args, Int32 numArgs, Delegate catchHandler)
+ClientConnectionId:7722eca5-c4f8-4303-ab6a-bc2ce109944a
+Fehlernummer (Error Number):8152,Status (State):13,Klasse (Class):16

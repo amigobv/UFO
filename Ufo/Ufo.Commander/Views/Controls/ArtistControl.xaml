@@ -10,7 +10,7 @@
       xmlns:ctrl="clr-namespace:Ufo.Commander.Views.Controls"
       mc:Ignorable="d" >
 
-    <Grid MinWidth="1200" MinHeight="750" Margin="30, 100">
+    <Grid MinWidth="1200" MinHeight="850" Margin="30, 100">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
@@ -116,7 +116,7 @@
                                     <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
 
-                                <TextBlock Text="Please correct the following errors:"
+                                <TextBlock Text=""
 								           Foreground="Red"
 								           FontWeight="Bold" />
                                 <TextBlock Grid.Row="1"
@@ -270,7 +270,7 @@
 
             <Border x:Name="borderMedia"
 				Width="600"
-				MinHeight="730"
+				MinHeight="625"
 				Background="White"
 				CornerRadius="5"
 				VerticalAlignment="Center"
@@ -302,13 +302,33 @@
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Column="0" Orientation="Vertical">
-                                <TextBlock Text="{Binding Name}" Margin="2"/>
-                                <TextBlock Text="{Binding Country}" Margin="2"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Name:" Margin="2" Width="60"/>
+                                    <TextBlock Text="{Binding Name}" Margin="2"/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Country:" Margin="2"  Width="60"/>
+                                    <TextBlock Text="{Binding Country}" Margin="2"/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Category:" Margin="2"  Width="60"/>
+                                    <TextBlock Text="{Binding CategoryName}" Margin="2"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Homepage:" Margin="2"  Width="60"/>
+                                    <TextBlock Text="{Binding Homepage}" Margin="2"/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Email:" Margin="2"  Width="60"/>
+                                    <TextBlock Text="{Binding Email}" Margin="2"/>
+                                </StackPanel>
+
+
                                 <TextBlock  TextWrapping="Wrap"
                                         Text="{Binding Description}" Margin="2"/>
-                                <TextBlock Text="{Binding CategoryName}" Margin="2"/>
-                                <TextBlock Text="{Binding Homepage}" Margin="2"/>
-                                <TextBlock Text="{Binding Email}" Margin="2"/>
                             </StackPanel>
                             <Image Grid.Column="1" Grid.Row="0" Source="{Binding Picture}" Width="150" Height="100" Margin="3"/>
                         </Grid>

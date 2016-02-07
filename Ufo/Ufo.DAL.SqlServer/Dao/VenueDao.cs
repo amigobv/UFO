@@ -44,7 +44,7 @@ namespace Ufo.DAL.SqlServer.Dao
 
         private const string SQL_UPDATE =
             @"UPDATE Venue " +
-            @"SET label = @label, location = @location, maxSpectators = @maxSpectators, latitude = @latitude, longitude = @longitude" +
+            @"SET label = @label, location = @location, maxSpectators = @maxSpectators, latitude = @latitude, longitude = @longitude " +
             @"WHERE idVenue = @idVenue AND location = @idLocation";
 
         private const string SQL_DELETE = @"DELETE FROM Venue WHERE idVenue = @idVenue AND location = @idLocation";

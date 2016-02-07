@@ -144,7 +144,7 @@
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
 
-                            <TextBlock Text="Please correct the following errors:"
+                            <TextBlock Text=""
 								   Foreground="Red"
 								   FontWeight="Bold" />
                             <TextBlock Grid.Row="1"

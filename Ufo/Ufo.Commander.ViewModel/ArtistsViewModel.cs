@@ -52,8 +52,11 @@ namespace Ufo.Commander.ViewModel
             {
                 if (currentArtist != value)
                 {
-                    currentArtist.NotifyUpdate -= LoadArtists;
-                    currentArtist.NotifyDelete -= LoadArtists;
+                    if (currentArtist != null)
+                    {
+                        currentArtist.NotifyUpdate -= LoadArtists;
+                        currentArtist.NotifyDelete -= LoadArtists;
+                    }
 
                     currentArtist = value;
                     RaisePropertyChangedEvent(nameof(CurrentArtist));

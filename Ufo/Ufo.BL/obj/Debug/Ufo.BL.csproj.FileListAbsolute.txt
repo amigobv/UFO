@@ -12,3 +12,17 @@ E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.BL\bin\De
 E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.BL\obj\Debug\Ufo.BL.csprojResolveAssemblyReference.cache
 E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.BL\obj\Debug\Ufo.BL.dll
 E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.BL\obj\Debug\Ufo.BL.pdb
+D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.BL\bin\Debug\NLog.config
+D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.BL\bin\Debug\Ufo.BL.dll
+D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.BL\bin\Debug\Ufo.BL.pdb
+D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.BL\bin\Debug\NLog.dll
+D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.BL\bin\Debug\Ufo.Commander.Model.dll
+D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.BL\bin\Debug\Ufo.DAL.Common.dll
+D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.BL\bin\Debug\Ufo.Domain.dll
+D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.BL\bin\Debug\Ufo.Commander.Model.pdb
+D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.BL\bin\Debug\Ufo.DAL.Common.pdb
+D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.BL\bin\Debug\Ufo.Domain.pdb
+D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.BL\bin\Debug\NLog.xml
+D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.BL\obj\Debug\Ufo.BL.csprojResolveAssemblyReference.cache
+D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.BL\obj\Debug\Ufo.BL.dll
+D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.BL\obj\Debug\Ufo.BL.pdb

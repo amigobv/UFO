@@ -5,3 +5,11 @@ E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Domain\bi
 E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Domain\bin\Debug\NLog.xml
 E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Domain\obj\Debug\Ufo.Domain.dll
 E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Domain\obj\Debug\Ufo.Domain.pdb
+D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Domain\bin\Debug\NLog.config
+D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Domain\bin\Debug\Ufo.Domain.dll
+D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Domain\bin\Debug\Ufo.Domain.pdb
+D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Domain\bin\Debug\NLog.dll
+D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Domain\bin\Debug\NLog.xml
+D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Domain\obj\Debug\Ufo.Domain.dll
+D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Domain\obj\Debug\Ufo.Domain.pdb
+D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Domain\obj\Debug\Ufo.Domain.csprojResolveAssemblyReference.cache

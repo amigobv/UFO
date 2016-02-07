@@ -18,37 +18,37 @@ namespace Ufo.DAL.SqlServer.Dao
         private const string SQL_FIND_BY_ID =
             @"SELECT a.idArtist, a.name, a.country, a.email, a.description, a.homepage, a.picture, a.video, a.deleted, c.idCategory, c.label " +
             @"FROM Artist as a, Category as c " +
-            @"WHERE a.category = c.idCategory AND a.idArtist = @id";
+            @"WHERE a.category = c.idCategory AND a.idArtist = @id AND a.deleted = 'FALSE' ";
 
         // TODO: check FIND_ALL query
         private const string SQL_FIND_ALL =
             @"SELECT a.idArtist, a.name, a.country, a.email, a.description, a.homepage, a.picture, a.video, c.idCategory, c.label, a.deleted " +
             @"FROM Artist as a, Category as c " +
-            @"WHERE a.category = c.idCategory " +
+            @"WHERE a.category = c.idCategory AND a.deleted = 'FALSE' " +
             @"ORDER BY a.name";
 
         private const string SQL_FIND_BY_NAME =
             @"SELECT a.idArtist, a.name, a.country, a.email, a.description, a.homepage, a.picture, a.video, a.deleted, c.idCategory, c.label " +
             @"FROM Artist as a, Category as c " +
-            @"WHERE a.category = c.idCategory AND a.name LIKE @name " + 
+            @"WHERE a.category = c.idCategory AND a.name LIKE @name AND a.deleted = 'FALSE' " + 
             @"ORDER BY a.name ASC";
 
         private const string SQL_FIND_BY_COUNTRY =
             @"SELECT a.idArtist, a.name, a.country, a.email, a.description, a.homepage, a.picture, a.video, a.deleted, c.idCategory, c.label " +
             @"FROM Artist as a, Category as c " +
-            @"WHERE a.category = c.idCategory AND a.country LIKE @country " +
+            @"WHERE a.category = c.idCategory AND a.country LIKE @country AND a.deleted = 'FALSE' " +
             @"ORDER BY a.name ASC";
 
         private const string SQL_FIND_BY_CATEGORY =
             @"SELECT a.idArtist, a.name, a.country, a.email, a.description, a.homepage, a.picture, a.video, a.deleted, c.idCategory, c.label " +
             @"FROM Artist as a, Category as c " +
-            @"WHERE a.category = c.idCategory AND c.label LIKE @category " +
+            @"WHERE a.category = c.idCategory AND c.label LIKE @category AND a.deleted = 'FALSE' " +
             @"ORDER BY a.name ASC";
 
         private const string SQL_FIND_BY_CATEGORY_ID =
             @"SELECT a.idArtist, a.name, a.country, a.email, a.description, a.homepage, a.picture, a.video, a.deleted, c.idCategory, c.label " +
             @"FROM Artist as a, Category as c " +
-            @"WHERE a.category = c.idCategory AND a.category LIKE @categoryId " +
+            @"WHERE a.category = c.idCategory AND a.category LIKE @categoryId AND a.deleted = 'FALSE'  " +
             @"ORDER BY a.name ASC";
 
         private const string SQL_INSERT =

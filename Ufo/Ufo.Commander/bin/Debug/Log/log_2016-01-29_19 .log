@@ -1,0 +1,174 @@
+2016-01-29 19:04:13.0561 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-29 19:09:02.1742 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-29 19:17:51.2452 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-29 19:27:08.3559 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-29 19:28:13.4195 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-29 19:37:07.8217 |                FATAL |                Unhandler exception thrown! |                Ufo.Commander.App 
+System.Data.SqlClient.SqlException (0x80131904): Violation of UNIQUE KEY constraint 'uniqueVenue'. Cannot insert duplicate key in object 'dbo.Performance'. The duplicate key value is (Jul 22 2016  4:00PM, 1, A).
+The statement has been terminated.
+   bei System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   bei System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   bei System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   bei System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   bei System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   bei System.Data.SqlClient.SqlDataReader.get_MetaData()
+   bei System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   bei System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   bei System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   bei System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   bei System.Data.SqlClient.SqlCommand.ExecuteScalar()
+   bei Ufo.DAL.SqlServer.Database.ExecuteScalar(DbCommand command)
+   bei Ufo.DAL.SqlServer.Dao.PerformanceDao.Insert(Performance o)
+   bei Ufo.BL.ManagerImpl.CreatePerformance(Performance performance) in D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.BL\ManagerImpl.cs:Zeile 449.
+   bei Ufo.BL.ManagerImpl.UpdatePerformance(Performance performance) in D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.BL\ManagerImpl.cs:Zeile 494.
+   bei Ufo.Commander.ViewModel.Basic.PerformanceViewModel.<>c__DisplayClass7_0.<.ctor>b__0(Object o) in D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander.ViewModel\Basic\PerformanceViewModel.cs:Zeile 46.
+   bei Ufo.Commander.ViewModel.RelayCommand.Execute(Object parameter) in D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander.ViewModel\RelayCommand.cs:Zeile 34.
+   bei Ufo.Commander.Views.AddPerformanceView.btnSave_Click(Object sender, RoutedEventArgs e) in D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander\Views\AddPerformanceView.xaml.cs:Zeile 53.
+   bei System.Windows.RoutedEventHandlerInfo.InvokeHandler(Object target, RoutedEventArgs routedEventArgs)
+   bei System.Windows.EventRoute.InvokeHandlersImpl(Object source, RoutedEventArgs args, Boolean reRaised)
+   bei System.Windows.UIElement.RaiseEventImpl(DependencyObject sender, RoutedEventArgs args)
+   bei System.Windows.UIElement.RaiseEvent(RoutedEventArgs e)
+   bei System.Windows.Controls.Primitives.ButtonBase.OnClick()
+   bei System.Windows.Controls.Button.OnClick()
+   bei System.Windows.Controls.Primitives.ButtonBase.OnMouseLeftButtonUp(MouseButtonEventArgs e)
+   bei System.Windows.UIElement.OnMouseLeftButtonUpThunk(Object sender, MouseButtonEventArgs e)
+   bei System.Windows.Input.MouseButtonEventArgs.InvokeEventHandler(Delegate genericHandler, Object genericTarget)
+   bei System.Windows.RoutedEventArgs.InvokeHandler(Delegate handler, Object target)
+   bei System.Windows.RoutedEventHandlerInfo.InvokeHandler(Object target, RoutedEventArgs routedEventArgs)
+   bei System.Windows.EventRoute.InvokeHandlersImpl(Object source, RoutedEventArgs args, Boolean reRaised)
+   bei System.Windows.UIElement.ReRaiseEventAs(DependencyObject sender, RoutedEventArgs args, RoutedEvent newEvent)
+   bei System.Windows.UIElement.OnMouseUpThunk(Object sender, MouseButtonEventArgs e)
+   bei System.Windows.Input.MouseButtonEventArgs.InvokeEventHandler(Delegate genericHandler, Object genericTarget)
+   bei System.Windows.RoutedEventArgs.InvokeHandler(Delegate handler, Object target)
+   bei System.Windows.RoutedEventHandlerInfo.InvokeHandler(Object target, RoutedEventArgs routedEventArgs)
+   bei System.Windows.EventRoute.InvokeHandlersImpl(Object source, RoutedEventArgs args, Boolean reRaised)
+   bei System.Windows.UIElement.RaiseEventImpl(DependencyObject sender, RoutedEventArgs args)
+   bei System.Windows.UIElement.RaiseTrustedEvent(RoutedEventArgs args)
+   bei System.Windows.UIElement.RaiseEvent(RoutedEventArgs args, Boolean trusted)
+   bei System.Windows.Input.InputManager.ProcessStagingArea()
+   bei System.Windows.Input.InputManager.ProcessInput(InputEventArgs input)
+   bei System.Windows.Input.InputProviderSite.ReportInput(InputReport inputReport)
+   bei System.Windows.Interop.HwndMouseInputProvider.ReportInput(IntPtr hwnd, InputMode mode, Int32 timestamp, RawMouseActions actions, Int32 x, Int32 y, Int32 wheel)
+   bei System.Windows.Interop.HwndMouseInputProvider.FilterMessage(IntPtr hwnd, WindowMessage msg, IntPtr wParam, IntPtr lParam, Boolean& handled)
+   bei System.Windows.Interop.HwndSource.InputFilterMessage(IntPtr hwnd, Int32 msg, IntPtr wParam, IntPtr lParam, Boolean& handled)
+   bei MS.Win32.HwndWrapper.WndProc(IntPtr hwnd, Int32 msg, IntPtr wParam, IntPtr lParam, Boolean& handled)
+   bei MS.Win32.HwndSubclass.DispatcherCallbackOperation(Object o)
+   bei System.Windows.Threading.ExceptionWrapper.InternalRealCall(Delegate callback, Object args, Int32 numArgs)
+   bei System.Windows.Threading.ExceptionWrapper.TryCatchWhen(Object source, Delegate callback, Object args, Int32 numArgs, Delegate catchHandler)
+ClientConnectionId:c0b128b0-13c3-4f9c-b629-d39b01fbfede
+Fehlernummer (Error Number):2627,Status (State):1,Klasse (Class):14
+2016-01-29 19:37:50.2887 |                FATAL |                Unhandler exception thrown! |                Ufo.Commander.App 
+System.Data.SqlClient.SqlException (0x80131904): Violation of UNIQUE KEY constraint 'uniqueVenue'. Cannot insert duplicate key in object 'dbo.Performance'. The duplicate key value is (Jul 22 2016  4:00PM, 1, A).
+The statement has been terminated.
+   bei System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   bei System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   bei System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   bei System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   bei System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   bei System.Data.SqlClient.SqlDataReader.get_MetaData()
+   bei System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   bei System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   bei System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   bei System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   bei System.Data.SqlClient.SqlCommand.ExecuteScalar()
+   bei Ufo.DAL.SqlServer.Database.ExecuteScalar(DbCommand command)
+   bei Ufo.DAL.SqlServer.Dao.PerformanceDao.Insert(Performance o)
+   bei Ufo.BL.ManagerImpl.CreatePerformance(Performance performance) in D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.BL\ManagerImpl.cs:Zeile 449.
+   bei Ufo.BL.ManagerImpl.UpdatePerformance(Performance performance) in D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.BL\ManagerImpl.cs:Zeile 494.
+   bei Ufo.Commander.ViewModel.Basic.PerformanceViewModel.<>c__DisplayClass7_0.<.ctor>b__0(Object o) in D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander.ViewModel\Basic\PerformanceViewModel.cs:Zeile 46.
+   bei Ufo.Commander.ViewModel.RelayCommand.Execute(Object parameter) in D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander.ViewModel\RelayCommand.cs:Zeile 34.
+   bei Ufo.Commander.Views.AddPerformanceView.btnSave_Click(Object sender, RoutedEventArgs e) in D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander\Views\AddPerformanceView.xaml.cs:Zeile 53.
+   bei System.Windows.RoutedEventHandlerInfo.InvokeHandler(Object target, RoutedEventArgs routedEventArgs)
+   bei System.Windows.EventRoute.InvokeHandlersImpl(Object source, RoutedEventArgs args, Boolean reRaised)
+   bei System.Windows.UIElement.RaiseEventImpl(DependencyObject sender, RoutedEventArgs args)
+   bei System.Windows.UIElement.RaiseEvent(RoutedEventArgs e)
+   bei System.Windows.Controls.Primitives.ButtonBase.OnClick()
+   bei System.Windows.Controls.Button.OnClick()
+   bei System.Windows.Controls.Primitives.ButtonBase.OnMouseLeftButtonUp(MouseButtonEventArgs e)
+   bei System.Windows.UIElement.OnMouseLeftButtonUpThunk(Object sender, MouseButtonEventArgs e)
+   bei System.Windows.Input.MouseButtonEventArgs.InvokeEventHandler(Delegate genericHandler, Object genericTarget)
+   bei System.Windows.RoutedEventArgs.InvokeHandler(Delegate handler, Object target)
+   bei System.Windows.RoutedEventHandlerInfo.InvokeHandler(Object target, RoutedEventArgs routedEventArgs)
+   bei System.Windows.EventRoute.InvokeHandlersImpl(Object source, RoutedEventArgs args, Boolean reRaised)
+   bei System.Windows.UIElement.ReRaiseEventAs(DependencyObject sender, RoutedEventArgs args, RoutedEvent newEvent)
+   bei System.Windows.UIElement.OnMouseUpThunk(Object sender, MouseButtonEventArgs e)
+   bei System.Windows.Input.MouseButtonEventArgs.InvokeEventHandler(Delegate genericHandler, Object genericTarget)
+   bei System.Windows.RoutedEventArgs.InvokeHandler(Delegate handler, Object target)
+   bei System.Windows.RoutedEventHandlerInfo.InvokeHandler(Object target, RoutedEventArgs routedEventArgs)
+   bei System.Windows.EventRoute.InvokeHandlersImpl(Object source, RoutedEventArgs args, Boolean reRaised)
+   bei System.Windows.UIElement.RaiseEventImpl(DependencyObject sender, RoutedEventArgs args)
+   bei System.Windows.UIElement.RaiseTrustedEvent(RoutedEventArgs args)
+   bei System.Windows.UIElement.RaiseEvent(RoutedEventArgs args, Boolean trusted)
+   bei System.Windows.Input.InputManager.ProcessStagingArea()
+   bei System.Windows.Input.InputManager.ProcessInput(InputEventArgs input)
+   bei System.Windows.Input.InputProviderSite.ReportInput(InputReport inputReport)
+   bei System.Windows.Interop.HwndMouseInputProvider.ReportInput(IntPtr hwnd, InputMode mode, Int32 timestamp, RawMouseActions actions, Int32 x, Int32 y, Int32 wheel)
+   bei System.Windows.Interop.HwndMouseInputProvider.FilterMessage(IntPtr hwnd, WindowMessage msg, IntPtr wParam, IntPtr lParam, Boolean& handled)
+   bei System.Windows.Interop.HwndSource.InputFilterMessage(IntPtr hwnd, Int32 msg, IntPtr wParam, IntPtr lParam, Boolean& handled)
+   bei MS.Win32.HwndWrapper.WndProc(IntPtr hwnd, Int32 msg, IntPtr wParam, IntPtr lParam, Boolean& handled)
+   bei MS.Win32.HwndSubclass.DispatcherCallbackOperation(Object o)
+   bei System.Windows.Threading.ExceptionWrapper.InternalRealCall(Delegate callback, Object args, Int32 numArgs)
+   bei System.Windows.Threading.ExceptionWrapper.TryCatchWhen(Object source, Delegate callback, Object args, Int32 numArgs, Delegate catchHandler)
+ClientConnectionId:c0b128b0-13c3-4f9c-b629-d39b01fbfede
+Fehlernummer (Error Number):2627,Status (State):1,Klasse (Class):14
+2016-01-29 19:38:56.9019 |                FATAL |                Unhandler exception thrown! |                Ufo.Commander.App 
+System.Data.SqlClient.SqlException (0x80131904): Violation of UNIQUE KEY constraint 'uniqueVenue'. Cannot insert duplicate key in object 'dbo.Performance'. The duplicate key value is (Jul 22 2016 10:00PM, 2, A).
+The statement has been terminated.
+   bei System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   bei System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   bei System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   bei System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   bei System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   bei System.Data.SqlClient.SqlDataReader.get_MetaData()
+   bei System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   bei System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   bei System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   bei System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   bei System.Data.SqlClient.SqlCommand.ExecuteScalar()
+   bei Ufo.DAL.SqlServer.Database.ExecuteScalar(DbCommand command)
+   bei Ufo.DAL.SqlServer.Dao.PerformanceDao.Insert(Performance o)
+   bei Ufo.BL.ManagerImpl.CreatePerformance(Performance performance) in D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.BL\ManagerImpl.cs:Zeile 449.
+   bei Ufo.BL.ManagerImpl.UpdatePerformance(Performance performance) in D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.BL\ManagerImpl.cs:Zeile 494.
+   bei Ufo.Commander.ViewModel.Basic.PerformanceViewModel.<>c__DisplayClass7_0.<.ctor>b__0(Object o) in D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander.ViewModel\Basic\PerformanceViewModel.cs:Zeile 46.
+   bei Ufo.Commander.ViewModel.RelayCommand.Execute(Object parameter) in D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander.ViewModel\RelayCommand.cs:Zeile 34.
+   bei Ufo.Commander.Views.AddPerformanceView.btnSave_Click(Object sender, RoutedEventArgs e) in D:\Private\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.Commander\Views\AddPerformanceView.xaml.cs:Zeile 53.
+   bei System.Windows.RoutedEventHandlerInfo.InvokeHandler(Object target, RoutedEventArgs routedEventArgs)
+   bei System.Windows.EventRoute.InvokeHandlersImpl(Object source, RoutedEventArgs args, Boolean reRaised)
+   bei System.Windows.UIElement.RaiseEventImpl(DependencyObject sender, RoutedEventArgs args)
+   bei System.Windows.UIElement.RaiseEvent(RoutedEventArgs e)
+   bei System.Windows.Controls.Primitives.ButtonBase.OnClick()
+   bei System.Windows.Controls.Button.OnClick()
+   bei System.Windows.Controls.Primitives.ButtonBase.OnMouseLeftButtonUp(MouseButtonEventArgs e)
+   bei System.Windows.UIElement.OnMouseLeftButtonUpThunk(Object sender, MouseButtonEventArgs e)
+   bei System.Windows.Input.MouseButtonEventArgs.InvokeEventHandler(Delegate genericHandler, Object genericTarget)
+   bei System.Windows.RoutedEventArgs.InvokeHandler(Delegate handler, Object target)
+   bei System.Windows.RoutedEventHandlerInfo.InvokeHandler(Object target, RoutedEventArgs routedEventArgs)
+   bei System.Windows.EventRoute.InvokeHandlersImpl(Object source, RoutedEventArgs args, Boolean reRaised)
+   bei System.Windows.UIElement.ReRaiseEventAs(DependencyObject sender, RoutedEventArgs args, RoutedEvent newEvent)
+   bei System.Windows.UIElement.OnMouseUpThunk(Object sender, MouseButtonEventArgs e)
+   bei System.Windows.Input.MouseButtonEventArgs.InvokeEventHandler(Delegate genericHandler, Object genericTarget)
+   bei System.Windows.RoutedEventArgs.InvokeHandler(Delegate handler, Object target)
+   bei System.Windows.RoutedEventHandlerInfo.InvokeHandler(Object target, RoutedEventArgs routedEventArgs)
+   bei System.Windows.EventRoute.InvokeHandlersImpl(Object source, RoutedEventArgs args, Boolean reRaised)
+   bei System.Windows.UIElement.RaiseEventImpl(DependencyObject sender, RoutedEventArgs args)
+   bei System.Windows.UIElement.RaiseTrustedEvent(RoutedEventArgs args)
+   bei System.Windows.UIElement.RaiseEvent(RoutedEventArgs args, Boolean trusted)
+   bei System.Windows.Input.InputManager.ProcessStagingArea()
+   bei System.Windows.Input.InputManager.ProcessInput(InputEventArgs input)
+   bei System.Windows.Input.InputProviderSite.ReportInput(InputReport inputReport)
+   bei System.Windows.Interop.HwndMouseInputProvider.ReportInput(IntPtr hwnd, InputMode mode, Int32 timestamp, RawMouseActions actions, Int32 x, Int32 y, Int32 wheel)
+   bei System.Windows.Interop.HwndMouseInputProvider.FilterMessage(IntPtr hwnd, WindowMessage msg, IntPtr wParam, IntPtr lParam, Boolean& handled)
+   bei System.Windows.Interop.HwndSource.InputFilterMessage(IntPtr hwnd, Int32 msg, IntPtr wParam, IntPtr lParam, Boolean& handled)
+   bei MS.Win32.HwndWrapper.WndProc(IntPtr hwnd, Int32 msg, IntPtr wParam, IntPtr lParam, Boolean& handled)
+   bei MS.Win32.HwndSubclass.DispatcherCallbackOperation(Object o)
+   bei System.Windows.Threading.ExceptionWrapper.InternalRealCall(Delegate callback, Object args, Int32 numArgs)
+   bei System.Windows.Threading.ExceptionWrapper.TryCatchWhen(Object source, Delegate callback, Object args, Int32 numArgs, Delegate catchHandler)
+ClientConnectionId:c0b128b0-13c3-4f9c-b629-d39b01fbfede
+Fehlernummer (Error Number):2627,Status (State):1,Klasse (Class):14
+2016-01-29 19:42:54.8528 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-29 19:46:39.9770 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-29 19:48:32.3674 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-29 19:53:54.7183 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-29 19:55:13.9035 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-29 19:57:39.5229 |                INFO |                Start application |                Ufo.Commander.App 
+2016-01-29 19:59:06.9181 |                INFO |                Start application |                Ufo.Commander.App 
