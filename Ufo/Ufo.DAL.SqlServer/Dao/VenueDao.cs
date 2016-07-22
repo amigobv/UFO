@@ -12,38 +12,39 @@ namespace Ufo.DAL.SqlServer.Dao
             @"Select COUNT(idVenue) FROM Venue";
 
         private const string SQL_FIND_BY_ID =
-            @"SELECT v.idVenue, v.label, v.maxSpectators, l.idLocation, l.label " +
+            @"SELECT v.idVenue, v.label, v.maxSpectators, l.idLocation, l.label, v.latitude, v.longitude " +
             @"FROM Venue as v, Location as l " +
             @"WHERE v.idVenue = @idVenue AND v.location = @location";
 
         private const string SQL_FIND_BY_LOCATION_ID =
-            @"SELECT v.idVenue, v.label, v.maxSpectators, l.idLocation, l.label " +
+            @"SELECT v.idVenue, v.label, v.maxSpectators, l.idLocation, l.label, v.latitude, v.longitude " +
             @"FROM Venue as v, Location as l " +
             @"WHERE v.location = @location AND v.location = l.idLocation";
 
         private const string SQL_FIND_BY_LOCATION =
-            @"SELECT v.idVenue, v.label, v.maxSpectators, l.idLocation, l.label " +
+            @"SELECT v.idVenue, v.label, v.maxSpectators, l.idLocation, l.label, v.latitude, v.longitude " +
             @"FROM Venue as v, Location as l " +
             @"WHERE l.label LIKE @location AND v.location = l.idLocation";
 
         private const string SQL_FIND_WHERE_SPECTATORS =
-            @"SELECT v.idVenue, v.label, v.maxSpectators, l.idLocation, l.label " +
+            @"SELECT v.idVenue, v.label, v.maxSpectators, l.idLocation, l.label, v.latitude, v.longitude " +
             @"FROM Venue as v, Location as l " +
             @"WHERE v.maxSpectators > @spectators AND v.location = l.idLocation";
 
         private const string SQL_FIND_ALL =
-            @"SELECT v.idVenue, v.label, v.maxSpectators, v.location, l.label " +
+            @"SELECT v.idVenue, v.label, v.maxSpectators, v.location, l.label, v.latitude, v.longitude " +
             @"FROM Venue as v, Location as l " +
             @"WHERE v.location = l.idLocation " +
-            @"ORDER BY v.location ASC";
+            @"ORDER BY v.label ASC";
+        //@"ORDER BY v.location ASC";
 
         private const string SQL_INSERT =
             @"INSERT INTO Venue " +
-            @"VALUES (@idVenue, @label, @maxSpectators, @location)";
+            @"VALUES (@idVenue, @label, @maxSpectators, @location, @latitude, @longitude)";
 
         private const string SQL_UPDATE =
             @"UPDATE Venue " +
-            @"SET label = @label, location = @location, maxSpectators = @maxSpectators " +
+            @"SET label = @label, location = @location, maxSpectators = @maxSpectators, latitude = @latitude, longitude = @longitude" +
             @"WHERE idVenue = @idVenue AND location = @idLocation";
 
         private const string SQL_DELETE = @"DELETE FROM Venue WHERE idVenue = @idVenue AND location = @idLocation";
@@ -81,7 +82,10 @@ namespace Ufo.DAL.SqlServer.Dao
                 venues.Add(new Venue((int)reader.GetInt32(0),
                                      (string)reader.GetString(1),
                                      (int)reader.GetInt32(2),
-                                     new Location((string)reader.GetString(3), (string)reader.GetString(4))));
+                                     new Location((string)reader.GetString(3), (string)reader.GetString(4)),
+                                     (double)reader.GetDouble(5),
+                                     (double)reader.GetDouble(6)
+                                     ));
             }
 
             return venues;
@@ -100,7 +104,10 @@ namespace Ufo.DAL.SqlServer.Dao
                     return new Venue((int)reader.GetInt32(0),
                                      (string)reader.GetString(1),
                                      (int)reader.GetInt32(2),
-                                     new Location((string)reader.GetString(3), (string)reader.GetString(4)));
+                                     new Location((string)reader.GetString(3), (string)reader.GetString(4)),
+                                     (double)reader.GetDouble(5),
+                                     (double)reader.GetDouble(6)
+                                     );
                 }
 
                 return null;
@@ -152,6 +159,8 @@ namespace Ufo.DAL.SqlServer.Dao
             _database.DefineParameter(command, "@label", DbType.String, o.Label);
             _database.DefineParameter(command, "@location", DbType.String, o.Location.Id);
             _database.DefineParameter(command, "@maxSpectators", DbType.Int32, o.MaxSpectators);
+            _database.DefineParameter(command, "@latitude", DbType.Double, o.Latitude);
+            _database.DefineParameter(command, "@longitude", DbType.Double, o.Longitude);
 
             return _database.ExecuteNonQuery(command) == 1;
         }
@@ -169,6 +178,8 @@ namespace Ufo.DAL.SqlServer.Dao
             _database.DefineParameter(command, "@label", DbType.String, o.Label);
             _database.DefineParameter(command, "@location", DbType.String, o.Location.Id);
             _database.DefineParameter(command, "@maxSpectators", DbType.Int32, o.MaxSpectators);
+            _database.DefineParameter(command, "@latitude", DbType.Double, o.Latitude);
+            _database.DefineParameter(command, "@longitude", DbType.Double, o.Longitude);
 
             return _database.ExecuteNonQuery(command) == 1;
         }

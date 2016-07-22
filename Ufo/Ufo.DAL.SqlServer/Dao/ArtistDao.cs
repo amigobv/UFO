@@ -63,7 +63,7 @@ namespace Ufo.DAL.SqlServer.Dao
             @"WHERE idArtist = @id";
 
         private const string SQL_MARK_DELETED =
-            @"UPDATE FROM Artist " +
+            @"UPDATE Artist " +
             @"SET deleted = @delete " +
             @"WHERE idArtist = @id";
 
@@ -116,7 +116,9 @@ namespace Ufo.DAL.SqlServer.Dao
                                         (reader["video"] == DBNull.Value) ? string.Empty : (string)reader["video"],
                                         new Category((string)reader["idCategory"], (string)reader["label"]),
                                         (bool)reader["deleted"]);
-                artists.Add(artist);
+
+                if (!artist.IsDeleted)
+                    artists.Add(artist);
             }
 
             return artists;
@@ -131,16 +133,19 @@ namespace Ufo.DAL.SqlServer.Dao
             {
                 if (reader.Read())
                 {
-                    return new Artist((int)reader["idArtist"],
-                                            (string)reader["name"],
-                                            (string)reader["country"],
-                                            (string)reader["email"],
-                                            (reader["description"] == DBNull.Value) ? string.Empty : (string)reader["description"],
-                                            (reader["homepage"] == DBNull.Value) ? string.Empty : (string)reader["homepage"],
-                                            (reader["picture"] == DBNull.Value) ? string.Empty : (string)reader["picture"],
-                                            (reader["video"] == DBNull.Value) ? string.Empty : (string)reader["video"],
-                                            new Category((string)reader["idCategory"], (string)reader["label"]),
-                                            (bool)reader["deleted"]);
+                    var artist =  new Artist((int)reader["idArtist"],
+                                                (string)reader["name"],
+                                                (string)reader["country"],
+                                                (string)reader["email"],
+                                                (reader["description"] == DBNull.Value) ? string.Empty : (string)reader["description"],
+                                                (reader["homepage"] == DBNull.Value) ? string.Empty : (string)reader["homepage"],
+                                                (reader["picture"] == DBNull.Value) ? string.Empty : (string)reader["picture"],
+                                                (reader["video"] == DBNull.Value) ? string.Empty : (string)reader["video"],
+                                                new Category((string)reader["idCategory"], (string)reader["label"]),
+                                                (bool)reader["deleted"]);
+
+                    if (!artist.IsDeleted)
+                        return artist;
                 }
             }
 
@@ -242,9 +247,9 @@ namespace Ufo.DAL.SqlServer.Dao
 
         public bool Delete(int id)
         {
-            var command = _database.CreateCommand(SQL_DELETE);
+            var command = _database.CreateCommand(SQL_MARK_DELETED);
             _database.DefineParameter(command, "@id", DbType.Int32, id);
-            _database.DefineParameter(command, "@deleted", DbType.Boolean, true);
+            _database.DefineParameter(command, "@delete", DbType.Boolean, true);
 
             return _database.ExecuteNonQuery(command) == 1;
         }

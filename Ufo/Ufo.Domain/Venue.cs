@@ -14,15 +14,24 @@ namespace Ufo.Domain
         public string Label { get; set; }
         public Location Location { get; set; }
         public int MaxSpectators { get; set; }
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
+        public string Unique
+        {
+            get { return Location.Id + Id; }
+            set { }
+        }
         #endregion
 
         #region ctor
-        public Venue(int id, string label, int maxSpectators, Location location)
+        public Venue(int id, string label, int maxSpectators, Location location, double latitude, double longitude)
         {
             Id = id;
             Label = label;
             Location = location;
             MaxSpectators = maxSpectators;
+            Latitude = latitude;
+            Longitude = longitude;
         }
 
         public Venue()
@@ -31,6 +40,8 @@ namespace Ufo.Domain
             Label = string.Empty;
             Location = null;
             MaxSpectators = 0;
+            Latitude = 48.306368;
+            Longitude = 14.286277;
         }
 
         #endregion

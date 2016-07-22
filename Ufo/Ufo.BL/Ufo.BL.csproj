@@ -58,6 +58,7 @@
     <Compile Include="ManagerImpl.cs" />
     <Compile Include="Exceptions\InvalidUrlException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils.cs" />
     <Compile Include="ViewerImpl.cs" />
   </ItemGroup>
   <ItemGroup>

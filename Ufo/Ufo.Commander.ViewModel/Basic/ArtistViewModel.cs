@@ -1,7 +1,6 @@
 ﻿using MvvmValidation;
 using System;
-using System.Collections.ObjectModel;
-using System.Threading.Tasks;
+using System.Collections.Generic;
 using System.Windows.Input;
 using Ufo.BL.Interfaces;
 using Ufo.Commander.ViewModel.Validator;
@@ -20,7 +19,7 @@ namespace Ufo.Commander.ViewModel.Basic
         private IManager manager;
         private Artist artist;
         private CategoryViewModel category;
-        private ObservableCollection<CategoryViewModel> categories;
+        private IList<CategoryViewModel> categories;
         private string validationErrorsString;
         private bool? isValid;
         #endregion
@@ -31,7 +30,7 @@ namespace Ufo.Commander.ViewModel.Basic
             this.artist = new Artist();
             this.manager = manager;
             category = new CategoryViewModel(manager);
-            categories = new ObservableCollection<CategoryViewModel>();
+            categories = new List<CategoryViewModel>();
             this.SaveCommand = new RelayCommand(o => UpdateArtist());
             this.RemoveCommand = new RelayCommand(o => DeleteArtist());
             ConfigureValidation();
@@ -42,7 +41,7 @@ namespace Ufo.Commander.ViewModel.Basic
             this.artist = artist;
             this.manager = manager;
             category = new CategoryViewModel(artist.Category, manager);
-            categories = new ObservableCollection<CategoryViewModel>();
+            categories = new List<CategoryViewModel>();
             this.SaveCommand = new RelayCommand(o => UpdateArtist());
             this.RemoveCommand = new RelayCommand(o => DeleteArtist());
             ConfigureValidation();
@@ -61,7 +60,7 @@ namespace Ufo.Commander.ViewModel.Basic
 
         private void DeleteArtist()
         {
-            //manager.RemoveArtist(artist);
+            manager.RemoveArtist(artist);
 
             // notify observers
             if (NotifyDelete != null)
@@ -234,7 +233,7 @@ namespace Ufo.Commander.ViewModel.Basic
             }
         }
 
-        public ObservableCollection<CategoryViewModel> Categories
+        public IList<CategoryViewModel> Categories
         {
             get
             { 

@@ -5,6 +5,7 @@ using System.Windows.Input;
 using Ufo.BL.Interfaces;
 using Ufo.Domain;
 using Ufo.Commander.ViewModel.Validator;
+using System.Collections.Generic;
 
 namespace Ufo.Commander.ViewModel.Basic
 {
@@ -15,8 +16,8 @@ namespace Ufo.Commander.ViewModel.Basic
         private VenueViewModel venueVm;
         private DateTime day;
         private Performance performance;
-        private ObservableCollection<ArtistViewModel> artists;
-        private ObservableCollection<VenueViewModel> venues;
+        private IList<ArtistViewModel> artists;
+        private IList<VenueViewModel> venues;
 
         #region ctor
         public PerformanceViewModel(VenueViewModel venueVm, ArtistViewModel artistVm, DateTime day, IManager manager)
@@ -39,8 +40,8 @@ namespace Ufo.Commander.ViewModel.Basic
             this.venueVm = venueVm;
             this.artistVm = artistVm;
             this.day = day;
-            this.artists = new ObservableCollection<ArtistViewModel>();
-            this.venues = new ObservableCollection<VenueViewModel>();
+            this.artists = new List<ArtistViewModel>();
+            this.venues = new List<VenueViewModel>();
 
             SaveCommand = new RelayCommand(o => manager.UpdatePerformance(performance));
             RemoveCommand = new RelayCommand(o => manager.RemovePerformance(performance));
@@ -53,8 +54,8 @@ namespace Ufo.Commander.ViewModel.Basic
             this.venueVm = new VenueViewModel(manager);
             this.artistVm = new ArtistViewModel(manager);
             this.day = new DateTime(2000, 01, 01);
-            this.artists = new ObservableCollection<ArtistViewModel>();
-            this.venues = new ObservableCollection<VenueViewModel>();
+            this.artists = new List<ArtistViewModel>();
+            this.venues = new List<VenueViewModel>();
 
             SaveCommand = new RelayCommand(o => manager.UpdatePerformance(performance));
             RemoveCommand = new RelayCommand(o => manager.RemovePerformance(performance));
@@ -68,8 +69,8 @@ namespace Ufo.Commander.ViewModel.Basic
             this.artistVm = new ArtistViewModel(performance.Artist, (manager));
             this.day = new DateTime(performance.Start.Year, performance.Start.Month, performance.Start.Day,
                                     performance.Start.Hour, performance.Start.Minute, performance.Start.Second);
-            this.artists = new ObservableCollection<ArtistViewModel>();
-            this.venues = new ObservableCollection<VenueViewModel>();
+            this.artists = new List<ArtistViewModel>();
+            this.venues = new List<VenueViewModel>();
 
             SaveCommand = new RelayCommand(o => manager.UpdatePerformance(performance));
             RemoveCommand = new RelayCommand(o => manager.RemovePerformance(performance));
@@ -119,7 +120,7 @@ namespace Ufo.Commander.ViewModel.Basic
             }
         }
 
-        public ObservableCollection<ArtistViewModel> Artists
+        public IList<ArtistViewModel> Artists
         {
             get
             {
@@ -136,7 +137,7 @@ namespace Ufo.Commander.ViewModel.Basic
             }
         }
 
-        public ObservableCollection<VenueViewModel> Venues
+        public IList<VenueViewModel> Venues
         {
             get
             {

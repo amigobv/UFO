@@ -1,5 +1,5 @@
-E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.DAL.SqlServer\bin\Debug\NLog.config
 E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.DAL.SqlServer\bin\Debug\UfoDb.mdf
+E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.DAL.SqlServer\bin\Debug\NLog.config
 E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.DAL.SqlServer\bin\Debug\UfoDb_log.ldf
 E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.DAL.SqlServer\bin\Debug\UfoTestDb.mdf
 E:\Fachhochschule\FH\Dropbox\Dropbox\FH\Semester5\SWK5\Project\Ufo\Ufo.DAL.SqlServer\bin\Debug\UfoTestDb_log.ldf

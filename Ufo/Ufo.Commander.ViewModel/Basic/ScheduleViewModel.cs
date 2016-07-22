@@ -39,11 +39,11 @@ namespace Ufo.Commander.ViewModel.Basic
             }
             set
             {
-                if (scheduleFirstDay != value)
-                {
+                //if (scheduleFirstDay != value)
+                //{
                     scheduleFirstDay = value;
-                    RaisePropertyChangedEvent(nameof(ScheduleFirstDay));
-                }
+                //    RaisePropertyChangedEvent(nameof(ScheduleFirstDay));
+                //}
             }
         }
 
@@ -55,11 +55,11 @@ namespace Ufo.Commander.ViewModel.Basic
             }
             set
             {
-                if (scheduleSecondDay != value)
-                {
+               // if (scheduleSecondDay != value)
+               // {
                     scheduleSecondDay = value;
-                    RaisePropertyChangedEvent(nameof(ScheduleSecondDay));
-                }
+               //     RaisePropertyChangedEvent(nameof(ScheduleSecondDay));
+                //}
             }
         }
 
@@ -71,11 +71,11 @@ namespace Ufo.Commander.ViewModel.Basic
             }
             set
             {
-                if (scheduleThirdDay != value)
-                {
+                //if (scheduleThirdDay != value)
+                //{
                     scheduleThirdDay = value;
-                    RaisePropertyChangedEvent(nameof(ScheduleThirdDay));
-                }
+                ///    RaisePropertyChangedEvent(nameof(ScheduleThirdDay));
+                //}
             }
         }
 

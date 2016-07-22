@@ -23,10 +23,14 @@ namespace Ufo.DAL.Common
 
         IList<Performance> FindBetween(DateTime start, DateTime end);
 
+        IList<Performance> FindByVenueAndDate(string venue, DateTime start, DateTime end);
+
         bool Insert(Performance o);
 
         bool Update(Performance o);
 
         bool Delete(int id);
+
+        bool DeleteByArtist(int id);
     }
 }

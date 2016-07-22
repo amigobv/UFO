@@ -14,7 +14,7 @@ namespace Ufo.Commander.ViewModel
     {
         #region private members
         private IManager manager;
-        private ObservableCollection<VenueViewModel> venues;
+        private IList<VenueViewModel> venues;
         private VenueViewModel currentVenue;
         #endregion
 
@@ -22,7 +22,7 @@ namespace Ufo.Commander.ViewModel
         public VenuesViewModel(IManager manager)
         {
             this.manager = manager;
-            Venues = new ObservableCollection<VenueViewModel>();
+            Venues = new List<VenueViewModel>();
             CurrentVenue = new VenueViewModel(new Venue(), manager);
             CurrentVenue.NotifyUpdate += () => LoadVenues();
         }
@@ -30,7 +30,7 @@ namespace Ufo.Commander.ViewModel
         #endregion
 
         #region properties
-        public ObservableCollection<VenueViewModel> Venues
+        public IList<VenueViewModel> Venues
         {
             get
             {

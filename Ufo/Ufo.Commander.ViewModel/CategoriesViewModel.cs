@@ -15,7 +15,7 @@ namespace Ufo.Commander.ViewModel
 
         #region private members
         private IManager manager;
-        private ObservableCollection<CategoryViewModel> categories;
+        private IList<CategoryViewModel> categories;
         private CategoryViewModel currentCategory;
         #endregion
 
@@ -23,14 +23,14 @@ namespace Ufo.Commander.ViewModel
         public CategoriesViewModel(IManager manager)
         {
             this.manager = manager;
-            Categories = new ObservableCollection<CategoryViewModel>();
+            Categories = new List<CategoryViewModel>();
             currentCategory = new CategoryViewModel(new Category(), manager);
             currentCategory.NotifyUpdate += () => LoadCategories();
         }
         #endregion
 
         #region properties
-        public ObservableCollection<CategoryViewModel> Categories
+        public IList<CategoryViewModel> Categories
         {
             get { return categories; }
             set

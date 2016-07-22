@@ -39,6 +39,8 @@ CREATE TABLE [dbo].[Venue] (
     [label]         NVARCHAR (50) NOT NULL,
     [maxSpectators] INT           NULL,
     [location]      NVARCHAR (10) NOT NULL,
+    [latitude]      FLOAT         NULL,
+    [longitude]     FLOAT         NULL, 
     CONSTRAINT [pkVenue] PRIMARY KEY CLUSTERED ([location] ASC, [idVenue] ASC),
     CONSTRAINT [FK_region_ToRegion] FOREIGN KEY ([location]) REFERENCES [dbo].[Location] ([idLocation])
 );
@@ -90,40 +92,40 @@ INSERT INTO [dbo].[Location] ([idLocation], [label]) VALUES ('T', 'Straßentheat
 INSERT INTO [dbo].[Location] ([idLocation], [label]) VALUES ('M', 'Musik-Spot');
 INSERT INTO [dbo].[Location] ([idLocation], [label]) VALUES ('N', 'Nightline');
 
-INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location]) VALUES (1, 'Dreifaltigkeitssäule', 100, 'H');
-INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location]) VALUES (2, 'Mader Reisen', 150, 'H');
-INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location]) VALUES (3, 'Haltestelle', 110, 'H');
-INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location]) VALUES (4, 'Altes Rathaus', 120, 'H');
-INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location]) VALUES (5, 'Fa. Mammut', 100, 'H');
-INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location]) VALUES (6, 'Bank Austria', 120, 'H');
+INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location], [latitude], [longitude]) VALUES (1, 'Dreifaltigkeitssäule', 100, 'H', 48.305916, 14.286436);
+INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location], [latitude], [longitude]) VALUES (2, 'Mader Reisen', 150, 'H', 48.306162, 14.286124);
+INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location], [latitude], [longitude]) VALUES (3, 'Haltestelle', 110, 'H', 48.306323, 14.286446);
+INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location], [latitude], [longitude]) VALUES (4, 'Altes Rathaus', 120, 'H', 48.305980, 14.286784);
+INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location], [latitude], [longitude]) VALUES (5, 'Fa. Mammut', 100, 'H', 48.305627, 14.286951);
+INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location], [latitude], [longitude]) VALUES (6, 'Bank Austria', 120, 'H', 48.305197, 14.287310);
 
-INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location]) VALUES (1, 'Keplersalon', 80, 'P');
-INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location]) VALUES (2, 'Adalbert-Stifter-Platz', 70, 'P');
-INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location]) VALUES (3, 'Stadtpfarrkirche', 60, 'P');
-INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location]) VALUES (4, 'Pfarrgasse 3', 50, 'P');
-INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location]) VALUES (5, 'Pfarrplatz', 85, 'P');
-INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location]) VALUES (6, 'Domgasse', 40, 'P');
+INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location], [latitude], [longitude]) VALUES (1, 'Keplersalon', 80, 'P', 48.306551, 14.287423);
+INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location], [latitude], [longitude]) VALUES (2, 'Adalbert-Stifter-Platz', 70, 'P', 48.307123, 14.287801);
+INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location], [latitude], [longitude]) VALUES (3, 'Stadtpfarrkirche', 60, 'P', 48.306713, 14.288369);
+INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location], [latitude], [longitude]) VALUES (4, 'Pfarrgasse 3', 50, 'P', 48.306135, 14.287581);
+INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location], [latitude], [longitude]) VALUES (5, 'Pfarrplatz', 85, 'P', 48.306633, 14.288987);
+INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location], [latitude], [longitude]) VALUES (6, 'Domgasse', 40, 'P', 48.305379, 14.288054);
 
-INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location]) VALUES (1, 'Klosterstraße 7', 50, 'A');
-INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location]) VALUES (2, 'Landhaus', 60, 'A');
-INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location]) VALUES (3, 'Altstadt 13', 60, 'A');
-INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location]) VALUES (4, 'Alter Markt', 55, 'A');
-INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location]) VALUES (5, 'Hofgasse 13', 40, 'A');
-INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location]) VALUES (6, 'Schlossmuseum', 10, 'A');
+INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location], [latitude], [longitude]) VALUES (1, 'Klosterstraße 7', 50, 'A', 48.304520, 14.286231);
+INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location], [latitude], [longitude]) VALUES (2, 'Landhaus', 60, 'A', 48.303988, 14.285517);
+INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location], [latitude], [longitude]) VALUES (3, 'Altstadt 13', 60, 'A', 48.304982, 14.284830);
+INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location], [latitude], [longitude]) VALUES (4, 'Alter Markt', 55, 'A', 48.305661, 14.284498);
+INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location], [latitude], [longitude]) VALUES (5, 'Hofgasse 13', 40, 'A', 48.305842, 14.284505);
+INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location], [latitude], [longitude]) VALUES (6, 'Schlossmuseum', 10, 'A', 48.304873, 14.283464);
 
-INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location]) VALUES (1, 'Annagasse', 40, 'L');
-INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location]) VALUES (2, 'Taubenmarkt', 45, 'L');
-INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location]) VALUES (3, 'Bethlehemstraße', 55, 'L');
-INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location]) VALUES (4, 'Spittelwiese 4', 55, 'L');
-INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location]) VALUES (5, 'Ursulinenkirche', 50, 'L');
-INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location]) VALUES (6, 'Karmeliterkirche', 45, 'L');
-INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location]) VALUES (7, 'OK-Platz', 80, 'L');
-INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location]) VALUES (8, 'Martin-Luther-Platz', 70, 'L');
+INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location], [latitude], [longitude]) VALUES (1, 'Annagasse', 40, 'L', 48.304613, 14.287660);
+INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location], [latitude], [longitude]) VALUES (2, 'Taubenmarkt', 45, 'L', 48.304174, 14.288344);
+INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location], [latitude], [longitude]) VALUES (3, 'Bethlehemstraße', 55, 'L', 48.303135, 14.289146);
+INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location], [latitude], [longitude]) VALUES (4, 'Spittelwiese 4', 55, 'L', 48.303005, 14.288166);
+INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location], [latitude], [longitude]) VALUES (5, 'Ursulinenkirche', 50, 'L', 48.302520, 14.289769);
+INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location], [latitude], [longitude]) VALUES (6, 'Karmeliterkirche', 45, 'L', 48.301872, 14.290344);
+INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location], [latitude], [longitude]) VALUES (7, 'OK-Platz', 80, 'L', 48.302900, 14.290918);
+INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location], [latitude], [longitude]) VALUES (8, 'Martin-Luther-Platz', 70, 'L', 48.300542, 14.291115);
 
-INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location]) VALUES (1, 'Cafe Traxlmayr', 55, 'X');
-INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location]) VALUES (2, 'Sparkasse', 50, 'X');
-INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location]) VALUES (3, 'Promenade 17', 45, 'X');
-INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location]) VALUES (4, 'Medienhaus Wimmer', 40, 'X');
+INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location], [latitude], [longitude]) VALUES (1, 'Cafe Traxlmayr', 55, 'X', 48.304561, 14.287178);
+INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location], [latitude], [longitude]) VALUES (2, 'Sparkasse', 50, 'X', 48.304037, 14.286364);
+INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location], [latitude], [longitude]) VALUES (3, 'Promenade 17', 45, 'X', 48.303546, 14.286039);
+INSERT INTO [dbo].[Venue] ([idVenue], [label], [maxSpectators], [location], [latitude], [longitude]) VALUES (4, 'Medienhaus Wimmer', 40, 'X', 48.302592, 14.286293);
 
 INSERT INTO [dbo].[Restrictions] ([start], [stop], [venue], [cLocation], [category]) VALUES ('20160722 21:00', '20160722 23:00', 1, 'H', 'F');
 INSERT INTO [dbo].[Restrictions] ([start], [stop], [venue], [cLocation], [category]) VALUES ('20160723 21:00', '20160723 23:00', 2, 'H', 'F');

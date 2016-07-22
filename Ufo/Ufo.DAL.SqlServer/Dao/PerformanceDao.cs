@@ -16,43 +16,50 @@ namespace Ufo.DAL.SqlServer.Dao
 
         private const string SQL_FIND_BY_ID =
             @"SELECT p.idPerformance, p.start, a.idArtist, a.name, a.country, a.email, a.description, a.homepage, a.picture, a.video, " +
-            @"c.idCategory, c.label, a.deleted, v.idVenue, v.label, v.maxSpectators, l.idLocation, l.label " +
+            @"c.idCategory, c.label, a.deleted, v.idVenue, v.label, v.maxSpectators, l.idLocation, l.label, v.latitude, v.longitude " +
             @"FROM Performance as p, Artist as a, Venue as v, Location as l, Category as c " +
             @"WHERE p.artist = a.idArtist AND a.category = c.idCategory AND p.pVenue = v.idVenue AND p.pLocation = v.location AND p.pLocation = l.idLocation AND p.idPerformance = @id";
 
         private const string SQL_FIND_BY_ARTIST =
             @"SELECT p.idPerformance, p.start, a.idArtist, a.name, a.country, a.email, a.description, a.homepage, a.picture, a.video, " +
-            @"c.idCategory, c.label, a.deleted, v.idVenue, v.label, v.maxSpectators, l.idLocation, l.label " +
+            @"c.idCategory, c.label, a.deleted, v.idVenue, v.label, v.maxSpectators, l.idLocation, l.label, v.latitude, v.longitude " +
             @"FROM Performance as p, Artist as a, Venue as v, Location as l, Category as c " +
             @"WHERE p.artist = a.idArtist AND a.category = c.idCategory AND p.pVenue = v.idVenue AND p.pLocation = l.idLocation AND p.pLocation = v.location AND a.name LIKE @artist " +
             @"ORDER BY p.start ASC";
 
         private const string SQL_FIND_BY_ARTIST_ID =
             @"SELECT p.idPerformance, p.start, a.idArtist, a.name, a.country, a.email, a.description, a.homepage, a.picture, a.video, " +
-            @"c.idCategory, c.label, a.deleted, v.idVenue, v.label, v.maxSpectators, l.idLocation, l.label " +
+            @"c.idCategory, c.label, a.deleted, v.idVenue, v.label, v.maxSpectators, l.idLocation, l.label, v.latitude, v.longitude " +
             @"FROM Performance as p, Artist as a, Venue as v, Location as l, Category as c " +
             @"WHERE p.artist = a.idArtist AND a.category = c.idCategory AND p.pVenue = v.idVenue AND p.pLocation = l.idLocation AND p.pLocation = v.location AND p.artist = @artist " +
             @"ORDER BY p.start ASC";
 
         private const string SQL_FIND_BY_VENUE =
             @"SELECT p.idPerformance, p.start, a.idArtist, a.name, a.country, a.email, a.description, a.homepage, a.picture, a.video, " +
-            @"c.idCategory, c.label, a.deleted, v.idVenue, v.label, v.maxSpectators, l.idLocation, l.label " +
+            @"c.idCategory, c.label, a.deleted, v.idVenue, v.label, v.maxSpectators, l.idLocation, l.label, v.latitude, v.longitude " +
             @"FROM Performance as p, Artist as a, Venue as v, Location as l, Category as c " +
             @"WHERE p.artist = a.idArtist AND a.category = c.idCategory AND p.pVenue = v.idVenue AND p.pLocation = v.location AND p.pLocation = l.idLocation AND v.label = @venue " +
             @"ORDER BY p.start ASC";
 
         private const string SQL_FIND_BY_BETWEEN =
             @"SELECT p.idPerformance, p.start, a.idArtist, a.name, a.country, a.email, a.description, a.homepage, a.picture, a.video, " +
-            @"c.idCategory, c.label, a.deleted, v.idVenue, v.label, v.maxSpectators, l.idLocation, l.label " +
+            @"c.idCategory, c.label, a.deleted, v.idVenue, v.label, v.maxSpectators, l.idLocation, l.label, v.latitude, v.longitude " +
             @"FROM Performance as p, Artist as a, Venue as v, Location as l, Category as c " +
             @"WHERE p.artist = a.idArtist AND a.category = c.idCategory AND p.pVenue = v.idVenue AND p.pLocation = l.idLocation AND p.pLocation = v.location AND p.start BETWEEN @start AND @end " +
             @"ORDER BY p.start ASC";
 
-        private const string SQL_FIND_ALL =
-            @"SELECT p.idPerformance, p.start, a.idArtist, a.name, a.country, a.email, a.description, a.homepage, a.picture, a.video, " + 
-            @"c.idCategory, c.label, a.deleted, v.idVenue, v.label, v.maxSpectators, l.idLocation, l.label " +
+        private const string SQL_FIND_BY_VENUE_AND_DATE =
+            @"SELECT p.idPerformance, p.start, a.idArtist, a.name, a.country, a.email, a.description, a.homepage, a.picture, a.video, " +
+            @"c.idCategory, c.label, a.deleted, v.idVenue, v.label, v.maxSpectators, l.idLocation, l.label, v.latitude, v.longitude "+ 
             @"FROM Performance as p, Artist as a, Venue as v, Location as l, Category as c " +
-            @"WHERE p.artist = a.idArtist AND a.category = c.idCategory AND p.pVenue = v.idVenue AND p.pLocation = l.idLocation";
+            @"WHERE p.artist = a.idArtist AND a.category = c.idCategory AND p.pVenue = v.idVenue AND p.pLocation = v.location AND p.pLocation = l.idLocation AND v.label = @venue AND p.start BETWEEN @start AND @end " +
+            @"ORDER BY p.start ASC";
+
+        private const string SQL_FIND_ALL =
+            @"SELECT p.idPerformance, p.start, a.idArtist, a.name, a.country, a.email, a.description, a.homepage, a.picture, a.video, " +
+            @"c.idCategory, c.label, a.deleted, v.idVenue, v.label, v.maxSpectators, l.idLocation, l.label, v.latitude, v.longitude " +
+            @"FROM Performance as p, Artist as a, Venue as v, Location as l, Category as c " +
+            @"WHERE p.artist = a.idArtist AND a.category = c.idCategory AND p.pVenue = v.idVenue AND p.pLocation = v.location AND p.pLocation = l.idLocation";
 
         private const string SQL_INSERT =
             @"INSERT INTO Performance " +
@@ -65,6 +72,8 @@ namespace Ufo.DAL.SqlServer.Dao
             @"WHERE idPerformance = @id";
 
         private const string SQL_DELETE = @"DELETE FROM Performance WHERE idPerformance = @id";
+
+        private const string SQL_DELETE_BY_ARTIST = @"DELETE FROM Performance WHERE artist = @id AND start > GETDATE()";
 
         private IDatabase _database;
 
@@ -116,7 +125,9 @@ namespace Ufo.DAL.SqlServer.Dao
                                                                 (string)reader[14],     // venue label
                                                                 (int)reader[15],        // venue spectators
                                                                 new Location((string)reader[16],    // location id
-                                                                             (string)reader[17])    // location label
+                                                                             (string)reader[17]),    // location label
+                                                                (double)reader[18],     // venue latitude
+                                                                (double)reader[19]      // venue longitude
                                                       )));
             }
 
@@ -168,6 +179,19 @@ namespace Ufo.DAL.SqlServer.Dao
             }
         }
 
+        public IList<Performance> FindByVenueAndDate(string venue, DateTime start, DateTime end)
+        {
+            var command = _database.CreateCommand(SQL_FIND_BY_VENUE_AND_DATE);
+            _database.DefineParameter(command, "@venue", DbType.String, venue);
+            _database.DefineParameter(command, "@start", DbType.DateTime, start);
+            _database.DefineParameter(command, "@end", DbType.DateTime, end);
+
+            using (var reader = _database.ExecuteReader(command))
+            {
+                return DataReaderToList(reader);
+            }
+        }
+
         public Performance FindById(int id)
         {
             var command = _database.CreateCommand(SQL_FIND_BY_ID);
@@ -195,7 +219,9 @@ namespace Ufo.DAL.SqlServer.Dao
                                                                 (string)reader[14],     // venue label
                                                                 (int)reader[15],        // venue spectators
                                                                 new Location((string)reader[16],    // location id
-                                                                             (string)reader[17])    // location label
+                                                                             (string)reader[17]),    // location label
+                                                                (double)reader[18],     // venue latitude
+                                                                (double)reader[19]      // venue longitude
                                                       ));
                 }
 
@@ -244,6 +270,14 @@ namespace Ufo.DAL.SqlServer.Dao
         public bool Delete(int id)
         {
             var command = _database.CreateCommand(SQL_DELETE);
+            _database.DefineParameter(command, "@id", DbType.Int32, id);
+
+            return _database.ExecuteNonQuery(command) == 1;
+        }
+
+        public bool DeleteByArtist(int id)
+        {
+            var command = _database.CreateCommand(SQL_DELETE_BY_ARTIST);
             _database.DefineParameter(command, "@id", DbType.Int32, id);
 
             return _database.ExecuteNonQuery(command) == 1;

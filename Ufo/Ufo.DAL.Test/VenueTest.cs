@@ -41,9 +41,9 @@ namespace Ufo.DAL.Test
             locationDao.Insert(loc);
 
             items = new List<Venue>();
-            items.Add(new Venue(VENUE1_ID, VENUE1_LABEL, VENUE1_SPECTATORS, loc));
-            items.Add(new Venue(VENUE2_ID, VENUE2_LABEL, VENUE2_SPECTATORS, loc));
-            items.Add(new Venue(VENUE3_ID, VENUE3_LABEL, VENUE3_SPECTATORS, loc));
+            items.Add(new Venue(VENUE1_ID, VENUE1_LABEL, VENUE1_SPECTATORS, loc, 0, 0));
+            items.Add(new Venue(VENUE2_ID, VENUE2_LABEL, VENUE2_SPECTATORS, loc, 0, 0));
+            items.Add(new Venue(VENUE3_ID, VENUE3_LABEL, VENUE3_SPECTATORS, loc, 0, 0));
         }
 
         void InsertDummyData(IVenueDao dao)

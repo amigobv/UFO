@@ -14,7 +14,7 @@ namespace Ufo.Commander.ViewModel
     {
         #region private members
         private IManager manager;
-        private ObservableCollection<LocationViewModel> locations;
+        private IList<LocationViewModel> locations;
         private LocationViewModel currentLocation;
         #endregion
 
@@ -22,7 +22,7 @@ namespace Ufo.Commander.ViewModel
         public LocationsViewModel(IManager manager)
         {
             this.manager = manager;
-            Locations = new ObservableCollection<LocationViewModel>();
+            Locations = new List<LocationViewModel>();
             CurrentLocation = new LocationViewModel(new Location(), manager);
             CurrentLocation.NotifyUpdate += () => LoadLocations();
         }
@@ -43,7 +43,7 @@ namespace Ufo.Commander.ViewModel
         }
 
 
-        public ObservableCollection<LocationViewModel> Locations
+        public IList<LocationViewModel> Locations
         {
             get
             {

@@ -22,21 +22,39 @@ namespace Ufo.Domain
         public string PictureUrl { get; set; }
         public string VideoUrl { get; set; }
 
-        //private byte[] ReadMedia(string url)
-        //{
-        //    byte[] b;
+        public byte[] Picture
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(PictureUrl))
+                    return File.ReadAllBytes(PictureUrl);
 
-        //    if (string.IsNullOrEmpty(url))
-        //        return null;
+                return null;
+            }
 
-        //    using (var file = File.OpenRead(url))
-        //    {
-        //        b = new byte[file.Length];
-        //        while (file.Read(b, 0, b.Length) > 0) {;}
+            set
+            {
 
-        //    }
-        //    return b;
-        //}
+            }
+        }
+
+
+
+        public byte[] Video
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(VideoUrl))
+                    return File.ReadAllBytes(VideoUrl);
+
+                return null;
+            }
+
+            set
+            {
+
+            }
+        }
         #endregion
 
         #region ctor

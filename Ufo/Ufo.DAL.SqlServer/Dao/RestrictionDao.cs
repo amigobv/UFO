@@ -15,12 +15,12 @@ namespace Ufo.DAL.SqlServer.Dao
             @"Select COUNT(idRestrictions) FROM Restrictions";
 
         private const string SQL_FIND_BY_ID =
-            @"SELECT r.idRestrictions, r.start, r.stop, v.idVenue, v.label, v.maxSpectators, c.idCategory, c.label, l.idLocation, l.label " +
+            @"SELECT r.idRestrictions, r.start, r.stop, v.idVenue, v.label, v.maxSpectators, c.idCategory, c.label, l.idLocation, l.label, v.latitude, v.longitude " +
             @"FROM Restrictions as r, Venue as v, Category as c, Location as l " +
             @"WHERE r.venue = v.idVenue AND r.category = c.idCategory AND r.cLocation = l.idLocation AND r.idRestrictions = @id";
 
         private const string SQL_FIND_ALL =
-            @"SELECT r.idRestrictions, r.start, r.stop, v.idVenue, v.label, v.maxSpectators, c.idCategory, c.label, l.idLocation, l.label " +
+            @"SELECT r.idRestrictions, r.start, r.stop, v.idVenue, v.label, v.maxSpectators, c.idCategory, c.label, l.idLocation, l.label, v.latitude, v.longitude " +
             @"FROM Restrictions as r, Venue as v, Category as c, Location as l " + 
             @"WHERE r.venue = v.idVenue AND r.category = c.idCategory AND r.cLocation = l.idLocation";
 
@@ -67,7 +67,9 @@ namespace Ufo.DAL.SqlServer.Dao
                                                     (string)reader[4],
                                                     (int)reader[5],
                                                     new Location((string)reader[8],
-                                                                 (string)reader[9])),
+                                                                 (string)reader[9]),
+                                                    (double)reader[10],
+                                                    (double)reader[11]),
                                           new Category((string)reader[6],
                                                        (string)reader[7]));
                 }
@@ -93,7 +95,9 @@ namespace Ufo.DAL.SqlServer.Dao
                                                                (string)reader[4],
                                                                (int)reader[5],
                                                                new Location((string)reader[8],
-                                                                            (string)reader[9])),
+                                                                            (string)reader[9]),
+                                                               (double)reader[10],
+                                                               (double)reader[11]),
                                                       new Category((string)reader[6],
                                                                    (string)reader[7])));
                 }

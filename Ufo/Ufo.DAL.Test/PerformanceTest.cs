@@ -47,7 +47,7 @@ namespace Ufo.DAL.Test
             var locationDao = new LocationDao(database);
             locationDao.Insert(loc);
 
-            var venue = new Venue(VENUE_ID, VENUE_LABEL, VENUE_SPECTATORS, loc);
+            var venue = new Venue(VENUE_ID, VENUE_LABEL, VENUE_SPECTATORS, loc, 0, 0);
             var venueDao = new VenueDao(database);
             venueDao.Insert(venue);
 

@@ -58,8 +58,7 @@
                         Name="btnRemove" 
                         Margin="5, 5, 5, 5"
                         Content="{x:Static resx:Resources.RemoveText}"
-                        Command="{Binding CurrentArtist.RemoveCommand}"
-                        IsEnabled="False"/>
+                        Command="{Binding CurrentArtist.RemoveCommand}"/>
             </StackPanel>
         </Grid>
     </Grid>

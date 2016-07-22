@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System;
 using Ufo.Commander.ViewModel.Validator;
+using System.Collections.Generic;
 
 namespace Ufo.Commander.ViewModel.Basic
 {
@@ -20,7 +21,7 @@ namespace Ufo.Commander.ViewModel.Basic
         private IManager manager;
         private Venue venue;
         private LocationViewModel location;
-        private ObservableCollection<LocationViewModel> locations;
+        private IList<LocationViewModel> locations;
         private string validationErrorsString;
         private bool? isValid;
         #endregion
@@ -31,7 +32,7 @@ namespace Ufo.Commander.ViewModel.Basic
             this.manager = manager;
             this.venue = new Venue();
             location = new LocationViewModel(manager);
-            locations = new ObservableCollection<LocationViewModel>();
+            locations = new List<LocationViewModel>();
             SaveCommand = new RelayCommand(o => UpdateVenue());
             ConfigureValidation();
         }
@@ -41,7 +42,7 @@ namespace Ufo.Commander.ViewModel.Basic
             this.manager = manager;
             this.venue = venue;
             location = new LocationViewModel(venue.Location, manager);
-            locations = new ObservableCollection<LocationViewModel>();
+            locations = new List<LocationViewModel>();
             SaveCommand = new RelayCommand(o => UpdateVenue());
             ConfigureValidation();
         }
@@ -135,7 +136,7 @@ namespace Ufo.Commander.ViewModel.Basic
         }
 
 
-        public ObservableCollection<LocationViewModel> Locations
+        public IList<LocationViewModel> Locations
         {
             get
             {

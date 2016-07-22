@@ -25,7 +25,6 @@ namespace Ufo.Commander.ViewModel
             this.manager = manager;
             artists = new ObservableCollection<ArtistViewModel>();
             currentArtist = new ArtistViewModel(new Artist(), manager);
-            currentArtist.NotifyUpdate += () => LoadArtists();
         }
         #endregion
 
@@ -53,8 +52,17 @@ namespace Ufo.Commander.ViewModel
             {
                 if (currentArtist != value)
                 {
+                    currentArtist.NotifyUpdate -= LoadArtists;
+                    currentArtist.NotifyDelete -= LoadArtists;
+
                     currentArtist = value;
                     RaisePropertyChangedEvent(nameof(CurrentArtist));
+
+                    if (currentArtist != null)
+                    {
+                        currentArtist.NotifyUpdate += LoadArtists;
+                        currentArtist.NotifyDelete += LoadArtists;
+                    }
                 }
             }
         }

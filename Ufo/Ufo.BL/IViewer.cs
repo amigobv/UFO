@@ -12,8 +12,13 @@ namespace Ufo.BL
     {
         #region Artist
         IList<Artist> GetAllArtists();
+        Artist GetArtistById(int id);
         IList<Artist> GetAllArtistsByCountry(string country);
         IList<Artist> GetAllArtistsByCategory(Category category);
+        /*
+        byte[] GetPictureByArtistId(int id);
+        byte[] GetVideoByArtistsId(int id);
+        */
         #endregion
 
         #region Category
@@ -31,8 +36,14 @@ namespace Ufo.BL
         IList<Performance> GetPerformanceByDay(DateTime day);
         IList<Performance> GetPerformanceByArtist(Artist artist);
         IList<Performance> GetPerformanceByVenue(Venue venue);
+        IList<Performance> GetPerformanceByVenueAndDate(Venue venue, DateTime date);
+        Performance GetPerformanceById(int id);
+        bool IsPerformanceValid(Performance performance);
+        bool UpdatePerformance(Performance performance);
         #endregion
 
         void SendEmail(string address, string subject, string content);
+        string HashPassword(string input);
+        bool Login(string username, string password);
     }
 }

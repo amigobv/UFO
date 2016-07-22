@@ -51,14 +51,9 @@ namespace Ufo.BL
         /// <returns></returns>
         public string HashPassword(string input)
         {
-            using (var sha1 = new SHA1Managed())
-            {
-                var hash = sha1.ComputeHash(Encoding.UTF8.GetBytes(input));
-                return Convert.ToBase64String(hash);
-
-            }
-
+            return Utils.HashPassword(input);
         }
+
         /// <summary>
         /// Check if the specified username is already registrated.
         /// </summary>
@@ -270,6 +265,7 @@ namespace Ufo.BL
                 throw new ArgumentException("Invalid Artist!");
 
             artistDao.Delete(artist.Id);
+            performanceDao.DeleteByArtist(artist.Id);
         }
 
         public void UpdateArtist(Artist artist)
